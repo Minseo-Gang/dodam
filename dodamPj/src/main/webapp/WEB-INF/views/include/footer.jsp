@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <!-- ======= Footer ======= -->
-  <footer id="footer">
+  <footer id="footer" style="margin-top:5px;">
     <div class="container d-md py-4">
      <h5>도담 동물 보호 센터</h5>
          <p>

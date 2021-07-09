@@ -14,8 +14,18 @@ public class LoseAnimalController {
 		return "/loseAnimal/infoGetAnimal";
 	}
 	
-	@RequestMapping(value="/reportAnimal", method=RequestMethod.GET)
-	public String reportAnimal() throws Exception {
+	@RequestMapping(value="/reportList", method=RequestMethod.GET)
+	public String reportList() throws Exception {
 		return "/loseAnimal/reportAnimal";
+	}
+	
+	@RequestMapping(value="/reportAnimalForm", method=RequestMethod.GET)
+	public String reportAnimalForm() throws Exception {
+		return "/loseAnimal/reportAnimalForm";
+	}
+	
+	@RequestMapping(value="/reportAnimalRun", method=RequestMethod.POST)
+	public String reportAnimalRun() throws Exception {
+		return "redirect:/loseAnimal/reportAnimal";
 	}
 }

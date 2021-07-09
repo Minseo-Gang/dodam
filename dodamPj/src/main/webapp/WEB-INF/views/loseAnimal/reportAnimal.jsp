@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp" %>
 
 <div class="container-fluid">
@@ -16,7 +17,7 @@
                 		<strong><i class="fas fa-paw"></i> 유실/유기동물</strong></a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">- 보호중인 동물</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
-                    	href="/loseAnimal/reportAnimal">- 분실 신고</a>
+                    	href="/loseAnimal/reportList">- 분실 신고</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
                     	href="/loseAnimal/infoGetAnimal">- 습득시 안내</a>
                 </div>
@@ -47,7 +48,7 @@
 						<tbody>
 							<tr>
 								<td>1</td>
-								<td>사라진 냥냥이를 찾습니다 ㅠㅠ</td>
+								<td><a href="#">사라진 냥냥이를 찾습니다 ㅠㅠ</a></td>
 								<td>강민서</td>
 								<td>2021-07-09</td>
 							</tr>
@@ -55,6 +56,7 @@
 					</table>
 				</div>
 			</div>
+			<a class="btn btn-info" href="/loseAnimal/reportAnimalForm">신고서 작성</a>
 		</div>
   </div>
 </div>  

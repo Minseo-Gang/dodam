@@ -90,7 +90,7 @@
           <li class="drop-down"><a href="">유실/유기동물</a>
             <ul>
               <li><a href="#">- 보호중인 동물</a></li>
-              <li><a href="/loseAnimal/reportAnimal">- 분실 신고</a></li>
+              <li><a href="/loseAnimal/reportList">- 분실 신고</a></li>
               <li><a href="/loseAnimal/infoGetAnimal">- 습득시 안내</a></li>              
             </ul>
           </li>
