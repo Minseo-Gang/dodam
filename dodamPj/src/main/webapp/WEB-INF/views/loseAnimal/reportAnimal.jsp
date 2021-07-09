@@ -32,11 +32,30 @@
 					(다만, 동물보호관리시스템에서 소유자가 직접 동물상태 수정 가능)</li>
 				<li>로그인 후 분실신고를 등록할 수 있습니다.</li>
 			</ul>
-		
-		<div class="photo">
+			<br>
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>No.</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>작성일</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>사라진 냥냥이를 찾습니다 ㅠㅠ</td>
+								<td>강민서</td>
+								<td>2021-07-09</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
-
-	</div>
   </div>
 </div>  
 <%@ include file="../include/footer.jsp" %>
