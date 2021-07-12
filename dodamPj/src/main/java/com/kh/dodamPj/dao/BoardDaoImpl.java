@@ -12,7 +12,7 @@ import com.kh.dodamPj.vo.BoardVo;
 @Repository
 public class BoardDaoImpl implements BoardDao {
 	
-	private static final String NAMESPACE = "com.kh.dodam.board.";
+	private static final String NAMESPACE = "com.kh.dodamPj.board.";
 
 	@Inject
 	private SqlSession sqlSession;
