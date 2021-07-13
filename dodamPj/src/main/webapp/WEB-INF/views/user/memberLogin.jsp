@@ -643,7 +643,7 @@ $(document).ready(function(){
 			<!-- join_form E  -->
 			<div class="btn_wrap">
 			<span id="result"></span>
-				<button type="submit" >로그인</button>
+				<button type="submit" class="btn btn-primary">로그인</button>
 				
 
 

@@ -658,7 +658,7 @@ ul {
 							<th><span>아이디</span></th>
 							<td><input type="text" id="user_id" name="user_id"
 								placeholder="ID 를 입력하세요."></td>
-								<td><button type="button" id="btnIdCheck">중복확인</button><span id="idCheck"></span>
+								<td><button type="button" id="btnIdCheck" class="btn btn-info">중복확인</button><span id="idCheck"></span>
 						</tr>
 						<tr>
 							<th><span>이름</span></th>
@@ -712,8 +712,8 @@ ul {
 				</div>
 			</div>
 			<div class="btn_wrap">
-				<button type="submit">가입 완료</button>
-				 <button onclick="history.back(-100)" id="btnBack">뒤로가기</button>
+				<button type="submit" class="btn btn-primary">가입 완료</button>
+				 <button onclick="history.back(-100)" id="btnBack" class="btn btn-success">뒤로가기</button>
 				
 			</div>
 			</form>

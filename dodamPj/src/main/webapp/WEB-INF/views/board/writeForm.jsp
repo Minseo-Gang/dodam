@@ -30,7 +30,7 @@
 							<tr>
 								<td align="center">이름</td>
 								<td align="center"></td>
-								<td><input type="text" class="form-control" id="user_id" name="user_id" value="user_id"/></td>
+								<td><input type="text" class="form-control" id="user_id" name="user_id" value="user_id" readonly/></td>
 							</tr>
 							<tr>
 								<td align="center">제목</td>
@@ -56,6 +56,7 @@
 					</table>
 					</div>
 					<button type="submit" class="btn btn-primary">작성완료</button>
+					<a href="freeBoard" class="btn btn-danger">취소</a>
 				</form>
 			</div>
 		</div>

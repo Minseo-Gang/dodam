@@ -44,7 +44,7 @@ $(document).ready(function() {
 							<tr>
 								<td align="center">이름</td>
 								<td align="center"></td>
-								<td><input type="text" class="form-control" id="user_id" name="user_id"/></td>
+								<td><input type="text" class="form-control" id="user_id" name="user_id" value="${boardVo.user_id }" readonly/></td>
 							</tr>
 							<tr>
 								<td align="center">제목</td>
@@ -62,11 +62,56 @@ $(document).ready(function() {
 						</tbody>
 					</table>
 					</div>
-					<button type="button" class="btn btn-primary" id="btnModify">수정</button>
-					<button type="submit" class="btn btn-success" id="btnModifyFinish" style="display:none">수정완료</button>
-					<button type="button" class="btn btn-danger" id="btnDelete">삭제</button>
-					<a class="btn btn-success" href="freeBoard">목록</a>
+					
+					<div class="row">
+						<div class="col-md-12">
+							<hr/>
+							<button type="button" class="btn btn-success" id="btnCommentList">댓글보기</button>
+							<hr/>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-12">
+							<button type="button" class="btn btn-primary" id="btnModify">수정</button>
+							<button type="submit" class="btn btn-success" id="btnModifyFinish" style="display:none">수정완료</button>
+							<button type="button" class="btn btn-danger" id="btnDelete">삭제</button>
+							<a class="btn btn-warning" href="freeBoard">목록</a>
+						</div>
+					</div>
 				</form>
+				
+			<div class="row">
+				<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<input type="text" class="form-control"
+							placeholder="댓글을 입력하세요..."
+							id="c_content"/>
+					</div>
+					<div class="col-md-2">
+						<button type="button" class="btn btn-primary"
+							id="btnCommentInsert">입력</button>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-12">
+						<table class="table" id="commentTable">
+							
+							<tbody>
+								<tr style="display:none;">
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td><button type="button" class="btn btn-warning btn-sm commentModify">수정</button></td>
+									<td><button type="button" class="btn btn-danger btn-sm commentDelete">삭제</button></td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
