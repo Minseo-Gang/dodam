@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.kh.dodamPj.board">
+	
+	<!-- 자유게시판 목록 -->
+	<select id="freeBoard" resultType="BoardVo">
+		select * from tbl_board
+		order by b_no desc
+	</select>
+	
+	<!-- 글쓰기 -->
+	<insert id="insertArticle">
+		insert into tbl_board (b_no, b_title, b_content, user_id, re_group)
+		values (seq_board_bno.nextval, #{b_title}, #{b_content}, #{user_id}, seq_board_bno.nextval)
+	</insert>
+	
+	<!-- 조회 -->
+	<select id="selectByBno" resultType="BoardVo">
+		select * from tbl_board
+		where b_no = #{b_no}
+	</select>
+	
+	<!-- 수정 -->
+	<update id="updateArticle">
+		update tbl_board set
+			b_title = #{b_title},
+			b_content = #{b_content}
+		where b_no = #{b_no}
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="deleteArticle">
+		delete from tbl_board
+		where b_no = #{b_no}
+	</delete>
+	
+	<!-- 페이징 -->
+	<select id="getCount" resultType="int">
+		select count(*) from tbl_board
+		<include refid="search"></include>
+	</select>
+	
+	<!-- 검색 -->
+	<sql id="search">
+		<if test="searchType != null">
+		 	<choose>
+		 		<when test='searchType == "t"'>
+		 			where b_title like '%' || #{keyword} || '%'
+		 		</when>
+		 		<when test='searchType == "u"'>
+		 			where user_id like '%' || #{keyword} || '%'
+		 		</when>
+		 		<when test='searchType == "tc"'>
+		 			where b_title like '%' || #{keyword} || '%'
+		 			or b_content like '%' || #{keyword} || '%'
+		 		</when>
+		 	</choose>
+		 </if>
+	</sql>
+	
+</mapper>
