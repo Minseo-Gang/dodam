@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="kor">
 
@@ -52,22 +53,52 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  
+  <!-- ckeditor -->
+  <style type="text/css">
+	table {
+
+	.ck ck-editor{
+		max-width: 500px;
+		overflow: scroll;
+	}
+	
+	.ck-editor__editable{
+		min-height: 500px;
+		max-height: 500px;
+		overflow: scroll;
+	}
+</style>
 </head>
 
 <body>
 
  <!-- ======= Top Bar ======= -->
-  <div id="topbar" class="d-none d-lg-flex align-items-center">
-    <div class="container d-flex">
-     <div class="contact-info mr-auto">
-     </div>
-      <div class="social-links">
-        <a href="#" class="login">로그인</a>
-        <a href="#" class="joinMember">회원가입</a>
-        <a href="#" class="myPage">마이페이지</a>
-      </div>
-    </div>
-  </div>
+ 	<c:choose>
+	<c:when test="${empty sessionScope.loginVo }">
+		<div id="topbar" class="d-none d-lg-flex align-items-center">
+			<div class="container d-flex">
+				<div class="contact-info mr-auto"></div>
+				<div class="social-links">
+					<a href="/user/memberLogin" class="login">로그인</a> 
+					<a href="/user/joinForm" class="joinMember">회원가입</a>
+				</div>
+			</div>
+		</div>
+	</c:when>
+		<c:otherwise>
+			<div id="topbar" class="d-none d-lg-flex align-items-center">
+			<div class="container d-flex">
+				<div class="contact-info mr-auto"></div>
+				<div class="social-links">
+					<a href="#" class="login">${sessionScope.loginVo.user_id}</a> 
+					<a href="#" class="myPage">마이페이지</a>
+					<a href="/user/logout" class="joinMember">로그아웃</a>
+				</div>
+			</div>
+		</div>
+		</c:otherwise>
+	</c:choose>
 
   <!-- ======= Header ======= -->
   <header id="header">
@@ -82,12 +113,12 @@
           <li class="active">
           <li class="drop-down"><a href="">도담센터</a>
             <ul>
-              <li><a href="#">- 공지 사항</a></li>
+              <li><a href="/notice/noticeList">- 공지 사항</a></li>
               <li><a href="#">- 보호 절차</a></li>
               <li><a href="#">- 오시는 길</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="">유실/유기동물</a>
+          <li class="drop-down"><a href="/board/infoGetAnimal">유실/유기동물</a>
             <ul>
               <li><a href="/lostAnimal/protectAnimal">- 보호중인 동물</a></li>
               <li><a href="/lostAnimal/reportList">- 분실 신고</a></li>
@@ -107,9 +138,9 @@
               <li><a href="#">- 입양 조회</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="">커뮤니티</a>
+          <li class="drop-down"><a href="/board/freeBoard">커뮤니티</a>
             <ul>
-              <li><a href="#">- 자유게시판</a></li>
+              <li><a href="/board/freeBoard">- 자유게시판</a></li>
               <li><a href="#">- 정보/뉴스</a></li>
               <li><a href="#">- 고객센터</a></li>
             </ul>
