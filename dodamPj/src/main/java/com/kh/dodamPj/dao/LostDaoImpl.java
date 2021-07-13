@@ -23,4 +23,31 @@ public class LostDaoImpl implements LostDao {
 		return list;
 	}
 
+	@Override
+	public void insertReport(LostVo lostVo) {
+		sqlSession.insert(NAMESPACE + "insertReport", lostVo);
+	}
+
+	@Override
+	public void updateReport(LostVo lostVo) {
+		sqlSession.update(NAMESPACE + "updateReport", lostVo);
+		
+	}
+
+	@Override
+	public void deleteReport(int b_no) {
+		sqlSession.delete(NAMESPACE + "deleteReport", b_no);		
+	}
+
+	@Override
+	public LostVo reportContent(int b_no) {
+		LostVo lostVo = sqlSession.selectOne(NAMESPACE + "reportContent", b_no);
+		return lostVo;
+	}
+
+	@Override
+	public void updateViewcnt(int b_no) {
+		sqlSession.update(NAMESPACE + "updateViewcnt", b_no);
+	}
+
 }

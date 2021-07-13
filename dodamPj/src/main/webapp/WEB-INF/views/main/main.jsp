@@ -65,7 +65,7 @@
 							<div id="tabMenu">
 							<input type="radio" id="animalTab" name="tabs2" checked/>
 							<label for="animalTab"><i class="fas fa-hand-holding-heart"></i> 유기동물 공고</label>
-							<a class="btn btn-primary" href="#" style="margin-left:128px;">+ 유기동물 더 보러가기</a>
+							<a class="btn btn-primary" href="/lostAnimal/protectAnimal" style="margin-left:128px;">+ 유기동물 더 보러가기</a>
 							<div class="card" style="max-width: 500px; margin-bottom:10px;">
 								<span style="text-align:center; font-size:16px;">
 									<strong>반려 동물, 사지 말고 입양하세요!</strong></span>

@@ -5,7 +5,6 @@ import java.sql.Timestamp;
 public class LostVo {
 	private int b_no;
 	private String b_title;
-	private String b_content;
 	private String user_name;
 	private String user_email;
 	private String user_tel;
@@ -15,7 +14,7 @@ public class LostVo {
 	private String p_species;
 	private String p_age;
 	private String p_gender;
-	private Timestamp p_lostdate;
+	private String p_lostdate;
 	private String p_lostplace;
 	private String p_character;
 	
@@ -23,12 +22,12 @@ public class LostVo {
 		super();
 	}
 
-	public LostVo(int b_no, String b_title, String b_content, String user_name, int b_viewcnt) {
+	public LostVo(int b_no, String b_title, String user_name, Timestamp write_date, int b_viewcnt) {
 		super();
 		this.b_no = b_no;
 		this.b_title = b_title;
-		this.b_content = b_content;
 		this.user_name = user_name;
+		this.write_date = write_date;
 		this.b_viewcnt = b_viewcnt;
 	}
 
@@ -46,14 +45,6 @@ public class LostVo {
 
 	public void setB_title(String b_title) {
 		this.b_title = b_title;
-	}
-
-	public String getB_content() {
-		return b_content;
-	}
-
-	public void setB_content(String b_content) {
-		this.b_content = b_content;
 	}
 
 	public String getUser_name() {
@@ -128,11 +119,11 @@ public class LostVo {
 		this.p_gender = p_gender;
 	}
 
-	public Timestamp getP_lostdate() {
+	public String getP_lostdate() {
 		return p_lostdate;
 	}
 
-	public void setP_lostdate(Timestamp p_lostdate) {
+	public void setP_lostdate(String p_lostdate) {
 		this.p_lostdate = p_lostdate;
 	}
 
@@ -154,11 +145,11 @@ public class LostVo {
 
 	@Override
 	public String toString() {
-		return "LostVo [b_no=" + b_no + ", b_title=" + b_title + ", b_content=" + b_content + ", user_name=" + user_name
-				+ ", user_email=" + user_email + ", user_tel=" + user_tel + ", write_date=" + write_date
-				+ ", b_viewcnt=" + b_viewcnt + ", p_name=" + p_name + ", p_species=" + p_species + ", p_age=" + p_age
-				+ ", p_gender=" + p_gender + ", p_lostdate=" + p_lostdate + ", p_lostplace=" + p_lostplace
-				+ ", p_character=" + p_character + "]";
+		return "LostVo [b_no=" + b_no + ", b_title=" + b_title + ", user_name=" + user_name + ", user_email="
+				+ user_email + ", user_tel=" + user_tel + ", write_date=" + write_date + ", b_viewcnt=" + b_viewcnt
+				+ ", p_name=" + p_name + ", p_species=" + p_species + ", p_age=" + p_age + ", p_gender=" + p_gender
+				+ ", p_lostdate=" + p_lostdate + ", p_lostplace=" + p_lostplace + ", p_character=" + p_character + "]";
 	}
+
 	
 }

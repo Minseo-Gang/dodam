@@ -21,4 +21,26 @@ public class LostServiceImpl implements LostService {
 		return list;
 	}
 
+	@Override
+	public void reportRun(LostVo lostVo) {
+		lostDao.insertReport(lostVo);		
+	}
+
+	@Override
+	public LostVo reportContent(int b_no) {
+		LostVo lostVo = lostDao.reportContent(b_no);
+		lostDao.updateViewcnt(b_no);
+		return lostVo;
+	}
+
+	@Override
+	public void reportModifyRun(LostVo lostVo) {
+		lostDao.updateReport(lostVo);
+	}
+
+	@Override
+	public void reportDeleteRun(int b_no) {
+		lostDao.deleteReport(b_no);		
+	}
+
 }

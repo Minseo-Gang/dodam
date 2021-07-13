@@ -89,9 +89,9 @@
           </li>
           <li class="drop-down"><a href="">유실/유기동물</a>
             <ul>
-              <li><a href="#">- 보호중인 동물</a></li>
-              <li><a href="/loseAnimal/reportList">- 분실 신고</a></li>
-              <li><a href="/loseAnimal/infoGetAnimal">- 습득시 안내</a></li>              
+              <li><a href="/lostAnimal/protectAnimal">- 보호중인 동물</a></li>
+              <li><a href="/lostAnimal/reportList">- 분실 신고</a></li>
+              <li><a href="/lostAnimal/infoGetAnimal">- 습득시 안내</a></li>              
             </ul>
           </li>
           <li class="drop-down"><a href="">봉사활동</a>
@@ -102,7 +102,7 @@
           </li>
           <li class="drop-down"><a href="">입양 관리</a>
             <ul>
-              <li><a href="#">- 동물 목록 &amp; 입양 신청</a></li>
+              <li><a href="#">- 입양 신청</a></li>
               <li><a href="#">- 입양 안내</a></li>
               <li><a href="#">- 입양 조회</a></li>
             </ul>
