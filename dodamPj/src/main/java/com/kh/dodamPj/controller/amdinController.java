@@ -1,3 +1,4 @@
+
 package com.kh.dodamPj.controller;
 
 import java.util.List;
@@ -50,3 +51,4 @@ public class amdinController {
 	        return "redirect:/"; // 로그아웃을 누르면 mainPage.jsp로 리다이렉트
 	    }
 }
+

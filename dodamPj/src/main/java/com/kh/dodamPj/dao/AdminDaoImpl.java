@@ -1,3 +1,4 @@
+
 package com.kh.dodamPj.dao;
 
 import java.util.HashMap;
@@ -15,7 +16,7 @@ import com.kh.dodamPj.vo.AdminVo;
 public class AdminDaoImpl implements AdminDao {
 
 	
-	private static final String NAMESPACE = "com.project.dodam.admin.";
+	private static final String NAMESPACE = "ccom.kh.dodamPj.admin.";
 
 	@Inject
 	private SqlSession sqlSession;

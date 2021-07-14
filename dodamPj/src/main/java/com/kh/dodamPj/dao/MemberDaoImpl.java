@@ -14,7 +14,7 @@ import com.kh.dodamPj.vo.MemberVo;
 @Repository
 public class MemberDaoImpl implements MemberDao {
 
-	private static final String NAMESPACE = "com.project.dodam.member.";
+	private static final String NAMESPACE = "com.kh.dodamPj.member.";
 
 	@Inject
 	private SqlSession sqlSession;

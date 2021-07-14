@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.kh.dodamPj.volunteer">
+	
+	<!-- 봉사활동 예약 목록 보여주기 -->
+	<select id="volunReservList" resultType="VolunteerVo">
+		select * from tbl_volunteer
+		order by v_no desc
+	</select>
+	
+	<!-- 봉사 활동 예약 -->
+	<insert id="reservVolun">
+		insert into tbl_volunteer 
+			(v_no, v_name, v_age, v_place, v_phonenum, v_email, v_time, v_date, v_etc)
+		values
+			(seq_vno.nextval, #{v_name}, #{v_age}, #{v_place}, #{v_phonenum}, #{v_email,  jdbcType=VARCHAR}, #{v_time}, #{v_date}, #{v_etc})
+	</insert>
+	
+
+	<!-- 글갯수 -->
+	<select id="getCount" resultType="int">
+		select count(*) from tbl_volunteer
+		<include refid="search"></include>
+	</select>
+	
+	<sql id="search">
+		<if test="searchType != null">
+		 	<choose>
+		 		<when test='searchType == "n"'>
+		 			where v_name like '%' || #{keyword} || '%'
+		 		</when>
+		 		<when test='searchType == "p"'>
+		 			where v_place like '%' || #{keyword} || '%'
+		 		</when>
+		 		<when test='searchType == "t"'>
+		 			where v_time like '%' || #{keyword} || '%'
+		 		</when>
+		 	</choose>
+		 </if>
+	</sql>
+</mapper>

@@ -14,7 +14,7 @@ import com.kh.dodamPj.vo.PagingDto;
 @Repository
 public class NoticeDaoImpl implements NoticeDao {
 
-	private static final String NAMESPACE = "com.project.dodam.notice.";
+	private static final String NAMESPACE = "com.kh.dodamPj.notice.";
 	
 	@Inject
 	SqlSession sqlSession;

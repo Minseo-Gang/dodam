@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.kh.dodamPj">
+	<logger name="com.kh.sample01">
 		<level value="info" />
 	</logger>
 	

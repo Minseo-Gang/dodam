@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="kor">
 
 <head>
-
+<style>
+	.inline{
+border-bottom: 1px solid black;
+}
+</style>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -73,8 +78,9 @@
 
 <body>
 
+
  <!-- ======= Top Bar ======= -->
- 	<c:choose>
+	<c:choose>
 	<c:when test="${empty sessionScope.loginVo }">
 		<div id="topbar" class="d-none d-lg-flex align-items-center">
 			<div class="container d-flex">
@@ -100,11 +106,12 @@
 		</c:otherwise>
 	</c:choose>
 
+
   <!-- ======= Header ======= -->
-  <header id="header">
+   <header id="header">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="/main/main"><i class="fas fa-paw"></i> DoDam</a></h1>
+      <h1 class="logo mr-auto"><a href="/"><i class="fas fa-paw"></i> DoDam</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -120,15 +127,17 @@
           </li>
           <li class="drop-down"><a href="/board/infoGetAnimal">유실/유기동물</a>
             <ul>
+
               <li><a href="/lostAnimal/protectAnimal">- 보호중인 동물</a></li>
               <li><a href="/lostAnimal/reportList">- 분실 신고</a></li>
               <li><a href="/lostAnimal/infoGetAnimal">- 습득시 안내</a></li>              
+
             </ul>
           </li>
           <li class="drop-down"><a href="">봉사활동</a>
             <ul>
-              <li><a href="#">- 봉사활동 예약</a></li>
-              <li><a href="#">- 봉사활동 조회</a></li>
+              <li><a href="/volunteer/reservation">- 봉사활동 예약</a></li>
+              <li><a href="/volunteer/volunReservList">- 봉사활동 조회</a></li>
             </ul>
           </li>
           <li class="drop-down"><a href="">입양 관리</a>
@@ -140,7 +149,9 @@
           </li>
           <li class="drop-down"><a href="/board/freeBoard">커뮤니티</a>
             <ul>
+
               <li><a href="/board/freeBoard">- 자유게시판</a></li>
+
               <li><a href="#">- 정보/뉴스</a></li>
               <li><a href="#">- 고객센터</a></li>
             </ul>

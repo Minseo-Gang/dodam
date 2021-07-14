@@ -1,3 +1,4 @@
+
 package com.kh.dodamPj.controller;
 
 import javax.inject.Inject;
@@ -14,7 +15,6 @@ import com.kh.dodamPj.service.BoardService;
 import com.kh.dodamPj.service.MemberService;
 import com.kh.dodamPj.vo.MemberVo;
 
-
 @Controller
 @RequestMapping(value = "/user")
 public class MemberController {
@@ -23,6 +23,10 @@ public class MemberController {
 	@Inject
 	private BoardService boardService;
 	
+	/* NaverLoginBO */ //이거 안씀 네이버 api
+//	private NaverLoginBo naverLoginBO;
+//	private String apiResult = null;
+
 	// 로그인 페이지로 이동
 	@RequestMapping(value = "/memberLogin", method = RequestMethod.GET)
 	public String memberLogin() throws Exception {
@@ -31,6 +35,33 @@ public class MemberController {
 
 	}
 	
+	//----------------------네이버 api 안씀------------------------
+//	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
+//	public String naverLogin(Model model, HttpSession session) {
+//		
+//		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
+//		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+//		
+//		//https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
+//		//redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
+//		System.out.println("네이버:" + naverAuthUrl);
+//		
+//		//네이버 
+//		model.addAttribute("url", naverAuthUrl);
+//
+//		/* 생성한 인증 URL을 View로 전달 */
+//		return "/user/login";
+//	}
+	//----------------------네이버 api 안씀------------------------
+	
+	
+	// 메인 페이지 이동 안씀*
+//	@RequestMapping(value = "/mainPage", method = RequestMethod.GET)
+//	public String main() throws Exception {
+//
+//		return "/member/mainPage";
+//
+//	}
 
 	// 회원가입 폼으로 이동
 	@RequestMapping(value = "/joinForm", method = RequestMethod.GET)
@@ -60,7 +91,7 @@ public class MemberController {
 		memberService.joinRun(memberVo);
 		System.out.println("Join MemeberVo: "+memberVo);
 		rttr.addFlashAttribute("msg", "success");
-		return "redirect:/";
+		return "redirect:/user/memberLogin";
 
 	}
 
@@ -100,5 +131,5 @@ public class MemberController {
 		model.addAttribute(memberVo);
 		return memberVo; // 
 	}
-
+	
 }

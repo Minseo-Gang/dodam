@@ -55,7 +55,4 @@ public class NoticeServiceImpl implements NoticeService {
 		System.out.println("svcimp: "+stp);
 		return count;
 	}
-
-
-
 }
