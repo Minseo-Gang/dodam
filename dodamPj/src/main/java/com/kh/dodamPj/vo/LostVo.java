@@ -1,6 +1,7 @@
 package com.kh.dodamPj.vo;
 
 import java.sql.Timestamp;
+import java.util.Arrays;
 
 public class LostVo {
 	private int b_no;
@@ -17,6 +18,8 @@ public class LostVo {
 	private String p_lostdate;
 	private String p_lostplace;
 	private String p_character;
+	private String[] files;
+	private String p_picture;
 	
 	public LostVo() {
 		super();
@@ -143,13 +146,29 @@ public class LostVo {
 		this.p_character = p_character;
 	}
 
+	public String[] getFiles() {
+		return files;
+	}
+
+	public void setFiles(String[] files) {
+		this.files = files;
+	}
+
+	public String getP_picture() {
+		return p_picture;
+	}
+
+	public void setP_picture(String p_picture) {
+		this.p_picture = p_picture;
+	}
+
 	@Override
 	public String toString() {
 		return "LostVo [b_no=" + b_no + ", b_title=" + b_title + ", user_name=" + user_name + ", user_email="
 				+ user_email + ", user_tel=" + user_tel + ", write_date=" + write_date + ", b_viewcnt=" + b_viewcnt
 				+ ", p_name=" + p_name + ", p_species=" + p_species + ", p_age=" + p_age + ", p_gender=" + p_gender
-				+ ", p_lostdate=" + p_lostdate + ", p_lostplace=" + p_lostplace + ", p_character=" + p_character + "]";
+				+ ", p_lostdate=" + p_lostdate + ", p_lostplace=" + p_lostplace + ", p_character=" + p_character
+				+ ", files=" + Arrays.toString(files) + ", p_picture=" + p_picture + "]";
 	}
-
 	
 }

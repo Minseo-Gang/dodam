@@ -97,16 +97,15 @@ $(document).ready(function() {
 						<label for="p_character">특징</label>
 						<textarea class="form-control readonly" id="p_character" name="p_character" readonly>${lostVo.p_character}</textarea>
 						</div>
-						<label for="photo">사진 첨부</label> 
-						<input type="file" class="form-control-file" id="photo" name="photo"/>
-							<p class="help-block" style="font-size:16px;">사진은 최대 10MB까지 첨부 가능합니다.</p>
-						</div>
+						<label for="photo">사진</label> 
+						<p><img style="height: 100px;" src="http://localhost/displayImage?fileName=${lostVo.p_picture}" /></p>
+						
 						<a class="btn btn-info" href="/lostAnimal/reportList" style="margin-right:10px;">목록</a>
-						<button type="button" class="btn float-right btn-warning" style="margin-right:10px;"
+						<button type="button" class="btn btn-warning" style="margin-right:10px;"
 						 		id="btnModify">수정</button>
-						<button type="submit" class="btn float-right btn-success" style="margin-right:10px; display: none;"
+						<button type="submit" class="btn btn-success" style="margin-right:10px; display: none;"
 								id="btnModifyDone">수정완료</button>
-						<button type="button" class="btn float-right btn-danger" id="btnDelete">삭제</button>
+						<button type="button" class="btn btn-danger" id="btnDelete">삭제</button>
 					</form>
 				</div>
 			</div>			

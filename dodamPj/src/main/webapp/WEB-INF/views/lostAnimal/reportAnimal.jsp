@@ -6,10 +6,45 @@
 <script>
 $(document).ready(function() {
 	$(".pagination > li > a").click(function(e) {
-		e.preventdefault();
+		e.preventDefault();
+		var page = $(this).attr("href");
+		var frmPaging = $("#frmPaging");
+		frmPaging.find("[name=page]").val(page);
+		frmPaging.submit();
 	});
+	
+	$(".searchType").click(function(e) {
+		e.preventDefault();
+		var searchType = $(this).attr("href");
+		$("#frmPaging > input[name=searchType]").val(searchType);
+		$("#spanSearchType").text($(this).text());
+	});
+	
+	$("#btnSearch").click(function() {
+		var searchType = $("#frmPaging > input[name=searchType]").val();
+		if(searchType == "") {
+			alert("검색 옵션을 선택해 주세요");
+			return;
+		}
+		var keyword = $("#searchTxt").val().trim();
+		if(keyword == "") {
+			alert("검색어를 입력해 주세요");
+			return;
+		}
+		
+		$("#frmPaging > input[name=keyword]").val(keyword);
+		$("#frmPaging > input[name=page]").val("1");
+		$("#frmPaging").submit();
+	});
+	
 });
 </script>
+<form id="frmPaging" action="/lostAnimal/reportList" method="get">
+	<input type="hidden" name="page" value="${pagingDto.page}"/>
+	<input type="hidden" name="perPage" value="${pagingDto.perPage}"/>
+	<input type="hidden" name="searchType" value="${pagingDto.searchType}"/>
+	<input type="hidden" name="keyword" value="${pagingDto.keyword}"/>
+</form>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12" style="margin-top:10px; text-align:center;" >
@@ -51,19 +86,25 @@ $(document).ready(function() {
 							id="bs-example-navbar-collapse-1">
 							<ul class="navbar-nav">
 								<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="http://example.com"
-									id="navbarDropdownMenuLink" data-toggle="dropdown">select</a>
+								<button class="btn btn-default dropdown-toggle" type="button" 
+								id="dropdownMenuButton" data-toggle="dropdown">검색</button>
+									<span id="spanSearchType" style="color:#000; font-weight:bold;">
+										<c:choose>
+											<c:when test="${pagingDto.searchType =='t'}">제목&nbsp;</c:when>
+											<c:when test="${pagingDto.searchType =='un'}">작성자&nbsp;</c:when>
+										</c:choose>
+									</span>
 									<div class="dropdown-menu" 
 										aria-labelledby="navbarDropdownMenuLink">
-										<a class="dropdown-item" href="#">제목</a> 
-										<a class="dropdown-item" href="#">작성자</a> 
-										<a class="dropdown-item" href="#">품종</a>
+										<a class="dropdown-item searchType" href="t">제목</a> 
+										<a class="dropdown-item searchType" href="un">작성자</a> 
 									</div>
 								</li>
 							</ul>
 							<form class="form-inline">
-								<input class="form-control mr-sm-2" type="text" placeholder="검색어를 입력해주세요."/>
-								<button class="btn btn-primary my-2 my-sm-0" type="button">검색</button>
+								<input class="form-control mr-sm-2" type="text" placeholder="검색어를 입력해주세요."
+									aria-label="Search" value="${pagingDto.keyword}" id="searchTxt"/>
+								<button class="btn btn-primary my-2 my-sm-0" type="button" id="btnSearch">검색</button>
 							</form>
 						</div>
 					</nav>
@@ -98,20 +139,36 @@ $(document).ready(function() {
 				</div>
 			</div>
 			<a class="btn btn-info" href="/lostAnimal/reportAnimalForm">신고서 작성</a>
-			<!-- 페이징 -->
+			
+		<!-- 페이징 -->
 		<div class="col-md-2"></div>
 		<div class="col-md-10">
 			<nav>
 				<ul class="pagination justify-content-center">
+				<c:if test="${pagingDto.startPage != 1}">
 					<li class="page-item">
-						<a class="page-link" href="#">&laquo;</a>
+						<a class="page-link" href="${pagingDto.startPage - 1}">&laquo;</a>
 					</li>
+				</c:if>
+				<c:forEach var="v" begin="${pagingDto.startPage}" end="${pagingDto.endPage}">
+					<li
+						<c:choose>
+							<c:when test="${pagingDto.page == v}">
+								class="page-item active"
+							</c:when>
+							<c:otherwise>
+								class="page-item"
+							</c:otherwise>
+						</c:choose>
+					>
+						<a class="page-link" href="${v}">${v}</a>
+					</li>
+				</c:forEach>
+				<c:if test="${pagingDto.endPage < pagingDto.totalPage}">
 					<li class="page-item">
-						<a class="page-link" href="#">1</a>
+						<a class="page-link" href="${pagingDto.endPage + 1}">&raquo;</a>
 					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">&raquo;</a>
-					</li>
+				</c:if>
 				</ul>
 			</nav>
 		</div>

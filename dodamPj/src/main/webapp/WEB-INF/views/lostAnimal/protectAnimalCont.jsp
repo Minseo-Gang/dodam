@@ -69,7 +69,7 @@ table.table th {
 						<td colspan="3">6개월(추정)&nbsp;/ 1.2(Kg)</td>
 					</tr>
 					<tr>
-						<th>발생장소</th>
+						<th>발견장소</th>
 						<td colspan="3">중구 성안동 886</td>
 					</tr>
 					<tr>

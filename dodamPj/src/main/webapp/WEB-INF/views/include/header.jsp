@@ -125,7 +125,7 @@ border-bottom: 1px solid black;
               <li><a href="#">- 오시는 길</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="/board/infoGetAnimal">유실/유기동물</a>
+          <li class="drop-down"><a href="/lostAnimal/infoGetAnimal">유실/유기동물</a>
             <ul>
 
               <li><a href="/lostAnimal/protectAnimal">- 보호중인 동물</a></li>
