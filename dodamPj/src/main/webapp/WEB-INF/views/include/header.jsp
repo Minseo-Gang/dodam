@@ -98,7 +98,7 @@ border-bottom: 1px solid black;
 				<div class="contact-info mr-auto"></div>
 				<div class="social-links">
 					<a href="#" class="login">${sessionScope.loginVo.user_id}</a> 
-					<a href="#" class="myPage">마이페이지</a>
+					<a href="/user/myPage?user_id =${sessionScope.loginVo.user_id } " class="myPage">마이페이지</a>
 					<a href="/user/logout" class="joinMember">로그아웃</a>
 				</div>
 			</div>
@@ -136,7 +136,7 @@ border-bottom: 1px solid black;
           </li>
           <li class="drop-down"><a href="">봉사활동</a>
             <ul>
-              <li><a href="/volunteer/reservation">- 봉사활동 예약</a></li>
+              <li><a href="/volunteer/reservationForm">- 봉사활동 예약</a></li>
               <li><a href="/volunteer/volunReservList">- 봉사활동 조회</a></li>
             </ul>
           </li>

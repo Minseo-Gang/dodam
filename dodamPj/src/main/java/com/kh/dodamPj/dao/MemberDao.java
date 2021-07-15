@@ -19,4 +19,6 @@ public interface MemberDao {
 	public MemberVo findPw(String user_id,String user_name,String phoneNum);
 	//패스워드 수정 - 아직
 	public void updatePw(MemberVo memberVo);
+	//마이페이지 21-07-14
+	public MemberVo selectMember(String user_id);
 }

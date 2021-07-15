@@ -41,4 +41,13 @@
 		 	</choose>
 		 </if>
 	</sql>
+	
+	<!-- 신청 날짜/시간 체크 -->
+	<select id="checkDateAndTime" resultType="int">
+		select count(*) from tbl_volunteer
+			where v_date = #{v_date}
+			and v_time = #{v_time}
+			and v_place = #{v_place}
+	</select>
+	
 </mapper>

@@ -2,13 +2,12 @@ package com.kh.dodamPj.service;
 
 import java.util.List;
 
-
 import javax.inject.Inject;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.kh.dodamPj.dao.VolunteerDao;
+import com.kh.dodamPj.vo.MemberVo;
 import com.kh.dodamPj.vo.PagingDto;
 import com.kh.dodamPj.vo.VolunteerVo;
 
@@ -21,7 +20,6 @@ public class VolunteerServiceImpl implements VolunteerService {
 	@Override
 	public List<VolunteerVo> volunReservList(PagingDto pagingDto) {
 		List<VolunteerVo> list = volunteerDao.volunReservList(pagingDto);
-		System.out.println("service실행");
 		return list;
 	}
 
@@ -35,6 +33,18 @@ public class VolunteerServiceImpl implements VolunteerService {
 		int count = volunteerDao.getCount(pagingDto);
 		return count;
 	}
+
+	@Override
+	public boolean checkDateAndTime(VolunteerVo volunteerVo) {
+		System.out.println("checkService...");
+		return volunteerDao.checkDateAndTime(volunteerVo);
+	}
+
+//	@Override
+//	public boolean checkDateAndTime(String v_date, String v_time) {
+//		return volunteerDao.checkDateAndTime(v_date, v_time, String v_place);
+//	}
+	
 	
 
 }

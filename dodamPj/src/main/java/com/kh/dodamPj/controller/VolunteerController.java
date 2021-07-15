@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.dodamPj.service.VolunteerService;
@@ -50,6 +51,17 @@ public class VolunteerController {
 		rttr.addFlashAttribute("msg", "success");
 		return "redirect:/volunteer/volunReservList";
 	} 
+	
+	@RequestMapping(value="/checkDateAndTime", method=RequestMethod.GET)
+	@ResponseBody
+	public String checkDateAndTime(VolunteerVo volunteerVo, RedirectAttributes rttr) throws Exception {
+		boolean result = volunteerService.checkDateAndTime(volunteerVo);
+		System.out.println("result : " + result);
+		if(result == false) {
+			
+		}
+		return String.valueOf(result);
+	}
 	
 
 }

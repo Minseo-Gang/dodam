@@ -86,5 +86,13 @@ public class MemberDaoImpl implements MemberDao {
 		sqlSession.update(NAMESPACE, memberVo);
 		
 	}
+	
+	//마이페이지 21-07-14
+	@Override
+	public MemberVo selectMember(String user_id) {
+		MemberVo selectMember = sqlSession.selectOne(NAMESPACE+"selectMember", user_id);
+		return selectMember;
+	}
+
 
 }

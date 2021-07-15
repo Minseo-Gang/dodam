@@ -3,21 +3,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp" %>
-
 <script>
-$(document).ready(function() {
-	var msg = "${msg}";
-	if (msg == "success") {
-		alert("예약이 완료 되었습니다. ${volunteerVo.v_no}님의 예약 번호는 ${volunteerVo.v_no}입니다.");
-	}
-	
+$(document).ready(function() {	
 // 	var msgDelete = "${msgDelete}";
 // 	if (msgDelete == "success") {
 // 		alert("글 삭제 완료");
 // 	}
-	
-	
-	
+
 	$(".pagination > li > a").click(function(e) {
 		e.preventDefault(); 
 		var page = $(this).attr("href");
@@ -86,7 +78,7 @@ $(document).ready(function() {
 						<strong><i class="fas fa-paw"></i> 봉사활동</strong>
 					</a> <a
 						class="list-group-item list-group-item-action list-group-item-light p-3"
-						href="/volunteer/reservation">- 봉사활동 예약</a> <a
+						href="/volunteer/reservationForm">- 봉사활동 예약</a> <a
 						class="list-group-item list-group-item-action list-group-item-light p-3"
 						href="/volunteer/volunReservList">- 봉사활동 조회</a>
 				</div>
@@ -120,7 +112,7 @@ $(document).ready(function() {
                      <div class="input-group">
                          <input type="text" class="form-control bg-light border-0 small" placeholder="검색어 입력..."
                              aria-label="Search" aria-describedby="basic-addon2"
-                             id="txtSearch" value="${pagingDto.keyword}">
+                             id="txtSearch" value="${pagingDto.keyword}" name="keyword">
                          <div class="input-group-append">
                              <button class="btn btn-default" type="button" id="btnSearch">
                                  <i class="fas fa-search fa-sm"></i>
@@ -137,7 +129,6 @@ $(document).ready(function() {
 			<div class="jumbotron">
 				<h2>봉사활동 조회</h2>
 			</div>
-
 			<div class="col-md-12">
 				<table class="table">
 					<thead>
