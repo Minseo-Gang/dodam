@@ -8,6 +8,7 @@ public class CommentVo {
 	private String user_id;
 	private String c_content;
 	private Timestamp c_regdate;
+
 	
 	public CommentVo() {
 		super();
@@ -68,6 +69,6 @@ public class CommentVo {
 		return "CommentVo [c_no=" + c_no + ", b_no=" + b_no + ", user_id=" + user_id + ", c_content=" + c_content
 				+ ", c_regdate=" + c_regdate + "]";
 	}
-	
+
 	
 }

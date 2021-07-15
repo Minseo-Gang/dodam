@@ -68,6 +68,7 @@
 		where b_no = #{b_no}
 	</update>
 	
+<<<<<<< Updated upstream
 	<!-- 조회수 -->
 	<update id="updateViewCnt">
 		update tbl_board set
@@ -76,3 +77,6 @@
 	</update>
 	
 </mapper>
+=======
+</mapper>
+>>>>>>> Stashed changes

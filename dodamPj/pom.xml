@@ -158,7 +158,23 @@
 	<version>3.3.1</version>
 </dependency>
 
+<<<<<<< Updated upstream
 	
+=======
+<!-- 메일전송 -->
+<!-- javax.mail -->
+<dependency>
+    <groupId>com.sun.mail</groupId>
+    <artifactId>javax.mail</artifactId>
+    <version>1.5.6</version>
+</dependency>
+<!-- spring-context-support -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context-support</artifactId>
+    <version>4.1.7.RELEASE</version>
+</dependency>	
+>>>>>>> Stashed changes
 	
 	
 	

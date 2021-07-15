@@ -25,6 +25,12 @@ public static final String NAMESPACE = "com.kh.dodamPj.comment.";
 	}
 
 	@Override
+	public List<CommentVo> getCommentList(int b_no) {
+		List<CommentVo> list = sqlSession.selectList(NAMESPACE + "getCommentList", b_no);
+		return list;
+	}
+
+	@Override
 	public void insertComment(CommentVo commentVo) {
 		sqlSession.insert(NAMESPACE + "insertComment", commentVo);
 	}

@@ -20,6 +20,9 @@ public interface BoardDao {
 	public int getCount(PagingDto pagingDto);
 	// 댓글수 변경
 	public void updateCommentCnt(int b_no, int count);
+<<<<<<< Updated upstream
 	// 조회수 증가
 	public void updateViewCnt(int b_no);
+=======
+>>>>>>> Stashed changes
 }
