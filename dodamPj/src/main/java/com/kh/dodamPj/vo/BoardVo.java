@@ -12,6 +12,7 @@ public class BoardVo {
 	private int re_group;
 	private int re_seq;
 	private int re_level;
+	private int comment_cnt;
 	
 	public BoardVo() {
 		super();
@@ -19,7 +20,7 @@ public class BoardVo {
 	}
 
 	public BoardVo(int b_no, String b_title, String b_content, String user_id, Timestamp b_regdate, int b_count,
-			int re_group, int re_seq, int re_level) {
+			int re_group, int re_seq, int re_level, int comment_cnt) {
 		super();
 		this.b_no = b_no;
 		this.b_title = b_title;
@@ -30,6 +31,7 @@ public class BoardVo {
 		this.re_group = re_group;
 		this.re_seq = re_seq;
 		this.re_level = re_level;
+		this.comment_cnt = comment_cnt;
 	}
 
 	public int getB_no() {
@@ -104,12 +106,19 @@ public class BoardVo {
 		this.re_level = re_level;
 	}
 
+	public int getComment_cnt() {
+		return comment_cnt;
+	}
+
+	public void setComment_cnt(int comment_cnt) {
+		this.comment_cnt = comment_cnt;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVo [b_no=" + b_no + ", b_title=" + b_title + ", b_content=" + b_content + ", user_id=" + user_id
 				+ ", b_regdate=" + b_regdate + ", b_count=" + b_count + ", re_group=" + re_group + ", re_seq=" + re_seq
-				+ ", re_level=" + re_level + "]";
+				+ ", re_level=" + re_level + ", comment_cnt=" + comment_cnt + "]";
 	}
-
 	
 }

@@ -28,11 +28,11 @@
 						<span style="font-size:30px"><label style="font-weight:bold">자유게시판</label></span>
 						<table class="table">
 						<tbody>
-							<tr>
-								<td align="center">이름</td>
-								<td align="center"></td>
-								<td><input type="text" class="form-control" id="user_id" name="user_id" value="user_id" readonly/></td>
-							</tr>
+<!-- 							<tr> -->
+<!-- 								<td align="center">이름</td> -->
+<!-- 								<td align="center"></td> -->
+<!-- 								<td><input type="text" class="form-control" id="user_id" name="user_id" value="user_id" readonly/></td> -->
+<!-- 							</tr> -->
 							<tr>
 								<td align="center">제목</td>
 								<td align="center"></td>

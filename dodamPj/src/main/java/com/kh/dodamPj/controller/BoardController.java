@@ -63,4 +63,9 @@ public class BoardController {
 		boardSerivce.deleteRun(b_no);
 		return "redirect:/board/freeBoard";
 	}
+	
+	@RequestMapping(value="/newsBoard", method=RequestMethod.GET)
+	public String newsBoard() throws Exception {
+		return "board/newsBoard";
+	}
 }

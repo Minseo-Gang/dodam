@@ -37,6 +37,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardVo content(int b_no) { // 목록
 		BoardVo boardVo = boardDao.selectByBno(b_no);
+		boardDao.updateViewCnt(b_no);
 		return boardVo;
 	}
 
@@ -46,7 +47,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int getCount(PagingDto pagingDto) {
+	public int getCount(PagingDto pagingDto) { //페이징
 		int count = boardDao.getCount(pagingDto);
 		return count;
 	}

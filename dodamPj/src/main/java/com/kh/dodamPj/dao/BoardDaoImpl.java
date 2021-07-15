@@ -1,6 +1,8 @@
 package com.kh.dodamPj.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -51,6 +53,19 @@ public class BoardDaoImpl implements BoardDao {
 	public int getCount(PagingDto pagingDto) {
 		int count = sqlSession.selectOne(NAMESPACE + "getCount", pagingDto);
 		return count;
+	}
+
+	@Override
+	public void updateCommentCnt(int b_no, int count) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("b_no", b_no);
+		map.put("count", count);
+		sqlSession.update(NAMESPACE + "updateCommentCnt", map);
+	}
+
+	@Override
+	public void updateViewCnt(int b_no) {
+		sqlSession.update(NAMESPACE + "updateViewCnt", b_no);
 	}
 
 }

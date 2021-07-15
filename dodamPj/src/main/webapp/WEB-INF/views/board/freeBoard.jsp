@@ -84,7 +84,13 @@ $(document).ready(function() {
                              <button class="btn btn-default" type="button" id="btnSearch">
                                  <i class="fas fa-search fa-sm"></i>
                              </button>
-                             <a class="btn btn-primary" href="/board/writeForm">글쓰기</a>
+                             <c:choose>
+								<c:when test="${empty sessionScope.loginVo }">
+								</c:when>
+									<c:otherwise>
+									<a class="btn btn-primary" href="/board/writeForm">글쓰기</a>
+									</c:otherwise>
+							</c:choose>
                          </div>
                      </div>
                  </form>
@@ -93,6 +99,7 @@ $(document).ready(function() {
 		</div>
 		<!-- 검색끝 -->
 		
+		<!-- 카테고리 -->
 			<div class="row">
 				<div class="col-md-2">
 		        	<div class="border-end bg-white" id="sidebar-wrapper">
@@ -100,7 +107,7 @@ $(document).ready(function() {
 		                	<a class="list-group-item" style="background-color:#CCF2F4;">
 		                		<strong><i class="fas fa-paw"></i> 커뮤니티</strong></a>
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/board/freeBoard">- 자유게시판</a>
-		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">- 동물 정보/뉴스</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/board/newsBoard">- 동물 정보/뉴스</a>
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">- 고객센터</a>
 		                </div>
 		            </div>

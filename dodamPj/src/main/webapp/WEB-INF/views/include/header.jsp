@@ -151,8 +151,7 @@ border-bottom: 1px solid black;
             <ul>
 
               <li><a href="/board/freeBoard">- 자유게시판</a></li>
-
-              <li><a href="#">- 정보/뉴스</a></li>
+              <li><a href="/board/newsBoard">- 정보/뉴스</a></li>
               <li><a href="#">- 고객센터</a></li>
             </ul>
           </li>

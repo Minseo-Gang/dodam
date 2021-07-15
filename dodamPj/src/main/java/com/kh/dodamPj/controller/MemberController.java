@@ -23,9 +23,6 @@ public class MemberController {
 	@Inject
 	private BoardService boardService;
 	
-	/* NaverLoginBO */ //이거 안씀 네이버 api
-//	private NaverLoginBo naverLoginBO;
-//	private String apiResult = null;
 
 	// 로그인 페이지로 이동
 	@RequestMapping(value = "/memberLogin", method = RequestMethod.GET)
@@ -35,33 +32,42 @@ public class MemberController {
 
 	}
 	
-	//----------------------네이버 api 안씀------------------------
-//	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
-//	public String naverLogin(Model model, HttpSession session) {
-//		
-//		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
-//		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-//		
-//		//https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
-//		//redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-//		System.out.println("네이버:" + naverAuthUrl);
-//		
-//		//네이버 
-//		model.addAttribute("url", naverAuthUrl);
-//
-//		/* 생성한 인증 URL을 View로 전달 */
-//		return "/user/login";
-//	}
-	//----------------------네이버 api 안씀------------------------
-	
-	
-	// 메인 페이지 이동 안씀*
-//	@RequestMapping(value = "/mainPage", method = RequestMethod.GET)
-//	public String main() throws Exception {
-//
-//		return "/member/mainPage";
-//
-//	}
+	// 로그인 처리 (관리자 로그인 포함)
+			@RequestMapping(value="/memberLoginRun",method=RequestMethod.POST)
+			public String loginRun(String user_id, String user_pw ,RedirectAttributes rttr,HttpSession session) throws Exception{
+				MemberVo memberVo = memberService.login(user_id, user_pw);
+				
+				System.out.println("memberVo "+memberVo);
+				rttr.addFlashAttribute("msgLogin", "success");
+				System.out.println("id "+user_id);
+				System.out.println("pw "+user_pw);
+				String msg = null;
+			 	String page = null;
+			 	//Vo에 정보 확인후 널값이 아니면 메인 화면으로 이동
+			 	if (memberVo != null) {
+			 		msg = "success";
+			 		
+			 		int level = memberVo.getAuth_level(); // memberVo에 관리자 레벨 0 , 1 확인용
+			 			//관리자 레벨이 1이면 관리자 페이지로 이동
+			 		if(level==1) {
+			 			
+			 			//인터 셉트 걸릴수도 있으니 걸리면 서블릿 컨텍스트에 path 확인해보고 리디렉션횟수 많다고 뜨면 매핑 이름 변경
+			 			session.setAttribute("adminLoginVo", memberVo);
+			 			page = "redirect:/admin/adminPage";
+			 		} else {
+			 			
+			 			session.setAttribute("loginVo", memberVo);
+			 			page = "redirect:/";
+			 		}
+			 	} else {
+			 		//Vo에 로그인 정보가 없으면 로그인 페이지로 리디렉션
+			 		msg = "fail";
+			 		page = "redirect:/user/memberLogin";
+			 	}
+			 	rttr.addFlashAttribute("msg", msg);
+				return page; // 로그인이 되면 home.jsp로 리다이렉트
+				
+			}
 
 	// 회원가입 폼으로 이동
 	@RequestMapping(value = "/joinForm", method = RequestMethod.GET)

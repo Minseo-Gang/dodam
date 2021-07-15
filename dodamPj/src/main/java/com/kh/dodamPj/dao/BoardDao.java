@@ -18,4 +18,8 @@ public interface BoardDao {
 	public List<BoardVo> freeBoard();
 	// 페이징
 	public int getCount(PagingDto pagingDto);
+	// 댓글수 변경
+	public void updateCommentCnt(int b_no, int count);
+	// 조회수 증가
+	public void updateViewCnt(int b_no);
 }
