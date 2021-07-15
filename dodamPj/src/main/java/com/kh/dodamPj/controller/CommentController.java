@@ -25,9 +25,9 @@ public class CommentController {
 	
 	// 댓글 목록 
 	@RequestMapping(value = "/getCommentList/{b_no}", method=RequestMethod.GET)
-	public List<CommentVo> getCommentList(@PathVariable("b_no") int b_no, CommentVo commentVo, Model model) throws Exception {
+	public List<CommentVo> getCommentList(@PathVariable("b_no") int b_no, MemberVo memberVo, Model model) throws Exception {
 		List<CommentVo> list = commentService.getCommentList(b_no);
-		model.addAttribute("commentVo", commentVo);
+		model.addAttribute("memberVo", memberVo);
 		return list;
 	}
 	
