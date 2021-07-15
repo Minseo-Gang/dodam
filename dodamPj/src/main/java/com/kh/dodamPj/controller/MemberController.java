@@ -30,7 +30,7 @@ public class MemberController {
 
 	}
 	
-	// 로그인 처리 (관리자 로그인 포함)
+	// 로그인 처리 (관리자 로그인 포함)123
 			@RequestMapping(value="/memberLoginRun",method=RequestMethod.POST)
 			public String loginRun(String user_id, String user_pw ,RedirectAttributes rttr,HttpSession session) throws Exception{
 				MemberVo memberVo = memberService.login(user_id, user_pw);
