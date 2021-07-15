@@ -10,6 +10,51 @@
 <script>
 $(document).ready(function() {
 	$("#v_date").datepicker();	
+	
+	$("#frmReserv").submit(function() {
+		var url = "/volunteer/checkDateAndTime";
+		var v_date = $("#v_date").val();
+		var v_time = $("#v_time").val();
+		var v_place = $("#v_place").val();
+		var sendData = {
+				"v_date" : v_date,
+				"v_time" : v_time,
+				"v_place" : v_place
+		};
+		
+		$.get(url, sendData, function(rData) {
+			console.log(rData);	
+			if (rData == "true") {
+				alert("해당 지역의 일정은 이미 예약이 완료 되었습니다. 다시 선택해 주세요.");		
+				return false;
+			}
+			if (rData == "false") {
+				alert("예약이 완료 되었습니다. ${volunteerVo.v_name}님의 예약 번호는 ${volunteerVo.v_no}입니다.");	
+			}
+		});	
+	});
+	
+	$("#reservFinish").click(function(e) {	
+// 		var url = "/volunteer/checkDateAndTime";
+// 		var v_date = $("#v_date").val();
+// 		var v_time = $("#v_time").val();
+// 		var v_place = $("#v_place").val();
+// 		var sendData = {
+// 				"v_date" : v_date,
+// 				"v_time" : v_time,
+// 				"v_place" : v_place
+// 		};	
+// 		console.log("v_date : " + v_date + ", v_time : " + v_time + ", v_place : " + v_place);	
+// 		$.get(url, sendData, function(rData) {
+// 			console.log(rData);	
+// 			if (rData == "true") {
+// 				alert("해당 지역의 일정은 이미 예약이 완료 되었습니다. 다시 선택해 주세요.");		
+// 			} else {
+// 				alert("예약이 완료 되었습니다. ${volunteerVo.v_name}님의 예약 번호는 ${volunteerVo.v_no}입니다.");	
+// 			}
+		
+// 		});	
+	});
 });
 </script>
 <div class="container-fluid">
@@ -27,7 +72,7 @@ $(document).ready(function() {
 						<strong><i class="fas fa-paw"></i> 봉사활동</strong>
 					</a> <a
 						class="list-group-item list-group-item-action list-group-item-light p-3"
-						href="/volunteer/reservation">- 봉사활동 예약</a> <a
+						href="/volunteer/reservationForm">- 봉사활동 예약</a> <a
 						class="list-group-item list-group-item-action list-group-item-light p-3"
 						href="/volunteer/volunReservList">- 봉사활동 현황</a>
 				</div>
@@ -37,7 +82,7 @@ $(document).ready(function() {
 			<div class="jumbotron">
 				<h2>봉사활동 신청 양식</h2>
 			</div>
-			<form id="frmReserv" role="form" action="/volunteer/reservVolun" method="post">
+			<form id="frmReserv" name="frmReserv" role="form" action="/volunteer/reservVolun" method="post">
 				<div class="form-group">
 					<label for="v_name"> 이름 : </label> 
 					<input type="text" class="form-control" id="v_name" name="v_name"/>
@@ -50,7 +95,7 @@ $(document).ready(function() {
 				
 				<div class="form-group">
 					<label for="v_place">신청 지역 : </label> 
-					<select name="v_place">
+					<select name="v_place" id="v_place">
 						<option value="남구">남구</option>
 						<option value="중구">중구</option>
 						<option value="북구">북구</option>
@@ -66,7 +111,7 @@ $(document).ready(function() {
 				
 				<div class="form-group">
 					<label for="v_time">신청 시간 : </label> 
-					<select name="v_time">
+					<select name="v_time" id="v_time">
 						<option value="09:00 ~ 12:00">09:00 ~ 12:00</option>
 						<option value="12:00 ~ 15:00">12:00 ~ 15:00</option>
 						<option value="15:00 ~ 18:00">15:00 ~ 18:00</option>
@@ -87,7 +132,7 @@ $(document).ready(function() {
 					<label for="v_etc"> 비고 : </label> 
 					<input type="text" class="form-control" id="v_etc" placeholder="궁금한 점이나 문의사항이 있으면 글을 남겨주세요." name="v_etc"/>
 				</div>
-				<button type="submit" class="btn btn-primary" id="finish">신청하기</button>
+				<button type="submit" class="btn btn-primary" id="reservFinish">신청하기</button>
 			</form>
 		</div>	
 	</div>		

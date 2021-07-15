@@ -17,4 +17,7 @@ public interface MemberService {
 	public MemberVo findId(String user_name,String phoneNum);
 	public MemberVo findPw(String user_id,String user_name,String phoneNum);
 	public void updatePw(MemberVo memberVo);
+	
+	//마이페이지
+	public MemberVo selectMember(String user_id);
 }
