@@ -618,7 +618,7 @@ $(document).ready(function(){
 						<col width="30%" />
 						<col width="auto" />
 					</colgroup>
-					<form id="frm" role="form" action="/memberLoginRun" method="post">
+					<form id="frm" role="form" action="/user/memberLoginRun" method="post">
 					<tbody>
 						<tr>
 							<th><span>아이디</span></th>

@@ -15,11 +15,7 @@ $(document).ready(function() {
 		}
 	});
 	
-<<<<<<< Updated upstream
 	// 댓글 목록
-=======
-	// 댓글목록
->>>>>>> Stashed changes
 	$("#btnCommentList").click(function() {
 		var url = "/comment/getCommentList/${boardVo.b_no}";
 		
@@ -65,19 +61,12 @@ $(document).ready(function() {
 			"data" : JSON.stringify(sendData),
 			"success" : function(receivedData) {
 				console.log(receivedData);
-<<<<<<< Updated upstream
 				// 처리가 잘 되었다면, 댓글 목록 버튼을 클릭시켜서 목록을 새로 얻음
-=======
->>>>>>> Stashed changes
 				if (receivedData == "success") {
 					$("#btnCommentList").trigger("click");
 				}
 			}
 		});
-<<<<<<< Updated upstream
-=======
-		
->>>>>>> Stashed changes
 	});
 	
 	// 댓글 삭제
@@ -85,31 +74,21 @@ $(document).ready(function() {
 		var c_no = $(this).attr("data-cno");
 		console.log(c_no);
 		var url = "/comment/deleteComment/" + c_no + "/${boardVo.b_no}";
-<<<<<<< Updated upstream
 		if (confirm("댓글을 삭제하시겠어요?")) {
 			$.get(url, function(receivedData) {
 				console.log(receivedData);
 				if (receivedData == "success") {
-=======
-		if(confirm("댓글을 삭제합니다.")) {
-			$.get(url, function(receivedData) {
-				console.log(receivedData);
-				if(receiveData == "success") {
->>>>>>> Stashed changes
 					$("#btnCommentList").trigger("click");
 				}
 			});
 		}
 	});
 	
-<<<<<<< Updated upstream
 	// 댓글 수정
 	$("#commentTable").on("click", ".commentModify", function() {
 		$("#updateCommentText").show(1000);
 	});
 	
-=======
->>>>>>> Stashed changes
 });
 </script>
 <div class="container-fluid">
@@ -157,7 +136,7 @@ $(document).ready(function() {
 							</tr>
 							
 						</tbody>
-						</table>
+					</table>
 					</div>
 					
 					<div class="row">
@@ -168,7 +147,6 @@ $(document).ready(function() {
 						</div>
 					</div>
 					
-<<<<<<< Updated upstream
 					<c:choose>
 				<c:when test="${empty sessionScope.loginVo }">
 			
@@ -189,36 +167,6 @@ $(document).ready(function() {
 							
 					</c:otherwise>
 				</c:choose>
-=======
-			<div class="row">
-				<div class="col-md-2"></div>
-					<div class="col-md-8">
-					<c:choose>
-						<c:when test="${empty sessionScope.loginVo.user_id}">
-
-						</c:when>
-						<c:otherwise>
-							<input type="text" class="form-control"
-							placeholder="댓글을 입력하세요"
-							id="c_content"/>
-						</c:otherwise>
-					</c:choose>
-					</div>
-					<div class="col-md-2">
-					<c:choose>
-						<c:when test="${empty sessionScope.loginVo.user_id}">
-
-						</c:when>
-						<c:otherwise>
-							<button type="button" class="btn btn-primary"
-							id="btnCommentInsert">입력</button>
-						</c:otherwise>
-					</c:choose>
-<!-- 						<button type="button" class="btn btn-primary" -->
-<!-- 							id="btnCommentInsert">입력</button> -->
-					</div>
-				</div>
->>>>>>> Stashed changes
 				
 				<div class="row">
 					<div class="col-md-12">
@@ -240,10 +188,6 @@ $(document).ready(function() {
 						</table>
 					</div>
 				</div>
-<<<<<<< Updated upstream
-=======
-				
->>>>>>> Stashed changes
 					
 					<div class="row">
 						<div class="col-md-12">
@@ -252,19 +196,12 @@ $(document).ready(function() {
 							<button type="submit" class="btn btn-success" id="btnModifyFinish" style="display:none">수정완료</button>
 							<button type="button" class="btn btn-danger" id="btnDelete">삭제</button>
 						</c:if>
-<<<<<<< Updated upstream
 							<a class="btn btn-warning" href="freeBoard">목록</a>
 						</div>
 					</div>
 				</form>
 				
 				
-=======
-									<a class="btn btn-warning" href="freeBoard">목록</a>
-						</div>
-					</div>
-				</form>
->>>>>>> Stashed changes
 			</div>
 		</div>
 	</div>

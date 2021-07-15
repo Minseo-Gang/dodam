@@ -31,11 +31,7 @@
 <!-- 							<tr> -->
 <!-- 								<td align="center">이름</td> -->
 <!-- 								<td align="center"></td> -->
-<<<<<<< Updated upstream
 <!-- 								<td><input type="text" class="form-control" id="user_id" name="user_id" value="user_id" readonly/></td> -->
-=======
-<%-- 								<td><input type="text" class="form-control" id="user_id" name="user_id" value="${sessionScope.loginVo.user_id }"/></td> --%>
->>>>>>> Stashed changes
 <!-- 							</tr> -->
 							<tr>
 								<td align="center">제목</td>

@@ -63,13 +63,9 @@ public class BoardDaoImpl implements BoardDao {
 		sqlSession.update(NAMESPACE + "updateCommentCnt", map);
 	}
 
-<<<<<<< Updated upstream
 	@Override
 	public void updateViewCnt(int b_no) {
 		sqlSession.update(NAMESPACE + "updateViewCnt", b_no);
 	}
 
 }
-=======
-}
->>>>>>> Stashed changes

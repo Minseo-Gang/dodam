@@ -27,10 +27,5 @@
 	
 	<!-- 트랜잭션 -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-<<<<<<< Updated upstream
-=======
-	
-	
->>>>>>> Stashed changes
 	
 </beans:beans>
