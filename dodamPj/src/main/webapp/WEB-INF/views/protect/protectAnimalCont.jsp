@@ -29,7 +29,7 @@ table.table th {
                 	<a class="list-group-item" style="background-color:#CCF2F4;">
                 		<strong><i class="fas fa-paw"></i> 유실/유기동물</strong></a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
-                    	href="/lostAnimal/protectAnimal">- 보호중인 동물</a>
+                    	href="/protect/protectAnimal">- 보호중인 동물</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
                     	href="/lostAnimal/reportList">- 분실 신고</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
@@ -41,9 +41,10 @@ table.table th {
 		<h2>동물 상세보기</h2>
 		<hr/>
 		<br>
+			<input type="hidden" name="a_no" value="${animalVo.a_no}">
 			<div class="boardDetail">
 				<div class="publicPhotoArea" style="text-align:center;">
-					<img class="photoArea" src="/resources/img/mung.jpg" alt="분실된 동물사진" />
+					<img class="photoArea" src="http://localhost/protect/displayImage?fileName=${animalVo.a_picture}"/>
 				</div>
 				<table class="table">
 					<colgroup>
@@ -54,41 +55,41 @@ table.table th {
 					</colgroup>
 					<tr>
 						<th>품종</th>
-						<td colspan="3">[개]믹스견</td>
+						<td colspan="3">${animalVo.a_species}</td>
 					</tr>
 					<tr>
 						<th>색상</th>
-						<td colspan="3">연갈색</td>
+						<td colspan="3">${animalVo.a_color}</td>
 					</tr>
 					<tr>
 						<th>성별</th>
-						<td colspan="3">수컷</td>
+						<td colspan="3">${animalVo.a_gender}</td>
 					</tr>
 					<tr>
 						<th>나이/체중</th>
-						<td colspan="3">6개월(추정)&nbsp;/ 1.2(Kg)</td>
+						<td colspan="3">${animalVo.a_age}&nbsp;/ ${animalVo.a_weight}(Kg)</td>
 					</tr>
 					<tr>
 						<th>발견장소</th>
-						<td colspan="3">중구 성안동 886</td>
+						<td colspan="3">${animalVo.a_findplace}</td>
 					</tr>
 					<tr>
 						<th scope="row">접수일시</th>
-						<td>2021-07-10&nbsp;</td>
+						<td>${animalVo.a_enterdate}&nbsp;</td>
 						<th scope="row">중성화</th>
-						<td>아니오&nbsp;</td>
+						<td>${animalVo.a_neut}&nbsp;</td>
 					</tr>
 					<tr>
 						<th>특징</th>
-						<td colspan="3">입가에 피부병</td>
+						<td colspan="3">${animalVo.a_character}</td>
 					</tr>
 					<tr>
 						<th>상태</th>
-						<td colspan="3">보호중</td>
+						<td colspan="3">${animalVo.a_state}</td>
 					</tr>
 				</table>
 			</div>
-			<a class="btn btn-primary" href="/lostAnimal/protectAnimal">목록</a>
+			<a class="btn btn-primary" href="/protect/protectAnimal">목록</a>
 		</div>
   </div>
 </div>  

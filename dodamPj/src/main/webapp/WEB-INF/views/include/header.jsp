@@ -118,36 +118,36 @@ border-bottom: 1px solid black;
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active">
-          <li class="drop-down"><a href="">도담센터</a>
+          <li class="drop-down"><a href="#">도담센터</a>
             <ul>
               <li><a href="/notice/noticeList">- 공지 사항</a></li>
               <li><a href="#">- 보호 절차</a></li>
               <li><a href="#">- 오시는 길</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="/lostAnimal/infoGetAnimal">유실/유기동물</a>
+          <li class="drop-down"><a href="#">유실/유기동물</a>
             <ul>
 
-              <li><a href="/lostAnimal/protectAnimal">- 보호중인 동물</a></li>
+              <li><a href="/protect/protectAnimal">- 보호중인 동물</a></li>
               <li><a href="/lostAnimal/reportList">- 분실 신고</a></li>
               <li><a href="/lostAnimal/infoGetAnimal">- 습득시 안내</a></li>              
 
             </ul>
           </li>
-          <li class="drop-down"><a href="">봉사활동</a>
+          <li class="drop-down"><a href="#">봉사활동</a>
             <ul>
               <li><a href="/volunteer/reservationForm">- 봉사활동 예약</a></li>
               <li><a href="/volunteer/volunReservList">- 봉사활동 조회</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="">입양 관리</a>
+          <li class="drop-down"><a href="#">입양 관리</a>
             <ul>
-              <li><a href="#">- 입양 신청</a></li>
-              <li><a href="#">- 입양 안내</a></li>
-              <li><a href="#">- 입양 조회</a></li>
+              <li><a href="/adopt/adoptInfo">- 입양 안내</a></li>
+              <li><a href="/adopt/applyAdopt">- 입양 신청</a></li>
+              <li><a href="#">- 상담 시간 조회</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="/board/freeBoard">커뮤니티</a>
+          <li class="drop-down"><a href="#">커뮤니티</a>
             <ul>
 
               <li><a href="/board/freeBoard">- 자유게시판</a></li>

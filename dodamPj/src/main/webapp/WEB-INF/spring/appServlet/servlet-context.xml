@@ -26,9 +26,6 @@
 	<!-- 트랜잭션 -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
-	<!-- 트랜잭션 -->
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-	
 	<!-- 최대 업로드 용량 10MB -->
 	<beans:bean
 		id="multipartResolver"

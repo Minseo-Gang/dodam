@@ -1,27 +1,33 @@
 package com.kh.dodamPj.vo;
 
+import java.util.Arrays;
+
 public class AnimalVo {
 	private int a_no;
 	private String a_species;
 	private String a_color;
 	private String a_gender;
 	private String a_age;
-	private int a_weight;
+	private String a_weight;
 	private String a_findplace;
 	private String a_enterdate;
 	private String a_neut;
 	private String a_character;
+	private String[] files;
+	private String a_picture;
+	private String a_state;
 	
 	public AnimalVo() {
 		super();
 	}
 
-	public AnimalVo(int a_no, String a_species, String a_gender, String a_findplace) {
+	public AnimalVo(int a_no, String a_species, String a_gender, String a_findplace, String a_picture) {
 		super();
 		this.a_no = a_no;
 		this.a_species = a_species;
 		this.a_gender = a_gender;
 		this.a_findplace = a_findplace;
+		this.a_picture = a_picture;
 	}
 
 	public int getA_no() {
@@ -64,11 +70,11 @@ public class AnimalVo {
 		this.a_age = a_age;
 	}
 
-	public int getA_weight() {
+	public String getA_weight() {
 		return a_weight;
 	}
 
-	public void setA_weight(int a_weight) {
+	public void setA_weight(String a_weight) {
 		this.a_weight = a_weight;
 	}
 
@@ -104,11 +110,36 @@ public class AnimalVo {
 		this.a_character = a_character;
 	}
 
+	public String[] getFiles() {
+		return files;
+	}
+
+	public void setFiles(String[] files) {
+		this.files = files;
+	}
+
+	public String getA_picture() {
+		return a_picture;
+	}
+
+	public void setA_picture(String a_picture) {
+		this.a_picture = a_picture;
+	}
+
+	public String getA_state() {
+		return a_state;
+	}
+
+	public void setA_state(String a_state) {
+		this.a_state = a_state;
+	}
+
 	@Override
 	public String toString() {
 		return "AnimalVo [a_no=" + a_no + ", a_species=" + a_species + ", a_color=" + a_color + ", a_gender=" + a_gender
 				+ ", a_age=" + a_age + ", a_weight=" + a_weight + ", a_findplace=" + a_findplace + ", a_enterdate="
-				+ a_enterdate + ", a_neut=" + a_neut + ", a_character=" + a_character + "]";
+				+ a_enterdate + ", a_neut=" + a_neut + ", a_character=" + a_character + ", files="
+				+ Arrays.toString(files) + ", a_picture=" + a_picture + ", a_state=" + a_state + "]";
 	}
 	
 }

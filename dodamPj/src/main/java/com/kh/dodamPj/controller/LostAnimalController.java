@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kh.dodamPj.service.AnimalService;
 import com.kh.dodamPj.service.LostService;
 import com.kh.dodamPj.util.AnimalFileUploadUtil;
+import com.kh.dodamPj.vo.AnimalVo;
 import com.kh.dodamPj.vo.LostVo;
 import com.kh.dodamPj.vo.PagingDto;
 
@@ -52,7 +54,10 @@ public class LostAnimalController {
 	
 	// 신고서 작성 내용 전송
 	@RequestMapping(value="/reportRun", method=RequestMethod.POST)
-	public String reportRun(LostVo lostVo, RedirectAttributes rttr) throws Exception {
+	public String reportRun(LostVo lostVo, MultipartFile file, RedirectAttributes rttr) throws Exception {
+		String orgFileName = file.getOriginalFilename();
+		String filePath = AnimalFileUploadUtil.uploadFile("E:/upload", orgFileName, file.getBytes());
+		lostVo.setP_picture(filePath);
 		lostService.reportRun(lostVo);
 		rttr.addFlashAttribute("result", "success");
 		return "redirect:/lostAnimal/reportList";
@@ -80,19 +85,7 @@ public class LostAnimalController {
 		lostService.reportDeleteRun(b_no);
 		return "redirect:/lostAnimal/reportList";
 	}
-	
-	// 보호중인 동물 페이지
-	@RequestMapping(value="/protectAnimal", method=RequestMethod.GET)
-	public String protectAnimal() throws Exception {
-		return "lostAnimal/protectAnimal";
-	}
-	
-	// 보호중인 동물 상세 페이지
-	@RequestMapping(value="/protectAnimalCont", method=RequestMethod.GET)
-	public String protentAnimalContent() throws Exception {
-		return "lostAnimal/protectAnimalCont";
-	}
-	
+
 	@RequestMapping(value="/uploadAjax", method=RequestMethod.POST, produces="application/text;charset=utf-8")
 	@ResponseBody
 	public String uploadAjax(MultipartFile file) throws Exception {

@@ -65,20 +65,21 @@
 							<div id="tabMenu">
 							<input type="radio" id="animalTab" name="tabs2" checked/>
 							<label for="animalTab"><i class="fas fa-hand-holding-heart"></i> 유기동물 공고</label>
-							<a class="btn btn-primary" href="/lostAnimal/protectAnimal" style="margin-left:128px;">+ 유기동물 더 보러가기</a>
+							<a class="btn btn-primary" href="/protect/protectAnimal" style="margin-left:128px;">+ 유기동물 더 보러가기</a>
 							<div class="card" style="max-width: 500px; margin-bottom:10px;">
-								<span style="text-align:center; font-size:16px;">
-									<strong>반려 동물, 사지 말고 입양하세요!</strong></span>
+								<p style="text-align:center; font-size:16px;">
+									<strong><span style="color:red;">반려 동물</span>, 사지 말고 <span style="color:blue;">입양</span>하세요!</strong>
+								</p>
     								<div class="row no-gutters">
        								 	<div class="col-sm-5" style="background: #868e96;">
-          							  		<img src="/resources/img/dog.png" class="card-img-top h-100" alt="...">
+          							  		<img class="card-img-top h-100" src="/resources/img/mung.jpg" alt="...">
        								 	</div>
        									<div class="col-sm-7">
             								<div class="card-body">
             									<ul>
-            										<li>품종 : 치와와</li>
-            										<li>성별 /나이 : 남/2세 추정</li>
-            										<li>발견장소 : 학성동 새벽시장 근처</li>
+            										<li>품종 : 믹스견</li>
+            										<li>성별 /나이 : 수컷/1세(추정)</li>
+            										<li>발견장소 : 북구 화봉동 788</li>
             									</ul>
            							 		</div>
        									</div>

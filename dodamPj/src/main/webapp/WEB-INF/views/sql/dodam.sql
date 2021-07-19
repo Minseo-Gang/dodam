@@ -20,13 +20,20 @@ alter table tbl_lost
 add (p_picture varchar2(100));
 create sequence seq_lost_bno;
 
--- 첨부파일 테이블
+-- 첨부파일 테이블1
 create table tbl_attach(
     file_name varchar2(200) primary key,
     b_no number references tbl_lost(b_no)
 );
 
-select * from tbl_lost;
+-- 첨부파일 테이블2(보호동물)
+create table tbl_protectAttach(
+    file_name varchar2(200) primary key,
+    a_no number references tbl_animal(a_no)
+);
+
+select * from tbl_lost
+order by b_no desc;
 
 -- 보호중인 유실 동물
 create table tbl_animal (
@@ -35,13 +42,27 @@ create table tbl_animal (
     a_color varchar2(20) not null,
     a_gender varchar2(10) not null,
     a_age varchar2(10) not null,
-    a_weight number not null,
+    a_weight varchar2(10) not null,
     a_findplace varchar2(50) not null,
     a_enterdate varchar2(30) not null,
     a_neut varchar2(10) not null,
     a_character varchar2(200)
 );
+
+alter table tbl_animal
+add (a_picture varchar2(100));
+alter table tbl_animal
+add (a_state varchar2(50));
+alter table tbl_animal
+modify a_age varchar2(30);
+
 create sequence seq_animal_no;
+
+select * from tbl_animal
+order by a_no desc;
+
+commit;
+
 
 
 

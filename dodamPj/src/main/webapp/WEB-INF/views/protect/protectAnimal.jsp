@@ -36,18 +36,18 @@ $(document).ready(function() {
 		$("#frmPaging > input[name=page]").val("1");
 		$("#frmPaging").submit();
 	});
-	
 });
 </script>
-<form id="frmPaging" action="/lostAnimal/reportList" method="get">
-	<input type="hidden" name="page" value="${pagingDto.page}"/>
-	<input type="hidden" name="perPage" value="${pagingDto.perPage}"/>
-	<input type="hidden" name="searchType" value="${pagingDto.searchType}"/>
-	<input type="hidden" name="keyword" value="${pagingDto.keyword}"/>
+
+<form id="frmPaging" action="/protect/protectAnimal" method="get">
+	<input type="hidden" name="page" value="${aPagingDto.page}"/>
+	<input type="hidden" name="perPage" value="${aPagingDto.perPage}"/>
+	<input type="hidden" name="searchType" value="${aPagingDto.searchType}"/>
+	<input type="hidden" name="keyword" value="${aPagingDto.keyword}"/>
 </form>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12" style="margin-top:10px; text-align:center;" >
+		<div class="col-md-12" style="margin-top:5px; text-align:center;" >
 			<img src="/resources/img/lostBanner.jpg">
 		</div>
 	</div>
@@ -67,18 +67,10 @@ $(document).ready(function() {
             </div>
 		</div>
 	<div class="col-md-10" style="margin-bottom:0px;">
-		<h2>분실 신고</h2>
+		<h2>보호중인 동물</h2>
 		<hr/>
-			<ul>
-				<li>동물을 분실한 경우 동물정보를 올려 분실 동물을 찾을 수 있는 공간입니다.</li>
-				<li>동물을 분실한 경우 동물보호법 제12조 제1항 및 같은 법 시행규칙 제8조 제1항 및 제9조 제2항에 따라 등록대상동물을
-					10일 이내 시장, 군수, 구청장에게 분실 신고하셔야 합니다.<br>
-					(다만, 동물보호관리시스템에서 소유자가 직접 동물상태 수정 가능)</li>
-				<li>로그인 후 분실신고를 등록할 수 있습니다.</li>
-			</ul>
-			<br>
-			
-			<!-- 검색기능 -->
+		<br>
+		<!-- 검색기능 -->
 			<div class="row">
 				  <div class="col-md-12">
 					<nav class="navbar navbar-expand">
@@ -90,14 +82,18 @@ $(document).ready(function() {
 								id="dropdownMenuButton" data-toggle="dropdown">검색</button>
 									<span id="spanSearchType" style="color:#000; font-weight:bold;">
 										<c:choose>
-											<c:when test="${pagingDto.searchType =='t'}">제목&nbsp;</c:when>
-											<c:when test="${pagingDto.searchType =='un'}">작성자&nbsp;</c:when>
+											<c:when test="${aPagingDto.searchType =='species'}">품종&nbsp;</c:when>
+											<c:when test="${aPagingDto.searchType =='gender'}">성별&nbsp;</c:when>
+											<c:when test="${aPagingDto.searchType =='age'}">나이&nbsp;</c:when>
+											<c:when test="${aPagingDto.searchType =='place'}">발견장소&nbsp;</c:when>
 										</c:choose>
 									</span>
 									<div class="dropdown-menu" 
 										aria-labelledby="navbarDropdownMenuLink">
-										<a class="dropdown-item searchType" href="t">제목</a> 
-										<a class="dropdown-item searchType" href="un">작성자</a> 
+										<a class="dropdown-item searchType" href="species">품종</a> 
+										<a class="dropdown-item searchType" href="gender">성별</a> 
+										<a class="dropdown-item searchType" href="age">나이</a> 
+										<a class="dropdown-item searchType" href="place">발견장소</a> 
 									</div>
 								</li>
 							</ul>
@@ -114,46 +110,56 @@ $(document).ready(function() {
 			
 			<div class="row">
 				<div class="col-md-12">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>No.</th>
-								<th>제목</th>
-								<th>작성자</th>
-								<th>작성일</th>
-								<th>조회수</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="lostVo" items="${list}">
-								<tr>
-									<td>${lostVo.b_no}</td>
-									<td><a href="/lostAnimal/reportContent?b_no=${lostVo.b_no}">${lostVo.b_title}</a></td>
-									<td>${lostVo.user_name}</td>
-									<td>${lostVo.write_date}</td>
-									<td>${lostVo.b_viewcnt}</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+					<section class="py-5">
+						<div class="container px-4 px-lg-5 mt-5">
+							<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+							<c:forEach var="animalVo" items="${aList}">
+								<div class="col mb-5">
+									<div class="card h-100">
+										<!-- Product image-->
+										<img class="card-img-top" src="http://localhost/protect/displayImage?fileName=${animalVo.a_picture}" alt="..." />
+										<div class="card-body" style="padding:0px; margin-top:5px; margin-right:5px;">
+											<ul style="padding-left:30px;">
+												<li><span>품종 : </span>${animalVo.a_species}</li>
+												<li><span>성별 : </span>${animalVo.a_gender}</li>
+												<li><span>나이 : </span>${animalVo.a_age}</li>
+												<li><span>발견장소 : </span>${animalVo.a_findplace}</li>
+											</ul>
+										</div>
+										<!-- Product actions-->
+										<div class="card-footer pt-0 border-top-0 bg-transparent">
+											<div class="text-center">
+												<a class="btn btn-outline-dark mt-auto" style="margin-bottom:2px;"
+													href="/protect/protectAnimalCont?a_no=${animalVo.a_no}">자세히보기</a><br>
+												<a class="btn btn-sm btn-outline-info" href="/protect/protectAnimalModiForm?a_no=${animalVo.a_no}">수정</a>
+												<a class="btn btn-sm btn-outline-danger" href="/protect/deleteAnimalRun?a_no=${animalVo.a_no}">삭제</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</c:forEach>						
+							</div>
+						</div>
+					</section>
 				</div>
 			</div>
-			<a class="btn btn-info" href="/lostAnimal/reportAnimalForm">신고서 작성</a>
-			
+			<a class="btn btn-primary" href="/protect/protectAnimalForm">+ 새 동물</a>
+		</div>
+		
 		<!-- 페이징 -->
 		<div class="col-md-2"></div>
 		<div class="col-md-10">
 			<nav>
 				<ul class="pagination justify-content-center">
-				<c:if test="${pagingDto.startPage != 1}">
+				<c:if test="${aPagingDto.startPage != 1}">
 					<li class="page-item">
-						<a class="page-link" href="${pagingDto.startPage - 1}">&laquo;</a>
+						<a class="page-link" href="${aPagingDto.startPage - 1}">&laquo;</a>
 					</li>
 				</c:if>
-				<c:forEach var="v" begin="${pagingDto.startPage}" end="${pagingDto.endPage}">
+				<c:forEach var="v" begin="${aPagingDto.startPage}" end="${aPagingDto.endPage}">
 					<li
 						<c:choose>
-							<c:when test="${pagingDto.page == v}">
+							<c:when test="${aPagingDto.page == v}">
 								class="page-item active"
 							</c:when>
 							<c:otherwise>
@@ -164,17 +170,16 @@ $(document).ready(function() {
 						<a class="page-link" href="${v}">${v}</a>
 					</li>
 				</c:forEach>
-				<c:if test="${pagingDto.endPage < pagingDto.totalPage}">
+				<c:if test="${aPagingDto.endPage < aPagingDto.totalPage}">
 					<li class="page-item">
-						<a class="page-link" href="${pagingDto.endPage + 1}">&raquo;</a>
+						<a class="page-link" href="${aPagingDto.endPage + 1}">&raquo;</a>
 					</li>
 				</c:if>
 				</ul>
 			</nav>
 		</div>
 	<!-- 페이징 end -->
-	
-	</div>
+		
   </div>
 </div>  
 <%@ include file="../include/footer.jsp" %>
