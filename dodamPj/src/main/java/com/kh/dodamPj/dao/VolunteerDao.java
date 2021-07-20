@@ -11,5 +11,6 @@ public interface VolunteerDao {
 	public void reservVolun(VolunteerVo volunteerVo);
 	public int getCount(PagingDto pagingDto);
 	public boolean checkDateAndTime(VolunteerVo volunteerVo);
-
+	public List<VolunteerVo> myReservation(String user_id);
+	public void resultInsert(VolunteerVo volunteer);
 }

@@ -49,18 +49,18 @@ public class VolunteerDaoImpl implements VolunteerDao {
 		return false;
 	}
 
-//	@Override
-//	public boolean checkDateAndTime(VolunteerVo volunteerVo) {
-////		Map<String, String> map = new HashMap<>();
-////		map.put("v_date", v_date);
-////		map.put("v_time", v_time);
-//		VolunteerVo volunteerVo = new VolunteerVo(v_place, v_time, v_date);
-//		
-//		int count = sqlSession.selectOne(NAMESPACE + "checkDateAndTime", volunteerVo);
-//		if(count > 0) {
-//			return true;
-//		}
-//		return false;
-//	}
+	@Override
+	public List<VolunteerVo> myReservation(String user_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void resultInsert(VolunteerVo volunteer) {
+		sqlSession.update(NAMESPACE+"resultUpdate", volunteer);
+		
+	}
+
+
 
 }

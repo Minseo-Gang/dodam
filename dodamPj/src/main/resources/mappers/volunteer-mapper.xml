@@ -50,4 +50,18 @@
 			and v_place = #{v_place}
 	</select>
 	
+	<!-- 나의 예약 조회 -->
+	<select id="myReservation" resultType="VolunteerVo">
+		select * from tbl_volunteer
+		where user_id = #{user_id}
+	</select>
+	
+	<!-- 	봉사 활동 신청 승인 and 거부  -->
+	<update id="resultUpdate">
+			update tbl_volunteer set
+			result = #{result}
+			
+		where v_no = #{v_no}
+	</update>
+	
 </mapper>

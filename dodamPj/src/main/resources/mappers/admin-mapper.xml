@@ -11,6 +11,12 @@
 		and admin_pw = #{admin_pw}
 	</select>
 	
+	<select id="listMember" resultType="MemberVo">
+		select * from user_info
+	</select>
+	
+	
+	
 
 <!-- 	<update id="updatePoint"> -->
 <!-- 		update user_info set -->

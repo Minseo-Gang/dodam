@@ -40,6 +40,13 @@ public class VolunteerServiceImpl implements VolunteerService {
 		return volunteerDao.checkDateAndTime(volunteerVo);
 	}
 
+	@Override
+	public void resultInsert(VolunteerVo volunteer) {
+		volunteerDao.resultInsert(volunteer);		
+	}
+	
+	
+
 //	@Override
 //	public boolean checkDateAndTime(String v_date, String v_time) {
 //		return volunteerDao.checkDateAndTime(v_date, v_time, String v_place);

@@ -7,12 +7,15 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kh.dodamPj.service.MemberService;
 import com.kh.dodamPj.service.VolunteerService;
+import com.kh.dodamPj.vo.MemberVo;
 import com.kh.dodamPj.vo.PagingDto;
 import com.kh.dodamPj.vo.VolunteerVo;
 
@@ -22,15 +25,18 @@ public class VolunteerController {
 
 	@Inject
 	private VolunteerService volunteerService;
-	
-	@RequestMapping(value="/reservation", method=RequestMethod.GET)
-	public String reservation() throws Exception {
-		return "volunteer/reservation";
-	}
+	@Inject
+	private MemberService MemberService;
 	
 	@RequestMapping(value="/reservationForm", method=RequestMethod.GET)
 	public String reservationForm() throws Exception {
 		return "volunteer/reservation_form";
+	}
+	
+	// 나의 예약 정보
+	@RequestMapping(value="/myReservation", method=RequestMethod.GET)
+	public String myReservation() throws Exception {
+		return "volunteer/my_reservation";
 	}
 
 	@RequestMapping(value="/volunReservList", method=RequestMethod.GET)
@@ -45,6 +51,17 @@ public class VolunteerController {
 		return "volunteer/reservation_status";	
 	}
 	
+//	@RequestMapping(value="/reservVolun", method=RequestMethod.POST)
+//	@ResponseBody
+//	public String reservVolun(@RequestBody VolunteerVo volunteerVo, 
+//			HttpSession session) throws Exception {
+//		MemberVo memberVo = (MemberVo)session.getAttribute("loginVo");
+//		volunteerVo.setUser_id(memberVo.getUser_id());
+//		System.out.println(volunteerVo);
+//		volunteerService.reservVolun(volunteerVo);
+//		return "redirect:/volunteer/reservation_status";
+//	} 
+//	
 	@RequestMapping(value="/reservVolun", method=RequestMethod.POST)
 	public String reservVolun(VolunteerVo volunteerVo, RedirectAttributes rttr) throws Exception {
 		volunteerService.reservVolun(volunteerVo);
