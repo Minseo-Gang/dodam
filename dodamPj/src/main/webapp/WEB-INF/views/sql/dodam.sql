@@ -63,10 +63,54 @@ order by a_no desc;
 
 commit;
 
+-- 입양관련 테이블
+create table tbl_adopt (
+    ad_no number primary key,
+    ad_adoptstate varchar2(20) not null,
+    ad_species varchar2(20) not null,
+    ad_kind varchar2(40) not null,
+    ad_gender varchar2(10) not null,
+    ad_age varchar2(30) not null,
+    ad_weight varchar2(20) not null,
+    ad_color varchar2(50) not null,
+    ad_findplace varchar2(100) not null,
+    ad_resqueday varchar2(50) not null,
+    ad_adoptpossible varchar2(50),
+    ad_etc varchar2(500),
+    ad_picture varchar2(100)
+);
 
+create sequence seq_adopt_no;
 
+-- 첨부파일 테이블3(입양동물)
+create table tbl_adoptAttach(
+    file_name varchar2(200) primary key,
+    ad_no number references tbl_adopt(ad_no)
+);
 
+select * from tbl_adopt;
 
+-- 입양 신청폼 작성
+create table tbl_apply_user (
+    au_no number primary key,
+    user_name varchar2(20) not null,
+    user_tel varchar2(10) not null,
+    adopt_date varchar2(20) not null,
+    adopt_time varchar2(10) not null,
+    form_title varchar2(50) not null,
+    form_content varchar2(1000) not null,
+    form_pw varchar2(20) not null
+);
+
+create sequence seq_apply_no;
+
+alter table tbl_apply_user
+add (ad_no number references tbl_adopt(ad_no));
+
+alter table tbl_apply_user
+modify user_tel varchar2(20);
+
+select * from tbl_apply_user;
 
 
 

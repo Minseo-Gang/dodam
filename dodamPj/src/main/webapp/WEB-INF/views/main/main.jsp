@@ -65,10 +65,10 @@
 							<div id="tabMenu">
 							<input type="radio" id="animalTab" name="tabs2" checked/>
 							<label for="animalTab"><i class="fas fa-hand-holding-heart"></i> 유기동물 공고</label>
-							<a class="btn btn-primary" href="/protect/protectAnimal" style="margin-left:128px;">+ 유기동물 더 보러가기</a>
+							<a class="btn btn-primary" href="/adopt/applyAdopt" style="margin-left:128px;">+ 유기동물 더 보러가기</a>
 							<div class="card" style="max-width: 500px; margin-bottom:10px;">
 								<p style="text-align:center; font-size:16px;">
-									<strong><span style="color:red;">반려 동물</span>, 사지 말고 <span style="color:blue;">입양</span>하세요!</strong>
+									<strong><span style="color:blue;">반려 동물</span>, 사지 말고 <span style="color:red;">입양</span>하세요!</strong>
 								</p>
     								<div class="row no-gutters">
        								 	<div class="col-sm-5" style="background: #868e96;">

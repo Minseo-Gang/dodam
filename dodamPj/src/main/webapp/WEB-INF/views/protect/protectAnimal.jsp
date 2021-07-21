@@ -69,7 +69,12 @@ $(document).ready(function() {
 	<div class="col-md-10" style="margin-bottom:0px;">
 		<h2>보호중인 동물</h2>
 		<hr/>
-		<br>
+		<ul>
+			<li>동물을 분실한 경우 동물정보를 올려 분실 동물을 찾을 수 있는 공간입니다.</li>
+			<li>동물을 분실한 경우 동물보호법 제12조 제1항 및 같은 법 시행규칙 제8조 제1항 및 제9조 제2항에 따라 등록대상동물을
+				10일 이내 시장, 군수, 구청장에게 분실 신고하셔야 합니다.</li>
+		</ul>
+		
 		<!-- 검색기능 -->
 			<div class="row">
 				  <div class="col-md-12">
@@ -99,7 +104,7 @@ $(document).ready(function() {
 							</ul>
 							<form class="form-inline">
 								<input class="form-control mr-sm-2" type="text" placeholder="검색어를 입력해주세요."
-									aria-label="Search" value="${pagingDto.keyword}" id="searchTxt"/>
+									aria-label="Search" value="${aPagingDto.keyword}" id="searchTxt"/>
 								<button class="btn btn-primary my-2 my-sm-0" type="button" id="btnSearch">검색</button>
 							</form>
 						</div>

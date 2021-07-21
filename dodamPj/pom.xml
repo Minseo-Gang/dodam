@@ -37,10 +37,6 @@
             <version>v3-rev235-1.22.0</version>
         </dependency>
 
-<<<<<<< Updated upstream
-=======
-	
->>>>>>> Stashed changes
 <!-- jackson-databind -->
 <dependency>
     <groupId>com.fasterxml.jackson.core</groupId>

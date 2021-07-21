@@ -7,10 +7,26 @@
 
 <head>
 <style>
-	.inline{
-border-bottom: 1px solid black;
+.inline {
+	border-bottom: 1px solid black;
 }
 </style>
+
+<style type="text/css">
+	table {
+
+	.ck ck-editor{
+		max-width: 500px;
+		overflow: scroll;
+	}
+	
+	.ck-editor__editable{
+		min-height: 500px;
+		max-height: 500px;
+		overflow: scroll;
+	}
+</style>
+
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -58,22 +74,6 @@ border-bottom: 1px solid black;
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  
-  <!-- ckeditor -->
-  <style type="text/css">
-	table {
-
-	.ck ck-editor{
-		max-width: 500px;
-		overflow: scroll;
-	}
-	
-	.ck-editor__editable{
-		min-height: 500px;
-		max-height: 500px;
-		overflow: scroll;
-	}
-</style>
 </head>
 
 <body>
@@ -144,7 +144,7 @@ border-bottom: 1px solid black;
             <ul>
               <li><a href="/adopt/adoptInfo">- 입양 안내</a></li>
               <li><a href="/adopt/applyAdopt">- 입양 신청</a></li>
-              <li><a href="#">- 상담 시간 조회</a></li>
+              <li><a href="/adopt/applyList">- 입양 신청 조회</a></li>
             </ul>
           </li>
           <li class="drop-down"><a href="#">커뮤니티</a>

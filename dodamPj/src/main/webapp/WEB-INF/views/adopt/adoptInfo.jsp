@@ -19,7 +19,7 @@
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
                     	href="/adopt/applyAdopt">- 입양 신청</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
-                    	href="#">- 상담 시간 조회</a>
+                    	href="/adopt/applyList">- 입양 신청 조회</a>
                 </div>
             </div>
 		</div>
