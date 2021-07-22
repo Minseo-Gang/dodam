@@ -3,6 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp" %>
 
+<script>
+$(document).ready(function() {
+	var text = "${adoptVo.ad_adoptstate}";
+	if(text == "입양완료") {
+		$("#noApply").text("※ 입양완료 상태로 상담 예약 불가").css("color", "red");
+		$(".readonly").prop("readonly", true);
+	}
+});
+</script>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12" style="margin-top:10px; text-align:center;" >
@@ -32,7 +42,12 @@
 					<form role="form" action="/adopt/insertApplyRun" method="post">	
 					<input type="hidden" name="ad_no" value="${adoptVo.ad_no}">
 						<div class="form-group">
-						<label for="ad_adoptstate">입양상태</label>
+						<label for="ad_no">일련번호</label>
+							<input type="text" class="form-control" id="ad_no" name="ad_no"
+								value="${adoptVo.ad_no}" readonly/>
+						</div>
+						<div class="form-group">
+						<label for="ad_adoptstate">입양상태&nbsp;</label><span id="noApply"></span>
 							<input type="text" class="form-control" id="ad_adoptstate" name="ad_adoptstate" 
 								value="${adoptVo.ad_adoptstate}" readonly/>
 						</div>
@@ -48,31 +63,32 @@
 						</div>
 						<div class="form-group">
 						<label for="user_name">입양자 성명</label>
-							<input type="text" class="form-control" id="user_name" name="user_name"/>
+							<input type="text" class="form-control readonly" id="user_name" name="user_name"/>
 						</div>
 						<div class="form-group">
 						<label for="user_tel">연락처</label>
-							<input type="text" class="form-control" id="user_tel" name="user_tel"/>
+							<input type="text" class="form-control readonly" id="user_tel" name="user_tel"/>
 						</div>
 						<div class="form-group">
 						<label for="adopt_date">상담 예정 날짜</label>
-							<input type="text" class="form-control" id="adopt_date" name="adopt_date"/>
+							<input type="text" class="form-control readonly" id="adopt_date" name="adopt_date"/>
 						</div>
 						<div class="form-group">
 						<label for="adopt_time">상담 예정 시간</label>
-							<input type="text" class="form-control" id="adopt_time" name="adopt_time"/>
+							<input type="text" class="form-control readonly" id="adopt_time" name="adopt_time"/>
 						</div>
 						<div class="form-group">
 						<label for="form_title">제목</label>
-							<input type="text" class="form-control" id="form_title" name="form_title"/>
+							<input type="text" class="form-control readonly" id="form_title" name="form_title"/>
 						</div>
 						<div class="form-group">
 						<label for="form_content">내용</label>
-							<textarea class="form-control" id="form_content" name="form_content"></textarea>
+							<textarea class="form-control readonly" id="form_content" name="form_content" 
+							placeholder="상담하실 동물의 일련번호를 남겨주세요" ></textarea>
 						</div>
 						<div class="form-group">
 						<label for="form_pw">비밀번호</label>
-							<input type="password" class="form-control" id="form_pw" name="form_pw"/>
+							<input type="password" class="form-control readonly" id="form_pw" name="form_pw"/>
 						</div>
 						<button type="submit" class="btn btn-success">작성</button>
 						<a class="btn btn-info" href="/adopt/applyAdopt" style="margin-right:10px;">목록</a>

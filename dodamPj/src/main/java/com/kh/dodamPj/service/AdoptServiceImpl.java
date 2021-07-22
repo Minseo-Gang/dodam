@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.dodamPj.dao.AdoptDao;
+import com.kh.dodamPj.vo.A_PagingDto;
 import com.kh.dodamPj.vo.AdoptVo;
 import com.kh.dodamPj.vo.ApplyUserVo;
+import com.kh.dodamPj.vo.PagingDto;
 
 @Service
 public class AdoptServiceImpl implements AdoptService {
@@ -19,8 +21,8 @@ public class AdoptServiceImpl implements AdoptService {
 	
 	// 입양 동물 목록
 	@Override
-	public List<AdoptVo> adoptList() {
-		List<AdoptVo> adList = adoptDao.adoptList();
+	public List<AdoptVo> adoptList(A_PagingDto aPagingDto) {
+		List<AdoptVo> adList = adoptDao.adoptList(aPagingDto);
 		return adList;
 	}
 
@@ -68,9 +70,42 @@ public class AdoptServiceImpl implements AdoptService {
 
 	// 입양 신청 목록
 	@Override
-	public List<ApplyUserVo> applyList() {
-		List<ApplyUserVo> auList = adoptDao.applyList();
+	public List<ApplyUserVo> applyList(PagingDto pagingDto) {
+		List<ApplyUserVo> auList = adoptDao.applyList(pagingDto);
 		return auList;
+	}
+
+	// 입양 신청 상세
+	@Override
+	public ApplyUserVo selectApply(int au_no) {
+		ApplyUserVo applyUserVo = adoptDao.selectApply(au_no);
+		return applyUserVo;
+	}
+	
+	// 입양 신청서 수정
+	@Override
+	public void modifyApplyRun(ApplyUserVo applyUserVo) {
+		adoptDao.modifyApply(applyUserVo);		
+	}
+
+	// 입양 신청서 삭제
+	@Override
+	public void deleteApplyRun(int au_no) {
+		adoptDao.deleteApply(au_no);		
+	}
+	
+	// 글갯수얻기(동물목록)
+	@Override
+	public int getCount(A_PagingDto aPagingDto) {
+		int count = adoptDao.getCount(aPagingDto);
+		return count;
+	}
+	
+	// 글갯수얻기(신청서목록)
+	@Override
+	public int getCountApply(PagingDto pagingDto) {
+		int countApply = adoptDao.getCountApply(pagingDto);
+		return countApply;
 	}
 
 }

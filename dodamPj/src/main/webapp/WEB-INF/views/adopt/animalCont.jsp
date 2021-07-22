@@ -66,6 +66,10 @@ $(document).ready(function() {
 						<col width="*"/>
 					</colgroup>
 					<tr>
+						<th>일련번호</th>
+						<td colspan="3">${adoptVo.ad_no}</td>
+					</tr>
+					<tr>
 						<th scope="row">품종</th>
 						<td>${adoptVo.ad_species}&nbsp;</td>
 						<th scope="row">종류</th>

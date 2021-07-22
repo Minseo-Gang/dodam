@@ -11,8 +11,9 @@ $(document).ready(function() {
 	});
 	
 	$("#btnDelete").click(function() {
-		location.href="/adopt/applyDeleteRun?au_no=${applyUserVo.au_no}";
+		location.href="/adopt/deleteApplyRun?au_no=${applyUserVo.au_no}";
 	});
+
 });
 </script>
 
@@ -42,24 +43,8 @@ $(document).ready(function() {
 		<hr/>
 			<div class="row">
 				<div class="col-md-12">
-					<form role="form" id="frmApply" action="/adopt/applyModifyRun" method="post">	
-					<input type="hidden" name="ad_no" value="${adoptVo.ad_no}">
+					<form role="form" id="frmApply" action="/adopt/modifyApplyRun" method="post">	
 					<input type="hidden" name="au_no" value="${applyUserVo.au_no}">
-						<div class="form-group">
-						<label for="ad_adoptstate">입양상태</label>
-							<input type="text" class="form-control" id="ad_adoptstate" name="ad_adoptstate" 
-								value="${adoptVo.ad_adoptstate}" readonly/>
-						</div>
-						<div class="form-group">
-						<label for="ad_kind">종류/품종</label>
-							<input type="text" class="form-control" id="ad_kind" name="ad_kind"
-								value="${adoptVo.ad_species}/${adoptVo.ad_kind}" readonly/>
-						</div>
-						<div class="form-group">
-						<label for="ad_age">성별/나이</label>
-							<input type="text" class="form-control" id="ad_age" name="ad_age"
-								value="${adoptVo.ad_gender}/${adoptVo.ad_age}" readonly/>
-						</div>
 						<div class="form-group">
 						<label for="user_name">입양자 성명</label>
 							<input type="text" class="form-control" id="user_name" name="user_name"
@@ -91,18 +76,13 @@ $(document).ready(function() {
 						</div>
 						<div class="form-group">
 						<label for="form_content">내용</label>
-							<textarea class="form-control readonly" id="form_content" name="form_content" readonly>
-								${applyUserVo.form_content}</textarea>
+							<textarea class="form-control readonly" id="form_content" name="form_content" 
+							readonly>${applyUserVo.form_content}</textarea>
 						</div>
-						<div class="form-group">
-						<label for="form_pw">비밀번호</label>
-							<input type="password" class="form-control readonly" id="form_pw" name="form_pw"
-								value="${applyUserVo.form_pw}" readonly/>
-						</div>
-						<button type="button" class="btn btn-secondary" id="btnModify">수정</button>
+						<button type="button" class="btn btn-success" id="btnModify">수정</button>
 						<button type="submit" class="btn btn-warning" id="btnModifyDone"
 							style="display:none;">수정완료</button>
-						<button type="button" class="btn btn-danger">삭제</button>
+						<button type="button" class="btn btn-danger" id="btnDelete">삭제</button>
 						<a class="btn float-right btn-info" href="/adopt/applyList" style="margin-right:10px;">목록</a>
 					</form>
 					</div>

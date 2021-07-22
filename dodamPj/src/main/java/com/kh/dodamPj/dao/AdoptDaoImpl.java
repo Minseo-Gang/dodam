@@ -9,8 +9,10 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.dodamPj.vo.A_PagingDto;
 import com.kh.dodamPj.vo.AdoptVo;
 import com.kh.dodamPj.vo.ApplyUserVo;
+import com.kh.dodamPj.vo.PagingDto;
 
 @Repository
 public class AdoptDaoImpl implements AdoptDao {
@@ -22,8 +24,8 @@ public class AdoptDaoImpl implements AdoptDao {
 
 	// 입양 동물 목록
 	@Override
-	public List<AdoptVo> adoptList() {
-		List<AdoptVo> adList = sqlSession.selectList(NAMESPACE + "adoptList");
+	public List<AdoptVo> adoptList(A_PagingDto aPagingDto) {
+		List<AdoptVo> adList = sqlSession.selectList(NAMESPACE + "adoptList", aPagingDto);
 		return adList;
 	}
 
@@ -87,9 +89,42 @@ public class AdoptDaoImpl implements AdoptDao {
 	
 	// 입양 신청 목록
 	@Override
-	public List<ApplyUserVo> applyList() {
-		List<ApplyUserVo> auList = sqlSession.selectList(NAMESPACE + "applyList");
+	public List<ApplyUserVo> applyList(PagingDto pagingDto) {
+		List<ApplyUserVo> auList = sqlSession.selectList(NAMESPACE + "applyList", pagingDto);
 		return auList;
+	}
+	
+	// 입양 신청 상세
+	@Override
+	public ApplyUserVo selectApply(int au_no) {
+		ApplyUserVo applyUserVo = sqlSession.selectOne(NAMESPACE + "selectApply", au_no);
+		return applyUserVo;
+	}
+	
+	// 입양 신청서 수정
+	@Override
+	public void modifyApply(ApplyUserVo applyUserVo) {
+		sqlSession.update(NAMESPACE + "updateApply", applyUserVo);
+	}
+	
+	// 입양 신청서 삭제
+	@Override
+	public void deleteApply(int au_no) {
+		sqlSession.delete(NAMESPACE + "deleteApply", au_no);
+	}
+
+	// 글갯수(동물목록)
+	@Override
+	public int getCount(A_PagingDto aPagingDto) {
+		int count = sqlSession.selectOne(NAMESPACE + "getCount", aPagingDto);
+		return count;
+	}
+	
+	// 글갯수(신청서 목록)
+	@Override
+	public int getCountApply(PagingDto pagingDto) {
+		int countApply = sqlSession.selectOne(NAMESPACE + "getCountApply", pagingDto);
+		return countApply;
 	}
 
 }
