@@ -29,6 +29,8 @@ public interface AdoptDao {
 	public List<ApplyUserVo> applyList(PagingDto pagingDto);
 	// 입양 신청 등록
 	public void insertApply(ApplyUserVo applyUserVo);
+	// 입양 상담 시간 중복 확인
+	public boolean checkDupTime(String adopt_date, String adopt_time);
 	// 입양 신청 상세
 	public ApplyUserVo selectApply(int au_no);
 	// 입양 신청 수정

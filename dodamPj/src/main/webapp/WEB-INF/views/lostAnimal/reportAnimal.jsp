@@ -31,9 +31,16 @@ $(document).ready(function() {
 			alert("검색어를 입력해 주세요");
 			return;
 		}
-		
 		$("#frmPaging > input[name=keyword]").val(keyword);
 		$("#frmPaging > input[name=page]").val("1");
+		$("#frmPaging").submit();
+	});
+	
+	$(".a_title").click(function(e) {
+		e.preventDefault();
+		var b_no = $(this).attr("data-bno");
+		$("#frmPaging > input[name=b_no]").val(b_no);
+		$("#frmPaging").attr("action", "/lostAnimal/reportContent");
 		$("#frmPaging").submit();
 	});
 	
@@ -44,6 +51,7 @@ $(document).ready(function() {
 	<input type="hidden" name="perPage" value="${pagingDto.perPage}"/>
 	<input type="hidden" name="searchType" value="${pagingDto.searchType}"/>
 	<input type="hidden" name="keyword" value="${pagingDto.keyword}"/>
+	<input type="hidden" name="b_no"/>
 </form>
 <div class="container-fluid">
 	<div class="row">
@@ -128,7 +136,11 @@ $(document).ready(function() {
 							<c:forEach var="lostVo" items="${list}">
 								<tr>
 									<td>${lostVo.b_no}</td>
-									<td><a href="/lostAnimal/reportContent?b_no=${lostVo.b_no}">${lostVo.b_title}</a></td>
+									<td>
+										<a class="a_title" href="#" data-bno="${lostVo.b_no}">
+											${lostVo.b_title}
+										</a>
+									</td>
 									<td>${lostVo.user_name}</td>
 									<td>${lostVo.write_date}</td>
 									<td>${lostVo.b_viewcnt}</td>

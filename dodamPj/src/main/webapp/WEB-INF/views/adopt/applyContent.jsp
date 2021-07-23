@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="../include/header.jsp" %>
 
 <script>
@@ -53,7 +54,9 @@ $(document).ready(function() {
 						<div class="form-group">
 						<label for="user_tel">연락처</label>
 							<input type="text" class="form-control readonly" id="user_tel" name="user_tel"
-								value="${applyUserVo.user_tel}" readonly/>
+								value=<c:if test="${applyUserVo.user_tel ne null && applyUserVo.user_tel != ''}">
+								${fn:substring(applyUserVo.user_tel,0,fn:length(applyUserVo.user_tel)-7)}**-****
+								</c:if> readonly/>
 						</div>
 						<div class="form-group">
 						<label for="adopt_date">상담 예정 날짜</label>

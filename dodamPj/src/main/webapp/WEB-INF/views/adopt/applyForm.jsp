@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp" %>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
 <script>
 $(document).ready(function() {
@@ -10,6 +14,69 @@ $(document).ready(function() {
 		$("#noApply").text("※ 입양완료 상태로 상담 예약 불가").css("color", "red");
 		$(".readonly").prop("readonly", true);
 	}
+	
+	$("#datepicker").datepicker({
+		showOn: "button",
+	    buttonImage: "/resources/img/calendar.gif",
+	    buttonImageOnly: true,
+	    buttonText: "Select date",
+		dateFormat: "yy.mm.dd",
+		monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	    dayNamesMin: ['일','월','화','수','목','금','토'],
+		changeMonth: true, //월 변경 가능
+	    changeYear: true, //년 변경 가능
+		showMonthAfterYear: true //년 뒤에 월 표시
+	});
+	
+	var isCheckDupTime = false;
+	var checkTime = "";
+	var checkDate = "";
+	$("#frmApply").submit(function() {
+		if(isCheckDupTime == false) {
+			alert("예약 가능 확인 버튼을 눌러 시간을 확인해 주세요.");
+			$("btnCheckTime").focus();
+			return false;
+		}
+	});
+	
+	$("#btnCheckTime").click(function() {
+		var url = "/adopt/checkDupTime";
+		var adopt_date = $("#datepicker").val();
+		var adopt_time = $("#adopt_time").val();
+		var sendData = {
+				"adopt_date" : adopt_date,
+				"adopt_time" : adopt_time
+		};
+		
+		$.get(url, sendData, function(rData) {
+			if(rData == "true") {
+				$("#checkTimeResult").text(" ※ 이미 예약된 시간대입니다.").css("color", "red");
+			} else {
+				$("#checkTimeResult").text(" ※ 예약 가능한 시간대입니다.").css("color", "blue");
+				isCheckDupTime = true;
+				checkTime = adopt_time;
+				checkDate = adopt_date;
+			}
+		});
+	});
+	
+	$("#user_tel").keydown(function(e) {
+		var key = e.charCode || e.keyCode || 0;
+		$text = $(this);
+		if(key != 8 && key != 9) {
+			if($text.val().length == 3) {
+				$text.val($text.val() + "-");
+			}
+			if($text.val().length == 8) {
+				$text.val($text.val() + "-");
+			}
+		}
+		return(key == 8 || key == 9 || key == 46 || (key >= 48 && key <= 57) ||
+			(key >= 96 && key <= 105));
+		// key 8번 백스페이스, key 9번 탭, key 46번 delete부터 0~9까지, key 96~105까지 넘버패드
+		// jQuery 0~9 숫자, 백스페이스, 탭, delete키 및 넘버패드외에는 입력안됨
+	});
+	
 });
 </script>
 
@@ -39,7 +106,7 @@ $(document).ready(function() {
 		<hr/>
 			<div class="row">
 				<div class="col-md-12">
-					<form role="form" action="/adopt/insertApplyRun" method="post">	
+					<form role="form" id="frmApply" action="/adopt/insertApplyRun" method="post">	
 					<input type="hidden" name="ad_no" value="${adoptVo.ad_no}">
 						<div class="form-group">
 						<label for="ad_no">일련번호</label>
@@ -67,15 +134,24 @@ $(document).ready(function() {
 						</div>
 						<div class="form-group">
 						<label for="user_tel">연락처</label>
-							<input type="text" class="form-control readonly" id="user_tel" name="user_tel"/>
+							<input type="text" class="form-control readonly" id="user_tel" name="user_tel"
+								maxlength="13"/>
 						</div>
 						<div class="form-group">
-						<label for="adopt_date">상담 예정 날짜</label>
-							<input type="text" class="form-control readonly" id="adopt_date" name="adopt_date"/>
+						<label for="adopt_date">상담 예정 날짜</label><br>
+							<input type="text" id="datepicker" name="adopt_date" placeholder="날짜를 선택해 주세요."/>
 						</div>
 						<div class="form-group">
-						<label for="adopt_time">상담 예정 시간</label>
-							<input type="text" class="form-control readonly" id="adopt_time" name="adopt_time"/>
+						<label for="adopt_time">상담 예정 시간&nbsp;</label>
+						<button type="button" class="btn btn-outline-danger btn-sm" id="btnCheckTime">
+							예약 가능 확인</button><span id="checkTimeResult"></span><br>
+							<select id="adopt_time" name="adopt_time">
+								<option value="10:00 ~ 11:00">10:00 ~ 11:00</option>
+								<option value="11:00 ~ 12:00">11:00 ~ 12:00</option>
+								<option value="13:00 ~ 14:00">13:00 ~ 14:00</option>
+								<option value="14:00 ~ 15:00">14:00 ~ 15:00</option>
+								<option value="15:00 ~ 16:00">15:00 ~ 16:00</option>
+							</select>
 						</div>
 						<div class="form-group">
 						<label for="form_title">제목</label>
@@ -85,10 +161,6 @@ $(document).ready(function() {
 						<label for="form_content">내용</label>
 							<textarea class="form-control readonly" id="form_content" name="form_content" 
 							placeholder="상담하실 동물의 일련번호를 남겨주세요" ></textarea>
-						</div>
-						<div class="form-group">
-						<label for="form_pw">비밀번호</label>
-							<input type="password" class="form-control readonly" id="form_pw" name="form_pw"/>
 						</div>
 						<button type="submit" class="btn btn-success">작성</button>
 						<a class="btn btn-info" href="/adopt/applyAdopt" style="margin-right:10px;">목록</a>

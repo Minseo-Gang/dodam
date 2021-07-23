@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp" %>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 $(document).ready(function() {
 	$("#btnModify").click(function() {
@@ -11,6 +15,19 @@ $(document).ready(function() {
 	
 	$("#btnDelete").click(function() {
 		location.href="/lostAnimal/reportDeleteRun?b_no=${lostVo.b_no}";
+	});
+	
+	$("#datepicker").datepicker({
+		showOn: "button",
+	    buttonImage: "/resources/img/calendar.gif",
+	    buttonImageOnly: true,
+	    buttonText: "Select date",
+		dateFormat: "yy/mm/dd",
+		monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	    dayNamesMin: ['일','월','화','수','목','금','토'],
+		changeMonth: true, //월 변경 가능
+	    changeYear: true, //년 변경 가능
+		showMonthAfterYear: true //년 뒤에 월 표시
 	});
 	
 });
@@ -86,8 +103,8 @@ $(document).ready(function() {
 						<input type="text" class="form-control" id="p_age" name="p_age" value="${lostVo.p_age}" readonly/>
 						</div>
 						<div class="form-group">
-						<label for="p_lostdate">실종 날짜</label>
-						<input type="text" class="form-control readonly" id="p_lostdate" name="p_lostdate" value="${lostVo.p_lostdate}" readonly/>
+						<label for="p_lostdate">실종 날짜</label><br>
+						<input type="text" class="readonly" id="datepicker" name="p_lostdate" value="${lostVo.p_lostdate}" readonly/>
 						</div>
 						<div class="form-group">
 						<label for="p_lostplace">실종 장소</label>

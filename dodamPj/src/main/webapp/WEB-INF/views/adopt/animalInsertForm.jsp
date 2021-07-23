@@ -2,6 +2,40 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp" %>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+$(document).ready(function() {
+	$("#datepicker").datepicker({
+		showOn: "button",
+	    buttonImage: "/resources/img/calendar.gif",
+	    buttonImageOnly: true,
+	    buttonText: "Select date",
+		dateFormat: "yy/mm/dd",
+		monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	    dayNamesMin: ['일','월','화','수','목','금','토'],
+		changeMonth: true, //월 변경 가능
+	    changeYear: true, //년 변경 가능
+		showMonthAfterYear: true //년 뒤에 월 표시
+	});
+	
+	$("#datepicker2").datepicker({
+		showOn: "button",
+	    buttonImage: "/resources/img/calendar.gif",
+	    buttonImageOnly: true,
+	    buttonText: "Select date",
+		dateFormat: "yy/mm/dd",
+		monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	    dayNamesMin: ['일','월','화','수','목','금','토'],
+		changeMonth: true, //월 변경 가능
+	    changeYear: true, //년 변경 가능
+		showMonthAfterYear: true //년 뒤에 월 표시
+	});
+});
+</script>
 
 <div class="container-fluid">
 	<div class="row">
@@ -62,12 +96,12 @@
 							<input type="text" class="form-control" id="ad_findplace" name="ad_findplace"/>
 						</div>
 						<div class="form-group">
-						<label for="ad_resqueday">구조일</label>
-							<input type="text" class="form-control" id="ad_resqueday" name="ad_resqueday"/>
+						<label for="ad_resqueday">구조일</label><br>
+							<input type="text" id="datepicker" name="ad_resqueday"/>
 						</div>
 						<div class="form-group">
-						<label for="ad_adoptpossible">입양가능일</label>
-							<input type="text" class="form-control" id="ad_adoptpossible" name="ad_adoptpossible"/>
+						<label for="ad_adoptpossible">입양가능일</label><br>
+							<input type="text" id="datepicker2" name="ad_adoptpossible"/>
 						</div>
 						<div class="form-group">
 						<label for="ad_adoptstate">입양상태</label><br>

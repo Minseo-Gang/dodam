@@ -87,12 +87,26 @@ public class AdoptDaoImpl implements AdoptDao {
 		sqlSession.insert(NAMESPACE + "insertApply", applyUserVo);
 	}
 	
+	// 입양 상담 시간 예약 중복 확인
+	@Override
+	public boolean checkDupTime(String adopt_date, String adopt_time) {
+		Map<String, String> map = new HashMap<>();
+		map.put("adopt_date", adopt_date);
+		map.put("adopt_time", adopt_time);
+		int count = sqlSession.selectOne(NAMESPACE + "checkDupTime", map);
+		if(count > 0) {
+			return true;
+		}
+		return false;
+	}
+	
 	// 입양 신청 목록
 	@Override
 	public List<ApplyUserVo> applyList(PagingDto pagingDto) {
 		List<ApplyUserVo> auList = sqlSession.selectList(NAMESPACE + "applyList", pagingDto);
 		return auList;
 	}
+	
 	
 	// 입양 신청 상세
 	@Override
@@ -126,5 +140,6 @@ public class AdoptDaoImpl implements AdoptDao {
 		int countApply = sqlSession.selectOne(NAMESPACE + "getCountApply", pagingDto);
 		return countApply;
 	}
+
 
 }

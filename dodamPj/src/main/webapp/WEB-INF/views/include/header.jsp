@@ -64,7 +64,6 @@
   <script src="/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="/resources/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
   <script src="https://kit.fontawesome.com/f08b10fb42.js" crossorigin="anonymous"></script>
-
   <!-- Template Main JS File -->
   <script src="/resources/js/main.js"></script>
 

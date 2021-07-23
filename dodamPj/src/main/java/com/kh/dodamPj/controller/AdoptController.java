@@ -116,6 +116,14 @@ public class AdoptController {
 		return "adopt/applyForm";
 	}
 	
+	// 입양 상담 신청서 작성시 상담 시간 중복 체크
+	@RequestMapping(value="/checkDupTime", method=RequestMethod.GET)
+	@ResponseBody
+	public String checkDupTime(String adopt_date, String adopt_time) throws Exception {
+		boolean result = adoptService.checkDupTime(adopt_date, adopt_time);
+		return String.valueOf(result);
+	}
+	
 	// 입양 신청 정보 전송
 	@RequestMapping(value="/insertApplyRun", method=RequestMethod.POST)
 	public String insertApplyRun(ApplyUserVo applyUserVo, RedirectAttributes rttr) throws Exception {

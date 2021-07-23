@@ -67,6 +67,12 @@ public class AdoptServiceImpl implements AdoptService {
 	public void insertApplyRun(ApplyUserVo applyUserVo) {
 		adoptDao.insertApply(applyUserVo);		
 	}
+	
+	// 입양 예약 신청시 예약 시간 중복 확인
+	@Override
+	public boolean checkDupTime(String adopt_date, String adopt_time) {
+		return adoptDao.checkDupTime(adopt_date, adopt_time);
+	}
 
 	// 입양 신청 목록
 	@Override
@@ -108,4 +114,5 @@ public class AdoptServiceImpl implements AdoptService {
 		return countApply;
 	}
 
+	
 }

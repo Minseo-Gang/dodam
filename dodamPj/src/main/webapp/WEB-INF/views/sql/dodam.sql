@@ -96,19 +96,15 @@ create table tbl_apply_user (
     user_name varchar2(20) not null,
     user_tel varchar2(10) not null,
     adopt_date varchar2(20) not null,
-    adopt_time varchar2(10) not null,
+    adopt_time varchar2(50) not null,
     form_title varchar2(50) not null,
-    form_content varchar2(1000) not null,
-    form_pw varchar2(20) not null
+    form_content varchar2(1000) not null
 );
 
 create sequence seq_apply_no;
 
 alter table tbl_apply_user
 add (ad_no number references tbl_adopt(ad_no));
-
-alter table tbl_apply_user
-modify user_tel varchar2(20);
 
 select * from tbl_apply_user;
 

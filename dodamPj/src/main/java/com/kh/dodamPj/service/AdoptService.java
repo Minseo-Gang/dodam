@@ -23,6 +23,8 @@ public interface AdoptService {
 	public void animalDeleteRun(int ad_no);
 	// 입양 신청서 작성
 	public void insertApplyRun(ApplyUserVo applyUserVo);
+	// 입양 상담 시간 중복 확인
+	public boolean checkDupTime(String adopt_date, String adopt_time);
 	// 입양 신청 목록
 	public List<ApplyUserVo> applyList(PagingDto pagingDto);
 	// 입양 신청 상세
