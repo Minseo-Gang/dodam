@@ -122,13 +122,14 @@ $(document).ready(function() {
 								<div class="col mb-5">
 									<div class="card h-100">
 										<!-- Product image-->
-										<img class="card-img-top" src="http://localhost/protect/displayImage?fileName=${animalVo.a_picture}" alt="..." />
+										<img class="card-img-top" style="height:160px; width:236.5px;" src="http://localhost/protect/displayImage?fileName=${animalVo.a_picture}" alt="..." />
 										<div class="card-body" style="padding:0px; margin-top:5px; margin-right:5px;">
 											<ul style="padding-left:30px;">
 												<li><span>품종 : </span>${animalVo.a_species}</li>
 												<li><span>성별 : </span>${animalVo.a_gender}</li>
 												<li><span>나이 : </span>${animalVo.a_age}</li>
 												<li><span>발견장소 : </span>${animalVo.a_findplace}</li>
+												<li><span>상태 : </span>${animalVo.a_state}</li>
 											</ul>
 										</div>
 										<!-- Product actions-->

@@ -36,6 +36,28 @@ $(document).ready(function() {
 		$("#frmPaging > input[name=page]").val("1");
 		$("#frmPaging").submit();
 	});
+	
+	$("#image").each(function() {
+		var maxWidth = 450;
+		var maxHeight = 300;
+		var ratio = 0;
+		var width = $(this).width();
+		var height = $(this).height();
+		// 현재 너비가 최대 너비보다 클 때
+		if(width > maxWidth) {
+			ratio = maxWidth / width;
+			$(this).css("width", maxWidth);
+			$(this).css("height", height * ratio);
+			height = height * ratio;
+		}
+		// 현재 높이가 최대 높이보다 클 때
+		if(height > maxHeight) {
+			ratio = maxHeight / height;
+			$(this).css("height", maxHeight);
+			$(this).css("width", width * ratio);
+			width = width * ratio;
+		}
+	});
 });
 </script>
 
@@ -124,7 +146,7 @@ $(document).ready(function() {
 						<c:forEach var="adoptVo" items="${adList}">
 							<div class="col mb-5">
 								<div class="card h-100">
-									<a href="/adopt/animalCont?ad_no=${adoptVo.ad_no}"><img class="card-img-top" src="http://localhost/adopt/displayImage?fileName=${adoptVo.ad_picture}" alt="..." /></a>
+									<a href="/adopt/animalCont?ad_no=${adoptVo.ad_no}"><img class="card-img-top" style="height:180px; width:236.5px;" src="http://localhost/adopt/displayImage?fileName=${adoptVo.ad_picture}" alt="..." /></a>
 									<div class="card-body" style="padding:0px; margin-top:5px; margin-right:5px;">
 										<ul style="padding-left:30px;">
 											<li><span>일련번호 : </span>${adoptVo.ad_no}</li>
