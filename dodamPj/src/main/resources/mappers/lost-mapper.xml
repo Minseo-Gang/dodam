@@ -19,10 +19,11 @@
   		<insert id="insertReport">
   			insert into tbl_lost
   					(b_no, b_title, user_name, user_tel, user_email, p_name, p_species, p_age, p_gender, p_lostdate, 
-  					p_lostplace, p_character, p_picture)
+  					p_lostplace, p_character, p_picture, user_id)
   			values (#{b_no}, #{b_title}, #{user_name}, #{user_tel}, #{user_email, jdbcType=VARCHAR}, 
   					#{p_name}, #{p_species}, #{p_age}, #{p_gender}, 
-  					#{p_lostdate}, #{p_lostplace}, #{p_character, jdbcType=VARCHAR}, #{p_picture, jdbcType=VARCHAR})
+  					#{p_lostdate}, #{p_lostplace}, #{p_character, jdbcType=VARCHAR}, #{p_picture, jdbcType=VARCHAR},
+  					#{user_id})
   		</insert>
   		
   		<!-- 첨부파일 추가 -->

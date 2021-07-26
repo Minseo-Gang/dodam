@@ -9,7 +9,7 @@
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
 		<java-version>1.8</java-version>
-		<org.springframework-version>4.1.7.RELEASE</org.springframework-version>
+		<org.springframework-version>4.3.2.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -42,13 +42,19 @@
     <groupId>com.fasterxml.jackson.core</groupId>
     <artifactId>jackson-databind</artifactId>
     <version>2.5.4</version>
-</dependency>	
-	
-<!-- spring-jdbc -->
+</dependency>
+
+ <!-- spring-jdbc -->
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-jdbc</artifactId>
+	<version>${org.springframework-version}</version>
+</dependency>
+
 <dependency>
     <groupId>org.springframework</groupId>
-    <artifactId>spring-jdbc</artifactId>
-    <version>4.1.7.RELEASE</version>
+    <artifactId>spring-context</artifactId>
+    <version>3.1.1.RELEASE</version>
 </dependency>
 	
 <!-- mybatis -->
@@ -72,12 +78,13 @@
     <version>1.16</version>
 </dependency>
 
+
 <!-- spring-test -->
 <dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-test</artifactId>
-    <version>4.1.7.RELEASE</version>
-    <scope>test</scope>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-test</artifactId>
+	<version>${org.springframework-version}</version>
+	<scope>test</scope>
 </dependency>
 
 <!-- ojdbc6 -->
@@ -97,9 +104,9 @@
 
 <!-- spring-aop -->
 <dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-aop</artifactId>
-    <version>4.1.7.RELEASE</version>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-aop</artifactId>
+	<version>${org.springframework-version}</version>
 </dependency>
 
 <!-- aspectjrt -->
@@ -111,9 +118,9 @@
 
 <!-- spring-tx -->
 <dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-tx</artifactId>
-    <version>4.1.7.RELEASE</version>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-tx</artifactId>
+	<version>${org.springframework-version}</version>
 </dependency>
 
 <!-- 파일 업로드 -->
@@ -137,6 +144,40 @@
 	<groupId>com.twelvemonkeys.imageio</groupId>
 	<artifactId>imageio-jpeg</artifactId>
 	<version>3.3.1</version>
+</dependency>
+
+<!-- 메일전송 -->
+<!-- javax.mail -->
+<dependency>
+	<groupId>com.sun.mail</groupId>
+	<artifactId>javax.mail</artifactId>
+	<version>1.5.6</version>
+</dependency>
+		
+<!-- spring-context-support -->
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-context-support</artifactId>
+	<version>4.3.20.RELEASE</version>
+</dependency>
+	
+<!-- 비밀번호 암호화 -->
+<dependency>
+	<groupId>org.springframework.security</groupId>
+	<artifactId>spring-security-web</artifactId>
+	<version>4.1.3.RELEASE</version>
+</dependency>
+
+<dependency>
+	<groupId>org.springframework.security</groupId>
+	<artifactId>spring-security-config</artifactId>
+	<version>4.1.3.RELEASE</version>
+</dependency>
+
+<dependency>
+	<groupId>org.springframework.security</groupId>
+	<artifactId>spring-security-taglibs</artifactId>
+	<version>4.1.3.RELEASE</version>
 </dependency>
 
 		<!-- Spring -->

@@ -68,13 +68,7 @@ $(document).ready(function() {
 	<div class="col-md-10">
 		<h2>입양 신청 및 상담 시간 조회</h2>
 		<hr/>
-		<ul style="list-style:none;">
-			<li style="color:red;"><strong>※ 입양절차 안내</strong></li>
-			<li><strong>① 공고 확인</strong> : 홈페이지에서 보호중인 아이들을 확인 후 상담 예약서를 작성합니다.</li>
-			<li><strong>② 방문 상담</strong> : 보호중인 아이들은 수시로 입양되기 때문에 예약날짜에 직접 방문하여 관리사와 상담합니다.</li>
-			<li><strong>③ 아이와의 만남</strong> : 관리사와 상담 후, 보호중인 아이와 만납니다.</li>
-			<li><strong>④ 책임분양 계약서 작성</strong> : 전문가와의 상담으로 입양을 신중히 결정 후 책임분양계약서를 작성합니다.</li>
-		</ul>
+		<img src="/resources/img/adoptInfoBanner.jpg"/>
 		<br>
 		
 		<!-- 검색기능 -->

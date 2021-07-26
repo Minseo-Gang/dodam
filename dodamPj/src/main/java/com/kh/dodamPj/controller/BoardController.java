@@ -25,7 +25,7 @@ public class BoardController {
 	public String freeBoard(Model model, PagingDto pagingDto) throws Exception { // 자유게시판
 		int count = boardSerivce.getCount(pagingDto);
 		pagingDto.setCount(count);
-		List<BoardVo> list = boardSerivce.freeBoard(); 
+		List<BoardVo> list = boardSerivce.freeBoard(pagingDto); 
 		model.addAttribute("list", list);
 		model.addAttribute("pagingDto", pagingDto);
 		return "board/freeBoard";

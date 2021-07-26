@@ -136,9 +136,7 @@ $(document).ready(function() {
 										<div class="card-footer pt-0 border-top-0 bg-transparent">
 											<div class="text-center">
 												<a class="btn btn-outline-dark mt-auto" style="margin-bottom:2px;"
-													href="/protect/protectAnimalCont?a_no=${animalVo.a_no}">자세히보기</a><br>
-												<a class="btn btn-sm btn-outline-info" href="/protect/protectAnimalModiForm?a_no=${animalVo.a_no}">수정</a>
-												<a class="btn btn-sm btn-outline-danger" href="/protect/deleteAnimalRun?a_no=${animalVo.a_no}">삭제</a>
+													href="/protect/protectAnimalCont?a_no=${animalVo.a_no}">자세히보기</a><br>		
 											</div>
 										</div>
 									</div>
@@ -149,7 +147,6 @@ $(document).ready(function() {
 					</section>
 				</div>
 			</div>
-			<a class="btn btn-primary" href="/protect/protectAnimalForm">+ 새 동물</a>
 		</div>
 		
 		<!-- 페이징 -->

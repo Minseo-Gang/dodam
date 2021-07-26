@@ -36,28 +36,7 @@ $(document).ready(function() {
 		$("#frmPaging > input[name=page]").val("1");
 		$("#frmPaging").submit();
 	});
-	
-	$("#image").each(function() {
-		var maxWidth = 450;
-		var maxHeight = 300;
-		var ratio = 0;
-		var width = $(this).width();
-		var height = $(this).height();
-		// 현재 너비가 최대 너비보다 클 때
-		if(width > maxWidth) {
-			ratio = maxWidth / width;
-			$(this).css("width", maxWidth);
-			$(this).css("height", height * ratio);
-			height = height * ratio;
-		}
-		// 현재 높이가 최대 높이보다 클 때
-		if(height > maxHeight) {
-			ratio = maxHeight / height;
-			$(this).css("height", maxHeight);
-			$(this).css("width", width * ratio);
-			width = width * ratio;
-		}
-	});
+
 });
 </script>
 
@@ -92,6 +71,7 @@ $(document).ready(function() {
 	<div class="col-md-10" style="margin-bottom:0px;">
 		<h2>입양 신청</h2>
 		<hr/>
+		<img src="/resources/img/adoptInfoBanner.jpg"/>
 		<ul>
 			<li>상담 예약 버튼을 눌려 입양 상담 예약이 가능하며, 예약 내용 확인은 '입양 신청 조회'에서 가능합니다.</li>
 			<li>품종, 종류, 나이, 성별, 입양상태에 따라 검색이 가능합니다.</li>
@@ -160,8 +140,6 @@ $(document).ready(function() {
 										<div class="text-center">
 										<a class="btn btn-outline-dark mt-auto" style="margin-bottom:2px;"
 											href="/adopt/applyForm?ad_no=${adoptVo.ad_no}">상담 예약</a><br>
-											<a class="btn btn-sm btn-outline-warning" href="/adopt/animalModiForm?ad_no=${adoptVo.ad_no}">수정</a>
-											<a class="btn btn-sm btn-outline-danger" href="/adopt/animalDeleteRun?ad_no=${adoptVo.ad_no}">삭제</a>
 										</div>
 									</div>
 								</div>
@@ -172,7 +150,6 @@ $(document).ready(function() {
 				</section>
 			</div>
 		</div>
-		<a class="btn btn-primary" href="/adopt/animalInsertForm">+ 새 동물</a>
 		</div>
 		
 		<!-- 페이징 -->

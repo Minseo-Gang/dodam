@@ -29,8 +29,7 @@ body {
 	font-family: 'Noto Sans KR';
 }
 
-table, tr, td, th, div, p, em, ol, ul, li, dl, dt, dd, a, address, img,
-	h1, h2, h3, h4, h5, h6 {
+table, tr, td, th, div {
 	font-size: 11pt;
 	color: #666;
 	text-decoration: none;
@@ -631,10 +630,6 @@ ul {
 							<td><input type="password" id="admin_pw" name="admin_pw"
 								placeholder="비밀번호를 입력해주세요."></td>
 						</tr>
-						
-						
-						
-						
 					</tbody>
 				</table>
 				

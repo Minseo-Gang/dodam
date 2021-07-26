@@ -20,18 +20,28 @@ public class LostVo {
 	private String p_character;
 	private String[] files;
 	private String p_picture;
+	private String user_id;
 	
 	public LostVo() {
 		super();
 	}
 
-	public LostVo(int b_no, String b_title, String user_name, Timestamp write_date, int b_viewcnt) {
+	public LostVo(int b_no, String b_title, String user_name, String user_id, Timestamp write_date, int b_viewcnt) {
 		super();
 		this.b_no = b_no;
+		this.user_id = user_id;
 		this.b_title = b_title;
 		this.user_name = user_name;
 		this.write_date = write_date;
 		this.b_viewcnt = b_viewcnt;
+	}
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
 	public int getB_no() {
@@ -168,7 +178,7 @@ public class LostVo {
 				+ user_email + ", user_tel=" + user_tel + ", write_date=" + write_date + ", b_viewcnt=" + b_viewcnt
 				+ ", p_name=" + p_name + ", p_species=" + p_species + ", p_age=" + p_age + ", p_gender=" + p_gender
 				+ ", p_lostdate=" + p_lostdate + ", p_lostplace=" + p_lostplace + ", p_character=" + p_character
-				+ ", files=" + Arrays.toString(files) + ", p_picture=" + p_picture + "]";
-	}
+				+ ", files=" + Arrays.toString(files) + ", p_picture=" + p_picture + ", user_id=" + user_id + "]";
+	}	
 	
 }

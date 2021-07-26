@@ -76,22 +76,31 @@ $(document).ready(function() {
 			<div class="row">
 				<div class="col-md-12">
 					<form role="form" action="/lostAnimal/reportRun" method="post" id="frmWrite" enctype="multipart/form-data">
+					<c:choose>
+						<c:when test="${empty sessionScope.loginVo}">
+						</c:when>
+						<c:otherwise>
 						<div class="form-group">
 						<label for="b_title">제목</label>
 						<input type="text" class="form-control" id="b_title" name="b_title"/>
 						</div>
 						<div class="form-group">
 						<label for="user_name">작성자</label>
-						<input type="text" class="form-control" id="user_name" name="user_name"/>
+						<input type="text" class="form-control" id="user_name" name="user_name" 
+							value="${sessionScope.loginVo.user_name}" readonly/>
 						</div>
 						<div class="form-group">
 						<label for="user_tel">연락처</label>
-						<input type="text" class="form-control" id="user_tel" name="user_tel" maxlength="13"/>
+						<input type="text" class="form-control" id="user_tel" name="user_tel" maxlength="13"
+							value="${sessionScope.loginVo.phoneNum}"/>
 						</div>
 						<div class="form-group">
 						<label for="user_email">e-mail</label>
-						<input type="text" class="form-control" id="user_email" name="user_email"/>
+						<input type="text" class="form-control" id="user_email" name="user_email"
+							value="${sessionScope.loginVo.user_email}"/>
 						</div>
+						</c:otherwise>
+					</c:choose>
 						<div class="form-group">
 						<label for="p_name">동물 이름</label>
 						<input type="text" class="form-control" id="p_name" name="p_name"/>

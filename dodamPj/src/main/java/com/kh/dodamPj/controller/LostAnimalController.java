@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import com.kh.dodamPj.service.LostService;
 import com.kh.dodamPj.util.AnimalFileUploadUtil;
 import com.kh.dodamPj.vo.AnimalVo;
 import com.kh.dodamPj.vo.LostVo;
+import com.kh.dodamPj.vo.MemberVo;
 import com.kh.dodamPj.vo.PagingDto;
 
 @Controller
@@ -54,10 +56,12 @@ public class LostAnimalController {
 	
 	// 신고서 작성 내용 전송
 	@RequestMapping(value="/reportRun", method=RequestMethod.POST)
-	public String reportRun(LostVo lostVo, MultipartFile file, RedirectAttributes rttr) throws Exception {
+	public String reportRun(LostVo lostVo, MultipartFile file, RedirectAttributes rttr, HttpSession session) throws Exception {
 		String orgFileName = file.getOriginalFilename();
 		String filePath = AnimalFileUploadUtil.uploadFile("E:/upload", orgFileName, file.getBytes());
 		lostVo.setP_picture(filePath);
+		MemberVo memberVo = (MemberVo)session.getAttribute("loginVo");
+		lostVo.setUser_id(memberVo.getUser_id());
 		lostService.reportRun(lostVo);
 		rttr.addFlashAttribute("result", "success");
 		return "redirect:/lostAnimal/reportList";
@@ -65,9 +69,10 @@ public class LostAnimalController {
 	
 	// 신고서 상세 내용 확인
 	@RequestMapping(value="/reportContent", method=RequestMethod.GET)
-	public String reportContent(PagingDto pagingDto, Model model, int b_no) throws Exception {
+	public String reportContent(PagingDto pagingDto, Model model, int b_no, HttpSession session) throws Exception {
 		LostVo lostVo = lostService.reportContent(b_no);
 		model.addAttribute("lostVo", lostVo);
+		MemberVo memberVo = (MemberVo)session.getAttribute("loginVo");
 		return "lostAnimal/reportContent";
 	}
 	
@@ -105,10 +110,4 @@ public class LostAnimalController {
 		return bytes;
 	}
 	
-	@RequestMapping(value="/deleteFile", method=RequestMethod.GET)
-	@ResponseBody
-	public String deleteFile(String fileName) throws Exception {
-		AnimalFileUploadUtil.deleteFile(fileName);
-		return "success";
-	}
 }

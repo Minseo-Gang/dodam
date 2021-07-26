@@ -68,6 +68,7 @@ $(document).ready(function() {
 				<div class="col-md-12">
 					<form role="form" action="/lostAnimal/reportModifyRun" method="post">
 					<input type="hidden" name="b_no" value="${lostVo.b_no}">
+					<input type="hidden" name="user_id" value="${lostVo.user_id}">
 						<div class="form-group">
 						<label for="b_title">제목</label>
 						<input type="text" class="form-control readonly" id="b_title" name="b_title" value="${lostVo.b_title}" readonly/>
@@ -117,11 +118,13 @@ $(document).ready(function() {
 						<p><img style="height: 100px;" src="http://localhost/lostAnimal/displayImage?fileName=${lostVo.p_picture}" /></p>
 						
 						<a class="btn btn-info" href="/lostAnimal/reportList" style="margin-right:10px;">목록</a>
-						<button type="button" class="btn btn-warning" style="margin-right:10px;"
-						 		id="btnModify">수정</button>
-						<button type="submit" class="btn btn-success" style="margin-right:10px; display: none;"
-								id="btnModifyDone">수정완료</button>
-						<button type="button" class="btn btn-danger" id="btnDelete">삭제</button>
+						<c:if test="${loginVo.user_id == lostVo.user_id}">
+							<button type="button" class="btn btn-warning" style="margin-right:10px;"
+						 			id="btnModify">수정</button>
+							<button type="submit" class="btn btn-success" style="margin-right:10px; display: none;"
+									id="btnModifyDone">수정완료</button>
+							<button type="button" class="btn btn-danger" id="btnDelete">삭제</button>
+						</c:if>
 					</form>
 				</div>
 			</div>			

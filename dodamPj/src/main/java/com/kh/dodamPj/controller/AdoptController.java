@@ -46,23 +46,6 @@ public class AdoptController {
 		return "adopt/applyAdopt";
 	}
 	
-	// 입양 동물 등록 페이지(관리자 전용)
-	@RequestMapping(value="/animalInsertForm", method=RequestMethod.GET)
-	public String animalInsertForm() throws Exception {
-		return "adopt/animalInsertForm";
-	}
-	
-	// 입양 동물 등록 정보 전송(관리자 전용)
-	@RequestMapping(value="/animalInsertRun", method=RequestMethod.POST)
-	public String animalInsertRun(AdoptVo adoptVo, MultipartFile file, RedirectAttributes rttr) throws Exception {
-		String orgFileName = file.getOriginalFilename();
-		String filePath = AnimalFileUploadUtil.uploadFile("E:/upload", orgFileName, file.getBytes());
-		adoptVo.setAd_picture(filePath);
-		adoptService.animalInsertRun(adoptVo);
-		rttr.addFlashAttribute("result", "success");
-		return "redirect:/adopt/applyAdopt";
-	}
-	
 	// 입양 동물 상세정보 페이지
 	@RequestMapping(value="/animalCont", method=RequestMethod.GET)
 	public String animalCont(A_PagingDto aPagingDto, Model model, int ad_no) throws Exception {
@@ -71,31 +54,7 @@ public class AdoptController {
 		model.addAttribute("adoptVo", adoptVo);
 		return "adopt/animalCont";
 	}
-	
-	// 입양 동물 수정 페이지
-	@RequestMapping(value="/animalModiForm", method=RequestMethod.GET)
-	public String animalModiForm(Model model, int ad_no) throws Exception {
-		AdoptVo adoptVo = adoptService.animalCont(ad_no);
-		model.addAttribute("adoptVo", adoptVo);
-		return "adopt/animalModiForm";
-	}
-	
-	// 입양 동물 수정 정보 전송
-	@RequestMapping(value="/animalModifyRun", method=RequestMethod.POST)
-	public String animalModifyRun(AdoptVo adoptVo, RedirectAttributes rttr) throws Exception {
-		adoptService.animalModifyRun(adoptVo);
-		rttr.addFlashAttribute("result", "success");
-		return "redirect:/adopt/applyAdopt";
-	}
-	
-	// 입양 동물 정보 삭제
-	@RequestMapping(value="/animalDeleteRun", method=RequestMethod.GET)
-	public String animalDeleteRun(int ad_no, RedirectAttributes rttr) throws Exception {
-		adoptService.animalDeleteRun(ad_no);
-		rttr.addFlashAttribute("result", "success");
-		return "redirect:/adopt/applyAdopt";
-	}
-	
+
 	// 입양 예약 목록 페이지
 	@RequestMapping(value="/applyList", method=RequestMethod.GET)
 	public String applyList(Model model, PagingDto pagingDto) throws Exception {

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!--      관리자용 헤더  -->
 <!DOCTYPE html>
 <html lang="kor">
 
@@ -14,7 +13,7 @@ border-bottom: 1px solid black;
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>도담 동물 보호 센터 (관리자)</title>
+  <title>도담 동물 보호 센터</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -61,7 +60,8 @@ border-bottom: 1px solid black;
 </head>
 
 <body>
-<div id="topbar" class="d-none d-lg-flex align-items-center">
+
+ <div id="topbar" class="d-none d-lg-flex align-items-center">
 			<div class="container d-flex">
 				<div class="contact-info mr-auto"></div>
 				<div class="social-links">
@@ -79,7 +79,7 @@ border-bottom: 1px solid black;
   <header id="header">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="/admin/adminPage"><i class="fas fa-paw"></i> DoDam (관리자)</a></h1>
+      <h1 class="logo mr-auto"><a href="/admin/adminPage"><i class="fas fa-paw"></i>DoDam(관리자)</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -93,29 +93,29 @@ border-bottom: 1px solid black;
               
             </ul>
           </li>
-          <li class="drop-down"><a href="">유실/유기동물  관리</a>
+         	<li class="drop-down"><a href="#">유실/유기동물 관리</a>
             <ul>
-              <li><a href="#">- 반려동물 등록</a></li>
-              <li><a href="#">- 반려동물 목록</a></li>
-              <li><a href="#">- 반려동물 수정</a></li>           
+				<li><a href="/admin/protectAnimalForm">- 보호동물 등록</a></li>
+				<li><a href="/admin/adminProtectList">- 보호동물 관리</a></li>
+            </ul>
+         	</li>
+          <li class="drop-down"><a href="/admin/adminReservation_status">봉사활동  관리</a>
+            <ul>
+              <li><a href="/admin/adminReservation_status">- 봉사활동 신청 현황</a></li>
+              <li><a href="/volunteer/volunReservList">- 봉사활동 조회</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="">봉사활동  관리</a>
+          <li class="drop-down"><a href="#">입양 관리</a>
             <ul>
-              <li><a href="#">- 봉사활동 신청 현황</a></li>
-              <li><a href="#">- 봉사활동 조회</a></li>
+              <li><a href="/admin/adoptList">- 입양 동물 목록 관리</a></li>
+              <li><a href="/admin/animalInsertForm">- 입양 동물 등록</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="">입양 관리  관리</a>
-            <ul>
-              <li><a href="#">- 입양 승인</a></li>
-              <li><a href="#">- 반려동물 등록</a></li>
-              <li><a href="#">- 입양 안내 관리</a></li>
-         
-            </ul>
+           <li class="drop-down"><a href="/admin/adminFreeBoard">자유 게시판 관리</a>
           </li>
 
         </ul>
       </nav><!-- .nav-menu -->
     </div>
   </header><!-- End Header -->
+  

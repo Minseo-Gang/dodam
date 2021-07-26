@@ -15,7 +15,7 @@ public interface BoardDao {
 	// 삭제
 	public void deleteArticle(int b_no);
 	// 자유게시판
-	public List<BoardVo> freeBoard();
+	public List<BoardVo> freeBoard(PagingDto pagingDto);
 	// 페이징
 	public int getCount(PagingDto pagingDto);
 	// 댓글수 변경
