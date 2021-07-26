@@ -14,6 +14,17 @@ $(document).ready(function() {
 		frmPaging.submit();
 	});
 	
+	// 글제목  (10개)
+	$(".a_title").click(function(e) {
+		e.preventDefault(); // prevent:막다, 방지하다, default: 기본
+		// $(this) -> 10개 중에서 클릭한 .a_title
+		// attr: attribute(속성)
+		var b_no = $(this).attr("data-bno"); // 489
+		$("#frmPaging > input[name=b_no]").val(b_no);
+		$("#frmPaging").attr("action", "/board/freeBoard");
+		$("#frmPaging").submit();
+	});
+	
 	// 검색 옵션 선택
 	$(".searchType").click(function(e) {
 		e.preventDefault();
@@ -52,7 +63,7 @@ $(document).ready(function() {
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<img style="margin-top:10px; text-align:center;" src="/resources/img/banner.jpg">
+			<img style="margin-top:10px; text-align:center;" src="/resources/img/communityBanner.jpg">
 		</div>
 	</div>
 		<div class="row">
@@ -65,8 +76,8 @@ $(document).ready(function() {
 					<span id="spanSearchType" style="color:#336699; font-weight:bold;">
 					<c:choose>
 						<c:when test="${pagingDto.searchType == 't'}">제목</c:when>
-						<c:when test="${pagingDto.searchType == 'tc'}">제목+내용</c:when>
 						<c:when test="${pagingDto.searchType == 'u'}">작성자</c:when>
+						<c:when test="${pagingDto.searchType == 'tc'}">제목+내용</c:when>
 					</c:choose>
 					</span>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -107,11 +118,12 @@ $(document).ready(function() {
 		                	<a class="list-group-item" style="background-color:#CCF2F4;">
 		                		<strong><i class="fas fa-paw"></i> 커뮤니티</strong></a>
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/board/freeBoard">- 자유게시판</a>
-		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/board/newsBoard">- 동물 정보/뉴스</a>
-		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">- 고객센터</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/newsboard/newsBoard">- 동물 정보/뉴스</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/customerboard/customerBoard">- 고객센터</a>
 		                </div>
 		            </div>
 				</div>
+				<!-- 목록 -->
 				<div class="col-md-10">
 				<h1>자유게시판</h1>
 					<table class="table">
@@ -128,7 +140,7 @@ $(document).ready(function() {
 						<c:forEach var="boardVo" items="${list}">
 							<tr>
 								<td>${boardVo.b_no}</td>
-								<td><a href="/board/content?b_no=${boardVo.b_no}">${boardVo.b_title}</a></td>
+								<td><a class="b_title" href="/board/content?b_no=${boardVo.b_no}" data-bno="${boardVo.b_no}">${boardVo.b_title}</a></td>
 								<td>${boardVo.user_id}</td>
 								<td>${boardVo.b_regdate}</td>
 								<td>${boardVo.b_count}</td>

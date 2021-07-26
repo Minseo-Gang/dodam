@@ -1,8 +1,6 @@
 package com.kh.dodamPj.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -23,7 +21,8 @@ public class VolunteerDaoImpl implements VolunteerDao {
 	@Override
 	public List<VolunteerVo> volunReservList(PagingDto pagingDto) {
 		List<VolunteerVo> list = 
-				sqlSession.selectList(NAMESPACE + "volunReservList", pagingDto);
+			sqlSession.selectList(NAMESPACE + "volunReservList", pagingDto);
+		System.out.println("dao실행");
 		return list;
 	}
 
@@ -40,27 +39,10 @@ public class VolunteerDaoImpl implements VolunteerDao {
 	}
 
 	@Override
-	public boolean checkDateAndTime(VolunteerVo volunteerVo) {
-		int count = sqlSession.selectOne(NAMESPACE + "checkDateAndTime", volunteerVo);
-		System.out.println("count : " + count);
-		if(count > 0) {
-			return true;
-		}
-		return false;
+	public void resultInsert(VolunteerVo volunteer) {
+		sqlSession.update(NAMESPACE+"resultUpdate", volunteer);
+		
 	}
 
-//	@Override
-//	public boolean checkDateAndTime(VolunteerVo volunteerVo) {
-////		Map<String, String> map = new HashMap<>();
-////		map.put("v_date", v_date);
-////		map.put("v_time", v_time);
-//		VolunteerVo volunteerVo = new VolunteerVo(v_place, v_time, v_date);
-//		
-//		int count = sqlSession.selectOne(NAMESPACE + "checkDateAndTime", volunteerVo);
-//		if(count > 0) {
-//			return true;
-//		}
-//		return false;
-//	}
 
 }

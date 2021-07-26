@@ -8,19 +8,21 @@ public class CommentVo {
 	private String user_id;
 	private String c_content;
 	private Timestamp c_regdate;
+	private int ab_no;
 	
 	public CommentVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public CommentVo(int c_no, int b_no, String user_id, String c_content, Timestamp c_regdate) {
+	public CommentVo(int c_no, int b_no, String user_id, String c_content, Timestamp c_regdate, int ab_no) {
 		super();
 		this.c_no = c_no;
 		this.b_no = b_no;
 		this.user_id = user_id;
 		this.c_content = c_content;
 		this.c_regdate = c_regdate;
+		this.ab_no = ab_no;
 	}
 
 	public int getC_no() {
@@ -62,12 +64,19 @@ public class CommentVo {
 	public void setC_regdate(Timestamp c_regdate) {
 		this.c_regdate = c_regdate;
 	}
+	
+	public int getAb_no() {
+		return ab_no;
+	}
+
+	public void setAb_no(int ab_no) {
+		this.ab_no = ab_no;
+	}
 
 	@Override
 	public String toString() {
 		return "CommentVo [c_no=" + c_no + ", b_no=" + b_no + ", user_id=" + user_id + ", c_content=" + c_content
-				+ ", c_regdate=" + c_regdate + "]";
+				+ ", c_regdate=" + c_regdate + ", ab_no=" + ab_no + "]";
 	}
-	
 	
 }

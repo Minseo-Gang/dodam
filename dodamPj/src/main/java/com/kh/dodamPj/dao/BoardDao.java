@@ -15,11 +15,16 @@ public interface BoardDao {
 	// 삭제
 	public void deleteArticle(int b_no);
 	// 자유게시판
-	public List<BoardVo> freeBoard();
+	public List<BoardVo> freeBoard(PagingDto pagingDto);
 	// 페이징
 	public int getCount(PagingDto pagingDto);
 	// 댓글수 변경
 	public void updateCommentCnt(int b_no, int count);
 	// 조회수 증가
 	public void updateViewCnt(int b_no);
+	// 게시글 삭제 시 댓글 삭제
+	public void commentDeleteArticle(int b_no);
+	
+	// 동물게시판 댓글수 변경
+	public void animalUpdateCommentCnt(int ab_no, int count);
 }

@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.kh.dodamPj.dao.VolunteerDao;
-import com.kh.dodamPj.vo.MemberVo;
 import com.kh.dodamPj.vo.PagingDto;
 import com.kh.dodamPj.vo.VolunteerVo;
 
@@ -34,16 +33,12 @@ public class VolunteerServiceImpl implements VolunteerService {
 		return count;
 	}
 
-	@Override
-	public boolean checkDateAndTime(VolunteerVo volunteerVo) {
-		System.out.println("checkService...");
-		return volunteerDao.checkDateAndTime(volunteerVo);
-	}
 
-//	@Override
-//	public boolean checkDateAndTime(String v_date, String v_time) {
-//		return volunteerDao.checkDateAndTime(v_date, v_time, String v_place);
-//	}
+	@Override
+	public void resultInsert(VolunteerVo volunteer) {
+		volunteerDao.resultInsert(volunteer);
+		
+	}
 	
 	
 

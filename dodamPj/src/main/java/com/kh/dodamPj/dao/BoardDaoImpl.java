@@ -28,8 +28,8 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public List<BoardVo> freeBoard() {
-		List<BoardVo> list = sqlSession.selectList(NAMESPACE + "freeBoard");
+	public List<BoardVo> freeBoard(PagingDto pagingDto) {
+		List<BoardVo> list = sqlSession.selectList(NAMESPACE + "freeBoard", pagingDto);
 		return list;
 	}
 
@@ -52,6 +52,8 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public int getCount(PagingDto pagingDto) {
 		int count = sqlSession.selectOne(NAMESPACE + "getCount", pagingDto);
+		String key = pagingDto.getKeyword();
+		System.out.println("keyDao: "+ key);
 		return count;
 	}
 
@@ -68,4 +70,17 @@ public class BoardDaoImpl implements BoardDao {
 		sqlSession.update(NAMESPACE + "updateViewCnt", b_no);
 	}
 
+	@Override
+	public void animalUpdateCommentCnt(int ab_no, int count) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("ab_no", ab_no);
+		map.put("count", count);
+		sqlSession.update(NAMESPACE + "animalUpdateCommentCnt", map);
+	}
+
+	@Override
+	public void commentDeleteArticle(int b_no) {
+		sqlSession.delete(NAMESPACE + "commentDeleteArticle", b_no);
+	}
+	
 }

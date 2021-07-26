@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 배너 -->
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<img style="margin-top:10px; text-align:center;" src="/resources/img/banner.jpg">
+			<img style="margin-top:10px; text-align:center;" src="/resources/img/communityBanner.jpg">
 		</div>
 	</div>
 	
@@ -40,7 +40,6 @@
                              <button class="btn btn-default" type="button" id="btnSearch">
                                  <i class="fas fa-search fa-sm"></i>
                              </button>
-                             <a class="btn btn-primary" href="/board/writeForm">글쓰기</a>
                          </div>
                      </div>
                  </form>
@@ -56,8 +55,8 @@
 		                	<a class="list-group-item" style="background-color:#CCF2F4;">
 		                		<strong><i class="fas fa-paw"></i> 커뮤니티</strong></a>
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/board/freeBoard">- 자유게시판</a>
-		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/board/newsBoard">- 동물 정보/뉴스</a>
-		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">- 고객센터</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/newsboard/newsBoard">- 동물 정보/뉴스</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/customerboard/customerBoard">- 고객센터</a>
 		                </div>
 		            </div>
 				</div>
@@ -71,19 +70,15 @@
 							<tr>
 								<th>번호</th>
 								<th>제목</th>
-								<th>작성자</th>
-								<th>날짜</th>
 								<th>조회수</th>
 							</tr>
 						</thead>
 						<tbody>
-						<c:forEach var="boardVo" items="${list}">
+						<c:forEach var="newsBoardVo" items="${list}">
 							<tr>
-								<td>${boardVo.b_no}</td>
-								<td><a href="/board/content?b_no=${boardVo.b_no}">${boardVo.b_title}</a></td>
-								<td>${boardVo.user_id}</td>
-								<td>${boardVo.b_regdate}</td>
-								<td>${boardVo.b_count}</td>
+								<td>${newsBoardVo.ab_no}</td>
+								<td><a class="ab_title" href="/newsboard/content?ab_no=${newsBoardVo.ab_no}" data-bno="${newsBoardVo.ab_no}">${newsBoardVo.ab_title}</a></td>
+								<td>${newsBoardVo.ab_count}</td>
 							</tr>
 						</c:forEach>
 						</tbody>
