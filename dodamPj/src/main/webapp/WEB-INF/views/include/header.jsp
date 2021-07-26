@@ -6,10 +6,26 @@
 
 <head>
 <style>
-	.inline{
-border-bottom: 1px solid black;
+.inline {
+	border-bottom: 1px solid black;
 }
 </style>
+
+<style type="text/css">
+	table {
+
+	.ck ck-editor{
+		max-width: 500px;
+		overflow: scroll;
+	}
+	
+	.ck-editor__editable{
+		min-height: 500px;
+		max-height: 500px;
+		overflow: scroll;
+	}
+</style>
+
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -47,7 +63,6 @@ border-bottom: 1px solid black;
   <script src="/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="/resources/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
   <script src="https://kit.fontawesome.com/f08b10fb42.js" crossorigin="anonymous"></script>
-
   <!-- Template Main JS File -->
   <script src="/resources/js/main.js"></script>
 
@@ -57,22 +72,6 @@ border-bottom: 1px solid black;
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  
-  <!-- ckeditor -->
-  <style type="text/css">
-	table {
-
-	.ck ck-editor{
-		max-width: 500px;
-		overflow: scroll;
-	}
-	
-	.ck-editor__editable{
-		min-height: 500px;
-		max-height: 500px;
-		overflow: scroll;
-	}
-</style>
 </head>
 
 <body>
@@ -85,6 +84,7 @@ border-bottom: 1px solid black;
 			<div class="container d-flex">
 				<div class="contact-info mr-auto"></div>
 				<div class="social-links">
+					<a href="/admin/adminPage" class="moveAdmin">관리자 페이지로 이동</a>
 					<a href="/user/memberLogin" class="login">로그인</a> 
 					<a href="/user/joinForm" class="joinMember">회원가입</a>
 				</div>
@@ -117,36 +117,36 @@ border-bottom: 1px solid black;
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active">
-          <li class="drop-down"><a href="">도담센터</a>
+          <li class="drop-down"><a href="#">도담센터</a>
             <ul>
               <li><a href="/notice/noticeList">- 공지 사항</a></li>
               <li><a href="#">- 보호 절차</a></li>
               <li><a href="#">- 오시는 길</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="/board/infoGetAnimal">유실/유기동물</a>
+          <li class="drop-down"><a href="#">유실/유기동물</a>
             <ul>
 
-              <li><a href="/lostAnimal/protectAnimal">- 보호중인 동물</a></li>
+              <li><a href="/protect/protectAnimal">- 보호중인 동물</a></li>
               <li><a href="/lostAnimal/reportList">- 분실 신고</a></li>
               <li><a href="/lostAnimal/infoGetAnimal">- 습득시 안내</a></li>              
 
             </ul>
           </li>
-          <li class="drop-down"><a href="">봉사활동</a>
+          <li class="drop-down"><a href="#">봉사활동</a>
             <ul>
               <li><a href="/volunteer/reservationForm">- 봉사활동 예약</a></li>
               <li><a href="/volunteer/volunReservList">- 봉사활동 조회</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="">입양 관리</a>
+          <li class="drop-down"><a href="#">입양 관리</a>
             <ul>
-              <li><a href="#">- 입양 신청</a></li>
-              <li><a href="#">- 입양 안내</a></li>
-              <li><a href="#">- 입양 조회</a></li>
+              <li><a href="/adopt/adoptInfo">- 입양 안내</a></li>
+              <li><a href="/adopt/applyAdopt">- 입양 신청</a></li>
+              <li><a href="/adopt/applyList">- 입양 신청 조회</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="/board/freeBoard">커뮤니티</a>
+          <li class="drop-down"><a href="#">커뮤니티</a>
             <ul>
 
               <li><a href="/board/freeBoard">- 자유게시판</a></li>

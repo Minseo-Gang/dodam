@@ -21,7 +21,7 @@ public class Interceptor  extends HandlerInterceptorAdapter{
 		System.out.println("interceptor: "+ memberVo);
 		// 로그인 되어 있지 않다면
 		if (memberVo == null) {
-			response.sendRedirect("/admin/adminPage");
+			response.sendRedirect("/user/memberLogin");
 			return false; // 요청 처리를 중단
 		}
 		return true; // 요청 처리를 계속함

@@ -72,13 +72,7 @@ public class BoardController {
 		boardSerivce.deleteRun(b_no);
 		return "redirect:/board/freeBoard";
 	}
-	
-	// ckeditor 이미지 업로드
-//	@ResponseBody
-//	@RequestMapping(value="/imgUpload", method=RequestMethod.POST)
-//	public Map<String, Object> imgUpload(@RequestParam("upload") MultipartFile img) {
-//		return "";
-//	}
+
 
 	
 }

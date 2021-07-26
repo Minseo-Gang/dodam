@@ -26,8 +26,7 @@ body {
 	font-family: 'Noto Sans KR';
 }
 
-table, tr, td, th, div, p, em, ol, ul, li, dl, dt, dd, a, address, img,
-	h1, h2, h3, h4, h5, h6 {
+table, tr, td, th, div, p {
 	font-size: 11pt;
 	color: #666;
 	text-decoration: none;
@@ -648,7 +647,6 @@ ul {
 								<td><input type="text" id="phoneNum" name="phoneNum"
 									value="${memberVo.phoneNum }" readonly></td>
 							</tr>
-					
 						</tbody>
 				</table>
 			</div>

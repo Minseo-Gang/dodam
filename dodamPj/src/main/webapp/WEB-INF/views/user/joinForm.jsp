@@ -1,53 +1,92 @@
-<<<<<<< Updated upstream
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
 <!-- 회원가입 -->
-	<script>
-		$(document).ready(function(){
-			var isCheckDupId = false;
-			var checkId = "";
-			// 회원 가입 폼 전송
-			$("#frmJoin").submit(function() {
-				if ($("#user_pw").val() != $("#user_pw2").val()) {
-					alert("비밀번호가 일치하지 않습니다.");
-					$("#user_pw").focus();
-					return false;
-				}
-				
-				if (isCheckDupId == false) {
-					alert("아이디 중복 체크를 해주세요");
-					$("#btnIdCheck").focus();
-					return false;
-					
-				}
-				
-			});
-			// 아이디 중복 확인 버튼
-			$("#btnIdCheck").click(function() {
-				console.log("클릭");
-		
-				var url = "/user/checkDupId";
-				var user_id = $("#user_id").val();
-				var sendData = {
-						"user_id" : user_id
-				};
+<script>
+	$(document).ready(function() {
+		var isCheckDupId = false;
+		var checkId = "";
+		var checkCode = false;
+		// 회원 가입 폼 전송
+		$("#frmJoin").submit(function() {
+			if ($("#user_pw").val() != $("#user_pw2").val()) {
+				alert("비밀번호가 일치하지 않습니다.");
+				$("#user_pw").focus();
+				return false;
+			}
+
+			if (isCheckDupId == false) {
+				alert("아이디 중복 체크를 해주세요");
+				$("#btnIdCheck").focus();
+				return false;
+
+			}
+			
+			if(checkCode == false){
+				alert("이메일 인증을 해주세요");
+				return false;
+			}
+
+		});
+		// 아이디 중복 확인 버튼
+		$("#btnIdCheck").click(function() {
+			console.log("클릭");
+
+			var url = "/user/checkDupId";
+			var user_id = $("#user_id").val();
+
+			var sendData = {
+				"user_id" : user_id
+			};
+			if (user_id != "") {
 				$.get(url, sendData, function(rData) {
 					console.log(rData);
-					
+
 					if (rData == "true") {
 						$("#idCheck").text("사용중인 아이디").css("color", "red");
 					} else {
-						$("#idCheck").text("사용 가능한 아이디").css("color", "blue");
+						$("#idCheck").text("사용 가능한 아이디").css("color", "DeepSkyBlue");
 						isCheckDupId = true;
 						checkId = user_id;
 					}
-					
+
 				});
-			});
+			} else {
+				$("#idCheck").text("아이디를 입력해주세요").css("color", "DeepSkyBlue");
+			}
+			
 		});
-	</script>
- <style>
+		
+		//이메일 인증 요청 버튼 클릭
+		$("#btnRequest").click(function(){
+			var user_email = $("#user_email").val();
+			var url = "/user/sendCode";
+			var sendData = {
+					"user_email" : user_email
+			}
+			$.get(url,sendData, function(rData){
+				console.log(rData);
+				checkCode = rData;
+				$("#tr").show();
+			});
+			
+			
+		});
+		
+		//인증 확인 버튼 클릭
+		$("#btnCodeCheck").click(function(){
+			var code = $("#code").val();
+			console.log(checkCode);
+			//인증 성공 메세지 받았을 때 checkCode = true로
+			if(code == checkCode){
+				checkCode = true;
+				$("#codeCheck").text("인증 성공").css("color","DeepSkyBlue");
+				$(this).hide();
+			}
+		});
+	});
+</script>
+<style>
 @charset "utf-8";
 
 * {
@@ -64,8 +103,7 @@ body {
 	font-family: 'Noto Sans KR';
 }
 
-table, tr, td, th, div, p, em, ol, ul, li, dl, dt, dd, a, address, img,
-	h1, h2, h3, h4, h5, h6 {
+table, tr, td, th, div, p {
 	font-size: 11pt;
 	color: #666;
 	text-decoration: none;
@@ -646,47 +684,56 @@ ul {
 	<div class="container">
 		<div class="form_txtInput">
 			<h2 class="sub_tit_txt">회원가입</h2>
-<!-- 			<p class="exTxt">회원가입시 이메일 인증을 반드시 진행하셔야 합니다.</p> -->
+			<!-- 			<p class="exTxt">회원가입시 이메일 인증을 반드시 진행하셔야 합니다.</p> -->
 			<div class="join_form">
 				<table>
 					<colgroup>
 						<col width="30%" />
 						<col width="auto" />
 					</colgroup>
-					<form role="form" id="frmJoin"action="/user/joinRun" method="post">
-					<tbody>
-						<tr>
-							<th><span>아이디</span></th>
-							<td><input type="text" id="user_id" name="user_id"
-								placeholder="ID 를 입력하세요."></td>
-								<td><button type="button" id="btnIdCheck" class="btn btn-info">중복확인</button><span id="idCheck"></span>
-						</tr>
-						<tr>
-							<th><span>이름</span></th>
-							<td><input type="text" id="user_name" name="user_name"
-								placeholder=""></td>
-						</tr>
-						<tr>
-							<th><span>비밀번호</span></th>
-							<td><input type="password" id="user_pw" name="user_pw"
-								placeholder="비밀번호를 입력해주세요."></td>
-						</tr>
-						<tr>
-							<th><span>비밀번호 확인</span></th>
-							<td><input type="password" id="user_pw2" name="user_pw2"
-								placeholder="비밀번호를 확인하세요"></td>
-						</tr>
-						<tr class="email">
-							<th><span>이메일</span></th>
-							<td><input type="text" id="user_email"
-								name="user_email" class="user_email"> </td>
-						</tr>
-						<tr>
-							<th><span>휴대폰 번호</span></th>
-							<td><input type="text" id="phoneNum"
-								name="phoneNum" placeholder="전화번호를  '-' 없이 입력하세요."></td>
-						</tr>
-					</tbody>
+					<form role="form" id="frmJoin" action="/user/joinRun" method="post">
+						<tbody>
+							<tr>
+								<th><span>아이디</span></th>
+								<td><input type="text" id="user_id" name="user_id"
+									placeholder="ID 를 입력하세요."></td>
+								<td><input type="button" id="btnIdCheck" value="중복확인"><span
+									id="idCheck"></span>
+							</tr>
+							<tr>
+								<th><span>이름</span></th>
+								<td><input type="text" id="user_name" name="user_name"
+									placeholder=""></td>
+							</tr>
+							<tr>
+								<th><span>비밀번호</span></th>
+								<td><input type="password" id="user_pw" name="user_pw"
+									placeholder="비밀번호를 입력해주세요."></td>
+							</tr>
+							<tr>
+								<th><span>비밀번호 확인</span></th>
+								<td><input type="password" id="user_pw2" name="user_pw2"
+									placeholder="비밀번호를 확인하세요"></td>
+							</tr>
+							<tr class="email">
+								<th><span>이메일</span></th>
+								<td><input type="text" id="user_email" name="user_email"
+									class="user_email"></td>
+								<td><input type="button" id="btnRequest"value="인증요청"></td>
+
+							</tr>
+							<tr id="tr" style="display:none">
+								<th><span>인증 번호</span></th>
+								<td><input type="number" id="code" name="code"></td>
+								<td><input type="button" id="btnCodeCheck"value="인증확인"><span
+									id="codeCheck"></span></td>
+							</tr>
+							<tr>
+								<th><span>휴대폰 번호</span></th>
+								<td><input type="text" id="phoneNum" name="phoneNum"
+									placeholder="전화번호를  '-' 없이 입력하세요."></td>
+							</tr>
+						</tbody>
 				</table>
 				<div class="exform_txt">
 					<span>표시는 필수적으로 입력해주셔야 가입이 가능합니다.</span>
@@ -706,16 +753,14 @@ ul {
 					<ul class="explan_txt">
 						<li><span class="red_txt">항목 : 성별, 생년월일</span></li>
 						<li>고객님께서는 위의 개인정보 및 회원정보 수정 등을 통해 추가로 수집하는 개인정보에<br /> 대해
-							동의하지 않거나 개인정보를 기재하지 않음으로써 거부하실 수 있습니다.<br /> 다만 이때 회원 대상 서비스가 제한될
-							수 있습니다.
+							동의하지 않거나 개인정보를 기재하지 않음으로써 거부하실 수 있습니다.<br /> 다만 이때 회원 대상 서비스가
+							제한될 수 있습니다.
 						</li>
 					</ul>
 				</div>
 			</div>
 			<div class="btn_wrap">
-				<button type="submit" class="btn btn-primary">가입 완료</button>
-				 <button onclick="history.back(-100)" id="btnBack" class="btn btn-success">뒤로가기</button>
-				
+				<button type="submit">가입 완료</button>
 			</div>
 			</form>
 		</div>
@@ -724,5 +769,4 @@ ul {
 	<!-- content E-->
 </div>
 <!-- container E -->
-
 <%@ include file="../include/footer.jsp"%>

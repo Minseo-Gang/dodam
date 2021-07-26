@@ -11,7 +11,22 @@
 $(document).ready(function() {
 	$("#v_date").datepicker();	
 	
+	var check = false;
+	
 	$("#frmReserv").submit(function() {
+		if(check == false) {
+			alert("예약 가능 여부를 확인해주세요.");
+			return false;
+		} 
+		
+// 		if (("#v_name").val() == null)  {
+// 			alert("이름을 입력해주세요.")
+// 			("#v_name").focus();
+// 		}
+		
+	});
+	
+	$("#ableCheck").click(function() {
 		var url = "/volunteer/checkDateAndTime";
 		var v_date = $("#v_date").val();
 		var v_time = $("#v_time").val();
@@ -25,35 +40,13 @@ $(document).ready(function() {
 		$.get(url, sendData, function(rData) {
 			console.log(rData);	
 			if (rData == "true") {
-				alert("해당 지역의 일정은 이미 예약이 완료 되었습니다. 다시 선택해 주세요.");		
-				return false;
-			}
-			if (rData == "false") {
-				alert("예약이 완료 되었습니다. ${volunteerVo.v_name}님의 예약 번호는 ${volunteerVo.v_no}입니다.");	
+				$("#check").text("해당 지역의 일정은 이미 예약이 완료 되었습니다. 다시 선택해 주세요.")
+					.css("color", "red");		
+			} else {
+				$("#check").text("예약 가능한 일정입니다.").css("color", "blue");
+				check = true;
 			}
 		});	
-	});
-	
-	$("#reservFinish").click(function(e) {	
-// 		var url = "/volunteer/checkDateAndTime";
-// 		var v_date = $("#v_date").val();
-// 		var v_time = $("#v_time").val();
-// 		var v_place = $("#v_place").val();
-// 		var sendData = {
-// 				"v_date" : v_date,
-// 				"v_time" : v_time,
-// 				"v_place" : v_place
-// 		};	
-// 		console.log("v_date : " + v_date + ", v_time : " + v_time + ", v_place : " + v_place);	
-// 		$.get(url, sendData, function(rData) {
-// 			console.log(rData);	
-// 			if (rData == "true") {
-// 				alert("해당 지역의 일정은 이미 예약이 완료 되었습니다. 다시 선택해 주세요.");		
-// 			} else {
-// 				alert("예약이 완료 되었습니다. ${volunteerVo.v_name}님의 예약 번호는 ${volunteerVo.v_no}입니다.");	
-// 			}
-		
-// 		});	
 	});
 });
 </script>
@@ -116,7 +109,10 @@ $(document).ready(function() {
 						<option value="12:00 ~ 15:00">12:00 ~ 15:00</option>
 						<option value="15:00 ~ 18:00">15:00 ~ 18:00</option>
 					</select>
+						<button type="button" class="btn btn-info" id="ableCheck">예약 가능 여부</button> 
+						<span id="check"></span>
 				</div>
+
 				
 				<div class="form-group">
 					<label for="v_phonenum"> 연락처 : </label> 

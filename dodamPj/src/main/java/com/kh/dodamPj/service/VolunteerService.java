@@ -10,5 +10,6 @@ public interface VolunteerService {
 	public List<VolunteerVo> volunReservList(PagingDto pagingDto);
 	public void reservVolun(VolunteerVo volunteerVo);
 	public int getCount(PagingDto pagingDto);
+	public boolean checkDateAndTime(VolunteerVo volunteerVo);
 	public void resultInsert(VolunteerVo volunteer);
 }

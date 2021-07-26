@@ -170,7 +170,7 @@ $(document).ready(function() {
 							<td>${boardVo.b_regdate}</td>
 							<td>${boardVo.b_count}</td>
 							<td><button type="button" class="btn btn-success btnDelete" id="btnDelete" data-b_no="${boardVo.b_no}" value="삭제">삭제</button></td>
-					
+
 						</tr>
 					</c:forEach>
 				</tbody>

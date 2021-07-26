@@ -1,7 +1,7 @@
-
 package com.kh.dodamPj.vo;
 
 import java.sql.Timestamp;
+import java.util.Arrays;
 
 public class NoticeVo {
 	private int n_no;
@@ -13,6 +13,17 @@ public class NoticeVo {
 	private int n_seq;
 	private int n_level;
 	private String n_filepath;
+	
+	// 첨부파일
+	private String[] files;
+
+	public String[] getFiles() {
+		return files;
+	}
+
+	public void setFiles(String[] files) {
+		this.files = files;
+	}
 	public NoticeVo() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -84,11 +95,12 @@ public class NoticeVo {
 	public void setN_filepath(String n_filepath) {
 		this.n_filepath = n_filepath;
 	}
+
 	@Override
 	public String toString() {
 		return "NoticeVo [n_no=" + n_no + ", n_title=" + n_title + ", n_content=" + n_content + ", n_date=" + n_date
 				+ ", n_readcount=" + n_readcount + ", n_group=" + n_group + ", n_seq=" + n_seq + ", n_level=" + n_level
-				+ ", n_filepath=" + n_filepath + "]";
+				+ ", n_filepath=" + n_filepath + ", files=" + Arrays.toString(files) + "]";
 	}
 	
 	
