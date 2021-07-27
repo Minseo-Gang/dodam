@@ -5,117 +5,116 @@
 <%@ include file="../include/adminHeader.jsp"%>
 
 <script>
-$(document).ready(function() {
+	$(document).ready(function() {
 
-	$(".pagination > li > a").click(function(e) {
-		e.preventDefault();
-		var page = $(this).attr("href");
-		var frmPaging = $("#frmPaging");
-		frmPaging.find("[name=page]").val(page);
-		frmPaging.submit();
+						$(".pagination > li > a").click(function(e) {
+							e.preventDefault();
+							var page = $(this).attr("href");
+							var frmPaging = $("#frmPaging");
+							frmPaging.find("[name=page]").val(page);
+							frmPaging.submit();
 
-	});
+						});
 
-	// 검색 옵션 선택
-	$(".searchType").click(
-			function(e) {
-				e.preventDefault();
-				var searchType = $(this).attr("href");
-				$("#frmPaging > input[name=searchType]")
-						.val(searchType);
-				$("#spanSearchType").text($(this).text());
-			});
+						// 검색 옵션 선택
+						$(".searchType").click(
+								function(e) {
+									e.preventDefault();
+									var searchType = $(this).attr("href");
+									$("#frmPaging > input[name=searchType]")
+											.val(searchType);
+									$("#spanSearchType").text($(this).text());
+								});
 
-	// 검색버튼
-	$("#btnSearch")
-			.click(
-					function() {
-						var searchType = $(
-								"#frmPaging > input[name=searchType]")
-								.val();
-						if (searchType == "") {
-							alert("검색 옵션을 먼저 선택해 주세요");
-							return;
-						}
-						var keyword = $("#txtSearch").val()
-								.trim();
-						if (keyword == "") {
-							alert("검색어를 입력해 주세요");
-							return;
-						}
-						$(
-								"#frmPaging > input[name=keyword]")
-								.val(keyword);
-						$("#frmPaging > input[name=page]")
-								.val("1");
-						$("#frmPaging").submit();
+						// 검색버튼
+						$("#btnSearch")
+								.click(
+										function() {
+											var searchType = $(
+													"#frmPaging > input[name=searchType]")
+													.val();
+											if (searchType == "") {
+												alert("검색 옵션을 먼저 선택해 주세요");
+												return;
+											}
+											var keyword = $("#txtSearch").val()
+													.trim();
+											if (keyword == "") {
+												alert("검색어를 입력해 주세요");
+												return;
+											}
+											$(
+													"#frmPaging > input[name=keyword]")
+													.val(keyword);
+											$("#frmPaging > input[name=page]")
+													.val("1");
+											$("#frmPaging").submit();
+										});
+
+						// 글제목  (10개)
+						$(".a_title").click(function(e) {
+							e.preventDefault();
+							var v_no = $(this).attr("data-vno"); // 489
+							$("#frmPaging > input[name=v_no]").val(v_no);
+							$("#frmPaging").attr("action", "/board/content");
+							$("#frmPaging").submit();
+						});
+						
+						//승인 버튼 클릭
+						$(".btnOk").click(function() {
+							var v_no = $(this).attr("data-v_no");
+							var result ="승인";
+							var url = "/admin/adminReservation_statusUpdate";
+							var sendData ={
+									"v_no" : v_no,
+									"result" : result
+						
+							}
+				
+							$.get(url,sendData,function(rData){
+								console.log(rData);
+								location.reload(); // 새로고침
+							});
+							
+						});
+						
+						//취소 버튼 클릭
+						$(".btnCancle").click(function(){
+							var v_no = $(this).attr("data-v_no");
+							var result ="";
+							var url = "/admin/adminReservation_statusUpdate";
+							var sendData ={
+									"v_no" : v_no,
+									"result" : result
+						
+							}
+				
+							$.get(url,sendData,function(rData){
+								console.log(rData);
+								location.reload(); //새로 고침
+							});
+						});
+						
+						//거부 버튼 클릭
+						$(".btnDenial").click(function(){
+							var v_no = $(this).attr("data-v_no");
+							var result ="거부";
+							var url = "/admin/adminReservation_statusUpdate";
+							var sendData ={
+									"v_no" : v_no,
+									"result" : result
+						
+							}
+				
+							$.get(url,sendData,function(rData){
+								console.log(rData);
+								location.reload(); //새로 고침
+							});
+						});
+						
+						
+						
 					});
-
-	// 글제목  (10개)
-	$(".a_title").click(function(e) {
-		e.preventDefault();
-		var v_no = $(this).attr("data-vno"); // 489
-		$("#frmPaging > input[name=v_no]").val(v_no);
-		$("#frmPaging").attr("action", "/board/content");
-		$("#frmPaging").submit();
-	});
-	
-	//승인 버튼 클릭
-	$(".btnOk").click(function() {
-		var v_no = $(this).attr("data-v_no");
-		var result ="승인";
-		var url = "/admin/adminReservation_statusUpdate";
-		var sendData ={
-				"v_no" : v_no,
-				"result" : result
-	
-		}
-
-		$.get(url,sendData,function(rData){
-			console.log(rData);
-			location.reload(); // 새로고침
-		});
-		
-	});
-	
-	//취소 버튼 클릭
-	$(".btnCancle").click(function(){
-		var v_no = $(this).attr("data-v_no");
-		var result ="";
-		var url = "/admin/adminReservation_statusUpdate";
-		var sendData ={
-				"v_no" : v_no,
-				"result" : result
-	
-		}
-
-		$.get(url,sendData,function(rData){
-			console.log(rData);
-			location.reload(); //새로 고침
-		});
-	});
-	
-	//거부 버튼 클릭
-	$(".btnDenial").click(function(){
-		var v_no = $(this).attr("data-v_no");
-		var result ="거부";
-		var url = "/admin/adminReservation_statusUpdate";
-		var sendData ={
-				"v_no" : v_no,
-				"result" : result
-	
-		}
-
-		$.get(url,sendData,function(rData){
-			console.log(rData);
-			location.reload(); //새로 고침
-		});
-	});
-	
-	
-	
-});
-
 </script>
 
 <form id="frmPaging" action="/volunteer/volunReservList" method="get">
@@ -156,10 +155,7 @@ $(document).ready(function() {
 						<button class="btn btn-default dropdown-toggle" type="button"
 							id="dropdownMenuButton" data-toggle="dropdown">조회옵션</button>
 						<span id="spanSearchType"
-
-							style="color: #336699; font-weight: bold;"> 
-							<c:choose>
-
+							style="color: #336699; font-weight: bold;"> <c:choose>
 								<c:when test="${pagingDto.searchType == 'p'}">지역별</c:when>
 								<c:when test="${pagingDto.searchType == 't'}">시간별</c:when>
 								<c:when test="${pagingDto.searchType == 'n'}">신청자</c:when>
@@ -225,14 +221,11 @@ $(document).ready(function() {
 								<td>${volunteerVo.result }</td>
 								<c:choose>
 <!-- 								승인 여부가 없을때 -->
-
 									<c:when test="${empty volunteerVo.result  }">
 										<td><button type="button" class="btn btn-success btnOk"data-v_no="${volunteerVo.v_no}" value="승인">승인</button></td>
 										<td><button type="button" class="btn btn-danger btnDenial"data-v_no="${volunteerVo.v_no}" vlaue="거부">거부</button></td>
 									</c:when>
-
 <!-- 									승인 여부가 있을때 -->
-
 									<c:otherwise>
 										<td><button type="button" class="btn btn-warning btnCancle"data-v_no="${volunteerVo.v_no}">취소</button></td>
 									</c:otherwise>

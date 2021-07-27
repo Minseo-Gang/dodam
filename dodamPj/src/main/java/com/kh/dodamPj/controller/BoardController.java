@@ -1,3 +1,4 @@
+
 package com.kh.dodamPj.controller;
 
 import java.util.List;
@@ -24,8 +25,6 @@ public class BoardController {
 	public String freeBoard(Model model, PagingDto pagingDto) throws Exception { // 자유게시판
 		int count = boardSerivce.getCount(pagingDto);
 		pagingDto.setCount(count);
-		String key = pagingDto.getKeyword();
-		System.out.println("key: "+ key);
 		List<BoardVo> list = boardSerivce.freeBoard(pagingDto); 
 		model.addAttribute("list", list);
 		model.addAttribute("pagingDto", pagingDto);
@@ -45,7 +44,7 @@ public class BoardController {
 		System.out.println("name "+name);
 		return "redirect:/board/freeBoard";
 	}
-
+	
 	@RequestMapping(value="/content", method=RequestMethod.GET)
 	public String content(int b_no, Model model) throws Exception {
 		BoardVo boardVo = boardSerivce.content(b_no);
@@ -53,26 +52,20 @@ public class BoardController {
 		return "board/content";
 	}
 	
-	@RequestMapping(value="/modifyForm", method=RequestMethod.GET)
-	public String modifyForm(int b_no, Model model) throws Exception { // 수정폼
-		BoardVo boardVo = boardSerivce.content(b_no);
-		model.addAttribute("boardVo", boardVo);
-		return "board/modifyForm"; 
-	}
-	
 	@RequestMapping(value="/modifyRun", method=RequestMethod.POST)
-	public String modifyRun(BoardVo boardVo) throws Exception { // 수정폼->자유게시판
+	public String modifuRun(BoardVo boardVo) throws Exception { // 글수정
 		boardSerivce.modifyRun(boardVo);
 		return "redirect:/board/freeBoard";
 	}
 	
 	@RequestMapping(value="/deleteRun", method=RequestMethod.GET)
 	public String deleteRun(int b_no) throws Exception { // 글삭제
-		boardSerivce.commentDeleteRun(b_no);
 		boardSerivce.deleteRun(b_no);
 		return "redirect:/board/freeBoard";
 	}
-
-
 	
+	@RequestMapping(value="/newsBoard", method=RequestMethod.GET)
+	public String newsBoard() throws Exception {
+		return "board/newsBoard";
+	}
 }

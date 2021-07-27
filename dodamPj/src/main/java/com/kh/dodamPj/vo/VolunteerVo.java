@@ -12,16 +12,12 @@ public class VolunteerVo {
 	private String v_time;
 	private String v_date;
 	private String v_etc;
-	private String result;
-	
-	
 	public VolunteerVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	public VolunteerVo(int v_no, String user_id, String v_name, int v_age, String v_place, String v_phonenum,
-			String v_email, String v_time, String v_date, String v_etc, String result) {
+			String v_email, String v_time, String v_date, String v_etc) {
 		super();
 		this.v_no = v_no;
 		this.user_id = user_id;
@@ -33,7 +29,6 @@ public class VolunteerVo {
 		this.v_time = v_time;
 		this.v_date = v_date;
 		this.v_etc = v_etc;
-		this.result = result;
 	}
 	public int getV_no() {
 		return v_no;
@@ -95,20 +90,11 @@ public class VolunteerVo {
 	public void setV_etc(String v_etc) {
 		this.v_etc = v_etc;
 	}
-
-	public String getResult() {
-		return result;
-	}
-	public void setResult(String result) {
-		this.result = result;
-	}
-
 	@Override
 	public String toString() {
 		return "VolunteerVo [v_no=" + v_no + ", user_id=" + user_id + ", v_name=" + v_name + ", v_age=" + v_age
 				+ ", v_place=" + v_place + ", v_phonenum=" + v_phonenum + ", v_email=" + v_email + ", v_time=" + v_time
-				+ ", v_date=" + v_date + ", v_etc=" + v_etc + ", result=" + result + "]";
-
+				+ ", v_date=" + v_date + ", v_etc=" + v_etc + "]";
 	}
 	
 

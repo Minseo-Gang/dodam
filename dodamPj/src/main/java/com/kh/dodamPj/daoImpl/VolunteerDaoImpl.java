@@ -1,6 +1,8 @@
 package com.kh.dodamPj.daoImpl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -22,8 +24,7 @@ public class VolunteerDaoImpl implements VolunteerDao {
 	@Override
 	public List<VolunteerVo> volunReservList(PagingDto pagingDto) {
 		List<VolunteerVo> list = 
-			sqlSession.selectList(NAMESPACE + "volunReservList", pagingDto);
-		System.out.println("dao실행");
+				sqlSession.selectList(NAMESPACE + "volunReservList", pagingDto);
 		return list;
 	}
 
@@ -40,9 +41,27 @@ public class VolunteerDaoImpl implements VolunteerDao {
 	}
 
 	@Override
+	public boolean checkDateAndTime(VolunteerVo volunteerVo) {
+		int count = sqlSession.selectOne(NAMESPACE + "checkDateAndTime", volunteerVo);
+		System.out.println("count : " + count);
+		if(count > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public List<VolunteerVo> myReservation(String user_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public void resultInsert(VolunteerVo volunteer) {
 		sqlSession.update(NAMESPACE+"resultUpdate", volunteer);
 		
 	}
+
+
 
 }

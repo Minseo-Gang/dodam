@@ -3,7 +3,6 @@ package com.kh.dodamPj;
 import java.io.FileInputStream;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -107,5 +105,5 @@ public class HomeController {
 		rttr.addFlashAttribute("msg", msg);
 		return page; // 로그인이 되면 home.jsp로 리다이렉트
 	}
-
+		
 }

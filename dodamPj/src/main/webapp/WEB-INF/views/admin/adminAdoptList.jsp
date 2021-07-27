@@ -40,7 +40,7 @@ $(document).ready(function() {
 });
 </script>
 
-<form id="frmPaging" action="/adopt/adminAdoptList" method="get">
+<form id="frmPaging" action="/admin/adoptList" method="get">
 	<input type="hidden" name="page" value="${aPagingDto.page}"/>
 	<input type="hidden" name="perPage" value="${aPagingDto.perPage}"/>
 	<input type="hidden" name="searchType" value="${aPagingDto.searchType}"/>
@@ -58,13 +58,11 @@ $(document).ready(function() {
  			<div class="border-end bg-white" id="sidebar-wrapper">
    				<div class="list-group list-group-flush">
                 	<a class="list-group-item" style="background-color:#CCF2F4;">
-                		<strong><i class="fas fa-paw"></i> 입양 관리</strong></a>
+                		<strong><i class="fas fa-paw"></i> 입양 관리(Admin)</strong></a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
-                    	href="/adopt/adoptInfo">- 입양 안내</a>
+                    	href="/admin/adoptList">- 입양 동물 목록 관리</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
-                    	href="/adopt/applyAdopt">- 입양 신청</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" 
-                    	href="/adopt/applyList">- 입양 신청 조회</a>
+                    	href="/admin/animalInsertForm">- 입양 동물 등록</a>
                 </div>
             </div>
 		</div>
@@ -108,7 +106,7 @@ $(document).ready(function() {
 								</li>
 							</ul>
 							<form class="form-inline">
-								<input class="form-control mr-sm-2" type="text" placeholder="검색어를 입력해주세요."
+								<input class="form-control mr-sm-2" type="text" placeholder="검색어 입력"
 									aria-label="Search" value="${aPagingDto.keyword}" id="searchTxt"/>
 								<button class="btn btn-primary my-2 my-sm-0" type="button" id="btnSearch">검색</button>
 							</form>

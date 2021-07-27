@@ -52,12 +52,6 @@ public class BoardServiceImpl implements BoardService {
 		int count = boardDao.getCount(pagingDto);
 		return count;
 	}
-	
-	@Override
-	public void commentDeleteRun(int b_no) { // 게시글 삭제 시 댓글 삭제
-		boardDao.commentDeleteArticle(b_no);
-	}
 
 
 }
-

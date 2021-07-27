@@ -14,7 +14,6 @@ public interface AdminDao {
 	public AdminVo login(String admin_id,String admin_pw);
 	public List<MemberVo> listMember();
 	public List<VolunteerVo> volunReservList(PagingDto pagingDto);
-
 	// 보호중 동물 목록
 	public List<AnimalVo> animalList(A_PagingDto aPagingDto);
 	// 보호중 동물 등록하기
@@ -27,19 +26,21 @@ public interface AdminDao {
 	public void deleteAnimal(int a_no);
 	// 보호중 동물 정보 수정
 	public void modifyAnimal(AnimalVo animalVo);
-	// nextval 얻기
+	// nextval 얻기(보호중 동물)
 	public int getNextVal();
-	// 첨부파일관련
+	// 첨부파일관련(보호중 동물)
 	public String selectFile(int a_no);
-	// 글갯수
+	// 글갯수(보호중 동물)
 	public int getCount(A_PagingDto aPagingDto);
 	// 입양 동물 목록
 	public List<AdoptVo> adoptList(A_PagingDto aPagingDto);
 	// 입양 동물 등록
 	public void insertPet(AdoptVo adoptVo);
 	// 첨부파일(입양 동물)
-	public void insertAttach(AdoptVo adoptVo);
-	// 첨부파일관련
+	public void insertAttach2(AdoptVo adoptVo);
+	// nextval 얻기(입양 동물)
+	public int getNextVal2();
+	// 첨부파일관련(입양 동물)
 	public String selectFile2(int ad_no);
 	// 입양 동물 조회
 	public AdoptVo selectOnePet(int ad_no);
@@ -47,5 +48,7 @@ public interface AdminDao {
 	public void modifyPet(AdoptVo adoptVo);
 	// 입양 동물 정보 삭제
 	public void deletePet(int ad_no);
+	// 글갯수(입양 동물)
+	public int getCount2(A_PagingDto aPagingDto);
 
 }

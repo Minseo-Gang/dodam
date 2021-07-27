@@ -162,11 +162,11 @@ public class AdminController {
 	// 입양 신청 페이지(동물 목록)
 	@RequestMapping(value="/adoptList", method=RequestMethod.GET)
 	public String adminAdoptList(Model model, A_PagingDto aPagingDto) throws Exception {
-		int count = adoptService.getCount(aPagingDto);
+		int count = adminService.getCount2(aPagingDto);
 		aPagingDto.setCount(count);
 		List<AdoptVo> adList = adoptService.adoptList(aPagingDto);
 		model.addAttribute("adList", adList);
-		model.addAttribute("aPagingDto", aPagingDto);	
+		model.addAttribute("aPagingDto", aPagingDto);
 		return "admin/adminAdoptList";
 	}
 	
@@ -182,7 +182,7 @@ public class AdminController {
 		String orgFileName = file.getOriginalFilename();
 		String filePath = AnimalFileUploadUtil.uploadFile("E:/upload", orgFileName, file.getBytes());
 		adoptVo.setAd_picture(filePath);
-		adoptService.animalInsertRun(adoptVo);
+		adminService.animalInsertRun(adoptVo);
 		rttr.addFlashAttribute("result", "success");
 		return "redirect:/admin/adoptList";
 	}
@@ -190,7 +190,7 @@ public class AdminController {
 	// 입양 동물 상세정보 페이지
 	@RequestMapping(value="/adminAnimalCont", method=RequestMethod.GET)
 	public String animalCont(A_PagingDto aPagingDto, Model model, int ad_no) throws Exception {
-		AdoptVo adoptVo = adoptService.animalCont(ad_no);
+		AdoptVo adoptVo = adminService.animalCont(ad_no);
 		//System.out.println("adoptVo" + adoptVo);
 		model.addAttribute("adoptVo", adoptVo);
 		return "admin/adminAnimalCont";
@@ -199,7 +199,7 @@ public class AdminController {
 	// 입양 동물 수정 페이지
 	@RequestMapping(value="/animalModiForm", method=RequestMethod.GET)
 	public String animalModiForm(Model model, int ad_no) throws Exception {
-		AdoptVo adoptVo = adoptService.animalCont(ad_no);
+		AdoptVo adoptVo = adminService.animalCont(ad_no);
 		model.addAttribute("adoptVo", adoptVo);
 		return "admin/animalModiForm";
 	}
@@ -207,7 +207,7 @@ public class AdminController {
 	// 입양 동물 수정 정보 전송
 	@RequestMapping(value="/animalModifyRun", method=RequestMethod.POST)
 	public String animalModifyRun(AdoptVo adoptVo, RedirectAttributes rttr) throws Exception {
-		adoptService.animalModifyRun(adoptVo);
+		adminService.animalModifyRun(adoptVo);
 		rttr.addFlashAttribute("result", "success");
 		return "redirect:/admin/adoptList";
 	}
@@ -215,7 +215,7 @@ public class AdminController {
 	// 입양 동물 정보 삭제
 	@RequestMapping(value="/animalDeleteRun", method=RequestMethod.GET)
 	public String animalDeleteRun(int ad_no, RedirectAttributes rttr) throws Exception {
-		adoptService.animalDeleteRun(ad_no);
+		adminService.animalDeleteRun(ad_no);
 		rttr.addFlashAttribute("result", "success");
 		return "redirect:/admin/adoptList";
 	}

@@ -34,13 +34,11 @@ $(document).ready(function() {
  			<div class="border-end bg-white" id="sidebar-wrapper">
    				<div class="list-group list-group-flush">
                 	<a class="list-group-item" style="background-color:#CCF2F4;">
-                		<strong><i class="fas fa-paw"></i> 유실/유기동물</strong></a>
+                		<strong><i class="fas fa-paw"></i> 유실/유기동물(Admin)</strong></a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
-                    	href="/protect/protectAnimal">- 보호중인 동물</a>
+                    	href="/admin/adminProtectList">- 보호동물 목록 관리</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
-                    	href="/lostAnimal/reportList">- 분실 신고</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" 
-                    	href="/lostAnimal/infoGetAnimal">- 습득시 안내</a>
+                    	href="/admin/protectAnimalForm">- 보호동물 등록</a>
                 </div>
             </div>
 		</div>

@@ -39,13 +39,11 @@ $(document).ready(function() {
  			<div class="border-end bg-white" id="sidebar-wrapper">
    				<div class="list-group list-group-flush">
                 	<a class="list-group-item" style="background-color:#CCF2F4;">
-                		<strong><i class="fas fa-paw"></i> 입양 관리</strong></a>
+                		<strong><i class="fas fa-paw"></i> 입양 관리(Admin)</strong></a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
-                    	href="/adopt/adoptInfo">- 입양 안내</a>
+                    	href="/admin/adoptList">- 입양 동물 목록 관리</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
-                    	href="/adopt/applyAdopt">- 입양 신청</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" 
-                    	href="/adopt/applyList">- 입양 신청 조회</a>
+                    	href="/admin/animalInsertForm">- 입양 동물 등록</a>
                 </div>
             </div>
 		</div>

@@ -76,12 +76,80 @@
 			where a_no = #{a_no}			
 	</update>
 	
-	<!-- 글갯수 -->
+	<!-- 글갯수(보호중 동물) -->
 	<select id="getCount" resultType="int">
 		select count(*) from tbl_animal
 		<include refid="search"></include>
 	</select>
 	
+	<!-- 입양 동물 목록  -->
+  	<select id="adoptList" resultType="AdoptVo">
+  		select * from 
+  			(select rownum rnum, a.* from
+  				(select * from tbl_adopt
+  				<include refid="aSearch"></include>
+  				order by ad_no desc) a)
+		where rnum between #{startRow} and #{endRow}
+  	</select>
+	
+	<!-- 입양 동물 상세 -->
+  	<select id="selectOnePet" resultType="AdoptVo">
+  		select * from tbl_adopt
+  		where ad_no = #{ad_no}
+  	</select>
+  	
+  	<!-- 입양 동물 등록(관리자 전용) -->
+  	<insert id="insertPet">
+  		insert into tbl_adopt(ad_no, ad_adoptstate, ad_species, ad_kind, ad_gender, ad_age, ad_weight,
+  							ad_color, ad_findplace, ad_resqueday, ad_adoptpossible, ad_etc, ad_picture)
+  		values(#{ad_no}, #{ad_adoptstate}, #{ad_species}, #{ad_kind}, #{ad_gender}, #{ad_age}, #{ad_weight},
+  				#{ad_color}, #{ad_findplace}, #{ad_resqueday}, #{ad_adoptpossible, jdbcType=VARCHAR}, 
+  				#{ad_etc, jdbcType=VARCHAR}, #{ad_picture, jdbcType=VARCHAR})
+  	</insert>
+	
+	<!-- 입양 동물 정보 수정(관리자 전용) -->
+  	<update id="modifyPet">
+  		update tbl_adopt set
+  			ad_kind = #{ad_kind},
+  			ad_color = #{ad_color},
+  			ad_age = #{ad_age},
+  			ad_weight = #{ad_weight},
+  			ad_findplace = #{ad_findplace},
+  			ad_resqueday = #{ad_resqueday},
+  			ad_adoptpossible = #{ad_adoptpossible, jdbcType=VARCHAR},
+  			ad_adoptstate = #{ad_adoptstate},
+  			ad_etc = #{ad_etc, jdbcType=VARCHAR}
+  		where ad_no = #{ad_no}
+  	</update>
+	
+	<!-- 입양 동물 정보 삭제(관리자 전용) -->
+  	<delete id="deletePet">
+  		delete from tbl_adopt
+  		where ad_no = #{ad_no}
+  	</delete>
+  	
+  	<!-- 첨부파일 추가(관리자 전용) -->
+  	<insert id="insertAttach2">
+  		insert into tbl_adoptAttach(file_name, ad_no)
+  		values (#{file_name}, #{ad_no})
+  	</insert>
+  	
+  	<select id="getNextVal2" resultType="int">
+		select seq_adopt_no.nextval
+		from dual
+	</select>
+		
+	<select id="selectFile2" resultType="String">
+		select * from tbl_adoptAttach
+		where ad_no = #{ad_no}
+	</select>
+	
+	<!-- 글갯수(입양동물) -->
+	<select id="getCount2" resultType="int">
+		select count(*) from tbl_adopt
+		<include refid="aSearch"></include>
+	</select>
+
 	<sql id="search">
   		<if test="searchType != null">
   			<choose>
@@ -100,6 +168,28 @@
   			</choose>
   		</if>
   	</sql>
+  	
+  	<sql id="aSearch">
+		<if test="searchType != null">
+			<choose>
+				<when test='searchType == "species"'>
+					where ad_species like '%' || #{keyword} || '%'
+				</when>
+				<when test='searchType == "kind"'>
+					where ad_kind like '%' || #{keyword} || '%'
+				</when>	
+				<when test='searchType == "gender"'>
+					where ad_gender like '%' || #{keyword} || '%'
+				</when>	
+				<when test='searchType == "age"'>
+					where ad_age like '%' || #{keyword} || '%'
+				</when>	
+				<when test='searchType == "adopt"'>
+					where ad_adoptstate like '%' || #{keyword} || '%'
+				</when>	
+			</choose>
+		</if>
+	</sql>
 
 <!-- 	<update id="updatePoint"> -->
 <!-- 		update user_info set -->

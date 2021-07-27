@@ -95,11 +95,10 @@ border-bottom: 1px solid black;
           </li>
          	<li class="drop-down"><a href="#">유실/유기동물 관리</a>
             <ul>
+            	<li><a href="/admin/adminProtectList">- 보호동물 목록 관리</a></li>
 				<li><a href="/admin/protectAnimalForm">- 보호동물 등록</a></li>
-				<li><a href="/admin/adminProtectList">- 보호동물 관리</a></li>
             </ul>
-          </li>
-
+         	</li>
           <li class="drop-down"><a href="/admin/adminReservation_status">봉사활동  관리</a>
             <ul>
               <li><a href="/admin/adminReservation_status">- 봉사활동 신청 현황</a></li>
@@ -113,11 +112,8 @@ border-bottom: 1px solid black;
             </ul>
           </li>
            <li class="drop-down"><a href="/admin/adminFreeBoard">자유 게시판 관리</a>
-           	<ul>
-              <li><a href="/admin/adminFreeBoard">- 자유 게시판 관리</a></li>
-              <li><a href="/admin/adminNewsBoard">- 동물 정보/뉴스 관리</a></li>
-              <li><a href="/admin/adminCustomerBoard">- 고객센터 관리</a></li>
-            </ul>
+          </li>
+
         </ul>
       </nav><!-- .nav-menu -->
     </div>

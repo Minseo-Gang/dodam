@@ -41,27 +41,4 @@ public class CommentServiceImpl implements CommentService {
 		boardDao.updateCommentCnt(b_no, -1);
 	}
 
-	@Override
-	public void updateComment(CommentVo commentVo) {
-		commentDao.updateComment(commentVo);
-	}
-
-	@Override
-	public List<CommentVo> animalGetCommentList(int ab_no) {
-		List<CommentVo> list = commentDao.animalGetCommentList(ab_no);
-		return list;
-	}
-
-	@Override
-	public void animalInsertComment(CommentVo commentVo) {
-		commentDao.animalInsertComment(commentVo);
-		boardDao.updateCommentCnt(commentVo.getAb_no(), 1);
-	}
-
-	@Override
-	public void animalDeleteComment(int c_no, int ab_no) {
-		commentDao.deleteComment(c_no);
-		boardDao.animalUpdateCommentCnt(ab_no, -1);
-	}
-
 }

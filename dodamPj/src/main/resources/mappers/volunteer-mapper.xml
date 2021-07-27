@@ -18,13 +18,8 @@
 		values
 			(seq_vno.nextval, #{v_name}, #{v_age}, #{v_place}, #{v_phonenum}, #{v_email,  jdbcType=VARCHAR}, #{v_time}, #{v_date}, #{v_etc})
 	</insert>
-	<!-- 봉사 활동 신청 승인 and 거부  -->
-	<update id="resultUpdate">
-			update tbl_volunteer set
-			result = #{result}
-			
-		where v_no = #{v_no}
-	</update>
+	
+
 	<!-- 글갯수 -->
 	<select id="getCount" resultType="int">
 		select count(*) from tbl_volunteer
