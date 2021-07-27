@@ -84,18 +84,15 @@ public class HomeController {
 		// Vo에 정보 확인후 널값이 아니면 메인 화면으로 이동
 		if (memberVo != null) { // && chkPw == true
 			msg = "success";
-
 			int level = memberVo.getAuth_level(); // memberVo에 관리자 레벨 0 , 1 확인용
 			// 관리자 레벨이 1이면 관리자 페이지로 이동
 			if (level == 1) {
-
 				// 인터 셉트 걸릴수도 있으니 걸리면 서블릿 컨텍스트에 path 확인해보고 리디렉션횟수 많다고 뜨면 매핑 이름 변경
 				session.setAttribute("adminLoginVo", memberVo);
 				page = "redirect:/admin/adminPage";
 			} else {
-
 				session.setAttribute("loginVo", memberVo);
-				page = "redirect:/";
+				page = "redirect:/main/main";
 			}
 		} else {
 			// Vo에 로그인 정보가 없으면 로그인 페이지로 리디렉션

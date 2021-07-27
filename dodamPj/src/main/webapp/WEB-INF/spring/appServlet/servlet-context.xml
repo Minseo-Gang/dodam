@@ -33,18 +33,16 @@
 		<beans:property name="maxUploadSize" value="10485760"></beans:property>
 	</beans:bean>
 	
-	<beans:bean class="com.kh.dodamPj.interceptor.Interceptor"
-		id="authInterceptor"></beans:bean>
+	<beans:bean class="com.kh.dodamPj.interceptor.Interceptor" id="authInterceptor"></beans:bean>
 	
 	<!--  인터셉트 부분 path 겹치는 주소만 입터셉트  -->
 	<interceptors>
 		<interceptor>
 			<mapping path="/admin/**/*" />
-			<mapping path="/lostAnimal/**/*" />
-			<mapping path="/adopt/**/*" />
- 			<mapping path="/notice/noticeWriteForm/*" /> 
+ 			<mapping path="/notice/noticeWriteForm/*" />
+ 			<mapping path="/lostAnimal/reportAnimalForm" />
+ 			<exclude-mapping path="/resources/**/*"/>
 			<exclude-mapping path="/admin/logout/*"/>
-			<exclude-mapping path="/admin/noticeWriteRun/*"/>
 			<exclude-mapping path="/admin/uploadAjax/*"/>
 			<exclude-mapping path="/admin/displayImage/*"/>
 			<exclude-mapping path="/admin/deleteFile/*"/>

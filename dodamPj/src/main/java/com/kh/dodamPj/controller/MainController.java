@@ -14,4 +14,9 @@ public class MainController {
 		
 		return "main/main";
 	}
+	
+	@RequestMapping(value="/map", method=RequestMethod.GET)
+	public String map() throws Exception {
+		return "user/map";
+	}
 }
