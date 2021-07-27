@@ -72,7 +72,7 @@ $(document).ready(function() {
 				<form role="form">
 					<input type="hidden" name="ab_no" value="${newsBoardVo.ab_no }"/>
 					<div class="form-group">
-						<span style="font-size:30px"><label style="font-weight:bold">자유게시판</label></span>
+						<span style="font-size:30px"><label style="font-weight:bold">동물 정보/뉴스</label></span>
 						<table class="table">
 						<tbody>
 							<tr>
@@ -81,7 +81,7 @@ $(document).ready(function() {
 								<td><input type="text" class="form-control" id="ab_title" name="ab_title" value="${newsBoardVo.ab_title }" readonly/></td>
 							</tr>
 							<tr>
-							
+
 								<td align="center">내용</td>
 								<td align="center"></td>
 								<td>
@@ -97,13 +97,13 @@ $(document).ready(function() {
 										document.getElementById('content').innerHTML=tmpStr;
 									</script>
 								</td>
-								
+
 							</tr>
-							
+
 						</tbody>
 					</table>
 					</div>
-					
+
 					<div class="row">
 						<div class="col-md-12">
 							<hr/>
@@ -111,11 +111,11 @@ $(document).ready(function() {
 							<hr/>
 						</div>
 					</div>
-					
+
 				<div class="row">
 					<div class="col-md-12">
 						<table class="table" id="commentTable">
-							
+
 							<tbody>
 								<tr style="display:none;">
 									<td></td>
@@ -128,7 +128,7 @@ $(document).ready(function() {
 						</table>
 					</div>
 				</div>
-					
+
 					<div class="row">
 						<div class="col-md-12">
 							<a class="btn btn-primary" id="btnModify" href="/admin/adminNewsBoardModifyForm?ab_no=${newsBoardVo.ab_no }">수정</a>
@@ -138,9 +138,9 @@ $(document).ready(function() {
 						</div>
 					</div>
 				</form>
-				
-				
+
+
 			</div>
 		</div>
 	</div>
-<%@ include file="../include/footer.jsp" %>
+<%@ include file="../include/footer.jsp" %> 
