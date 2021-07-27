@@ -7,6 +7,7 @@ import com.kh.dodamPj.vo.AdminVo;
 import com.kh.dodamPj.vo.AdoptVo;
 import com.kh.dodamPj.vo.AnimalVo;
 import com.kh.dodamPj.vo.MemberVo;
+import com.kh.dodamPj.vo.NewsBoardVo;
 import com.kh.dodamPj.vo.PagingDto;
 import com.kh.dodamPj.vo.VolunteerVo;
 
@@ -53,5 +54,6 @@ public interface AdminService {
 	public void animalDeleteRun(int ad_no);
 	// 글갯수(입양동물)
 	public int getCount2(A_PagingDto aPagingDto);
-
+	// 동물게시판 글쓰기
+	public void writeRun(NewsBoardVo newsBoardVo);
 }

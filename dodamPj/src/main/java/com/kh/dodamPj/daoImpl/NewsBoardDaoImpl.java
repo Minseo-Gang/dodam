@@ -1,4 +1,4 @@
-package com.kh.dodamPj.dao;
+package com.kh.dodamPj.daoImpl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.kh.dodamPj.vo.PagingDto;
+import com.kh.dodamPj.dao.NewsBoardDao;
 import com.kh.dodamPj.vo.NewsBoardVo;
 
 @Repository

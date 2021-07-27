@@ -1,4 +1,4 @@
-package com.kh.dodamPj.dao;
+package com.kh.dodamPj.daoImpl;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.dodamPj.dao.CustomerBoardDao;
 import com.kh.dodamPj.vo.CustomerBoardVo;
 import com.kh.dodamPj.vo.PagingDto;
 
