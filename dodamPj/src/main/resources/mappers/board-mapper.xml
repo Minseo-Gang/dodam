@@ -7,8 +7,12 @@
 	
 	<!-- 자유게시판 목록 -->
 	<select id="freeBoard" resultType="BoardVo">
-		select * from tbl_board
-		order by b_no desc
+		select * from
+			(select rownum rnum, a.* from
+				(select * from tbl_board
+				 <include refid="search"></include>
+				 order by re_group desc, re_seq asc) a)
+		where rnum between #{startRow} and #{endRow}
 	</select>
 	
 	<!-- 글쓰기 -->
@@ -34,6 +38,12 @@
 	<!-- 삭제 -->
 	<delete id="deleteArticle">
 		delete from tbl_board
+		where b_no = #{b_no}
+	</delete>
+	
+	<!-- 게시글 삭제 시 댓글도 같이 삭제 -->
+	<delete id="commentDeleteArticle">
+		delete from tbl_comment
 		where b_no = #{b_no}
 	</delete>
 	
@@ -73,6 +83,13 @@
 		update tbl_board set
 			b_count = b_count + 1
 		where b_no = #{b_no}
+	</update>
+	
+	<!-- 동물게시판 댓글수 변경 -->
+	<update id="animalUpdateCommentCnt">
+		update tbl_board set
+			comment_cnt = comment_cnt + #{count}
+		where ab_no = #{ab_no}
 	</update>
 	
 </mapper>

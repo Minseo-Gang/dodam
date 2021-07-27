@@ -13,4 +13,5 @@ public interface BoardService {
 	public void modifyRun(BoardVo boardVo);
 	public void deleteRun(int b_no);
 	public int getCount(PagingDto pagingDto);
+	public void commentDeleteRun(int b_no); 
 }

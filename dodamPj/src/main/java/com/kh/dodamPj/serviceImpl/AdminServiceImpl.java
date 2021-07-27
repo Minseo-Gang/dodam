@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kh.dodamPj.dao.AdminDao;
 import com.kh.dodamPj.dao.AdoptDao;
 import com.kh.dodamPj.dao.AnimalDao;
+import com.kh.dodamPj.dao.NewsBoardDao;
 import com.kh.dodamPj.dao.VolunteerDao;
 import com.kh.dodamPj.service.AdminService;
 import com.kh.dodamPj.vo.A_PagingDto;
@@ -17,6 +18,7 @@ import com.kh.dodamPj.vo.AdminVo;
 import com.kh.dodamPj.vo.AdoptVo;
 import com.kh.dodamPj.vo.AnimalVo;
 import com.kh.dodamPj.vo.MemberVo;
+import com.kh.dodamPj.vo.NewsBoardVo;
 import com.kh.dodamPj.vo.PagingDto;
 import com.kh.dodamPj.vo.VolunteerVo;
 
@@ -31,6 +33,8 @@ public class AdminServiceImpl implements AdminService {
 	private AnimalDao animalDao;
 	@Inject
 	private AdoptDao adoptDao;
+	@Inject
+	private NewsBoardDao newsBoardDao;
 
 	@Override
 	public void joinRun(AdminVo adminVo) {
@@ -164,6 +168,14 @@ public class AdminServiceImpl implements AdminService {
 	public int getCount2(A_PagingDto aPagingDto) {
 		int count = adminDao.getCount2(aPagingDto);
 		return count;
+	}
+	
+	// 동물게시판 글쓰기
+	@Override
+	public void writeRun(NewsBoardVo newsBoardVo) { 
+		newsBoardDao.insertArticle(newsBoardVo);
+		String name = newsBoardVo.getUser_id();
+		System.out.println("name "+name);
 	}
 
 }

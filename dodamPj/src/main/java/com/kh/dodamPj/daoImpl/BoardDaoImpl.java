@@ -68,5 +68,18 @@ public class BoardDaoImpl implements BoardDao {
 	public void updateViewCnt(int b_no) {
 		sqlSession.update(NAMESPACE + "updateViewCnt", b_no);
 	}
+	
+	@Override
+	public void animalUpdateCommentCnt(int ab_no, int count) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("ab_no", ab_no);
+		map.put("count", count);
+		sqlSession.update(NAMESPACE + "animalUpdateCommentCnt", map);
+	}
+
+	@Override
+	public void commentDeleteArticle(int b_no) {
+		sqlSession.delete(NAMESPACE + "commentDeleteArticle", b_no);
+	}
 
 }

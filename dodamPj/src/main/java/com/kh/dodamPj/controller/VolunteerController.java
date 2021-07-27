@@ -28,9 +28,16 @@ public class VolunteerController {
 	@Inject
 	private MemberService MemberService;
 	
+	//봉사활동 등록 페이지
 	@RequestMapping(value="/reservationForm", method=RequestMethod.GET)
 	public String reservationForm() throws Exception {
 		return "volunteer/reservation_form";
+	}
+	
+	//봉사활동 페이지
+	@RequestMapping(value="/reservation", method=RequestMethod.GET)
+	public String reservation() throws Exception {
+		return "volunteer/reservation";
 	}
 	
 	// 나의 예약 정보
@@ -39,6 +46,7 @@ public class VolunteerController {
 		return "volunteer/my_reservation";
 	}
 
+	//봉사활동 리스트
 	@RequestMapping(value="/volunReservList", method=RequestMethod.GET)
 	public String volunReservList(Model model, PagingDto pagingDto) throws Exception {
 		int count = volunteerService.getCount(pagingDto);
@@ -51,17 +59,6 @@ public class VolunteerController {
 		return "volunteer/reservation_status";	
 	}
 	
-//	@RequestMapping(value="/reservVolun", method=RequestMethod.POST)
-//	@ResponseBody
-//	public String reservVolun(@RequestBody VolunteerVo volunteerVo, 
-//			HttpSession session) throws Exception {
-//		MemberVo memberVo = (MemberVo)session.getAttribute("loginVo");
-//		volunteerVo.setUser_id(memberVo.getUser_id());
-//		System.out.println(volunteerVo);
-//		volunteerService.reservVolun(volunteerVo);
-//		return "redirect:/volunteer/reservation_status";
-//	} 
-//	
 	@RequestMapping(value="/reservVolun", method=RequestMethod.POST)
 	public String reservVolun(VolunteerVo volunteerVo, RedirectAttributes rttr) throws Exception {
 		volunteerService.reservVolun(volunteerVo);
@@ -79,6 +76,4 @@ public class VolunteerController {
 		}
 		return String.valueOf(result);
 	}
-	
-
 }
