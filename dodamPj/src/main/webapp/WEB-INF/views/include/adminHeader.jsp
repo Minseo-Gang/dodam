@@ -66,7 +66,7 @@ border-bottom: 1px solid black;
 				<div class="contact-info mr-auto"></div>
 				<div class="social-links">
 					<a href="/member/memberLogin" class="login">${sessionScope.loginVo.user_id}</a> 
-					<a href="/" class="myPage">사용자 페이지 이동</a>
+					<a href="/main/main" class="myPage">사용자 페이지 이동</a>
 					<a href="/admin/logout" class="joinMember">로그아웃</a>
 				</div>
 			</div>
@@ -88,9 +88,8 @@ border-bottom: 1px solid black;
           <li class="active">
           <li class="drop-down"><a href="">공지사항 관리</a>
             <ul>
-              <li><a href="/notice/noticeWriteForm">- 공지 사항등록</a></li>
-              <li><a href="/notice/noticeModify">- 공지 사항 수정</a></li>
-              
+            	<li><a href="/notice/noticeWriteForm">- 공지 사항등록</a></li>
+            	<li><a href="/notice/noticeModify">- 공지 사항 수정</a></li>
             </ul>
           </li>
          	<li class="drop-down"><a href="#">유실/유기동물 관리</a>

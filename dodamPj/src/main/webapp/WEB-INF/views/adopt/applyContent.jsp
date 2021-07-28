@@ -46,6 +46,7 @@ $(document).ready(function() {
 				<div class="col-md-12">
 					<form role="form" id="frmApply" action="/adopt/modifyApplyRun" method="post">	
 					<input type="hidden" name="au_no" value="${applyUserVo.au_no}">
+					<input type="text" name="user_id" value="${applyUserVo.user_id}">
 						<div class="form-group">
 						<label for="user_name">입양자 성명</label>
 							<input type="text" class="form-control" id="user_name" name="user_name"
@@ -82,11 +83,14 @@ $(document).ready(function() {
 							<textarea class="form-control readonly" id="form_content" name="form_content" 
 							readonly>${applyUserVo.form_content}</textarea>
 						</div>
-						<button type="button" class="btn btn-success" id="btnModify">수정</button>
-						<button type="submit" class="btn btn-warning" id="btnModifyDone"
-							style="display:none;">수정완료</button>
-						<button type="button" class="btn btn-danger" id="btnDelete">삭제</button>
-						<a class="btn float-right btn-info" href="/adopt/applyList" style="margin-right:10px;">목록</a>
+						<a class="btn btn-info" href="/adopt/applyList">목록</a>
+						<c:if test="${loginVo.user_id == applyUserVo.user_id}">
+							<button type="button" class="btn btn-success" id="btnModify">수정</button>
+							<button type="submit" class="btn btn-warning" id="btnModifyDone"
+								style="display:none;">수정완료</button>
+							<button type="button" class="btn btn-danger" id="btnDelete">삭제</button>
+						</c:if>
+						
 					</form>
 					</div>
 				</div>

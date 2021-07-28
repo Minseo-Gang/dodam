@@ -63,11 +63,6 @@ public class HomeController {
 		return "/user/funny";
 	}
 
-	@RequestMapping(value = "/maps/map", method = RequestMethod.GET)
-	public String map() {
-		return "/user/map";
-	}
-
 	// 로그인 처리 (관리자 로그인 포함)
 	@RequestMapping(value = "/memberLoginRun", method = RequestMethod.POST)
 	public String loginRun(String user_id, String user_pw, RedirectAttributes rttr, HttpSession session)
@@ -88,7 +83,7 @@ public class HomeController {
 			// 관리자 레벨이 1이면 관리자 페이지로 이동
 			if (level == 1) {
 				// 인터 셉트 걸릴수도 있으니 걸리면 서블릿 컨텍스트에 path 확인해보고 리디렉션횟수 많다고 뜨면 매핑 이름 변경
-				session.setAttribute("adminLoginVo", memberVo);
+				session.setAttribute("loginVo", memberVo);
 				page = "redirect:/admin/adminPage";
 			} else {
 				session.setAttribute("loginVo", memberVo);

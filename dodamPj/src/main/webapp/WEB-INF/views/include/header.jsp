@@ -85,7 +85,6 @@
 			<div class="container d-flex">
 				<div class="contact-info mr-auto"></div>
 				<div class="social-links">
-					<a href="/admin/adminPage" class="moveAdmin">관리자 페이지로 이동</a>
 					<a href="/user/memberLogin" class="login">로그인</a> 
 					<a href="/user/joinForm" class="joinMember">회원가입</a>
 				</div>

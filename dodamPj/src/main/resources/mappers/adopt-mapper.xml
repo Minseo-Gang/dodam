@@ -43,10 +43,10 @@
   	
   	<!-- 유저 입양 예약 신청서 작성 -->
   	<insert id="insertApply">
-  		insert into tbl_apply_user(au_no, ad_no, user_name, user_tel, adopt_date, adopt_time,
-  								form_title, form_content)
-  		values (seq_apply_no.nextval, #{ad_no}, #{user_name}, #{user_tel}, #{adopt_date}, #{adopt_time}, 
-  				#{form_title}, #{form_content})
+  		insert into tbl_apply_user(au_no, user_name, user_tel, adopt_date, adopt_time,
+  								form_title, form_content, user_id)
+  		values (seq_apply_no.nextval, #{user_name}, #{user_tel}, #{adopt_date}, #{adopt_time}, 
+  				#{form_title}, #{form_content}, #{user_id})
   	</insert>
   	
   	<!-- 유저 예약 신청시 예약 시간 중복 확인 -->

@@ -41,6 +41,7 @@
 			<mapping path="/admin/**/*" />
  			<mapping path="/notice/noticeWriteForm/*" />
  			<mapping path="/lostAnimal/reportAnimalForm" />
+ 			<mapping path="/adopt/applyForm" />
  			<exclude-mapping path="/resources/**/*"/>
 			<exclude-mapping path="/admin/logout/*"/>
 			<exclude-mapping path="/admin/uploadAjax/*"/>

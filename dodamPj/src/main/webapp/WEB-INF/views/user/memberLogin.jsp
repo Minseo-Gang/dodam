@@ -610,10 +610,6 @@ $(document).ready(function(){
 		alert("패스워드 변경완료 / 다시 로그인 해주세요");
 		return;
 	}
-	$("#btnAuto").click(function(){
-		$("#user_id").val("admin01");
-		$("#user_pw").val("1234");
-	});
 });
 </script>
 
@@ -645,12 +641,10 @@ $(document).ready(function(){
 			<!-- join_form E  -->
 			<div class="btn_wrap">
 			<span id="result"></span>
-				<button type="submit" >로그인</button>
+				<button type="submit" class="btn btn-primary" >로그인</button>
 			</div>
-				<a href="/user/findId">아이디 찾기</a> / 
-				<a href="/user/findPw">패스워드 찾기</a><br/>
-
-				<button type="button" id="btnAuto">관리자 로그인 바로하기</button>
+				<a href="/user/findId">아이디 찾기&nbsp;/</a>  
+				<a href="/user/findPw">&nbsp;패스워드 찾기</a><br/>
 			</form>
 		</div>
 		<!-- form_txtInput E -->

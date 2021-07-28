@@ -113,6 +113,9 @@ create sequence seq_apply_no;
 alter table tbl_apply_user
 drop column ad_no;
 
+alter table tbl_apply_user
+add (user_id varchar2(20)references user_info(user_id));
+
 select * from tbl_apply_user;
 
 -- 회원정보 테이블
@@ -148,6 +151,7 @@ modify admin_pw varchar2(100);
 insert into admin_member(admin_id, admin_pw, admin_name)
 values ('admin01', '1234', 'admin');
 commit;
+
 select * from user_info;
 
 -- 게시판 테이블
@@ -166,6 +170,7 @@ create table tbl_board(
 -- 글번호용 시퀀스
 create sequence seq_board_bno;
 
+-- 봉사활동 테이블
 create table tbl_volunteer (
 	v_no number not null primary key,
 	v_name varchar2(50) not null,
@@ -195,5 +200,59 @@ create table notice(
 
 create sequence seq_notice_no;	
 
+-- 댓글 테이블
+create table tbl_comment(
+    c_no number primary key, -- 댓글 번호(PK)
+    b_no number references tbl_board(b_no), -- 해당 글번호(FK)
+    user_id varchar2(50) references user_info(user_id), -- 회원 아이디(FK)
+    c_content varchar2(100) not null, -- 댓글 내용
+    c_regdate timestamp default sysdate, -- 댓글 작성일
+	ab_no number references tbl_animalboard(ab_no) -- 동물 게시판 댓글
+);
+
+-- 댓글 시퀀스
+create sequence seq_comment_cno;
+
+-- 동물게시판 댓글 시퀀스
+create sequence seq_animalcomment_cno;
+
+-- 동물게시판 테이블
+create table tbl_animalboard(
+    ab_no number primary key, -- 글번호
+    ab_title varchar2(100) not null, -- 글제목
+    ab_content varchar2(1000) not null, -- 글내용
+    user_id varchar2(20) references user_info(user_id), -- 작성자
+    ab_regdate timestamp default sysdate, -- 작성일
+    ab_count number default 0, -- 조회수
+    are_group number default 0, -- 글그룹(원글번호)
+    are_seq number default 0, -- 같은 글그룹 내에서 출력 순서
+    are_level number default 0, -- 답글 들여쓰기용
+	comment_cnt number default 0 -- 댓글 카운트
+);
+
+-- 동물게시판 글번호용 시퀀스
+create sequence seq_animalboard_bno;
+
+-- 고객센터 테이블
+create table tbl_customerboard(
+    cb_no number primary key, -- 글번호
+    cb_title varchar2(100) not null, -- 글제목
+    cb_content varchar2(4000) not null, -- 글내용
+    user_id varchar2(20) references user_info(user_id), -- 작성자
+    cb_regdate timestamp default sysdate, -- 작성일
+    cb_count number default 0, -- 조회수
+    re_group number default 0, -- 글그룹(원글번호)
+    re_seq number default 0, -- 같은 글그룹 내에서 출력 순서
+    re_level number default 0 -- 답글 들여쓰기용
+);
+
+-- 고객센터 글번호용 시퀀스
+create sequence seq_customerboard_bno;
+
+-- 자유게시판 첨부파일 테이블
+create table tbl_file(
+	file_name varchar2(200) primary key,
+	b_no number references tbl_board(b_no)
+);
 
 

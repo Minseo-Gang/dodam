@@ -114,8 +114,9 @@ $(document).ready(function() {
 		
 			<div class="row">
 				<div class="col-md-12">
-					<form role="form" id="frmApply" action="/adopt/insertApplyRun" method="post">	
+					<form role="form" id="frmApply" action="/adopt/insertApplyRun" method="post" enctype="multipart/form-data">	
 					<input type="hidden" name="ad_no" value="${adoptVo.ad_no}">
+					<input type="hidden" name="user_id" value="${sessionScope.loginVo.user_id}">
 						<div class="form-group">
 						<label for="ad_no">일련번호</label>
 							<input type="text" class="form-control" id="ad_no" name="ad_no"
@@ -136,10 +137,17 @@ $(document).ready(function() {
 							<input type="text" class="form-control" id="ad_age" name="ad_age"
 								value="${adoptVo.ad_gender}/${adoptVo.ad_age}" readonly/>
 						</div>
-						<div class="form-group">
-						<label for="user_name">입양자 성명</label>
-							<input type="text" class="form-control readonly" id="user_name" name="user_name"/>
-						</div>
+						<c:choose>
+							<c:when test="${empty sessionScope.loginVo}">
+							</c:when>
+							<c:otherwise>
+								<div class="form-group">
+									<label for="user_name">입양자 성명</label>
+									<input type="text" class="form-control readonly" id="user_name" name="user_name"
+										value="${sessionScope.loginVo.user_name}" readonly/>
+								</div>
+							</c:otherwise>
+						</c:choose>
 						<div class="form-group">
 						<label for="user_tel">연락처</label>
 							<input type="text" class="form-control readonly" id="user_tel" name="user_tel"
