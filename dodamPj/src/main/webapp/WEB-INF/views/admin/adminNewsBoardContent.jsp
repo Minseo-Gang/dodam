@@ -72,7 +72,7 @@ $(document).ready(function() {
 				<form role="form">
 					<input type="hidden" name="ab_no" value="${newsBoardVo.ab_no }"/>
 					<div class="form-group">
-						<span style="font-size:30px"><label style="font-weight:bold">자유게시판</label></span>
+						<span style="font-size:30px"><label style="font-weight:bold">동물 정보/뉴스</label></span>
 						<table class="table">
 						<tbody>
 							<tr>

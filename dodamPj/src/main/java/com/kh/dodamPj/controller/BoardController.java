@@ -61,7 +61,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/modifyForm", method=RequestMethod.GET)
-	public String modifyForm(int b_no, Model model) throws Exception { // 수정폼
+	public String modifyForm(int b_no, Model model, MultipartFile file) throws Exception { // 수정폼
 		BoardVo boardVo = boardSerivce.content(b_no);
 		model.addAttribute("boardVo", boardVo);
 		return "board/modifyForm"; 

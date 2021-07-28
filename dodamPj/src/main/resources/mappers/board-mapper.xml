@@ -31,7 +31,7 @@
 	<update id="updateArticle">
 		update tbl_board set
 			b_title = #{b_title},
-			b_content = #{b_content},
+			b_content = #{b_content}
 		where b_no = #{b_no}
 	</update>
 	
@@ -98,14 +98,21 @@
 		values (#{file_name}, #{b_no})
 	</insert>
 	
-	<select id="getNextVal" resultType="int">
-		select seq_board_bno.nextval
-		from dual
-	</select>
+<!-- 	<select id="getNextVal" resultType="int"> -->
+<!-- 		select seq_board_bno.nextval -->
+<!-- 		from dual -->
+<!-- 	</select> -->
 	
 	<select id="selectFile" resultType="String">
 		select * from tbl_file
 		where b_no = #{b_no}
 	</select>
+	
+	<!-- 첨부파일 수정 -->
+	<insert id="updateAttach">
+		update tbl_board set
+			b_picture = #{b_picture, jdbcType=VARCHAR}
+		where b_no = #{b_no}
+	</insert>
 	
 </mapper>

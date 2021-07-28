@@ -41,8 +41,8 @@ public class BoardServiceImpl implements BoardService {
 	public void modifyRun(BoardVo boardVo) { // 수정하기
 		int nextval = boardDao.getNextVal();
 		boardVo.setB_no(nextval);
+		boardDao.updateAttach(boardVo);
 		boardDao.updateArticle(boardVo);
-		boardDao.insertAttach(boardVo);
 	}
 
 	@Override
@@ -74,6 +74,5 @@ public class BoardServiceImpl implements BoardService {
 		String file = boardDao.selectFile(b_no);
 		return file;
 	}
-
 
 }

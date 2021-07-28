@@ -22,7 +22,7 @@
             </div>
 		</div>
 			<div class="col-md-10">
-				<form role="form" action="/board/modifyRun" method="post">
+				<form role="form" action="/board/modifyRun" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="user_id" value="${boardVo.user_id }"/>
 					<input type="hidden" name="b_no" value="${boardVo.b_no }"/>
 					<div class="form-group">
@@ -52,7 +52,6 @@
 					<label for="file">사진 첨부</label><br>
 					<div class="form-group">
 						<input type="file" class="form-control-file" id="file" name="file"/>
-					</div>
 					</div>
 					<button type="submit" class="btn btn-primary">수정완료</button>
 					<a href="freeBoard" class="btn btn-danger">취소</a>
