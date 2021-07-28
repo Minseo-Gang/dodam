@@ -56,4 +56,5 @@ public interface AdminService {
 	public int getCount2(A_PagingDto aPagingDto);
 	// 동물게시판 글쓰기
 	public void writeRun(NewsBoardVo newsBoardVo);
+
 }

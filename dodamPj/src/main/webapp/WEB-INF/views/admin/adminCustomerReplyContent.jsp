@@ -44,7 +44,7 @@ $(document).ready(function() {
 								<td><input type="text" class="form-control" id="cb_title" name="cb_title" value="${customerBoardVo.cb_title }" readonly/></td>
 							</tr>
 							<tr>
-							
+
 								<td align="center">내용</td>
 								<td align="center"></td>
 								<td>
@@ -60,16 +60,16 @@ $(document).ready(function() {
 										document.getElementById('content').innerHTML=tmpStr;
 									</script>
 								</td>
-								
+
 							</tr>
-							
+
 						</tbody>
 					</table>
 					</div>
 				<div class="row">
 					<div class="col-md-12">                                                
 						<table class="table" id="commentTable">
-							
+
 							<tbody>
 								<tr style="display:none;">
 									<td></td>
@@ -89,7 +89,7 @@ $(document).ready(function() {
 						</table>
 					</div>
 				</div>
-					
+
 					<div class="row">
 						<div class="col-md-12">
 							<button type="button" class="btn btn-danger" id="btnDelete">삭제</button>
@@ -97,9 +97,9 @@ $(document).ready(function() {
 						</div>
 					</div>
 				</form>
-				
-				
+
+
 			</div>
 		</div>
 	</div>
-<%@ include file="../include/footer.jsp" %>
+<%@ include file="../include/footer.jsp" %> 

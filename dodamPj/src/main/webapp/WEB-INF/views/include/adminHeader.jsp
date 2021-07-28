@@ -111,6 +111,11 @@ border-bottom: 1px solid black;
             </ul>
           </li>
            <li class="drop-down"><a href="/admin/adminFreeBoard">자유 게시판 관리</a>
+           	<ul>
+              <li><a href="/admin/adminFreeBoard">- 자유 게시판 관리</a></li>
+              <li><a href="/admin/adminNewsBoard">- 동물 정보/뉴스 관리</a></li>
+              <li><a href="/admin/adminCustomerBoard">- 고객센터 관리</a></li>
+            </ul>
           </li>
 
         </ul>

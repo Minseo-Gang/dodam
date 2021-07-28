@@ -58,7 +58,6 @@ public class AdminController {
 	private CustomerBoardService customerBoardService;
 	@Inject
 	private NewsBoardService newsBoardService;
-
 	
 	// 관리자 페이지로 이동 요청 오면 관리자 페이지로 이동 
 	@RequestMapping(value="/adminPage",method=RequestMethod.GET)
@@ -359,7 +358,7 @@ public class AdminController {
 	//관리자 페이지 자유게시판 게시글 삭제 (비동기)21-07-22
 	@RequestMapping(value="/adminDeleteRun", method=RequestMethod.GET)
 	public String deleteRun(int b_no) throws Exception { // 글삭제
-		// boardService.commentDeleteRun(b_no);
+		boardService.commentDeleteRun(b_no);
 		boardService.deleteRun(b_no);
 		return "redirect:/admin/adminFreeBoard";
 	}

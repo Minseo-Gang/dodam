@@ -11,7 +11,7 @@
 
 	<!-- 글쓰기 -->
 	<insert id="insertArticle">
-		insert into notice 
+		insert into tbl_notice 
 			(n_no, n_title, n_content, n_group)
 		values 
 			(#{n_no}, #{n_title}, #{n_content}, #{n_no})
@@ -27,7 +27,7 @@
 	
 	<!-- 글조회 -->
 	<select id="selectByBno" resultType="NoticeVo">
-		select * from notice
+		select * from tbl_notice
 		where n_no = #{n_no}
 	</select>
 	
@@ -38,7 +38,7 @@
 	
 	<!-- 글수정 -->
 	<update id="updateArticle">
-		update notice set
+		update tbl_notice set
 			n_title = #{n_title},
 			n_content = #{n_content, jdbcType=VARCHAR}
 		where n_no = #{n_no}
@@ -46,7 +46,7 @@
 	
 	<!-- 글삭제 -->
 	<delete id="deleteArticle">
-		delete from notice
+		delete from tbl_notice
 		where n_no = #{n_no}
 	</delete>
 	
@@ -54,7 +54,7 @@
 	<select id="listAll" resultType="NoticeVo">
 		select * from
 			(select rownum rnum, a.* from
-				(select * from notice
+				(select * from tbl_notice
 				 <include refid="search"></include>
 				 order by n_group desc, n_seq asc) a)
 		where rnum between #{startRow} and #{endRow}
@@ -63,7 +63,7 @@
 	
 	<!-- 글갯수 -->
 	<select id="getCount" resultType="int">
-		select count(*) from notice
+		select count(*) from tbl_notice
 		<include refid="search"></include>
 	</select>
 	

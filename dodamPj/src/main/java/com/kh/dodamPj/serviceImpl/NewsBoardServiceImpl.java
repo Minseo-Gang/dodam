@@ -1,4 +1,4 @@
-package com.kh.dodamPj.service;
+package com.kh.dodamPj.serviceImpl;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.kh.dodamPj.dao.NewsBoardDao;
+import com.kh.dodamPj.service.NewsBoardService;
 import com.kh.dodamPj.vo.PagingDto;
 import com.kh.dodamPj.vo.BoardVo;
 import com.kh.dodamPj.vo.NewsBoardVo;

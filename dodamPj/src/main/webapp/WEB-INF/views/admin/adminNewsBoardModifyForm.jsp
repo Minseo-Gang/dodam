@@ -41,7 +41,7 @@
 									<script src="/resources/js/ckeditor.js"></script>
 								</td>
 							</tr>
-							
+
 						</tbody>
 					</table>
 					</div>
