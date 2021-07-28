@@ -97,7 +97,15 @@
 				<div class="contact-info mr-auto"></div>
 				<div class="social-links">
 					<a href="#" class="login">${sessionScope.loginVo.user_id}</a> 
-					<a href="/user/myPage?user_id =${sessionScope.loginVo.user_id } " class="myPage">마이페이지</a>
+					<c:choose>
+						<c:when test="${loginVo.auth_level == 0}">
+							<a href="/user/myPage?user_id=${memberVo.user_id}" 
+								class="myPage">마이페이지</a>
+						</c:when>
+						<c:otherwise>
+							<a href="/admin/adminPage" class="adminPage">관리자 페이지로 이동</a>
+						</c:otherwise>
+					</c:choose>
 					<a href="/user/logout" class="joinMember">로그아웃</a>
 				</div>
 			</div>
