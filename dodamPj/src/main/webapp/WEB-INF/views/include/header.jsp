@@ -131,18 +131,14 @@
             <ul>
               <li><a href="/notice/noticeList">- 공지 사항</a></li>
               <li><a href="/notice/procedure">- 보호 절차</a></li>
-              <li><a href="/user/map">- 오시는 길</a></li>
-              <li><a href="#">- 보호 절차</a></li>
               <li><a href="/main/map">- 오시는 길</a></li>
             </ul>
           </li>
           <li class="drop-down"><a href="#">유실/유기동물</a>
             <ul>
-
               <li><a href="/protect/protectAnimal">- 보호중인 동물</a></li>
               <li><a href="/lostAnimal/reportList">- 분실 신고</a></li>
               <li><a href="/lostAnimal/infoGetAnimal">- 습득시 안내</a></li>              
-
             </ul>
           </li>
           <li class="drop-down"><a href="#">봉사활동</a>
