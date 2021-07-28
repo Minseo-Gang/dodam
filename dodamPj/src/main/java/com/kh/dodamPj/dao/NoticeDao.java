@@ -7,7 +7,6 @@ import com.kh.dodamPj.vo.PagingDto;
 
 public interface NoticeDao {
 
-	
 	// 공지 등록
 	public void insertArticle(NoticeVo noticeVo);
 	// 글조회
@@ -27,13 +26,5 @@ public interface NoticeDao {
 	
 	public String selectFile(int n_no);
 
-			
-			// 첨부파일 쓰기
-			public void insertAttach(NoticeVo noticeVo);
-			
-			// nextval 얻기
-			public int getNextVal();
-			
-			public String selectFile(int n_no);
 			
 }

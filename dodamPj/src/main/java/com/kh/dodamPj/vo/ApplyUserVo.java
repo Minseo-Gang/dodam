@@ -16,13 +16,6 @@ public class ApplyUserVo {
 		super();
 	}
 
-
-	public ApplyUserVo(int au_no, int ad_no,String user_name, String user_tel, String adopt_date, String adopt_time,
-			String form_title, String form_content, String form_pw) {
-		super();
-		this.au_no = au_no;
-		this.ad_no = ad_no;
-
 	public ApplyUserVo(int au_no, int ad_no, String user_id, String user_name, String user_tel, String adopt_date, 
 			String adopt_time, String form_title, String form_content, String form_pw) {
 		super();

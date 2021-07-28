@@ -60,157 +60,152 @@
 	});
 </script>
 
-
-
 <br />
 <br />
 <br />
 <form id="frmPaging" action="/notice/noticeList" method="get">
-	<input type="hidden" name="page" value="${pagingDto1.page}" /> <input
-		type="hidden" name="perPage" value="${pagingDto1.perPage}" /> <input
-		type="hidden" name="searchType" value="${pagingDto1.searchType}" /> <input
-		type="hidden" name="keyword" value="${pagingDto1.keyword}" /> <input
-		type="hidden" name="n_no" />
+	<input type="hidden" name="page" value="${pagingDto1.page}" /> 
+	<input type="hidden" name="perPage" value="${pagingDto1.perPage}" /> 
+	<input type="hidden" name="searchType" value="${pagingDto1.searchType}" /> 
+	<input type="hidden" name="keyword" value="${pagingDto1.keyword}" /> 
+	<input type="hidden" name="n_no" />
 </form>
+
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12">
-			<img style="margin-top: 10px; text-align: center;"
-				src="/resources/img/centerBanner.jpg">
+		<div class="col-md-12" style="margin-top:10px; text-align:center;">
+			<img src="/resources/img/centerBanner.jpg">
+		</div>
 			<div class="row" style="margin-top: 10px;">
 				<div class="col-md-2">
 					<div class="border-end bg-white" id="sidebar-wrapper">
 						<div class="list-group list-group-flush">
 							<a class="list-group-item" style="background-color: #CCF2F4;">
-								<strong><i class="fas fa-paw"></i> 봉사활동</strong>
-							</a> <a
-								class="list-group-item list-group-item-action list-group-item-light p-3"
-								href="/notice/noticeList">- 공지사항</a> <a
-								class="list-group-item list-group-item-action list-group-item-light p-3"
-								href="/notice/procedure">- 보호절차</a> <a
-								class="list-group-item list-group-item-action list-group-item-light p-3"
-								href="/notice/map">- 오시는길</a>
+								<strong><i class="fas fa-paw"></i> 도담센터</strong></a>
+							<a class="list-group-item list-group-item-action list-group-item-light p-3"
+								href="/notice/noticeList">- 공지사항</a> 
+							<a class="list-group-item list-group-item-action list-group-item-light p-3"
+								href="/notice/procedure">- 보호절차</a> 
+							<a class="list-group-item list-group-item-action list-group-item-light p-3"
+								href="/main/map">- 오시는길</a>
 						</div>
 					</div>
 				</div>
-
-				<div class="col-md-10">
-					<div class="col-md-12">
-						<h2>공지사항</h2>
-						<table class="table table-bordered">
-							<thead>
-								<tr>
-									<th>번호</th>
-									<th>제목</th>
-									<th>조회수</th>
-									<th>작성시간</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="list" items="${noticeList }">
-									<tr>
-<div class="row">
-	<div class="col-md-12">
-		<h2>공지사항</h2>
 		<div class="row">
-		<div class="col-md-12">
-			<div class="dropdown">
-				 
-				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-					검색옵션
-				</button>
-				<span id="spanSearchType" style="color:#336699; font-weight:bold;">
-				<c:choose>
-					<c:when test="${pagingDto.searchType == 't'}">제목</c:when>
-					<c:when test="${pagingDto.searchType == 'c'}">내용</c:when>
-					<c:when test="${pagingDto.searchType == 'u'}">작성자</c:when>
-					<c:when test="${pagingDto.searchType == 'tc'}">제목+내용</c:when>
-					<c:when test="${pagingDto.searchType == 'tcu'}">제목+내용+작성자</c:when>
-				</c:choose>
-				
-				</span>
-				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			<div class="col-md-8"></div>
+			<div class="col-md-4">
+				<!--검색 -->
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button"
+						id="dropdownMenuButton" data-toggle="dropdown">검색옵션</button>
+					<span id="spanSearchType" style="color:#336699; font-weight:bold;">
+					<c:choose>
+						<c:when test="${pagingDto.searchType == 't'}">제목</c:when>
+						<c:when test="${pagingDto.searchType == 'u'}">작성자</c:when>
+						<c:when test="${pagingDto.searchType == 'tc'}">제목+내용</c:when>
+					</c:choose>
+					</span>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 					 <a class="dropdown-item searchType" href="t">제목</a> 
-					 <a class="dropdown-item searchType" href="c">내용</a> 
-					 <a class="dropdown-item searchType" href="u">작성자</a> 
 					 <a class="dropdown-item searchType" href="tc">제목+내용</a> 
-					 <a class="dropdown-item searchType" href="tcu">제목+내용+작성자</a>
-				</div>
-				<form
+					 <a class="dropdown-item searchType" href="u">작성자</a> 
+					</div>
+					<form
                      class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                      <div class="input-group">
-                         <input type="text" class="form-control bg-light border-0 small" placeholder="검색어 입력..."
+                         <input type="text" class="form-control bg-light border-0 small" placeholder="검색어를 입력하세요"
                              aria-label="Search" aria-describedby="basic-addon2"
                              id="txtSearch" value="${pagingDto.keyword}">
                          <div class="input-group-append">
-                             <button class="btn btn-primary" type="button" id="btnSearch">
+                             <button class="btn btn-default" type="button" id="btnSearch">
                                  <i class="fas fa-search fa-sm"></i>
                              </button>
+                             <c:choose>
+								<c:when test="${empty sessionScope.loginVo }">
+								</c:when>
+								<c:otherwise>
+									<a class="btn btn-primary" href="/board/writeForm">글쓰기</a>
+								</c:otherwise>
+							</c:choose>
                          </div>
                      </div>
                  </form>
-			</div>
-		</div>
-	</div>
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>조회수</th>
-					<th>작성시간</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="list" items="${noticeList }">
-					<tr>
-
-										<th class="border">${list.n_no }</th>
-										<th class="border"><a class="a_title" href="#"
-											data-nno="${list.n_no}">${list.n_title }</a></th>
-										<th class="border">${list.n_readcount }</th>
-										<th class="border">${list.n_date }</th>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<nav>
-							<ul class="pagination justify-content-center">
-								<c:if test="${pagingDto1.startPage != 1}">
-									<li class="page-item"><a class="page-link"
-										href="${pagingDto1.startPage - 1}">&laquo;</a></li>
-								</c:if>
-								<c:forEach var="v" begin="${pagingDto1.startPage}"
-									end="${pagingDto1.endPage}">
-									<li
-										<c:choose>
-							<c:when test="${pagingDto1.page == v}">
-								class="page-item active"
-							</c:when>
-							<c:otherwise>
-								class="page-item"
-							</c:otherwise>
-						</c:choose>>
-										<a class="page-link" href="${v}">${v}</a>
-									</li>
-								</c:forEach>
-								<c:if test="${pagingDto1.endPage < pagingDto1.totalPage}">
-									<li class="page-item"><a class="page-link"
-										href="${pagingDto1.endPage + 1}">&raquo;</a></li>
-								</c:if>
-							</ul>
-						</nav>
-					</div>
 				</div>
 			</div>
 		</div>
+		<!-- 검색끝 -->
+		
+		<!-- 카테고리 -->
+			<div class="row">
+				<div class="col-md-2">
+		        	<div class="border-end bg-white" id="sidebar-wrapper">
+		                <div class="list-group list-group-flush">
+		                	<a class="list-group-item" style="background-color:#CCF2F4;">
+		                		<strong><i class="fas fa-paw"></i> 커뮤니티</strong></a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/notice/noticeList">- 공지사항</a>
+		                 
+		                </div>
+		            </div>
+				</div>
+				<div class="col-md-10">
+				<h1>공지사항</h1>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>번호</th>
+								<th>제목</th>
+								<th>조회수</th>
+								<th>작성시간</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="list" items="${noticeList }">
+								<tr>
+
+									<th class="border">${list.n_no }</th>
+									<th class="border"><a class="a_title" href="#"
+										data-nno="${list.n_no}">${list.n_title }</a></th>
+									<th class="border">${list.n_readcount }</th>
+									<th class="border">${list.n_date }</th>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 페이징 -->
+		<div class="row">
+			<div class="col-md-12">
+				<nav>
+					<ul class="pagination justify-content-center">
+					<c:if test="${pagingDto.startPage != 1 }">
+						<li class="page-item"><a class="page-link" href="${pagingDto.startPage - 1 }">&laquo;</a>
+						</li>
+					</c:if>
+					<c:forEach var="v" begin="${pagingDto.startPage}" 
+								   end="${pagingDto.endPage}">
+						<li 
+							<c:choose>
+								<c:when test="${pagingDto.page == v}">
+									class="page-item active"
+								</c:when>
+								<c:otherwise>
+									class="page-item"
+								</c:otherwise>
+							</c:choose>
+						>
+							<a class="page-link" href="${v}">${v}</a>
+						</li>
+					</c:forEach>
+					<c:if test="${pagingDto.endPage < pagingDto.totalPage }">
+						<li class="page-item"><a class="page-link" href="${pagingDto.endPage + 1 }">&raquo;</a></li>
+					</c:if>	
+					</ul>
+				</nav>
+			</div>
+		</div>	
 	</div>
-</div>	
-
-
+</div>
 <%@ include file="../include/footer.jsp"%>
-

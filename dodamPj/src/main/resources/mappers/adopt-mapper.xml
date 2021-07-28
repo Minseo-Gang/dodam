@@ -7,45 +7,6 @@
   	
   	<!-- 입양 동물 목록  -->
   	<select id="adoptList" resultType="AdoptVo">
-  		select * from tbl_adopt
-  		order by ad_no desc
-  	</select>
-  	
-  	<!-- 입양 동물 등록(관리자 전용) -->
-  	<insert id="insertPet">
-  		insert into tbl_adopt(ad_no, ad_adoptstate, ad_species, ad_kind, ad_gender, ad_age, ad_weight,
-  							ad_color, ad_findplace, ad_resqueday, ad_adoptpossible, ad_etc, ad_picture)
-  		values(#{ad_no}, #{ad_adoptstate}, #{ad_species}, #{ad_kind}, #{ad_gender}, #{ad_age}, #{ad_weight},
-  				#{ad_color}, #{ad_findplace}, #{ad_resqueday}, #{ad_adoptpossible, jdbcType=VARCHAR}, 
-  				#{ad_etc, jdbcType=VARCHAR}, #{ad_picture, jdbcType=VARCHAR})
-  	</insert>
-  	
-  	<!-- 입양 동물 정보 수정(관리자 전용) -->
-  	<update id="modifyPet">
-  		update tbl_adopt set
-  			ad_kind = #{ad_kind},
-  			ad_color = #{ad_color},
-  			ad_age = #{ad_age},
-  			ad_weight = #{ad_weight},
-  			ad_findplace = #{ad_findplace},
-  			ad_resqueday = #{ad_resqueday},
-  			ad_adoptpossible = #{ad_adoptpossible, jdbcType=VARCHAR},
-  			ad_adoptstate = #{ad_adoptstate},
-  			ad_etc = #{ad_etc, jdbcType=VARCHAR}
-  		where ad_no = #{ad_no}
-  	</update>
-  	
-  	<!-- 입양 동물 정보 삭제(관리자 전용) -->
-  	<delete id="deletePet">
-  		delete from tbl_adopt
-  		where ad_no = #{ad_no}
-  	</delete>
-  	
-  	<!-- 첨부파일 추가(관리자 전용) -->
-  	<insert id="insertAttach">
-  		insert into tbl_adoptAttach(file_name, ad_no)
-  		values (#{file_name}, #{ad_no})
-  	</insert>
   		select * from 
   			(select rownum rnum, a.* from
   				(select * from tbl_adopt
@@ -59,7 +20,6 @@
   		select * from tbl_adopt
   		where ad_no = #{ad_no}
   	</select>
-
   		
   	<select id="getNextVal" resultType="int">
 		select seq_adopt_no.nextval
@@ -70,12 +30,6 @@
 		select * from tbl_adoptAttach
 		where ad_no = #{ad_no}
 	</select>
-
-  
-  	<select id="selectOnePet" resultType="AdoptVo">
-  		select * from tbl_adopt
-  		where ad_no = #{ad_no}
-
 
   	<!-- 유저 입양 예약 신청서 목록 -->
   	<select id="applyList" resultType="ApplyUserVo">
@@ -89,20 +43,6 @@
   	
   	<!-- 유저 입양 예약 신청서 작성 -->
   	<insert id="insertApply">
-  		insert into tbl_apply_user(au_no, ad_no, user_name, user_tel, adopt_date, adopt_time,
-  								form_title, form_content, form_pw)
-  		values (seq_apply_no.nextval, #{ad_no}, #{user_name}, #{user_tel}, #{adopt_date}, #{adopt_time}, 
-  				#{form_title}, #{form_content}, #{form_pw})
-  	</insert>
-  	
-  	<!-- 입양 신청서 목록 -->
-  	<select id="applyList" resultType="ApplyUserVo">
-  		select * from tbl_apply_user
-  		order by au_no desc
-  	</select>
-  
-
-	<insert>
   		insert into tbl_apply_user(au_no, user_name, user_tel, adopt_date, adopt_time,
   								form_title, form_content, user_id)
   		values (seq_apply_no.nextval, #{user_name}, #{user_tel}, #{adopt_date}, #{adopt_time}, 
