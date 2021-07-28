@@ -1,15 +1,17 @@
 package com.kh.dodamPj.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import com.kh.dodamPj.vo.MemberVo;
-
 
 @Repository
 public class MemberDaoImpl implements MemberDao {
@@ -18,6 +20,9 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Inject
 	private SqlSession sqlSession;
+	
+	@Autowired //패스워드 security용
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	//회원가입
 	@Override
@@ -83,16 +88,19 @@ public class MemberDaoImpl implements MemberDao {
 	//패스워드 수정
 	@Override
 	public void updatePw(MemberVo memberVo) {
-		sqlSession.update(NAMESPACE, memberVo);
+		sqlSession.update(NAMESPACE+"updatePassword", memberVo);
 		
 	}
-	
 	//마이페이지 21-07-14
 	@Override
 	public MemberVo selectMember(String user_id) {
 		MemberVo selectMember = sqlSession.selectOne(NAMESPACE+"selectMember", user_id);
 		return selectMember;
 	}
+	
+	
+
+
 
 
 }

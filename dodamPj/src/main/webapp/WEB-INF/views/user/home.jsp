@@ -4,13 +4,14 @@
 <!-- 메인화면 -->
 <script>
 	$(document).ready(function() {
+// 		메인화면 하단 공지 : 자유게시판 선택시 해당 게시글 출력
 		var href="/notice/noticeList";
 		$("input[name=tabs]").click(function() {
 			if ($("input[name=tabs]:checked").val() == "freeBoard") {
 				console.log("자유게시판 클릭");
 				$("#freeBoard").show();
 				$("#notice").hide();
-				href="/board/menu1";
+				href="/board/freeBoard";
 				
 			} else if ($("input[name=tabs]:checked").val() == "notice") {
 				console.log("공지사항 클릭");
@@ -85,13 +86,11 @@
 						<%-- 							</c:when> --%>
 						<%-- 							<c:otherwise> --%>
 						<div id="freeBoard" class="tabContent" style="display: none">
-							<ul>
-								<li><a href="#">레데리 못한지 오조오억년 된 것 같다.</a></li>
-								<li><a href="#">GTA6 언제나올까?</a></li>
-								<li><a href="#">[참가모집] 여름 방학 기간, 흉가 체험 하실분!</a></li>
-								<li><a href="#">강아지랑 같이 갈만한 여행지 추천받아요ㅎㅎ</a></li>
-								<li><a href="#">장마 겁나 싫어 비 오지게 내리네</a></li>
-							</ul>
+							<c:forEach var="BoardList" items="${list }">
+								<ul>
+									<li><a href="/board/content?t_no=${BoardList.b_no }">${BoardList.b_title }</a></li>
+								</ul>
+							</c:forEach>
 						</div>
 						<%-- 							</c:otherwise> --%>
 						<%-- 						</c:choose> --%>
@@ -129,6 +128,7 @@
 			</div>
 		</div>
 	</div>
+	<a href="/funny" >영상</a>
 </div>
 
 <%@ include file="../include/footer.jsp"%>

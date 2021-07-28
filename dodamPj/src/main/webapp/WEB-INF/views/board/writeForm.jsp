@@ -5,7 +5,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<img style="margin-top:10px; text-align:center;" src="/resources/img/banner.jpg">
+			<img style="margin-top:10px; text-align:center;" src="/resources/img/communityBanner.jpg">
 		</div>
 	</div>
 	<div class="row" style="margin-top:10px;">
@@ -15,8 +15,8 @@
                 	<a class="list-group-item" style="background-color:#CCF2F4;">
 		                		<strong><i class="fas fa-paw"></i> 커뮤니티</strong></a>
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/board/freeBoard">- 자유게시판</a>
-		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">- 동물 정보/뉴스</a>
-		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">- 고객센터</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/newsboard/newsBoard">- 동물 정보/뉴스</a>
+		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/customerboard/customerBoard">- 고객센터</a>
                 </div>
             </div>
 		</div>
@@ -41,14 +41,21 @@
 								<td align="center">내용</td>
 								<td align="center"></td>
 								<td>
-									<textarea name="b_content" id="editor" rows="10" cols="100" placeholder="내용을 입력하세요."></textarea>
-									<script>
-								    ClassicEditor
-								        .create( document.querySelector( '#editor' ) )
-								        .catch( error => {
-								            console.error( error );
-								        } );
-									</script>
+									<textarea name="b_content" id="editor" wrap="hard" rows="10" cols="100" placeholder="내용을 입력하세요."></textarea>
+									<script src="/resources/js/ckeditor.js"></script>
+<!-- <!-- 									<script> -->
+<!-- // 								    ClassicEditor -->
+<!-- // 								        .create( document.querySelector( '#editor' ) ) -->
+<!-- // 								        , { -->
+<!-- // 								    	ckfinder:{ -->
+<!-- // 								    		uploadUrl:'http://localhost:8080/imgUpload' -->
+<!-- // 								    	} -->
+<!-- // 								    } -->
+<!-- // 								        .catch( error => { -->
+<!-- // 								            console.error( error ); -->
+<!-- // 								        } ); -->
+								    	
+<!-- <!-- 									</script> -->
 								</td>
 							</tr>
 							

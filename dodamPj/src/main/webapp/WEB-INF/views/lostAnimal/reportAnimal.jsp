@@ -58,7 +58,7 @@ $(document).ready(function() {
                 	<a class="list-group-item" style="background-color:#CCF2F4;">
                 		<strong><i class="fas fa-paw"></i> 유실/유기동물</strong></a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
-                    	href="/protect/protectAnimal">- 보호중인 동물</a>
+                    	href="/lostAnimal/protectAnimal">- 보호중인 동물</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
                     	href="/lostAnimal/reportList">- 분실 신고</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 

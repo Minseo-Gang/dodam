@@ -8,12 +8,13 @@ public class MemberVo {
 	private String phoneNum;
 	private int user_birth;
 	private int auth_level;
+	private String user_pw2;
 	public MemberVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public MemberVo(String user_id, String user_pw, String user_name, String user_email, String phoneNum,
-			int user_birth, int auth_level) {
+			int user_birth, int auth_level, String user_pw2) {
 		super();
 		this.user_id = user_id;
 		this.user_pw = user_pw;
@@ -22,6 +23,7 @@ public class MemberVo {
 		this.phoneNum = phoneNum;
 		this.user_birth = user_birth;
 		this.auth_level = auth_level;
+		this.user_pw2 = user_pw2;
 	}
 	public String getUser_id() {
 		return user_id;
@@ -65,12 +67,19 @@ public class MemberVo {
 	public void setAuth_level(int auth_level) {
 		this.auth_level = auth_level;
 	}
+	public String getUser_pw2() {
+		return user_pw2;
+	}
+	public void setUser_pw2(String user_pw2) {
+		this.user_pw2 = user_pw2;
+	}
 	@Override
 	public String toString() {
 		return "MemberVo [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", user_email="
 				+ user_email + ", phoneNum=" + phoneNum + ", user_birth=" + user_birth + ", auth_level=" + auth_level
-				+ "]";
+				+ ", user_pw2=" + user_pw2 + "]";
 	}
+	
 	
 	
 	

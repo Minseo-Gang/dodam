@@ -90,7 +90,7 @@ public class PagingDto {
 	}
 
 	public void setCount(int count) {
-		this.count = count;
+		this.count = count; 
 		
 		this.endRow = page * this.perPage;
 		this.startRow = endRow - (this.perPage - 1);
@@ -135,4 +135,13 @@ public class PagingDto {
 				+ ", startPage=" + startPage + ", endPage=" + endPage + ", totalPage=" + totalPage + ", perPage="
 				+ perPage + ", PAGE_BLOCK=" + PAGE_BLOCK + ", searchType=" + searchType + ", keyword=" + keyword + "]";
 	}
+
+	
+
+	
+
+	
+
+	
+
 }

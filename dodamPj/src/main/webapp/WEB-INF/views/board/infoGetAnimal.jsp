@@ -5,7 +5,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<img style="margin-top:10px; text-align:center;" src="/resources/img/banner.jpg">
+			<img style="margin-top:10px; text-align:center;" src="/resources/img/lostBanner.jpg">
 		</div>
 	</div>
 	<div class="row" style="margin-top:10px;">

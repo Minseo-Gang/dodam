@@ -2,6 +2,7 @@
 package com.kh.dodamPj.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -9,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.dodamPj.service.BoardService;
 import com.kh.dodamPj.vo.BoardVo;
@@ -25,10 +29,17 @@ public class BoardController {
 	public String freeBoard(Model model, PagingDto pagingDto) throws Exception { // 자유게시판
 		int count = boardSerivce.getCount(pagingDto);
 		pagingDto.setCount(count);
-		List<BoardVo> list = boardSerivce.freeBoard(); 
+		int key = pagingDto.getStartPage();
+		System.out.println("key: "+ key);
+		List<BoardVo> list = boardSerivce.freeBoard(pagingDto); 
 		model.addAttribute("list", list);
 		model.addAttribute("pagingDto", pagingDto);
 		return "board/freeBoard";
+	}
+	
+	@RequestMapping(value="/newsBoard", method=RequestMethod.GET)
+	public String newsBoard() throws Exception { // 글쓰기폼
+		return "board/newsBoard"; 
 	}
 	
 	@RequestMapping(value="/writeForm", method=RequestMethod.GET)
@@ -44,7 +55,7 @@ public class BoardController {
 		System.out.println("name "+name);
 		return "redirect:/board/freeBoard";
 	}
-	
+
 	@RequestMapping(value="/content", method=RequestMethod.GET)
 	public String content(int b_no, Model model) throws Exception {
 		BoardVo boardVo = boardSerivce.content(b_no);
@@ -52,8 +63,15 @@ public class BoardController {
 		return "board/content";
 	}
 	
+	@RequestMapping(value="/modifyForm", method=RequestMethod.GET)
+	public String modifyForm(int b_no, Model model) throws Exception { // 수정폼
+		BoardVo boardVo = boardSerivce.content(b_no);
+		model.addAttribute("boardVo", boardVo);
+		return "board/modifyForm"; 
+	}
+	
 	@RequestMapping(value="/modifyRun", method=RequestMethod.POST)
-	public String modifuRun(BoardVo boardVo) throws Exception { // 글수정
+	public String modifyRun(BoardVo boardVo) throws Exception { // 수정폼->자유게시판
 		boardSerivce.modifyRun(boardVo);
 		return "redirect:/board/freeBoard";
 	}
@@ -64,8 +82,13 @@ public class BoardController {
 		return "redirect:/board/freeBoard";
 	}
 	
-	@RequestMapping(value="/newsBoard", method=RequestMethod.GET)
-	public String newsBoard() throws Exception {
-		return "board/newsBoard";
-	}
+	
+	// ckeditor 이미지 업로드
+//	@ResponseBody
+//	@RequestMapping(value="/imgUpload", method=RequestMethod.POST)
+//	public Map<String, Object> imgUpload(@RequestParam("upload") MultipartFile img) {
+//		return "";
+//	}
+
+	
 }

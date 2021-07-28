@@ -51,13 +51,32 @@ public class VolunteerDaoImpl implements VolunteerDao {
 
 	@Override
 	public List<VolunteerVo> myReservation(String user_id) {
-		// TODO Auto-generated method stub
-		return null;
+		List<VolunteerVo> list = sqlSession.selectList(NAMESPACE + "myReservation", user_id);
+		return list;
 	}
 
 	@Override
 	public void resultInsert(VolunteerVo volunteer) {
 		sqlSession.update(NAMESPACE+"resultUpdate", volunteer);
+		
+	}
+
+
+	@Override
+	public boolean cancelReserv(int v_no, String user_id) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("user_id", user_id);
+		map.put("v_no", v_no);
+		int count = sqlSession.delete(NAMESPACE + "cancelReserv", map);
+		if(count > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public void modifyReserv(VolunteerVo volunteerVo) {
+		sqlSession.update(NAMESPACE + "updateReserv", volunteerVo);
 		
 	}
 

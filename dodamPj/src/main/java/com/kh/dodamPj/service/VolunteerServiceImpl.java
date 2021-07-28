@@ -44,6 +44,24 @@ public class VolunteerServiceImpl implements VolunteerService {
 	public void resultInsert(VolunteerVo volunteer) {
 		volunteerDao.resultInsert(volunteer);		
 	}
+
+	@Override
+	public List<VolunteerVo> myReservation(String user_id) {
+		List<VolunteerVo> list = volunteerDao.myReservation(user_id);
+		return list;
+	}
+
+	@Override
+	public boolean cancelReserv(int v_no, String user_id) {
+		boolean result = volunteerDao.cancelReserv(v_no, user_id);
+		return result;
+	}
+
+	@Override
+	public void modifyReserv(VolunteerVo volunteerVo) {
+		volunteerDao.modifyReserv(volunteerVo);
+		
+	}
 	
 	
 

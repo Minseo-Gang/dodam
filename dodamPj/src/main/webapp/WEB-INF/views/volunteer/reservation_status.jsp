@@ -19,32 +19,6 @@ $(document).ready(function() {
 
 	});
 	
-	// 검색 옵션 선택
-	$(".searchType").click(function(e) {
-		e.preventDefault();
-		var searchType = $(this).attr("href");
-		$("#frmPaging > input[name=searchType]").val(searchType);
-		$("#spanSearchType").text($(this).text());
-	});
-	
-	// 검색버튼
-	$("#btnSearch").click(function() {
-		var searchType = 
-			$("#frmPaging > input[name=searchType]").val();
-		if (searchType == "") {
-			alert("검색 옵션을 먼저 선택해 주세요");
-			return;
-		}
-		var keyword = $("#txtSearch").val().trim();
-		if (keyword == "") {
-			alert("검색어를 입력해 주세요");
-			return;
-		}
-		$("#frmPaging > input[name=keyword]").val(keyword);
-		$("#frmPaging > input[name=page]").val("1");
-		$("#frmPaging").submit();
-	});
-	
 	// 글제목  (10개)
 	$(".a_title").click(function(e) {
 		e.preventDefault();
@@ -67,7 +41,7 @@ $(document).ready(function() {
 	<div class="row">
 		<div class="col-md-12">
 			<img style="margin-top: 10px; text-align: center;"
-				src="/resources/img/banner2.jpg">
+				src="/resources/img/volunteerBanner.jpg">
 		</div>
 	</div>
 	<div class="row" style="margin-top: 10px;">
@@ -80,54 +54,14 @@ $(document).ready(function() {
 						class="list-group-item list-group-item-action list-group-item-light p-3"
 						href="/volunteer/reservationForm">- 봉사활동 예약</a> <a
 						class="list-group-item list-group-item-action list-group-item-light p-3"
-						href="/volunteer/volunReservList">- 봉사활동 조회</a>
+						href="/volunteer/volunReservList">- 봉사활동 현황</a>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-10">
 		
-		<!-- 검색 -->
-	<div class="row">
-		<div class="col-md-12">
-			<div class="dropdown">
-				 
-				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-					조회옵션
-				</button>
-				<span id="spanSearchType" style="color:#336699; font-weight:bold;">
-				<c:choose>
-					<c:when test="${pagingDto.searchType == 'p'}">지역별</c:when>
-					<c:when test="${pagingDto.searchType == 't'}">시간별</c:when>
-					<c:when test="${pagingDto.searchType == 'n'}">신청자</c:when>
-				</c:choose>
-				
-				</span>
-				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					 <a class="dropdown-item searchType" href="p">지역별</a> 
-					 <a class="dropdown-item searchType" href="t">시간별</a> 
-					 <a class="dropdown-item searchType" href="n">신청자</a> 
-				</div>
-				<form
-                     class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                     <div class="input-group">
-                         <input type="text" class="form-control bg-light border-0 small" placeholder="검색어 입력..."
-                             aria-label="Search" aria-describedby="basic-addon2"
-                             id="txtSearch" value="${pagingDto.keyword}" name="keyword">
-                         <div class="input-group-append">
-                             <button class="btn btn-default" type="button" id="btnSearch">
-                                 <i class="fas fa-search fa-sm"></i>
-                             </button>
-                         </div>
-                     </div>
-                 </form>
-			</div>
-		</div>
-	</div>
-
-	<!-- // 검색 -->
-		
 			<div class="jumbotron">
-				<h2>봉사활동 조회</h2>
+				<h2>봉사활동 현황</h2>
 			</div>
 			<div class="col-md-12">
 				<table class="table">
@@ -139,9 +73,6 @@ $(document).ready(function() {
 							<th>신청 지역</th>
 							<th>신청 날짜</th>
 							<th>신청 시간</th>
-							<th>연락처</th>
-							<th>이메일</th>
-							<th>비고</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -153,9 +84,6 @@ $(document).ready(function() {
 							<td>${volunteerVo.v_place}</td>
 							<td>${volunteerVo.v_date}</td>
 							<td>${volunteerVo.v_time}</td>
-							<td>${volunteerVo.v_phonenum}</td>
-							<td>${volunteerVo.v_email}</td>
-							<td>${volunteerVo.v_etc}</td>
 						</tr>
 					
 					</c:forEach>

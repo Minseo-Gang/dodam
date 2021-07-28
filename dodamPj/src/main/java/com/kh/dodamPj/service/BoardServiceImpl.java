@@ -1,10 +1,12 @@
 package com.kh.dodamPj.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.dodamPj.dao.BoardDao;
 import com.kh.dodamPj.vo.BoardVo;
@@ -17,8 +19,8 @@ public class BoardServiceImpl implements BoardService {
 	private BoardDao boardDao;
 
 	@Override
-	public List<BoardVo> freeBoard() { //자유게시판
-		List<BoardVo> list = boardDao.freeBoard();
+	public List<BoardVo> freeBoard(PagingDto pagingDto) { //자유게시판
+		List<BoardVo> list = boardDao.freeBoard(pagingDto);
 		return list;
 	}
 
@@ -51,6 +53,20 @@ public class BoardServiceImpl implements BoardService {
 		int count = boardDao.getCount(pagingDto);
 		return count;
 	}
+
+//	@Override
+//	public Map<String, Object> upload(MultipartFile img) {
+//		System.out.println("img : " + img.getOriginalFilename());
+//		String folder = "/resources/img/board/ctntImg";
+//		String ctntImg = null;
+//		
+//		try {
+//			ctntImg = 
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		return null;
+//	}
 
 
 }

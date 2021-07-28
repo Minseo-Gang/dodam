@@ -28,8 +28,8 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public List<BoardVo> freeBoard() {
-		List<BoardVo> list = sqlSession.selectList(NAMESPACE + "freeBoard");
+	public List<BoardVo> freeBoard(PagingDto pagingDto) {
+		List<BoardVo> list = sqlSession.selectList(NAMESPACE + "freeBoard", pagingDto);
 		return list;
 	}
 
@@ -52,6 +52,8 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public int getCount(PagingDto pagingDto) {
 		int count = sqlSession.selectOne(NAMESPACE + "getCount", pagingDto);
+		String key = pagingDto.getKeyword();
+		System.out.println("keyDao: "+ key);
 		return count;
 	}
 
@@ -67,5 +69,5 @@ public class BoardDaoImpl implements BoardDao {
 	public void updateViewCnt(int b_no) {
 		sqlSession.update(NAMESPACE + "updateViewCnt", b_no);
 	}
-
+	
 }

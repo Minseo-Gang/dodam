@@ -3,10 +3,88 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp" %>
 
+<style>
+#fileDrop {
+	width: 80%;
+	height: 100px;
+	border: 1px solid #000;
+}
+	
+.divUploaded {
+	width: 150px;
+	float: left;
+}
+</style>
+<script src="/resources/js/my-script.js"></script>
+<script>
+$(document).ready(function() {
+	$("#fileDrop").on("dragenter dragover", function(e) {
+		e.preventDefault();
+	});
+	
+	$("#fileDrop").on("drop", function(e) {
+		e.preventDefault();
+		console.log(e);
+		var file = e.originalEvent.dataTransfer.files[0];
+		console.log(file);
+		var formData = new FormData();
+		formData.append("file", file);
+		
+		// 파일을 비동기 방식으로 전송
+		// enctype="multipart/form-data"
+		var url = "/lostAnimal/uploadAjax";
+		$.ajax({
+			"processData" : false,
+			"contentType" : false,
+			"url" : url,
+			"method" : "post",
+			"data" : formData,
+			"success" : function(receivedData) {
+				console.log(receivedData);
+				var fileName = receivedData.substring(receivedData.lastIndexOf("_") + 1);
+				var cloneDiv = $("#uploadedList").prev().clone();
+				var img = cloneDiv.find("img");
+				// 이미지인 경우
+				if(isImage(fileName)) {
+					img.attr("src", "http://localhost/lostAnimal/displayImage?fileName=" + receivedData);
+				}
+				cloneDiv.find("span").text(fileName);
+				cloneDiv.find(".a_times").attr("href", receivedData);
+				$("#uploadedList").append(cloneDiv.show());
+			}
+		});
+	});
+	
+	$("#uploadedList").on("click", ".a_times", function(e) {
+		e.preventDefault();
+		var that = $(this);
+		var fileName = $(this).attr("href");
+		var url = "/lostAnimal/deleteFile?fileName=" + fileName;
+		$.get(url, function(receivedData) {
+			if(receivedData == "success") {
+				that.parent().remove();
+			}
+		});
+	});
+	
+	$("#frmWrite").submit(function() {
+		var div = $("#uploadedList .divUploaded");
+		$(this).find("[names^=files]").remove();
+		div.each(function(index) {
+			var fileName = $(this).find(".a_times").attr("href");
+			var html = "<input type='hidden' name='files[" + index + "]' value='" + fileName + "'/>";
+			$("#frmWrite").prepend(html);
+		});
+		//return false; // 폼전송 막기
+	});
+	
+});
+</script>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12" style="margin-top:10px; text-align:center;" >
-			<img src="/resources/img/lostBanner.jpg">
+			<img src="/resources/img/banner.jpg">
 		</div>
 	</div>
 	<div class="row" style="margin-top:10px;">
@@ -16,7 +94,7 @@
                 	<a class="list-group-item" style="background-color:#CCF2F4;">
                 		<strong><i class="fas fa-paw"></i> 유실/유기동물</strong></a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
-                    	href="/protect/protectAnimal">- 보호중인 동물</a>
+                    	href="/lostAnimal/protectAnimal">- 보호중인 동물</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
                     	href="/lostAnimal/reportList">- 분실 신고</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
@@ -37,7 +115,7 @@
 			<br>
 			<div class="row">
 				<div class="col-md-12">
-					<form role="form" action="/lostAnimal/reportRun" method="post" id="frmWrite" enctype="multipart/form-data">
+					<form role="form" action="/lostAnimal/reportRun" method="post" id="frmWrite">
 						<div class="form-group">
 						<label for="b_title">제목</label>
 						<input type="text" class="form-control" id="b_title" name="b_title"/>
@@ -84,14 +162,27 @@
 						<textarea class="form-control" id="p_character" name="p_character"
 							placeholder="중성화, 미용상태, 피부상태 등 아이 파악에 도움될 정보를 작성해주세요."></textarea>
 						</div>
-						<label for="file">사진 첨부</label><br>
-							<div class="form-group">
-								<input type="file" class="form-control-file" id="file" name="file"/>
+						<label for="photo">사진 첨부</label><br>
+							<div>
+								<label>첨부할 파일을 드래그 &amp;드롭 하세요.<br>
+									(사진은 최대 10MB까지 첨부 가능합니다.)</label>
+								<div id="fileDrop"></div>
+							</div><br>
+							
+							<div style="display:none;" class="divUploaded">
+								<img height="100" src="/resources/img/no_image.png" class="img-rounded"/><br>
+								<span>default</span>
+								<a href="#" class="a_times">&times;</a>
 							</div>
-						<button type="submit" class="btn btn-success">등록</button>
+							
+							<div id="uploadedList">
+							
+							</div>
+						</div>						
+						
 						<a class="btn btn-info" href="/lostAnimal/reportList" style="margin-right:10px;">목록</a>
+						<button type="submit" class="btn float-right btn-success">등록</button>
 					</form>
-					</div>
 				</div>
 			</div>			
 		</div>

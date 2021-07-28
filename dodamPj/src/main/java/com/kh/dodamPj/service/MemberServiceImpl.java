@@ -2,11 +2,14 @@ package com.kh.dodamPj.service;
 
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.kh.dodamPj.controller.MailHandler;
+import com.kh.dodamPj.controller.TempKey;
 import com.kh.dodamPj.dao.MemberDao;
 import com.kh.dodamPj.vo.MemberVo;
-
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -14,7 +17,8 @@ public class MemberServiceImpl implements MemberService {
 	@Inject
 	private MemberDao memberDao;
 
-	
+	@Autowired //패스워드 security용
+	private BCryptPasswordEncoder passwordEncoder;
 
 	@Override
 	public void joinRun(MemberVo memberVo) {
@@ -37,8 +41,8 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVo login(String user_id, String user_pw) {
 		MemberVo memberVo = memberDao.login(user_id, user_pw);
+
 		return memberVo;
-		
 	}
 
 	@Override
@@ -70,4 +74,15 @@ public class MemberServiceImpl implements MemberService {
 		MemberVo selectMember = memberDao.selectMember(user_id);
 		return selectMember;
 	}
+
+	@Override
+	public void sendEmail(MemberVo vo, String div) throws Exception {
+		
+		
+	}
+
+
+	
+
+
 }

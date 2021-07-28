@@ -155,7 +155,8 @@
 						<button class="btn btn-default dropdown-toggle" type="button"
 							id="dropdownMenuButton" data-toggle="dropdown">조회옵션</button>
 						<span id="spanSearchType"
-							style="color: #336699; font-weight: bold;"> <c:choose>
+							style="color: #336699; font-weight: bold;"> 
+							<c:choose>
 								<c:when test="${pagingDto.searchType == 'p'}">지역별</c:when>
 								<c:when test="${pagingDto.searchType == 't'}">시간별</c:when>
 								<c:when test="${pagingDto.searchType == 'n'}">신청자</c:when>
@@ -220,12 +221,12 @@
 								<td>${volunteerVo.v_etc}</td>
 								<td>${volunteerVo.result }</td>
 								<c:choose>
-<!-- 								승인 여부가 없을때 -->
+
 									<c:when test="${empty volunteerVo.result  }">
 										<td><button type="button" class="btn btn-success btnOk"data-v_no="${volunteerVo.v_no}" value="승인">승인</button></td>
 										<td><button type="button" class="btn btn-danger btnDenial"data-v_no="${volunteerVo.v_no}" vlaue="거부">거부</button></td>
 									</c:when>
-<!-- 									승인 여부가 있을때 -->
+
 									<c:otherwise>
 										<td><button type="button" class="btn btn-warning btnCancle"data-v_no="${volunteerVo.v_no}">취소</button></td>
 									</c:otherwise>

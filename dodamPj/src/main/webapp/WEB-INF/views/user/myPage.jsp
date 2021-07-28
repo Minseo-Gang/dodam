@@ -618,6 +618,7 @@ ul {
 					<form role="form" id="frmMyPage" action="/user/updatePw" method="post">
 						<tbody>
 <!-- 						아이디 , 이름, 생년월일, 이메일, 전화번호는 readonly // 패스워드만 변경 가능 -->
+				
 							<tr>
 								<th><span>아이디</span></th>
 								<td><input type="text" id="user_id" name="user_id" value="${memberVo.user_id }" readonly></td>
@@ -625,7 +626,7 @@ ul {
 							</tr>
 							<tr>
 								<th><span>패스워드</span></th>
-								<td><input type="password" id="user_pw" name="user_pw"></td>
+								<td><input type="password" id="user_pw" name="user_pw" placeholder="변경할 패스워드 입력"></td>
 								
 							</tr>
 							<tr>
@@ -648,14 +649,13 @@ ul {
 								<td><input type="text" id="phoneNum" name="phoneNum"
 									value="${memberVo.phoneNum }" readonly></td>
 							</tr>
-					
 						</tbody>
 				</table>
 			</div>
 			<!-- join_form E  -->
 
 			<div class="btn_wrap">
-				<button type="button" id="btnInfoModify">정보 수정</button>
+				<button type="button" id="btnInfoModify">패스워드 수정완료</button>
 				<button onclick="history.back(-100)" id="btnBack">뒤로가기</button>
 
 			</div>

@@ -604,6 +604,17 @@ $(document).ready(function(){
 		alert("없는 아이디 / 패스워드 입니다 다시 확인해주세요");
 		return;
 	}
+// 	패스워드 수정완료시 알림창 21-07-14
+	var updateMsg = "${updateMsg}";
+	console.log(msg);
+	if(updateMsg=="success"){
+		alert("패스워드 변경완료 / 다시 로그인 해주세요");
+		return;
+	}
+	$("#btnAuto").click(function(){
+		$("#user_id").val("admin01");
+		$("#user_pw").val("1234");
+	});
 	
 });
 	
@@ -611,6 +622,7 @@ $(document).ready(function(){
 <div class="wrap wd668">
 	<div class="container">
 		<div class="form_txtInput">
+		<form id="frm" role="form" action="/memberLoginRun" method="post">
 			<h2 class="sub_tit_txt">로그인</h2>
 			<div class="join_form">
 				<table>
@@ -618,7 +630,7 @@ $(document).ready(function(){
 						<col width="30%" />
 						<col width="auto" />
 					</colgroup>
-					<form id="frm" role="form" action="/user/memberLoginRun" method="post">
+					
 					<tbody>
 						<tr>
 							<th><span>아이디</span></th>
@@ -631,11 +643,7 @@ $(document).ready(function(){
 							<td><input type="password" id="user_pw" name="user_pw"
 								placeholder="비밀번호를 입력해주세요." required></td>
 						</tr>
-						
-						
-						
-						
-						
+	
 					</tbody>
 				</table>
 				
@@ -643,14 +651,13 @@ $(document).ready(function(){
 			<!-- join_form E  -->
 			<div class="btn_wrap">
 			<span id="result"></span>
-				<button type="submit" class="btn btn-primary">로그인</button>
-				
-
+				<button type="submit" >로그인</button>
 
 			</div>
 				<a href="/user/findId">아이디 찾기</a> / 
 				<a href="/user/findPw">패스워드 찾기</a><br/>
 				<a href="/user/joinForm" style="margin-bottom:300px">회원가입 </a>
+				<button type="button" id="btnAuto">관리자 로그인 바로하기</button>
 			</form>
 		</div>
 		<!-- form_txtInput E -->

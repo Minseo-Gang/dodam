@@ -12,4 +12,7 @@ public interface VolunteerService {
 	public int getCount(PagingDto pagingDto);
 	public boolean checkDateAndTime(VolunteerVo volunteerVo);
 	public void resultInsert(VolunteerVo volunteer);
+	public List<VolunteerVo> myReservation(String user_id);
+	public boolean cancelReserv(int v_no, String user_id);
+	public void modifyReserv(VolunteerVo volunteerVo);
 }

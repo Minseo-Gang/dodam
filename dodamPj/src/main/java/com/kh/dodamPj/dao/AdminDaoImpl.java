@@ -18,7 +18,7 @@ import com.kh.dodamPj.vo.VolunteerVo;
 public class AdminDaoImpl implements AdminDao {
 
 	
-	private static final String NAMESPACE = "com.project.dodam.admin.";
+	private static final String NAMESPACE = "com.kh.dodamPj.admin.";
 
 	@Inject
 	private SqlSession sqlSession;

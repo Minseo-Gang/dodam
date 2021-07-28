@@ -2,8 +2,8 @@ package com.kh.dodamPj.dao;
 
 import java.util.List;
 
-import com.kh.dodamPj.vo.AnimalVo;
 import com.kh.dodamPj.vo.A_PagingDto;
+import com.kh.dodamPj.vo.AnimalVo;
 
 public interface AnimalDao {
 	

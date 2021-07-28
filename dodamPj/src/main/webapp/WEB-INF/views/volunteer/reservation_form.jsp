@@ -17,13 +17,7 @@ $(document).ready(function() {
 		if(check == false) {
 			alert("예약 가능 여부를 확인해주세요.");
 			return false;
-		} 
-		
-// 		if (("#v_name").val() == null)  {
-// 			alert("이름을 입력해주세요.")
-// 			("#v_name").focus();
-// 		}
-		
+		} 	
 	});
 	
 	$("#ableCheck").click(function() {
@@ -54,9 +48,10 @@ $(document).ready(function() {
 	<div class="row">
 		<div class="col-md-12">
 			<img style="margin-top: 10px; text-align: center;"
-				src="/resources/img/banner2.jpg">
+				src="/resources/img/volunteerBanner.jpg">
 		</div>
 	</div>
+
 	<div class="row" style="margin-top: 10px;">
 		<div class="col-md-2">
 			<div class="border-end bg-white" id="sidebar-wrapper">
@@ -75,6 +70,9 @@ $(document).ready(function() {
 			<div class="jumbotron">
 				<h2>봉사활동 신청 양식</h2>
 			</div>
+			<!-- 로그인 한 사용자만 폼 보이게 -->
+			<c:choose>
+			<c:when test="${sessionScope.loginVo.user_id != null}">
 			<form id="frmReserv" name="frmReserv" role="form" action="/volunteer/reservVolun" method="post">
 				<div class="form-group">
 					<label for="v_name"> 이름 : </label> 
@@ -130,6 +128,17 @@ $(document).ready(function() {
 				</div>
 				<button type="submit" class="btn btn-primary" id="reservFinish">신청하기</button>
 			</form>
+			</c:when>
+			<c:otherwise>
+					<div class="col-md-12">
+						<div class="alert alert-dismissable alert-warning">
+							<h4>신청 양식을 작성하시려면 로그인 및 회원가입을 진행해주세요.</h4>
+						</div>	
+						<a type="button" class="btn btn-outline-secondary" href="/user/memberLogin">로그인</a>
+						<a type="button" class="btn btn-outline-secondary" href="/user/joinForm" >회원가입</a>
+					</div>
+				</c:otherwise>
+			</c:choose>
 		</div>	
 	</div>		
 </div>

@@ -13,12 +13,14 @@ public interface MemberDao {
 	public void deleteMember(String user_id);
 	//아이디 중복 체크
 	public boolean checkDupId(String user_id);
+	//마이페이지 21-07-14
+	public MemberVo selectMember(String user_id);
 	//아이디 찾기
 	public MemberVo findId(String user_name,String phoneNum);
 	//패스워드 찾기
 	public MemberVo findPw(String user_id,String user_name,String phoneNum);
 	//패스워드 수정 - 아직
 	public void updatePw(MemberVo memberVo);
-	//마이페이지 21-07-14
-	public MemberVo selectMember(String user_id);
+	
+
 }

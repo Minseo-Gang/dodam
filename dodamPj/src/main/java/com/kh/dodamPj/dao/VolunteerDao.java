@@ -13,4 +13,6 @@ public interface VolunteerDao {
 	public boolean checkDateAndTime(VolunteerVo volunteerVo);
 	public List<VolunteerVo> myReservation(String user_id);
 	public void resultInsert(VolunteerVo volunteer);
+	public boolean cancelReserv(int v_no, String user_id);
+	public void modifyReserv(VolunteerVo volunteerVo);
 }

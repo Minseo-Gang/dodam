@@ -19,7 +19,7 @@ $(document).ready(function() {
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12" style="margin-top:10px; text-align:center;" >
-			<img src="/resources/img/lostBanner.jpg">
+			<img src="/resources/img/banner.jpg">
 		</div>
 	</div>
 	<div class="row" style="margin-top:10px;">
@@ -29,7 +29,7 @@ $(document).ready(function() {
                 	<a class="list-group-item" style="background-color:#CCF2F4;">
                 		<strong><i class="fas fa-paw"></i> 유실/유기동물</strong></a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
-                    	href="/protect/protectAnimal">- 보호중인 동물</a>
+                    	href="/lostAnimal/protectAnimal">- 보호중인 동물</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
                     	href="/lostAnimal/reportList">- 분실 신고</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
@@ -98,7 +98,7 @@ $(document).ready(function() {
 						<textarea class="form-control readonly" id="p_character" name="p_character" readonly>${lostVo.p_character}</textarea>
 						</div>
 						<label for="photo">사진</label> 
-						<p><img style="height: 100px;" src="http://localhost/lostAnimal/displayImage?fileName=${lostVo.p_picture}" /></p>
+						<p><img style="height: 100px;" src="http://localhost/displayImage?fileName=${lostVo.p_picture}" /></p>
 						
 						<a class="btn btn-info" href="/lostAnimal/reportList" style="margin-right:10px;">목록</a>
 						<button type="button" class="btn btn-warning" style="margin-right:10px;"
@@ -111,6 +111,5 @@ $(document).ready(function() {
 			</div>			
 		</div>
   	</div>
-</div>
 
 <%@ include file="../include/footer.jsp" %>

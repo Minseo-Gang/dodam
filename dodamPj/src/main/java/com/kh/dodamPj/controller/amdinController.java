@@ -17,7 +17,7 @@ import com.kh.dodamPj.service.BoardService;
 import com.kh.dodamPj.service.MemberService;
 import com.kh.dodamPj.service.NoticeService;
 import com.kh.dodamPj.service.VolunteerService;
-import com.kh.dodamPj.vo.MemberVo;
+import com.kh.dodamPj.vo.BoardVo;
 import com.kh.dodamPj.vo.NoticeVo;
 import com.kh.dodamPj.vo.PagingDto;
 import com.kh.dodamPj.vo.VolunteerVo;
@@ -29,7 +29,7 @@ public class amdinController {
 	@Inject
 	private AdminService adminService;
 	@Inject
-	private BoardService boardService;
+	private BoardService boardSerivce;
 	
 	@Inject
 	private NoticeService noticeService;
@@ -53,12 +53,24 @@ public class amdinController {
 		
 	}
 	//회원 관리 페이지인데 나중에 동물 등록으로 변경
-	@RequestMapping(value = "/memberManagement", method = RequestMethod.GET)
-	public String memberManagement(Model model) throws Exception {
-		List<MemberVo> memberList = adminService.listMember();
-		model.addAttribute("memberList", memberList);
-		return "/admin/memberManagement";
+	@RequestMapping(value = "/adminFreeBoard", method = RequestMethod.GET)
+	public String adminForeeBoard(Model model,PagingDto pagingDto) throws Exception {
+		int count = boardSerivce.getCount(pagingDto);
+		pagingDto.setCount(count);
+		String key = pagingDto.getKeyword();
+		System.out.println("key: "+ key);
+		List<BoardVo> list = boardSerivce.freeBoard(pagingDto); 
+		model.addAttribute("list", list);
+		model.addAttribute("pagingDto", pagingDto);
+		return "/admin/adminFreeBoard";
 
+	}
+	//관리자 페이지 자유게시판 게시글 삭제 (비동기)21-07-22
+	@RequestMapping(value="/adminDeleteRun", method=RequestMethod.GET)
+	@ResponseBody
+	public String deleteRun(int b_no) throws Exception { // 글삭제
+		boardSerivce.deleteRun(b_no);
+		return "success";
 	}
 	// 봉사활동 리스트 보기 : 관리자 페이지 --2021-07-19
 	@RequestMapping(value = "/adminReservation_status", method = RequestMethod.GET)

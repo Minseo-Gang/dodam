@@ -98,7 +98,8 @@ border-bottom: 1px solid black;
 				<div class="contact-info mr-auto"></div>
 				<div class="social-links">
 					<a href="#" class="login">${sessionScope.loginVo.user_id}</a> 
-					<a href="/user/myPage?user_id =${sessionScope.loginVo.user_id } " class="myPage">마이페이지</a>
+					<a href="/user/myPage?user_id =${sessionScope.loginVo.user_id} " class="myPage">마이페이지</a>
+					<a href="/volunteer/myReservation?user_id =${sessionScope.loginVo.user_id}">나의 예약 정보</a>
 					<a href="/user/logout" class="joinMember">로그아웃</a>
 				</div>
 			</div>
@@ -121,8 +122,8 @@ border-bottom: 1px solid black;
           <li class="drop-down"><a href="#">도담센터</a>
             <ul>
               <li><a href="/notice/noticeList">- 공지 사항</a></li>
-              <li><a href="#">- 보호 절차</a></li>
-              <li><a href="#">- 오시는 길</a></li>
+              <li><a href="/notice/procedure">- 보호 절차</a></li>
+              <li><a href="/user/map">- 오시는 길</a></li>
             </ul>
           </li>
           <li class="drop-down"><a href="#">유실/유기동물</a>
