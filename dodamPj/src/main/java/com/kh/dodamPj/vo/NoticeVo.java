@@ -14,7 +14,7 @@ public class NoticeVo {
 	private int n_level;
 	private String n_filepath;
 	private String n_pic;
-	
+
 	// 첨부파일
 	private String[] files;
 
@@ -117,6 +117,7 @@ public class NoticeVo {
 	public void setN_filepath(String n_filepath) {
 		this.n_filepath = n_filepath;
 	}
+
 
 	public String getN_pic() {
 		return n_pic;

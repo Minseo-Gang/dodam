@@ -27,11 +27,6 @@
 						<span style="font-size:30px"><label style="font-weight:bold">자유게시판</label></span>
 						<table class="table">
 						<tbody>
-<!-- 							<tr> -->
-<!-- 								<td align="center">이름</td> -->
-<!-- 								<td align="center"></td> -->
-<!-- 								<td><input type="text" class="form-control" id="user_id" name="user_id" value="user_id" readonly/></td> -->
-<!-- 							</tr> -->
 							<tr>
 								<td align="center">제목</td>
 								<td align="center"></td>
@@ -43,19 +38,7 @@
 								<td>
 									<textarea name="b_content" id="editor" wrap="hard" rows="10" cols="100" placeholder="내용을 입력하세요."></textarea>
 									<script src="/resources/js/ckeditor.js"></script>
-<!-- <!-- 									<script> -->
-<!-- // 								    ClassicEditor -->
-<!-- // 								        .create( document.querySelector( '#editor' ) ) -->
-<!-- // 								        , { -->
-<!-- // 								    	ckfinder:{ -->
-<!-- // 								    		uploadUrl:'http://localhost:8080/imgUpload' -->
-<!-- // 								    	} -->
-<!-- // 								    } -->
-<!-- // 								        .catch( error => { -->
-<!-- // 								            console.error( error ); -->
-<!-- // 								        } ); -->
-								    	
-<!-- <!-- 									</script> -->
+
 								</td>
 							</tr>
 							

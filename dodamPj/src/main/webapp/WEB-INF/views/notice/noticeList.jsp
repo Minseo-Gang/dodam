@@ -32,6 +32,31 @@
 			$("#frmPaging").attr("action", "/notice/content");
 			$("#frmPaging").submit();
 		});
+		
+		// 검색 옵션 선택
+		$(".searchType").click(function(e) {
+			e.preventDefault();
+			var searchType = $(this).attr("href");
+			$("#frmPaging > input[name=searchType]").val(searchType);
+			$("#spanSearchType").text($(this).text());
+		});
+		// 검색버튼
+		$("#btnSearch").click(function() {
+			var searchType = 
+				$("#frmPaging > input[name=searchType]").val();
+			if (searchType == "") {
+				alert("검색 옵션을 먼저 선택해 주세요");
+				return;
+			}
+			var keyword = $("#txtSearch").val().trim();
+			if (keyword == "") {
+				alert("검색어를 입력해 주세요");
+				return;
+			}
+			$("#frmPaging > input[name=keyword]").val(keyword);
+			$("#frmPaging > input[name=page]").val("1");
+			$("#frmPaging").submit();
+		});
 	});
 </script>
 
@@ -84,6 +109,61 @@
 							<tbody>
 								<c:forEach var="list" items="${noticeList }">
 									<tr>
+<div class="row">
+	<div class="col-md-12">
+		<h2>공지사항</h2>
+		<div class="row">
+		<div class="col-md-12">
+			<div class="dropdown">
+				 
+				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+					검색옵션
+				</button>
+				<span id="spanSearchType" style="color:#336699; font-weight:bold;">
+				<c:choose>
+					<c:when test="${pagingDto.searchType == 't'}">제목</c:when>
+					<c:when test="${pagingDto.searchType == 'c'}">내용</c:when>
+					<c:when test="${pagingDto.searchType == 'u'}">작성자</c:when>
+					<c:when test="${pagingDto.searchType == 'tc'}">제목+내용</c:when>
+					<c:when test="${pagingDto.searchType == 'tcu'}">제목+내용+작성자</c:when>
+				</c:choose>
+				
+				</span>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					 <a class="dropdown-item searchType" href="t">제목</a> 
+					 <a class="dropdown-item searchType" href="c">내용</a> 
+					 <a class="dropdown-item searchType" href="u">작성자</a> 
+					 <a class="dropdown-item searchType" href="tc">제목+내용</a> 
+					 <a class="dropdown-item searchType" href="tcu">제목+내용+작성자</a>
+				</div>
+				<form
+                     class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                     <div class="input-group">
+                         <input type="text" class="form-control bg-light border-0 small" placeholder="검색어 입력..."
+                             aria-label="Search" aria-describedby="basic-addon2"
+                             id="txtSearch" value="${pagingDto.keyword}">
+                         <div class="input-group-append">
+                             <button class="btn btn-primary" type="button" id="btnSearch">
+                                 <i class="fas fa-search fa-sm"></i>
+                             </button>
+                         </div>
+                     </div>
+                 </form>
+			</div>
+		</div>
+	</div>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>조회수</th>
+					<th>작성시간</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="list" items="${noticeList }">
+					<tr>
 
 										<th class="border">${list.n_no }</th>
 										<th class="border"><a class="a_title" href="#"
@@ -130,4 +210,7 @@
 		</div>
 	</div>
 </div>	
-	<%@ include file="../include/footer.jsp"%>
+
+
+<%@ include file="../include/footer.jsp"%>
+

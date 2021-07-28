@@ -69,7 +69,12 @@ $(document).ready(function() {
 	<div class="col-md-10" style="margin-bottom:0px;">
 		<h2>보호중인 동물</h2>
 		<hr/>
-		<br>
+		<ul>
+			<li>동물을 분실한 경우 동물정보를 올려 분실 동물을 찾을 수 있는 공간입니다.</li>
+			<li>동물을 분실한 경우 동물보호법 제12조 제1항 및 같은 법 시행규칙 제8조 제1항 및 제9조 제2항에 따라 등록대상동물을
+				10일 이내 시장, 군수, 구청장에게 분실 신고하셔야 합니다.</li>
+		</ul>
+		
 		<!-- 검색기능 -->
 			<div class="row">
 				  <div class="col-md-12">
@@ -99,7 +104,7 @@ $(document).ready(function() {
 							</ul>
 							<form class="form-inline">
 								<input class="form-control mr-sm-2" type="text" placeholder="검색어를 입력해주세요."
-									aria-label="Search" value="${pagingDto.keyword}" id="searchTxt"/>
+									aria-label="Search" value="${aPagingDto.keyword}" id="searchTxt"/>
 								<button class="btn btn-primary my-2 my-sm-0" type="button" id="btnSearch">검색</button>
 							</form>
 						</div>
@@ -117,22 +122,21 @@ $(document).ready(function() {
 								<div class="col mb-5">
 									<div class="card h-100">
 										<!-- Product image-->
-										<img class="card-img-top" src="http://localhost/protect/displayImage?fileName=${animalVo.a_picture}" alt="..." />
+										<img class="card-img-top" style="height:160px; width:236.5px;" src="http://localhost/protect/displayImage?fileName=${animalVo.a_picture}" alt="..." />
 										<div class="card-body" style="padding:0px; margin-top:5px; margin-right:5px;">
 											<ul style="padding-left:30px;">
 												<li><span>품종 : </span>${animalVo.a_species}</li>
 												<li><span>성별 : </span>${animalVo.a_gender}</li>
 												<li><span>나이 : </span>${animalVo.a_age}</li>
 												<li><span>발견장소 : </span>${animalVo.a_findplace}</li>
+												<li><span>상태 : </span>${animalVo.a_state}</li>
 											</ul>
 										</div>
 										<!-- Product actions-->
 										<div class="card-footer pt-0 border-top-0 bg-transparent">
 											<div class="text-center">
 												<a class="btn btn-outline-dark mt-auto" style="margin-bottom:2px;"
-													href="/protect/protectAnimalCont?a_no=${animalVo.a_no}">자세히보기</a><br>
-												<a class="btn btn-sm btn-outline-info" href="/protect/protectAnimalModiForm?a_no=${animalVo.a_no}">수정</a>
-												<a class="btn btn-sm btn-outline-danger" href="/protect/deleteAnimalRun?a_no=${animalVo.a_no}">삭제</a>
+													href="/protect/protectAnimalCont?a_no=${animalVo.a_no}">자세히보기</a><br>		
 											</div>
 										</div>
 									</div>
@@ -143,7 +147,6 @@ $(document).ready(function() {
 					</section>
 				</div>
 			</div>
-			<a class="btn btn-primary" href="/protect/protectAnimalForm">+ 새 동물</a>
 		</div>
 		
 		<!-- 페이징 -->

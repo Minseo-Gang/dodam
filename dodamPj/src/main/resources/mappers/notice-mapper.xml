@@ -15,6 +15,7 @@
 			(n_no, n_title, n_content, n_group,n_pic)
 		values 
 			(#{n_no}, #{n_title}, #{n_content}, #{n_no},#{n_pic, jdbcType=VARCHAR})
+
 	</insert>
 	
 	<!-- 첨부파일 추가 -->
@@ -100,9 +101,11 @@
 			t_readcount = t_readcount + 1
 		where t_no = #{t_no}
 	</update>
+	
 	<update id="updateCommentCnt">
 		update tbl_board set
 			comment_cnt = comment_cnt + #{count}
 		where t_no = #{t_no}
 	</update>
+	
 </mapper>

@@ -5,17 +5,30 @@
   
 <mapper namespace="com.kh.dodamPj.comment">
 
-	<!-- 댓글 목록 -->
+	<!-- 자유게시판 댓글 목록 -->
 	<select id="getCommentList" resultType="CommentVo">
 		select * from tbl_comment
 		where n_no = #{n_no}
 		order by c_no desc
 	</select>
 	
-	<!-- 댓글 쓰기 -->
+	<!-- 자유게시판 댓글 쓰기 -->
 	<insert id="insertComment">
 		insert into tbl_comment(c_no, n_no, c_content, user_id)
 		values (seq_comment_cno.nextval, #{n_no}, #{c_content}, #{user_id})
+	</insert>
+	
+	<!-- 동물게시판 댓글 목록 -->
+	<select id="animalGetCommentList" resultType="CommentVo">
+		select * from tbl_comment
+		where ab_no = #{ab_no}
+		order by c_no desc
+	</select>
+
+	<!-- 동물게시판 댓글 쓰기 -->
+	<insert id="animalInsertComment">
+		insert into tbl_comment(c_no, ab_no, c_content, user_id)
+		values (seq_animalcomment_cno.nextval, #{ab_no}, #{c_content}, #{user_id})
 	</insert>
 	
 	<!-- 댓글 수정 -->

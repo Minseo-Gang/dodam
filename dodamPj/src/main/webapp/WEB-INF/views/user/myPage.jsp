@@ -26,8 +26,7 @@ body {
 	font-family: 'Noto Sans KR';
 }
 
-table, tr, td, th, div, p, em, ol, ul, li, dl, dt, dd, a, address, img,
-	h1, h2, h3, h4, h5, h6 {
+table, tr, td, th, div, p {
 	font-size: 11pt;
 	color: #666;
 	text-decoration: none;
@@ -621,43 +620,41 @@ ul {
 				
 							<tr>
 								<th><span>아이디</span></th>
-								<td><input type="text" id="user_id" name="user_id" value="${memberVo.user_id }" readonly></td>
-								
+								<td><input type="text" id="user_id" name="user_id" 
+									value="${memberVo.user_id}" readonly></td>
 							</tr>
 							<tr>
 								<th><span>패스워드</span></th>
 								<td><input type="password" id="user_pw" name="user_pw" placeholder="변경할 패스워드 입력"></td>
-								
+
 							</tr>
 							<tr>
 								<th><span>이름</span></th>
 								<td><input type="text" id="user_name" name="user_name"
-									value="${memberVo.user_name }" readonly ></td>
+									value="${memberVo.user_name}" readonly ></td>
 							</tr>
 							<tr class="email">
 								<th><span>이메일</span></th>
 								<td><input type="text" id="user_email" name="user_email"
-									class="user_email" value="${memberVo.user_email }" readonly> </td>
+									class="user_email" value="${memberVo.user_email}" readonly></td>
 							</tr>
 							<tr>
 								<th><span>생년월일</span></th>
 								<td><input type="text" id="user_birth" name="user_birth"
-									value="${memberVo.user_birth }" readonly></td>
+									value="${memberVo.user_birth}" readonly></td>
 							</tr>
 							<tr>
 								<th><span>휴대폰 번호</span></th>
 								<td><input type="text" id="phoneNum" name="phoneNum"
-									value="${memberVo.phoneNum }" readonly></td>
+									value="${memberVo.phoneNum}" readonly></td>
 							</tr>
 						</tbody>
 				</table>
 			</div>
 			<!-- join_form E  -->
-
 			<div class="btn_wrap">
 				<button type="button" id="btnInfoModify">패스워드 수정완료</button>
 				<button onclick="history.back(-100)" id="btnBack">뒤로가기</button>
-
 			</div>
 			</form>
 		</div>

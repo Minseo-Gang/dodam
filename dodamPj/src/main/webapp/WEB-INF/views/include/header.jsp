@@ -7,10 +7,26 @@
 
 <head>
 <style>
-	.inline{
-border-bottom: 1px solid black;
+.inline {
+	border-bottom: 1px solid black;
 }
 </style>
+
+<style type="text/css">
+	table {
+
+	.ck ck-editor{
+		max-width: 500px;
+		overflow: scroll;
+	}
+	
+	.ck-editor__editable{
+		min-height: 500px;
+		max-height: 500px;
+		overflow: scroll;
+	}
+</style>
+
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -48,7 +64,6 @@ border-bottom: 1px solid black;
   <script src="/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="/resources/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
   <script src="https://kit.fontawesome.com/f08b10fb42.js" crossorigin="anonymous"></script>
-
   <!-- Template Main JS File -->
   <script src="/resources/js/main.js"></script>
 
@@ -58,22 +73,6 @@ border-bottom: 1px solid black;
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  
-  <!-- ckeditor -->
-  <style type="text/css">
-	table {
-
-	.ck ck-editor{
-		max-width: 500px;
-		overflow: scroll;
-	}
-	
-	.ck-editor__editable{
-		min-height: 500px;
-		max-height: 500px;
-		overflow: scroll;
-	}
-</style>
 </head>
 
 <body>
@@ -100,6 +99,15 @@ border-bottom: 1px solid black;
 					<a href="#" class="login">${sessionScope.loginVo.user_id}</a> 
 					<a href="/user/myPage?user_id =${sessionScope.loginVo.user_id} " class="myPage">마이페이지</a>
 					<a href="/volunteer/myReservation?user_id =${sessionScope.loginVo.user_id}">나의 예약 정보</a>
+					<c:choose>
+						<c:when test="${loginVo.auth_level == 0}">
+							<a href="/user/myPage?user_id=${memberVo.user_id}" 
+								class="myPage">마이페이지</a>
+						</c:when>
+						<c:otherwise>
+							<a href="/admin/adminPage" class="adminPage">관리자 페이지로 이동</a>
+						</c:otherwise>
+					</c:choose>
 					<a href="/user/logout" class="joinMember">로그아웃</a>
 				</div>
 			</div>
@@ -124,6 +132,8 @@ border-bottom: 1px solid black;
               <li><a href="/notice/noticeList">- 공지 사항</a></li>
               <li><a href="/notice/procedure">- 보호 절차</a></li>
               <li><a href="/user/map">- 오시는 길</a></li>
+              <li><a href="#">- 보호 절차</a></li>
+              <li><a href="/main/map">- 오시는 길</a></li>
             </ul>
           </li>
           <li class="drop-down"><a href="#">유실/유기동물</a>
@@ -145,15 +155,15 @@ border-bottom: 1px solid black;
             <ul>
               <li><a href="/adopt/adoptInfo">- 입양 안내</a></li>
               <li><a href="/adopt/applyAdopt">- 입양 신청</a></li>
-              <li><a href="#">- 상담 시간 조회</a></li>
+              <li><a href="/adopt/applyList">- 입양 신청 조회</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="#">커뮤니티</a>
+          <li class="drop-down"><a href="/board/freeBoard">커뮤니티</a>
             <ul>
 
               <li><a href="/board/freeBoard">- 자유게시판</a></li>
-              <li><a href="/board/newsBoard">- 정보/뉴스</a></li>
-              <li><a href="#">- 고객센터</a></li>
+              <li><a href="/newsboard/newsBoard">- 동물정보/뉴스</a></li>
+              <li><a href="/customerboard/customerBoard">- 고객센터</a></li>
             </ul>
           </li>
         </ul>

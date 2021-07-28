@@ -18,6 +18,8 @@ $(document).ready(function() {
 		}
 	});
 	
+	var loginVoId = "${loginVo.user_id}";
+	
 	// 댓글 목록
 	$("#btnCommentList").click(function() {
 		var url = "/comment/getCommentList/${boardVo.b_no}";
@@ -32,6 +34,7 @@ $(document).ready(function() {
 				td.eq(1).text(this.c_content);
 				td.eq(2).text(this.user_id);
 				td.eq(3).text(changeDateString(this.c_regdate));
+				td.eq(4).find("button").attr("data-cno", this.c_no);
 				td.eq(5).find("button").attr("data-cno", this.c_no);
 				user = td.eq(2).text();
 				console.log(loginVoId);
@@ -39,12 +42,18 @@ $(document).ready(function() {
 					$("#commentM").show();
 					$("#commentD").show();
 				}
+				
+				var user = td.eq(2).text();
+// 				console.log(loginVoId);
+// 				console.log(user);
 				$("#commentTable > tbody").append(cloneTr);
 				cloneTr.show("slow");
+				if(loginVoId == user){
+					td.eq(4).find("#commentM").attr("style","display:content");
+					td.eq(5).find("#commentD").attr("style","display:content");
+				}
 			});
-			
 		});
-		
 	});
 	
 	// 댓글 입력
@@ -78,7 +87,7 @@ $(document).ready(function() {
 	});
 	
 	// 댓글 삭제
-	$("#commentTable").on("click", ".commentDelete", function() {
+	$("#commentTable").on("click", "#commentD", function() {
 		var c_no = $(this).attr("data-cno");
 		console.log(c_no);
 		var url = "/comment/deleteComment/" + c_no + "/${boardVo.b_no}";
@@ -94,6 +103,7 @@ $(document).ready(function() {
 	
 	// 댓글 수정 버튼
 	$("#commentTable").on("click", ".commentModify", function() {
+		$("#updateCommentText").show(1000);
 		// 모달창 보이기
 		var c_no = $(this).parent().parent().find("td").eq(0).text();
 		var c_content = $(this).parent().parent().find("td").eq(1).text();
@@ -132,6 +142,41 @@ $(document).ready(function() {
 	});
 });
 </script>
+<!-- 모달창 -->
+<div class="row">
+	<div class="col-md-12">
+		 <a style="display:none" id="modal-284734" href="#modal-container-284734" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+		 <div class="modal fade" id="modal-container-284734" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="myModalLabel">
+							댓글 수정
+						</h5> 
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<input type="text" class="form-control c_content"/>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary"
+							id="btnModalOk">
+							수정완료
+						</button> 
+						<button type="button" class="btn btn-secondary" data-dismiss="modal"
+							id="btnModalClose">
+							닫기
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- // 모달창 -->
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -145,7 +190,11 @@ $(document).ready(function() {
                 	<a class="list-group-item" style="background-color:#CCF2F4;">
 		                		<strong><i class="fas fa-paw"></i> 커뮤니티</strong></a>
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/board/freeBoard">- 자유게시판</a>
+
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/newsboard/newsBoard">- 동물 정보/뉴스</a>
+
+		                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/newsboard/newsBoard">- 동물 정보/뉴스</a>
+
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/customerboard/customerBoard">- 고객센터</a>
                 </div>
             </div>
@@ -174,6 +223,9 @@ $(document).ready(function() {
 								<td align="center"></td>
 								<td>
 									<div id="content"></div>
+
+								<div id="content"></div>
+
 									<script language="javascript">
 										var tmpStr = "${boardVo.b_content }";
 										tmpStr = tmpStr.replaceAll("&lt;", "<");
@@ -224,7 +276,6 @@ $(document).ready(function() {
 				<div class="row">
 					<div class="col-md-12">
 						<table class="table" id="commentTable">
-							
 							<tbody>
 								<tr style="display:none;">
 									<td></td>
@@ -234,6 +285,8 @@ $(document).ready(function() {
 										<td><button style="display:none;" type="button" id="commentM"class="btn btn-warning btn-sm commentModify">수정</button></td>
 										<td><button style="display:none;" type="button" id="commentD"class="btn btn-danger btn-sm commentDelete">삭제</button></td>
 
+									<td><button style="display:none;" type="button" id="commentM"class="btn btn-warning btn-sm commentModify">수정</button></td>
+									<td><button style="display:none;" type="button" id="commentD"class="btn btn-danger btn-sm commentDelete">삭제</button></td>
 								</tr>
 							</tbody>
 						</table>
@@ -243,8 +296,7 @@ $(document).ready(function() {
 					<div class="row">
 						<div class="col-md-12">
 						<c:if test="${loginVo.user_id == boardVo.user_id }">
-							<a class="btn btn-primary" id="btnModify" href="/freeboard/modifyForm?b_no=${boardVo.b_no }">수정</a>
-<!-- 							<button type="submit" class="btn btn-success" id="btnModifyFinish" style="display:none">수정완료</button> -->
+							<a class="btn btn-primary" id="btnModify" href="/board/modifyForm?b_no=${boardVo.b_no }">수정</a>
 							<button type="button" class="btn btn-danger" id="btnDelete">삭제</button>
 						</c:if>
 							<a class="btn btn-warning" href="freeBoard">목록</a>

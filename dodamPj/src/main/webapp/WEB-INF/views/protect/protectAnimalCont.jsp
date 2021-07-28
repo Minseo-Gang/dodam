@@ -16,6 +16,17 @@ table.table th {
 
 </style>
 
+<script>
+$(document).ready(function() {
+	var text = "${animalVo.a_state}";
+	if(text == "사망") {
+		$("#a_state").text("사망").css("color", "red");
+	} else if(text == "보호중") {
+		$("#a_state").text("보호중").css("color", "blue");
+	}
+});
+</script>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12" style="margin-top:5px; text-align:center;" >
@@ -85,7 +96,7 @@ table.table th {
 					</tr>
 					<tr>
 						<th>상태</th>
-						<td colspan="3">${animalVo.a_state}</td>
+						<td colspan="3"><span id="a_state"></span></td>
 					</tr>
 				</table>
 			</div>

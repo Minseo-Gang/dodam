@@ -70,7 +70,6 @@
 				$("#tr").show();
 			});
 			
-			
 		});
 		
 		//인증 확인 버튼 클릭
@@ -103,8 +102,7 @@ body {
 	font-family: 'Noto Sans KR';
 }
 
-table, tr, td, th, div, p, em, ol, ul, li, dl, dt, dd, a, address, img,
-	h1, h2, h3, h4, h5, h6 {
+table, tr, td, th, div, p {
 	font-size: 11pt;
 	color: #666;
 	text-decoration: none;
@@ -762,7 +760,6 @@ ul {
 			</div>
 			<div class="btn_wrap">
 				<button type="submit">가입 완료</button>
-
 
 			</div>
 			</form>

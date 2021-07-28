@@ -14,57 +14,12 @@
   				order by a_no desc) a)
   		where rnum between #{startRow} and #{endRow}  		
   	</select>
-  	
-  	<!-- 보호 동물 목록 추가(관리자 전용) -->
-  	<insert id="insertAnimal">
-  		insert into tbl_animal(a_no, a_species, a_color, a_gender, a_age, a_weight, 
-  							a_findplace, a_enterdate, a_neut, a_character, a_picture, a_state)
-  		values (#{a_no}, #{a_species}, #{a_color}, #{a_gender}, #{a_age}, #{a_weight}, #{a_findplace},
-  				 #{a_enterdate}, #{a_neut},	#{a_character, jdbcType=VARCHAR}, #{a_picture, jdbcType=VARCHAR},
-  				 #{a_state})
-  	</insert>
-  	
-  	<!-- 첨부파일 추가(관리자 전용) -->
-  	<insert id="insertAttach">
-  		insert into tbl_protectAttach(file_name, a_no)
-  		values (#{file_name}, #{a_no})
-  	</insert>
-  		
-  		<select id="getNextVal" resultType="int">
-			select seq_animal_no.nextval
-			from dual
-		</select>
-		
-		<select id="selectFile" resultType="String">
-			select * from tbl_protectAttach
-			where a_no = #{a_no}
-		</select>
-		
+ 
 	<!-- 등록된 동물 조회 -->
 	<select id="selectAnimal" resultType="AnimalVo">
 		select * from tbl_animal
 		where a_no = #{a_no}
 	</select>
-	
-	<!-- 등록된 동물 삭제(관리자 전용) -->
-	<delete id="deleteAnimal">
-		delete from tbl_animal
-		where a_no = #{a_no}
-	</delete>
-	
-	<!-- 등록된 동물 수정(관리자 전용) -->
-	<update id="updateAnimal">
-		update tbl_animal set
-			a_species = #{a_species},
-			a_color = #{a_color},
-			a_age = #{a_age},
-			a_weight = #{a_weight},
-			a_findplace = #{a_findplace},
-			a_enterdate = #{a_enterdate},
-			a_character = #{a_character, jdbcType=VARCHAR},
-			a_state = #{a_state}
-			where a_no = #{a_no}			
-	</update>
 	
 	<!-- 글갯수 -->
 	<select id="getCount" resultType="int">
@@ -73,23 +28,22 @@
 	</select>
 	
 	<sql id="search">
-  			<if test="searchType != null">
-  				<choose>
-  					<when test='searchType == "species"'>
-  						where a_species like '%' || #{keyword} || '%'
-  					</when>
-  					<when test='searchType == "gender"'>
-  						where a_gender like '%' || #{keyword} || '%'
-  					</when>
-  					<when test='searchType == "age"'>
-  						where a_age like '%' || #{keyword} || '%'
-  					</when>
-  					<when test='searchType == "place"'>
-  						where a_findplace like '%' || #{keyword} || '%'
-  					</when>
-  				</choose>
-  			</if>
-  		</sql>
+  		<if test="searchType != null">
+  			<choose>
+  				<when test='searchType == "species"'>
+  					where a_species like '%' || #{keyword} || '%'
+  				</when>
+  				<when test='searchType == "gender"'>
+  					where a_gender like '%' || #{keyword} || '%'
+  				</when>
+  				<when test='searchType == "age"'>
+  					where a_age like '%' || #{keyword} || '%'
+  				</when>
+  				<when test='searchType == "place"'>
+  					where a_findplace like '%' || #{keyword} || '%'
+  				</when>
+  			</choose>
+  		</if>
+  	</sql>
 	
-  
   </mapper>

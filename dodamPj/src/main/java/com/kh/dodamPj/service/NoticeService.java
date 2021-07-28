@@ -16,7 +16,7 @@ public interface NoticeService {
 	public void modifyRun(NoticeVo noticeVo);
 //	공지 삭제
 	public void deleteRun(int n_no);
-	
+
 	//공지 리스트 페이징 할때 쓸 전체 리스트 갯수
 	public int getCount(PagingDto pagingDto);
 	//공지 사항 자세히 눌렀을때 첨부파일도 같이 로딩

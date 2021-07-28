@@ -169,14 +169,6 @@ public class AdminServiceImpl implements AdminService {
 		int count = adminDao.getCount2(aPagingDto);
 		return count;
 	}
-	
-	// 동물게시판 글쓰기
-	@Override
-	public void writeRun(NewsBoardVo newsBoardVo) { 
-		newsBoardDao.insertArticle(newsBoardVo);
-		String name = newsBoardVo.getUser_id();
-		System.out.println("name "+name);
-	}
 
 	@Override
 	public void writeRun(NewsBoardVo newsBoardVo) { // 동물게시판 글쓰기

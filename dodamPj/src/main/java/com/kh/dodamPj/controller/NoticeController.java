@@ -18,7 +18,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.dodamPj.service.BoardService;
 import com.kh.dodamPj.service.NoticeService;
+
 import com.kh.dodamPj.util.AnimalFileUploadUtil;
+
 import com.kh.dodamPj.util.MyFileUploadUtil;
 import com.kh.dodamPj.vo.NoticeVo;
 import com.kh.dodamPj.vo.PagingDto;
@@ -114,13 +116,15 @@ public class NoticeController {
 	@RequestMapping(value="/content",method=RequestMethod.GET)
 	public String content(int n_no, Model model) throws Exception{
 		NoticeVo noticeVo =noticeService.content(n_no);
+
+		String file = noticeService.selectFile(n_no);
+		noticeVo.setN_filepath(file);
 		String filepath = noticeVo.getN_filepath();
 		System.out.println("fileName String: "+filepath);
 		System.out.println("content noticeVo: " +noticeVo);
 		System.out.println(n_no);
 		model.addAttribute("noticeVo", noticeVo);
 		return "/notice/notice_content";
-		
 	}
 	
 	//공지사항 삭제
@@ -131,6 +135,7 @@ public class NoticeController {
 		return RE+"/notice/noticeModify";
 	}
 	
+
 //	//첨부파일 업로드 비동기 2012.07.13
 //	@RequestMapping(value="/uploadAjax", method=RequestMethod.POST,
 //			produces="application/text;charset=utf-8")
@@ -142,6 +147,19 @@ public class NoticeController {
 //		String filePath = MyFileUploadUtil.uploadFile("D:/upload", originalFilename, file.getBytes());
 //		return filePath;
 //	}
+
+	//첨부파일 업로드 비동기 2012.07.13
+	@RequestMapping(value="/uploadAjax", method=RequestMethod.POST,
+			produces="application/text;charset=utf-8")
+	@ResponseBody
+	public String uploadAjax(MultipartFile file) throws Exception {
+//		System.out.println("file:" + file);
+		String originalFilename = file.getOriginalFilename();
+//		System.out.println("orinalFilename:" + originalFilename);
+		String filePath = MyFileUploadUtil.uploadFile("D:/upload", originalFilename, file.getBytes());
+		return filePath;
+	}
+
 	
 	// 썸네일 이미지 요청 + 공지사항 자세히 눌렀을떄 해당 첨부파일 로딩 2012.07.13
 	@RequestMapping(value="/displayImage", method=RequestMethod.GET)
@@ -156,8 +174,7 @@ public class NoticeController {
 			System.out.println("이미지 요청 에러");
 			return null;
 		}
-		
-		
+
 	}
 	
 	// 첨부파일 삭제 2012.07.13
@@ -167,7 +184,5 @@ public class NoticeController {
 		MyFileUploadUtil.deleteFile(fileName);
 		return "success";
 	}
-	
-	
-	
+
 }

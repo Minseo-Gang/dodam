@@ -9,10 +9,12 @@ public class MemberVo {
 	private int user_birth;
 	private int auth_level;
 	private String user_pw2;
+	
 	public MemberVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public MemberVo(String user_id, String user_pw, String user_name, String user_email, String phoneNum,
 			int user_birth, int auth_level, String user_pw2) {
 		super();
@@ -25,6 +27,7 @@ public class MemberVo {
 		this.auth_level = auth_level;
 		this.user_pw2 = user_pw2;
 	}
+	
 	public String getUser_id() {
 		return user_id;
 	}

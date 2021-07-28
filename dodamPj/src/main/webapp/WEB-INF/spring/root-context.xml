@@ -24,6 +24,16 @@
 	<bean class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
+	
+	<!-- @Transactional 가능(~able) -->
+	<tx:annotation-driven/>
+	
+	<!-- setAutoCommit, commit, rollback -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
 	<!-- 구글 메일 -->
 	<!-- 2단계 인증, 앱비밀번호: 16자리 - 앱선택(메일), 기기선택(Window 컴퓨터) -->										
 	<bean id="mailSender"

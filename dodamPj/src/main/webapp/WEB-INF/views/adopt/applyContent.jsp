@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <%@ include file="../include/header.jsp" %>
 
 <script>
@@ -60,6 +63,9 @@ $(document).ready(function() {
 							<input type="text" class="form-control" id="ad_age" name="ad_age"
 								value="${adoptVo.ad_gender}/${adoptVo.ad_age}" readonly/>
 						</div>
+					<form role="form" id="frmApply" action="/adopt/modifyApplyRun" method="post">	
+					<input type="hidden" name="au_no" value="${applyUserVo.au_no}">
+					<input type="hidden" name="user_id" value="${applyUserVo.user_id}">
 						<div class="form-group">
 						<label for="user_name">입양자 성명</label>
 							<input type="text" class="form-control" id="user_name" name="user_name"
@@ -68,7 +74,11 @@ $(document).ready(function() {
 						<div class="form-group">
 						<label for="user_tel">연락처</label>
 							<input type="text" class="form-control readonly" id="user_tel" name="user_tel"
+
 								value="${applyUserVo.user_tel}" readonly/>
+								value=<c:if test="${applyUserVo.user_tel ne null && applyUserVo.user_tel != ''}">
+								${fn:substring(applyUserVo.user_tel,0,fn:length(applyUserVo.user_tel)-7)}**-****
+								</c:if> readonly/>
 						</div>
 						<div class="form-group">
 						<label for="adopt_date">상담 예정 날짜</label>
@@ -104,6 +114,17 @@ $(document).ready(function() {
 							style="display:none;">수정완료</button>
 						<button type="button" class="btn btn-danger">삭제</button>
 						<a class="btn float-right btn-info" href="/adopt/applyList" style="margin-right:10px;">목록</a>
+							<textarea class="form-control readonly" id="form_content" name="form_content" 
+							readonly>${applyUserVo.form_content}</textarea>
+						</div>
+						<a class="btn btn-info" href="/adopt/applyList">목록</a>
+						<c:if test="${loginVo.user_id == applyUserVo.user_id}">
+							<button type="button" class="btn btn-success" id="btnModify">수정</button>
+							<button type="submit" class="btn btn-warning" id="btnModifyDone"
+								style="display:none;">수정완료</button>
+							<button type="button" class="btn btn-danger" id="btnDelete">삭제</button>
+						</c:if>
+						
 					</form>
 					</div>
 				</div>

@@ -10,16 +10,25 @@ public class ApplyUserVo {
 	private String form_title;
 	private String form_content;
 	private String form_pw;
-	
+	private String user_id;
+
 	public ApplyUserVo() {
 		super();
 	}
+
 
 	public ApplyUserVo(int au_no, int ad_no,String user_name, String user_tel, String adopt_date, String adopt_time,
 			String form_title, String form_content, String form_pw) {
 		super();
 		this.au_no = au_no;
 		this.ad_no = ad_no;
+
+	public ApplyUserVo(int au_no, int ad_no, String user_id, String user_name, String user_tel, String adopt_date, 
+			String adopt_time, String form_title, String form_content, String form_pw) {
+		super();
+		this.au_no = au_no;
+		this.ad_no = ad_no;
+		this.user_id = user_id;		
 		this.user_name = user_name;
 		this.user_tel = user_tel;
 		this.adopt_date = adopt_date;
@@ -43,6 +52,14 @@ public class ApplyUserVo {
 
 	public void setAd_no(int ad_no) {
 		this.ad_no = ad_no;
+	}
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
 	public String getUser_name() {
@@ -105,7 +122,8 @@ public class ApplyUserVo {
 	public String toString() {
 		return "ApplyUserVo [au_no=" + au_no + ", ad_no=" + ad_no + ", user_name=" + user_name + ", user_tel="
 				+ user_tel + ", adopt_date=" + adopt_date + ", adopt_time=" + adopt_time + ", form_title=" + form_title
-				+ ", form_content=" + form_content + ", form_pw=" + form_pw + "]";
-	}	
+				+ ", form_content=" + form_content + ", form_pw=" + form_pw + ", user_id=" + user_id + "]";
+	}
+
 
 }

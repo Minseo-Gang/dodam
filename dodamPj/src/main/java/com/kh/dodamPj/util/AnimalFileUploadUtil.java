@@ -72,7 +72,7 @@ public class AnimalFileUploadUtil {
 			BufferedImage srcImage = ImageIO.read(orgFile);
 			BufferedImage destImage = Scalr.resize(
 					srcImage, Scalr.Method.AUTOMATIC,
-					Scalr.Mode.FIT_TO_HEIGHT, 100);
+					Scalr.Mode.FIT_TO_HEIGHT, 450);
 			ImageIO.write(destImage, getExtName(thumbnailPath), thumbFile);
 		} catch(Exception e) {
 			e.printStackTrace();

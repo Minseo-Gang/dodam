@@ -31,6 +31,7 @@ public class BoardController {
 		pagingDto.setCount(count);
 		int key = pagingDto.getStartPage();
 		System.out.println("key: "+ key);
+		pagingDto.setCount(count);
 		List<BoardVo> list = boardSerivce.freeBoard(pagingDto); 
 		model.addAttribute("list", list);
 		model.addAttribute("pagingDto", pagingDto);
@@ -71,13 +72,14 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/modifyRun", method=RequestMethod.POST)
-	public String modifyRun(BoardVo boardVo) throws Exception { // 수정폼->자유게시판
+	public String modifuRun(BoardVo boardVo) throws Exception { // 수정폼->자유게시판
 		boardSerivce.modifyRun(boardVo);
 		return "redirect:/board/freeBoard";
 	}
 	
 	@RequestMapping(value="/deleteRun", method=RequestMethod.GET)
 	public String deleteRun(int b_no) throws Exception { // 글삭제
+		boardSerivce.commentDeleteRun(b_no);
 		boardSerivce.deleteRun(b_no);
 		return "redirect:/board/freeBoard";
 	}

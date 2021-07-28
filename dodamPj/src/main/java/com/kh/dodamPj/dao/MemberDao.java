@@ -6,7 +6,7 @@ public interface MemberDao {
 	//회원 가입
 	public void insertMember(MemberVo memberVo);
 	//로그인
-	public MemberVo login(String user_id,String user_pw);
+	public MemberVo login(String user_id, String user_pw);
 	//정보 수정- 아직
 	public void updateMember(MemberVo memberVo);
 	//회원 탈퇴- 아직
@@ -21,6 +21,5 @@ public interface MemberDao {
 	public MemberVo findPw(String user_id,String user_name,String phoneNum);
 	//패스워드 수정 - 아직
 	public void updatePw(MemberVo memberVo);
-	
 
 }

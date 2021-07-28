@@ -47,11 +47,26 @@
  			<mapping path="/notice/noticeWriteForm/*" /> 
 			<exclude-mapping path="/admin/logout/*"/>
 			<exclude-mapping path="/admin/noticeWriteRun/*"/>
+	
+	<beans:bean class="com.kh.dodamPj.interceptor.Interceptor" id="authInterceptor"></beans:bean>
+	
+	<!--  인터셉트 부분 path 겹치는 주소만 입터셉트  -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/**/*" />
+ 			<mapping path="/notice/noticeWriteForm/*" />
+ 			<mapping path="/lostAnimal/reportAnimalForm" />
+ 			<mapping path="/adopt/applyForm" />
+ 			<exclude-mapping path="/resources/**/*"/>
+			<exclude-mapping path="/admin/logout/*"/>
 			<exclude-mapping path="/admin/uploadAjax/*"/>
 			<exclude-mapping path="/admin/displayImage/*"/>
 			<exclude-mapping path="/admin/deleteFile/*"/>
 			<beans:ref bean="authInterceptor" />
 		</interceptor>
 	</interceptors>
+	
+	<context:component-scan base-package="com.kh.dodamPj" />	
+
 	
 </beans:beans>

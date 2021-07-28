@@ -19,8 +19,7 @@ body {
 	font-family: 'Noto Sans KR';
 }
 
-table, tr, td, th, div, p, em, ol, ul, li, dl, dt, dd, a, address, img,
-	h1, h2, h3, h4, h5, h6 {
+table, tr, td, th, div, p {
 	font-size: 11pt;
 	color: #666;
 	text-decoration: none;
@@ -617,8 +616,8 @@ $(document).ready(function(){
 	});
 	
 });
-	
 </script>
+
 <div class="wrap wd668">
 	<div class="container">
 		<div class="form_txtInput">
@@ -630,27 +629,26 @@ $(document).ready(function(){
 						<col width="30%" />
 						<col width="auto" />
 					</colgroup>
-					
+
+					<form id="frm" role="form" action="/memberLoginRun" method="post">
 					<tbody>
 						<tr>
 							<th><span>아이디</span></th>
 							<td><input type="text" id="user_id" name="user_id"
 								placeholder="ID 를 입력하세요." required></td>
 						</tr>
-						
 						<tr>
 							<th><span>비밀번호</span></th>
 							<td><input type="password" id="user_pw" name="user_pw"
 								placeholder="비밀번호를 입력해주세요." required></td>
 						</tr>
-	
 					</tbody>
 				</table>
-				
 			</div>
 			<!-- join_form E  -->
 			<div class="btn_wrap">
 			<span id="result"></span>
+
 				<button type="submit" >로그인</button>
 
 			</div>
@@ -658,6 +656,10 @@ $(document).ready(function(){
 				<a href="/user/findPw">패스워드 찾기</a><br/>
 				<a href="/user/joinForm" style="margin-bottom:300px">회원가입 </a>
 				<button type="button" id="btnAuto">관리자 로그인 바로하기</button>
+				<button type="submit" class="btn btn-primary" >로그인</button>
+			</div>
+				<a href="/user/findId">아이디 찾기&nbsp;/</a>  
+				<a href="/user/findPw">&nbsp;패스워드 찾기</a><br/>
 			</form>
 		</div>
 		<!-- form_txtInput E -->
