@@ -3,6 +3,7 @@ package com.kh.dodamPj.dao;
 import java.util.List;
 
 import com.kh.dodamPj.vo.BoardVo;
+import com.kh.dodamPj.vo.LostVo;
 import com.kh.dodamPj.vo.PagingDto;
 
 public interface BoardDao {
@@ -28,4 +29,11 @@ public interface BoardDao {
 
 	// 동물게시판 댓글수 변경
 	public void animalUpdateCommentCnt(int ab_no, int count);
+	
+	// 첨부파일
+	public void insertAttach(BoardVo boardVo);
+	// nextval 얻기
+	public int getNextVal();
+	// 첨부파일관련
+	public String selectFile(int b_no);
 }

@@ -21,7 +21,7 @@
             </div>
 		</div>
 			<div class="col-md-10">
-				<form role="form" action="/board/writeRun" method="post">
+				<form role="form" action="/board/writeRun" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="user_id" value="${sessionScope.loginVo.user_id }">
 					<div class="form-group">
 						<span style="font-size:30px"><label style="font-weight:bold">자유게시판</label></span>
@@ -40,9 +40,12 @@
 									<script src="/resources/js/ckeditor.js"></script>
 								</td>
 							</tr>
-							
 						</tbody>
 					</table>
+					<label for="file">사진 첨부</label><br>
+					<div class="form-group">
+						<input type="file" class="form-control-file" id="file" name="file"/>
+					</div>
 					</div>
 					<button type="submit" class="btn btn-primary">작성완료</button>
 					<a href="freeBoard" class="btn btn-danger">취소</a>

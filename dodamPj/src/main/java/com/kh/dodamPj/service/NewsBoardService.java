@@ -13,4 +13,7 @@ public interface NewsBoardService {
 	public NewsBoardVo content(int ab_no);
 	public void deleteRun(int ab_no);
 	public void modifyRun(NewsBoardVo newsBoardVo);
+	
+	// 첨부파일 관련
+	public String selectFile(int ab_no);
 }

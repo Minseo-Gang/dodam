@@ -147,7 +147,7 @@
               <li><a href="/adopt/applyList">- 입양 신청 조회</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="#">커뮤니티</a>
+          <li class="drop-down"><a href="/board/freeBoard">커뮤니티</a>
             <ul>
 
               <li><a href="/board/freeBoard">- 자유게시판</a></li>

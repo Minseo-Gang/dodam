@@ -645,12 +645,12 @@ $(document).ready(function(){
 			<!-- join_form E  -->
 			<div class="btn_wrap">
 			<span id="result"></span>
-				<button type="submit" >로그인</button>
+				<button type="submit" class="btn btn-primary" >로그인</button>
 			</div>
 				<a href="/user/findId">아이디 찾기</a> / 
 				<a href="/user/findPw">패스워드 찾기</a><br/>
 
-				<button type="button" id="btnAuto">관리자 로그인 바로하기</button>
+				<button type="button" id="btnAuto" class="btn btn-primary">관리자 로그인 바로하기</button>
 			</form>
 		</div>
 		<!-- form_txtInput E -->

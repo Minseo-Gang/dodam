@@ -1,16 +1,21 @@
 
 package com.kh.dodamPj.controller;
 
+import java.io.FileInputStream;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.dodamPj.service.BoardService;
+import com.kh.dodamPj.util.AnimalFileUploadUtil;
 import com.kh.dodamPj.vo.BoardVo;
 import com.kh.dodamPj.vo.PagingDto;
 
@@ -37,7 +42,10 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/writeRun", method=RequestMethod.POST)
-	public String writeRun(BoardVo boardVo) throws Exception { // 글쓰기폼->자유게시판
+	public String writeRun(BoardVo boardVo, MultipartFile file) throws Exception { // 글쓰기폼->자유게시판
+		String orgFileName = file.getOriginalFilename();
+		String filePath = AnimalFileUploadUtil.uploadFile("G:/upload", orgFileName, file.getBytes());
+		boardVo.setB_picture(filePath);
 		boardSerivce.writeRun(boardVo);
 		String name = boardVo.getUser_id();
 		System.out.println("boardVo "+boardVo);
@@ -60,8 +68,12 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/modifyRun", method=RequestMethod.POST)
-	public String modifuRun(BoardVo boardVo) throws Exception { // 수정폼->자유게시판
+	public String modifuRun(BoardVo boardVo, MultipartFile file) throws Exception { // 수정폼->자유게시판
+		String orgFileName = file.getOriginalFilename();
+		String filePath = AnimalFileUploadUtil.uploadFile("G:/upload", orgFileName, file.getBytes());
+		boardVo.setB_picture(filePath);
 		boardSerivce.modifyRun(boardVo);
+		System.out.println("boardVo" + boardVo);
 		return "redirect:/board/freeBoard";
 	}
 	
@@ -72,4 +84,23 @@ public class BoardController {
 		return "redirect:/board/freeBoard";
 	}
 	
+	@RequestMapping(value="/uploadAjax", method=RequestMethod.POST, produces="application/text;charset=utf-8")
+	@ResponseBody
+	public String uploadAjax(MultipartFile file) throws Exception {
+		System.out.println("file :" + file);
+		String originalFilename = file.getOriginalFilename();
+		System.out.println("originalFilename :" + originalFilename);
+		String filePath = AnimalFileUploadUtil.uploadFile("G:/upload", originalFilename, file.getBytes());
+		return filePath;
+	}
+	
+	@RequestMapping(value="/displayImage", method=RequestMethod.GET)
+	@ResponseBody
+	public byte[] displayImage(String fileName) throws Exception {
+		System.out.println("file :" + fileName);
+		FileInputStream fis = new FileInputStream(fileName);
+		byte[] bytes = IOUtils.toByteArray(fis);
+		fis.close();
+		return bytes;
+	}
 }

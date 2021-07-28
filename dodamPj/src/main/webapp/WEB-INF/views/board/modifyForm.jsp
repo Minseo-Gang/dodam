@@ -47,9 +47,12 @@
 									<script src="/resources/js/ckeditor.js"></script>
 								</td>
 							</tr>
-							
 						</tbody>
 					</table>
+					<label for="file">사진 첨부</label><br>
+					<div class="form-group">
+						<input type="file" class="form-control-file" id="file" name="file"/>
+					</div>
 					</div>
 					<button type="submit" class="btn btn-primary">수정완료</button>
 					<a href="freeBoard" class="btn btn-danger">취소</a>

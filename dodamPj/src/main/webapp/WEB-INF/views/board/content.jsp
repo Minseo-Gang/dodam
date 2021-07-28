@@ -215,6 +215,14 @@ $(document).ready(function() {
 										tmpStr = tmpStr.replaceAll("&amp;amp;", "&");
 										document.getElementById('content').innerHTML=tmpStr;
 									</script>
+									<c:choose>
+										<c:when test="${empty boardVo.b_picture }">
+											<label> </label>
+										</c:when>
+										<c:otherwise>
+											<p><img style="height: 100px;" src="http://localhost/board/displayImage?fileName=${boardVo.b_picture}" /></p>
+										</c:otherwise>
+									</c:choose>
 								</td>
 							</tr>
 							

@@ -63,7 +63,7 @@ var loginVoId = "${loginVo.user_id}";
 	});
 	
 	// 댓글 삭제
-	$("#commentTable").on("click", ".commentDelete", function() {
+	$("#commentTable").on("click", "#commentD", function() {
 		var c_no = $(this).attr("data-cno");
 		console.log(c_no);
 		var url = "/comment/animalDeleteComment/" + c_no + "/${newsBoardVo.ab_no}";
@@ -198,10 +198,16 @@ var loginVoId = "${loginVo.user_id}";
 										tmpStr = tmpStr.replaceAll("&amp;amp;", "&");
 										document.getElementById('content').innerHTML=tmpStr;
 									</script>
+									<c:choose>
+										<c:when test="${empty newsBoardVo.ab_picture }">
+											<label> </label>
+										</c:when>
+										<c:otherwise>
+											<p><img style="height: 100px;" src="http://localhost/admin/displayImage?fileName=${newsBoardVo.ab_picture}" /></p>
+										</c:otherwise>
+									</c:choose>
 								</td>
-								
 							</tr>
-							
 						</tbody>
 					</table>
 					</div>
@@ -248,7 +254,6 @@ var loginVoId = "${loginVo.user_id}";
 <%-- 									<c:if test="${loginVo.user_id == memberVo.user_id }"> --%>
 										<td><button style="display:none;" type="button" id="commentM"class="btn btn-warning btn-sm commentModify">수정</button></td>
 										<td><button style="display:none;" type="button" id="commentD"class="btn btn-danger btn-sm commentDelete">삭제</button></td>
-
 								</tr>
 							</tbody>
 						</table>

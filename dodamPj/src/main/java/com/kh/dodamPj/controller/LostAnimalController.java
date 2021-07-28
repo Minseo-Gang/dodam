@@ -104,6 +104,7 @@ public class LostAnimalController {
 	@RequestMapping(value="/displayImage", method=RequestMethod.GET)
 	@ResponseBody
 	public byte[] displayImage(String fileName) throws Exception {
+		System.out.println("file :" + fileName);
 		FileInputStream fis = new FileInputStream(fileName);
 		byte[] bytes = IOUtils.toByteArray(fis);
 		fis.close();

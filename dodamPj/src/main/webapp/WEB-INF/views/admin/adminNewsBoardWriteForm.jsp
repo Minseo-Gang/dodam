@@ -21,7 +21,7 @@
             </div>
 		</div>
 			<div class="col-md-10">
-				<form role="form" action="/admin/adminNewsBoardWriteRun" method="post">
+				<form role="form" action="/admin/adminNewsBoardWriteRun" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<span style="font-size:30px"><label style="font-weight:bold">동물 정보/뉴스</label></span>
 						<table class="table">
@@ -39,9 +39,12 @@
 									<script src="/resources/js/ckeditor.js"></script>
 								</td>
 							</tr>
-							
 						</tbody>
 					</table>
+					<label for="file">사진 첨부</label><br>
+					<div class="form-group">
+						<input type="file" class="form-control-file" id="file" name="file"/>
+					</div>
 					</div>
 					<button type="submit" class="btn btn-primary">작성완료</button>
 					<a href="adminNewsBoard" class="btn btn-danger">취소</a>

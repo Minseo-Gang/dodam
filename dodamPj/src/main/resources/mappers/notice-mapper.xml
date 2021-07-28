@@ -92,17 +92,4 @@
 		 </if>
 	</sql>
 	
-	<!-- 조회수 증가 -->
-	<update id="updateViewCnt">
-		update tbl_board set
-			t_readcount = t_readcount + 1
-		where t_no = #{t_no}
-	</update>
-	
-	<update id="updateCommentCnt">
-		update tbl_board set
-			comment_cnt = comment_cnt + #{count}
-		where t_no = #{t_no}
-	</update>
-	
 </mapper>

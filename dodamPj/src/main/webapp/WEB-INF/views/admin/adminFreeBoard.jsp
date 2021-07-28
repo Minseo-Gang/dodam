@@ -4,67 +4,72 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- ${list } --%>
 <script>
-	$(document).ready(function() {
-		// 페이징
-		$(".pagination > li > a").click(function(e) {
-			e.preventDefault();
-			var page = $(this).attr("href");
-			var frmPaging = $("#frmPaging");
-			frmPaging.find("[name=page]").val(page);
-			frmPaging.submit();
-		});
+$(document).ready(function() {
+// 	$("#btnDelete").click(function() {
+// 		if (confirm("삭제하시겠습니까?")) {
+// 			location.href = "/admin/adminDeleteRun?b_no=${boardVo.b_no}";
+// 		}
+// 	});
+	
+	// 페이징
+	$(".pagination > li > a").click(function(e) {
+		e.preventDefault();
+		var page = $(this).attr("href");
+		var frmPaging = $("#frmPaging");
+		frmPaging.find("[name=page]").val(page);
+		frmPaging.submit();
+	});
+	
+	// 글제목  (10개)
+	$(".a_title").click(function(e) {
+		e.preventDefault(); // prevent:막다, 방지하다, default: 기본
+		// $(this) -> 10개 중에서 클릭한 .a_title
+		// attr: attribute(속성)
+		var b_no = $(this).attr("data-bno"); // 489
+		$("#frmPaging > input[name=b_no]").val(b_no);
+		$("#frmPaging").attr("action", "/admin/adminFreeBoard");
+		$("#frmPaging").submit();
+	});
+	
+	// 검색 옵션 선택
+	$(".searchType").click(function(e) {
+		e.preventDefault();
+		var searchType = $(this).attr("href");
+		$("#frmPaging > input[name=searchType]").val(searchType);
+		$("#spanSearchType").text($(this).text());
+	});
+	
+	// 검색버튼
+	$("#btnSearch").click(function() {
+		var searchType = $("#frmPaging > input[name=searchType]").val();
+		if (searchType == "") {
+			alert("검색 옵션을 먼저 선택해 주세요");
+			return;
+		}
+		var keyword = $("#txtSearch").val().trim();
+		if (keyword == "") {
+			alert("검색어를 입력해 주세요");
+			return;
+		}
+		$("#frmPaging > input[name=keyword]").val(keyword);
+		$("#frmPaging > input[name=page]").val("1");
+		$("#frmPaging").submit();
+	});
 
-		// 글제목  (10개)
-		$(".b_title").click(function(e) {
-			e.preventDefault(); // prevent:막다, 방지하다, default: 기본
-			// $(this) -> 10개 중에서 클릭한 .a_title
-			// attr: attribute(속성)
-			var b_no = $(this).attr("data-bno"); // 489
-			$("#frmPaging > input[name=b_no]").val(b_no);
-			$("#frmPaging").attr("action", "/board/content");
-			$("#frmPaging").submit();
-		});
-
-		// 검색 옵션 선택
-		$(".searchType").click(function(e) {
-			e.preventDefault();
-			var searchType = $(this).attr("href");
-			$("#frmPaging > input[name=searchType]").val(searchType);
-			$("#spanSearchType").text($(this).text());
-		});
-
-		// 검색버튼
-		$("#btnSearch").click(function() {
-			var searchType = $("#frmPaging > input[name=searchType]").val();
-			if (searchType == "") {
-				alert("검색 옵션을 먼저 선택해 주세요");
-				return;
-			}
-			var keyword = $("#txtSearch").val().trim();
-			if (keyword == "") {
-				alert("검색어를 입력해 주세요");
-				return;
-			}
-			$("#frmPaging > input[name=keyword]").val(keyword);
-			$("#frmPaging > input[name=page]").val("1");
-			$("#frmPaging").submit();
-		});
-		
+	// 비동기 삭제
 		$(".btnDelete").click(function(){
 			var b_no = $(this).attr("data-b_no");
 // 			console.log(b_no);
-			var url = "/admin/adminDeleteRun";
-			var sendData = {
-					"b_no" : b_no
-			}
-			$.get(url,sendData,function(rData){
-				if(rData=="success"){
-					alert("삭제 완료");
-					location.reload(); //새로 고침
-				}
-			});
+		var url = "/admin/adminDeleteRun";
+		var sendData = {
+				"b_no" : b_no
+		}
+		$.get(url,sendData,function(rData){
+			alert("삭제 완료");
+			location.reload(); //새로 고침
 		});
 	});
+});
 </script>
 <form id="frmPaging" action="/board/freeBoard" method="get">
 	<input type="hidden" name="page" value="${pagingDto.page}" /> <input
@@ -111,13 +116,6 @@
 							<button class="btn btn-default" type="button" id="btnSearch">
 								<i class="fas fa-search fa-sm"></i>
 							</button>
-							<c:choose>
-								<c:when test="${empty sessionScope.loginVo }">
-								</c:when>
-								<c:otherwise>
-									<a class="btn btn-primary" href="/board/writeForm">글쓰기</a>
-								</c:otherwise>
-							</c:choose>
 						</div>
 					</div>
 				</form>

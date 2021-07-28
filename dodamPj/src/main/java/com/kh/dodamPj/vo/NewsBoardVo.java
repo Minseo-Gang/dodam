@@ -1,6 +1,7 @@
 package com.kh.dodamPj.vo;
 
 import java.sql.Timestamp;
+import java.util.Arrays;
 
 public class NewsBoardVo {
 	private int ab_no;
@@ -13,6 +14,8 @@ public class NewsBoardVo {
 	private int are_seq;
 	private int are_level;
 	private int comment_cnt;
+	private String ab_picture;
+	private String[] files;
 	
 	public NewsBoardVo() {
 		super();
@@ -20,7 +23,8 @@ public class NewsBoardVo {
 	}
 
 	public NewsBoardVo(int ab_no, String ab_title, String ab_content, String user_id, Timestamp ab_regdate,
-			int ab_count, int are_group, int are_seq, int are_level, int comment_cnt) {
+			int ab_count, int are_group, int are_seq, int are_level, int comment_cnt, String ab_picture,
+			String[] files) {
 		super();
 		this.ab_no = ab_no;
 		this.ab_title = ab_title;
@@ -32,6 +36,8 @@ public class NewsBoardVo {
 		this.are_seq = are_seq;
 		this.are_level = are_level;
 		this.comment_cnt = comment_cnt;
+		this.ab_picture = ab_picture;
+		this.files = files;
 	}
 
 	public int getAb_no() {
@@ -114,11 +120,28 @@ public class NewsBoardVo {
 		this.comment_cnt = comment_cnt;
 	}
 
+	public String getAb_picture() {
+		return ab_picture;
+	}
+
+	public void setAb_picture(String ab_picture) {
+		this.ab_picture = ab_picture;
+	}
+
+	public String[] getFiles() {
+		return files;
+	}
+
+	public void setFiles(String[] files) {
+		this.files = files;
+	}
+
 	@Override
 	public String toString() {
-		return "newsBoardVo [ab_no=" + ab_no + ", ab_title=" + ab_title + ", ab_content=" + ab_content + ", user_id="
+		return "NewsBoardVo [ab_no=" + ab_no + ", ab_title=" + ab_title + ", ab_content=" + ab_content + ", user_id="
 				+ user_id + ", ab_regdate=" + ab_regdate + ", ab_count=" + ab_count + ", are_group=" + are_group
-				+ ", are_seq=" + are_seq + ", are_level=" + are_level + ", comment_cnt=" + comment_cnt + "]";
+				+ ", are_seq=" + are_seq + ", are_level=" + are_level + ", comment_cnt=" + comment_cnt + ", ab_picture="
+				+ ab_picture + ", files=" + Arrays.toString(files) + "]";
 	}
 
 	

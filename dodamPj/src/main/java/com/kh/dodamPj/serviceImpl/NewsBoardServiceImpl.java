@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.dodamPj.dao.NewsBoardDao;
 import com.kh.dodamPj.service.NewsBoardService;
@@ -30,9 +31,13 @@ public class NewsBoardServiceImpl implements NewsBoardService {
 		return count;
 	}
 
+	@Transactional
 	@Override
 	public void writeRun(NewsBoardVo newsBoardVo) {
+		int nextval = newsBoardDao.getNextVal();
+		newsBoardVo.setAb_no(nextval);
 		newsBoardDao.insertArticle(newsBoardVo);
+		newsBoardDao.insertAttach(newsBoardVo);
 	}
 
 	@Override
@@ -50,6 +55,13 @@ public class NewsBoardServiceImpl implements NewsBoardService {
 	@Override
 	public void modifyRun(NewsBoardVo newsBoardVo) {
 		newsBoardDao.updateArticle(newsBoardVo);
+	}
+	
+	// 첨부파일 관련
+	@Override
+	public String selectFile(int ab_no) {
+		String file = newsBoardDao.selectFile(ab_no);
+		return file;
 	}
 
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.dodamPj.vo.PagingDto;
 import com.kh.dodamPj.dao.NewsBoardDao;
+import com.kh.dodamPj.vo.BoardVo;
 import com.kh.dodamPj.vo.NewsBoardVo;
 
 @Repository
@@ -66,4 +67,36 @@ public class NewsBoardDaoImpl implements NewsBoardDao {
 	public void updateViewCnt(int ab_no) {
 		sqlSession.update(NAMESPACE + "updateViewCnt", ab_no);
 	}
+	
+	@Override
+	public void animalCommentDeleteArticle(int ab_no) {
+		sqlSession.delete(NAMESPACE + "animalCommentDeleteArticle", ab_no);
+	}
+	
+	@Override
+	public void insertAttach(NewsBoardVo newsBoardVo) {
+		String[] files = newsBoardVo.getFiles();
+		if(files != null && files.length > 0) {
+			for(String file : files) {
+				Map<String, Object> map = new HashMap<>();
+				map.put("file_name", file);
+				map.put("newsBoardVo", newsBoardVo.getAb_no());
+				sqlSession.insert(NAMESPACE + "insertAttach", map);
+			}
+		}
+		
+	}
+
+	@Override
+	public int getNextVal() {
+		int nextVal = sqlSession.selectOne(NAMESPACE + "getNextVal");
+		return nextVal;
+	}
+
+	@Override
+	public String selectFile(int ab_no) {
+		String file = sqlSession.selectOne(NAMESPACE + "selectFile", ab_no);
+		return file;
+	}
+
 }

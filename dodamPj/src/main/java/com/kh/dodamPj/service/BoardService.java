@@ -14,4 +14,7 @@ public interface BoardService {
 	public void deleteRun(int b_no);
 	public int getCount(PagingDto pagingDto);
 	public void commentDeleteRun(int b_no); 
+	
+	// 첨부파일 관련
+	public String selectFile(int b_no);
 }
