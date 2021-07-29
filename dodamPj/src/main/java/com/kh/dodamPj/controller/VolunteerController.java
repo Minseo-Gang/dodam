@@ -29,16 +29,9 @@ public class VolunteerController {
 	@Inject
 	private MemberService MemberService;
 	
-	//봉사활동 등록 페이지
 	@RequestMapping(value="/reservationForm", method=RequestMethod.GET)
 	public String reservationForm() throws Exception {
 		return "volunteer/reservation_form";
-	}
-	
-	//봉사활동 페이지
-	@RequestMapping(value="/reservation", method=RequestMethod.GET)
-	public String reservation() throws Exception {
-		return "volunteer/reservation";
 	}
 	
 	// 나의 예약 정보
@@ -52,8 +45,7 @@ public class VolunteerController {
 		return "volunteer/my_reservation";
 	}
 
-
-	//봉사활동 리스트
+	// 예약 목록
 	@RequestMapping(value="/volunReservList", method=RequestMethod.GET)
 	public String volunReservList(Model model, PagingDto pagingDto) throws Exception {
 		int count = volunteerService.getCount(pagingDto);
@@ -84,7 +76,6 @@ public class VolunteerController {
 		boolean result = volunteerService.checkDateAndTime(volunteerVo);
 		return String.valueOf(result);
 	}
-
 	
 	// 봉사활동 예약 취소 
 	@RequestMapping(value="/cancelReserv", method=RequestMethod.GET)
@@ -98,6 +89,5 @@ public class VolunteerController {
 		return "redirect:/volunteer/myReservation";
 	}
 	
-
 
 }

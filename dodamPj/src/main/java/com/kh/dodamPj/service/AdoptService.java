@@ -2,14 +2,10 @@ package com.kh.dodamPj.service;
 
 import java.util.List;
 
-import com.kh.dodamPj.vo.AdoptVo;
-import com.kh.dodamPj.vo.ApplyUserVo;
-
 import com.kh.dodamPj.vo.A_PagingDto;
 import com.kh.dodamPj.vo.AdoptVo;
 import com.kh.dodamPj.vo.ApplyUserVo;
 import com.kh.dodamPj.vo.PagingDto;
-
 
 public interface AdoptService {
 

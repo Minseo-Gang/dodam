@@ -86,10 +86,10 @@ border-bottom: 1px solid black;
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active">
-          <li class="drop-down"><a href="">공지사항 관리</a>
+          <li class="drop-down"><a href="#">공지사항 관리</a>
             <ul>
-            	<li><a href="/notice/noticeWriteForm">- 공지 사항등록</a></li>
-            	<li><a href="/notice/noticeModify">- 공지 사항 수정</a></li>
+            	<li><a href="/admin/noticeList">- 공지 사항 목록</a></li>
+            	<li><a href="/notice/noticeWriteForm">- 공지 사항 등록</a></li>
             </ul>
           </li>
          	<li class="drop-down"><a href="#">유실/유기동물 관리</a>
@@ -98,7 +98,7 @@ border-bottom: 1px solid black;
 				<li><a href="/admin/protectAnimalForm">- 보호동물 등록</a></li>
             </ul>
          	</li>
-          <li class="drop-down"><a href="/admin/adminReservation_status">봉사활동  관리</a>
+          <li class="drop-down"><a href="#">봉사활동  관리</a>
             <ul>
               <li><a href="/admin/adminReservation_status">- 봉사활동 신청 현황</a></li>
               <li><a href="/volunteer/volunReservList">- 봉사활동 조회</a></li>
@@ -110,7 +110,7 @@ border-bottom: 1px solid black;
               <li><a href="/admin/animalInsertForm">- 입양 동물 등록</a></li>
             </ul>
           </li>
-           <li class="drop-down"><a href="/admin/adminFreeBoard">자유 게시판 관리</a>
+           <li class="drop-down"><a href="#">자유 게시판 관리</a>
            	<ul>
               <li><a href="/admin/adminFreeBoard">- 자유 게시판 관리</a></li>
               <li><a href="/admin/adminNewsBoard">- 동물 정보/뉴스 관리</a></li>

@@ -126,15 +126,11 @@ $(document).ready(function() {
 	
 });
 
-	
-
 </script>
 
 <!-- 예약 수정 모달 -->
 	<div class="row">
 		<div class="col-md-12">
-		
-		
 			<div class="modal fade" id="modal-container-418737" role="dialog"
 				aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
@@ -146,22 +142,18 @@ $(document).ready(function() {
 							</button>
 						</div>
 						<div class="modal-body">
-			
 						<div class="form-group">
 							<label for="user_id"> 아이디 : </label> 
 							<input type="text" class="form-control user_id" id="user_id" name="user_id" readonly/>
 						</div>
-						
 						<div class="form-group">
 							<label for="v_name"> 이름 : </label> 
 							<input type="text" class="form-control v_name" id="v_name" name="v_name" readonly/>
 						</div>
-						
 						<div class="form-group">
 							<label for="v_age"> 나이 : </label> 
 							<input type="text" class="form-control v_age" id="v_age" name="v_age" readonly/>
 						</div>
-						
 						<div class="form-group">
 							<label for="v_place">신청 지역 : </label> 
 							<select name="v_place" id="v_place" class="v_place">
@@ -172,12 +164,10 @@ $(document).ready(function() {
 								<option value="울주군">울주군</option>
 							</select>
 						</div>
-
 						<div class="form-group">
 							<label for="v_date"> 신청 날짜 : </label> 
 							<input type="text" id="v_date" name="v_date" class="v_date">
 						</div>
-
 						<div class="form-group">
 							<label for="v_time">신청 시간 : </label> 
 							<select name="v_time" id="v_time" class="v_time">
@@ -189,39 +179,28 @@ $(document).ready(function() {
 								가능 여부</button><br>
 							<span id="check"></span>
 						</div>
-
-
 						<div class="form-group">
 							<label for="v_phonenum"> 연락처 : </label> 
 							<input type="text" class="form-control v_phonenum" id="v_phonenum" name="v_phonenum"/>
 						</div>
-
 						<div class="form-group">
 							<label for="v_email"> 이메일 : </label>
 							<input type="text" class="form-control v_email" id="v_email" name="v_email"/>
 						</div>
-
 						<div class="form-group">
 							<label for="v_etc"> 비고 : </label> 
 							<input type="text" class="form-control v_etc" id="v_etc"
 								placeholder="궁금한 점이나 문의사항이 있으면 글을 남겨주세요." name="v_etc"/>
 						</div>
-				
-
-
 					</div>
 						<div class="modal-footer">
-
 							<button type="button" class="btn btn-info" id="btnModifyFinish">수정완료</button>
 							<button type="button" class="btn btn-secondary"
 								data-dismiss="modal" id="btnModalClose">닫기</button>
 						</div>
 					</div>
-
 				</div>
-
 			</div>
-
 		</div>
 	</div>
 <!-- /예약 수정 모달 -->
@@ -310,11 +289,8 @@ $(document).ready(function() {
 					</div>
 				</c:otherwise>
 			</c:choose>
-			
 		</div>
 	</div>
-
 </div>
-
 
 <%@ include file="../include/footer.jsp" %>

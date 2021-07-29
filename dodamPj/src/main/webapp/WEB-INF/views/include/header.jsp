@@ -97,8 +97,6 @@
 				<div class="contact-info mr-auto"></div>
 				<div class="social-links">
 					<a href="#" class="login">${sessionScope.loginVo.user_id}</a> 
-					<a href="/user/myPage?user_id =${sessionScope.loginVo.user_id} " class="myPage">마이페이지</a>
-					<a href="/volunteer/myReservation?user_id =${sessionScope.loginVo.user_id}">나의 예약 정보</a>
 					<c:choose>
 						<c:when test="${loginVo.auth_level == 0}">
 							<a href="/user/myPage?user_id=${memberVo.user_id}" 
@@ -115,7 +113,6 @@
 		</c:otherwise>
 	</c:choose>
 
-
   <!-- ======= Header ======= -->
    <header id="header">
     <div class="container d-flex align-items-center">
@@ -131,7 +128,7 @@
             <ul>
               <li><a href="/notice/noticeList">- 공지 사항</a></li>
               <li><a href="/notice/procedure">- 보호 절차</a></li>
-              <li><a href="/main/map">- 오시는 길</a></li>
+              <li><a href="/notice/map">- 오시는 길</a></li>
             </ul>
           </li>
           <li class="drop-down"><a href="#">유실/유기동물</a>
@@ -154,9 +151,8 @@
               <li><a href="/adopt/applyList">- 입양 신청 조회</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="/board/freeBoard">커뮤니티</a>
+          <li class="drop-down"><a href="#">커뮤니티</a>
             <ul>
-
               <li><a href="/board/freeBoard">- 자유게시판</a></li>
               <li><a href="/newsboard/newsBoard">- 동물정보/뉴스</a></li>
               <li><a href="/customerboard/customerBoard">- 고객센터</a></li>

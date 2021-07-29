@@ -74,6 +74,7 @@ $(document).ready(function() {
 			<c:choose>
 			<c:when test="${sessionScope.loginVo.user_id != null}">
 			<form id="frmReserv" name="frmReserv" role="form" action="/volunteer/reservVolun" method="post">
+				<input type="hidden" name="user_id" value="${sessionScope.loginVo.user_id}">
 				<div class="form-group">
 					<label for="v_name"> 이름 : </label> 
 					<input type="text" class="form-control" id="v_name" name="v_name"/>

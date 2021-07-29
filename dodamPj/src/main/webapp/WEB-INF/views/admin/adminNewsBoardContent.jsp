@@ -81,7 +81,7 @@ $(document).ready(function() {
 								<td><input type="text" class="form-control" id="ab_title" name="ab_title" value="${newsBoardVo.ab_title }" readonly/></td>
 							</tr>
 							<tr>
-
+							
 								<td align="center">내용</td>
 								<td align="center"></td>
 								<td>
@@ -96,14 +96,20 @@ $(document).ready(function() {
 										tmpStr = tmpStr.replaceAll("&amp;amp;", "&");
 										document.getElementById('content').innerHTML=tmpStr;
 									</script>
+									<c:choose>
+										<c:when test="${empty newsBoardVo.ab_picture }">
+											<label> </label>
+										</c:when>
+										<c:otherwise>
+											<p><img style="height: 100px;" src="http://localhost/admin/displayImage?fileName=${newsBoardVo.ab_picture}" /></p>
+										</c:otherwise>
+									</c:choose>
 								</td>
-
 							</tr>
-
 						</tbody>
 					</table>
 					</div>
-
+					
 					<div class="row">
 						<div class="col-md-12">
 							<hr/>
@@ -111,11 +117,11 @@ $(document).ready(function() {
 							<hr/>
 						</div>
 					</div>
-
+					
 				<div class="row">
 					<div class="col-md-12">
 						<table class="table" id="commentTable">
-
+							
 							<tbody>
 								<tr style="display:none;">
 									<td></td>
@@ -128,7 +134,7 @@ $(document).ready(function() {
 						</table>
 					</div>
 				</div>
-
+					
 					<div class="row">
 						<div class="col-md-12">
 							<a class="btn btn-primary" id="btnModify" href="/admin/adminNewsBoardModifyForm?ab_no=${newsBoardVo.ab_no }">수정</a>
@@ -138,9 +144,9 @@ $(document).ready(function() {
 						</div>
 					</div>
 				</form>
-
-
+				
+				
 			</div>
 		</div>
 	</div>
-<%@ include file="../include/footer.jsp" %> 
+<%@ include file="../include/footer.jsp" %>

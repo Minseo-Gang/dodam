@@ -22,7 +22,7 @@ public class AdoptVo {
 		super();
 	}
 
-	public AdoptVo(int ad_no, String ad_adoptstate, String ad_species, String ad_kind, String ad_gender, String ad_age,
+	public AdoptVo(int ad_no,String ad_adoptstate, String ad_species, String ad_kind, String ad_gender, String ad_age,
 			String ad_picture) {
 		super();
 		this.ad_no = ad_no;
@@ -41,7 +41,7 @@ public class AdoptVo {
 	public void setAd_no(int ad_no) {
 		this.ad_no = ad_no;
 	}
-
+	
 	public String getAd_adoptstate() {
 		return ad_adoptstate;
 	}

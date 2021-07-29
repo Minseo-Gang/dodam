@@ -5,37 +5,6 @@
 
 <script>
 $(document).ready(function() {
-// 	$(".pagination > li > a").click(function(e) {
-// 		e.preventDefault();
-// 		var page = $(this).attr("href");
-// 		var frmPaging = $("#frmPaging");
-// 		frmPaging.find("[name=page]").val(page);
-// 		frmPaging.submit();
-// 	});
-	
-// 	$(".searchType").click(function(e) {
-// 		e.preventDefault();
-// 		var searchType = $(this).attr("href");
-// 		$("#frmPaging > input[name=searchType]").val(searchType);
-// 		$("#spanSearchType").text($(this).text());
-// 	});
-	
-// 	$("#btnSearch").click(function() {
-// 		var searchType = $("#frmPaging > input[name=searchType]").val();
-// 		if(searchType == "") {
-// 			alert("검색 옵션을 선택해 주세요");
-// 			return;
-// 		}
-// 		var keyword = $("#searchTxt").val().trim();
-// 		if(keyword == "") {
-// 			alert("검색어를 입력해 주세요");
-// 			return;
-// 		}
-		
-// 		$("#frmPaging > input[name=keyword]").val(keyword);
-// 		$("#frmPaging > input[name=page]").val("1");
-// 		$("#frmPaging").submit();
-// 	});
 	$(".pagination > li > a").click(function(e) {
 		e.preventDefault();
 		var page = $(this).attr("href");
@@ -67,6 +36,7 @@ $(document).ready(function() {
 		$("#frmPaging > input[name=page]").val("1");
 		$("#frmPaging").submit();
 	});
+
 });
 </script>
 
@@ -100,7 +70,6 @@ $(document).ready(function() {
 		</div>
 	<div class="col-md-10" style="margin-bottom:0px;">
 		<h2>입양 신청</h2>
-		<hr/>		
 		<hr/>
 		<img src="/resources/img/adoptInfoBanner.jpg"/>
 		<ul>
@@ -170,9 +139,6 @@ $(document).ready(function() {
 									<div class="card-footer pt-0 border-top-0 bg-transparent">
 										<div class="text-center">
 										<a class="btn btn-outline-dark mt-auto" style="margin-bottom:2px;"
-													href="/adopt/applyForm?ad_no=${adoptVo.ad_no}">상담 예약</a><br>
-											<a class="btn btn-sm btn-outline-warning" href="/adopt/animalModiForm?ad_no=${adoptVo.ad_no}">수정</a>
-											<a class="btn btn-sm btn-outline-danger" href="/adopt/animalDeleteRun?ad_no=${adoptVo.ad_no}">삭제</a>
 											href="/adopt/applyForm?ad_no=${adoptVo.ad_no}">상담 예약</a><br>
 										</div>
 									</div>
@@ -183,8 +149,6 @@ $(document).ready(function() {
 					</div>
 				</section>
 			</div>
-		</div>
-<!-- 		<a class="btn btn-primary" href="/adopt/animalInsertForm">+ 새 동물</a> -->
 		</div>
 		</div>
 		

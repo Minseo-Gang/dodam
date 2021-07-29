@@ -32,7 +32,7 @@
 			$("#frmPaging").attr("action", "/notice/content");
 			$("#frmPaging").submit();
 		});
-		
+
 		// 검색 옵션 선택
 		$(".searchType").click(function(e) {
 			e.preventDefault();
@@ -42,8 +42,7 @@
 		});
 		// 검색버튼
 		$("#btnSearch").click(function() {
-			var searchType = 
-				$("#frmPaging > input[name=searchType]").val();
+			var searchType = $("#frmPaging > input[name=searchType]").val();
 			if (searchType == "") {
 				alert("검색 옵션을 먼저 선택해 주세요");
 				return;
@@ -59,42 +58,40 @@
 		});
 	});
 </script>
-
-<br />
-<br />
-<br />
 <form id="frmPaging" action="/notice/noticeList" method="get">
-	<input type="hidden" name="page" value="${pagingDto1.page}" /> 
-	<input type="hidden" name="perPage" value="${pagingDto1.perPage}" /> 
-	<input type="hidden" name="searchType" value="${pagingDto1.searchType}" /> 
-	<input type="hidden" name="keyword" value="${pagingDto1.keyword}" /> 
-	<input type="hidden" name="n_no" />
+	<input type="hidden" name="page" value="${pagingDto1.page}" /> <input
+		type="hidden" name="perPage" value="${pagingDto1.perPage}" /> <input
+		type="hidden" name="searchType" value="${pagingDto1.searchType}" /> <input
+		type="hidden" name="keyword" value="${pagingDto1.keyword}" /> <input
+		type="hidden" name="n_no" />
 </form>
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12" style="margin-top:10px; text-align:center;">
+		<div class="col-md-12" style="margin-top:10px; text-align:center;" >
 			<img src="/resources/img/centerBanner.jpg">
 		</div>
-			<div class="row" style="margin-top: 10px;">
-				<div class="col-md-2">
-					<div class="border-end bg-white" id="sidebar-wrapper">
-						<div class="list-group list-group-flush">
-							<a class="list-group-item" style="background-color: #CCF2F4;">
-								<strong><i class="fas fa-paw"></i> 도담센터</strong></a>
-							<a class="list-group-item list-group-item-action list-group-item-light p-3"
-								href="/notice/noticeList">- 공지사항</a> 
-							<a class="list-group-item list-group-item-action list-group-item-light p-3"
-								href="/notice/procedure">- 보호절차</a> 
-							<a class="list-group-item list-group-item-action list-group-item-light p-3"
-								href="/main/map">- 오시는길</a>
-						</div>
-					</div>
-				</div>
-		<div class="row">
-			<div class="col-md-8"></div>
-			<div class="col-md-4">
-				<!--검색 -->
+	</div>
+	<div class="row" style="margin-top:10px;">
+		<div class="col-md-2">
+ 			<div class="border-end bg-white" id="sidebar-wrapper">
+   				<div class="list-group list-group-flush">
+                	<a class="list-group-item" style="background-color:#CCF2F4;">
+                		<strong><i class="fas fa-paw"></i> 도담센터</strong></a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" 
+                    	href="/notice/noticeList">- 공지 사항</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" 
+                    	href="/notice/procedure">- 보호절차</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" 
+                    	href="/notice/map">- 오시는 길</a>
+                </div>
+            </div>
+		</div>
+	<div class="col-md-10">
+		<h2>공지사항</h2>
+		<hr/>
+		
+		<!--검색 -->
 				<div class="dropdown">
 					<button class="btn btn-default dropdown-toggle" type="button"
 						id="dropdownMenuButton" data-toggle="dropdown">검색옵션</button>
@@ -123,32 +120,19 @@
                              <c:choose>
 								<c:when test="${empty sessionScope.loginVo }">
 								</c:when>
-								<c:otherwise>
+									<c:otherwise>
 									<a class="btn btn-primary" href="/board/writeForm">글쓰기</a>
-								</c:otherwise>
+									</c:otherwise>
 							</c:choose>
                          </div>
                      </div>
                  </form>
 				</div>
-			</div>
-		</div>
+				<br>
 		<!-- 검색끝 -->
-		
-		<!-- 카테고리 -->
-			<div class="row">
-				<div class="col-md-2">
-		        	<div class="border-end bg-white" id="sidebar-wrapper">
-		                <div class="list-group list-group-flush">
-		                	<a class="list-group-item" style="background-color:#CCF2F4;">
-		                		<strong><i class="fas fa-paw"></i> 커뮤니티</strong></a>
-		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/notice/noticeList">- 공지사항</a>
-		                 
-		                </div>
-		            </div>
-				</div>
-				<div class="col-md-10">
-				<h1>공지사항</h1>
+			
+		<div class="row">
+				<div class="col-md-12">
 					<table class="table">
 						<thead>
 							<tr>
@@ -161,7 +145,6 @@
 						<tbody>
 							<c:forEach var="list" items="${noticeList }">
 								<tr>
-
 									<th class="border">${list.n_no }</th>
 									<th class="border"><a class="a_title" href="#"
 										data-nno="${list.n_no}">${list.n_title }</a></th>
@@ -176,10 +159,10 @@
 		</div>
 		
 		<!-- 페이징 -->
-		<div class="row">
-			<div class="col-md-12">
-				<nav>
-					<ul class="pagination justify-content-center">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+			<nav>
+				<ul class="pagination justify-content-center">
 					<c:if test="${pagingDto.startPage != 1 }">
 						<li class="page-item"><a class="page-link" href="${pagingDto.startPage - 1 }">&laquo;</a>
 						</li>
@@ -201,11 +184,13 @@
 					</c:forEach>
 					<c:if test="${pagingDto.endPage < pagingDto.totalPage }">
 						<li class="page-item"><a class="page-link" href="${pagingDto.endPage + 1 }">&raquo;</a></li>
-					</c:if>	
-					</ul>
-				</nav>
-			</div>
-		</div>	
+					</c:if>
+				</ul>
+			</nav>
+		</div>
+	<!-- 페이징 end -->
+	
 	</div>
 </div>
+
 <%@ include file="../include/footer.jsp"%>

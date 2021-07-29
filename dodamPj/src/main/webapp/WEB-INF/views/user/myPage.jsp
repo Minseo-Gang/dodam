@@ -7,6 +7,11 @@ $(document).ready(function(){
 	$("#btnInfoModify").click(function(){
 		$("#frmMyPage").submit();
 	});
+	
+	$("#btnBack").click(function(){
+		location.href="/main/main";
+	});
+	
 });
 </script>
 <style>
@@ -653,8 +658,8 @@ ul {
 			</div>
 			<!-- join_form E  -->
 			<div class="btn_wrap">
-				<button type="button" id="btnInfoModify">패스워드 수정완료</button>
-				<button onclick="history.back(-100)" id="btnBack">뒤로가기</button>
+				<button type="button" class="btn btn-warning" id="btnInfoModify">패스워드 수정완료</button>
+				<button type="button" class="btn btn-primary" id="btnBack">뒤로가기</button>
 			</div>
 			</form>
 		</div>

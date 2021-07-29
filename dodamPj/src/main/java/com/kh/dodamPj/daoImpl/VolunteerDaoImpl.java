@@ -78,9 +78,6 @@ public class VolunteerDaoImpl implements VolunteerDao {
 	@Override
 	public void modifyReserv(VolunteerVo volunteerVo) {
 		sqlSession.update(NAMESPACE + "updateReserv", volunteerVo);
-		
 	}
-
-
 
 }

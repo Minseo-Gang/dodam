@@ -637,7 +637,6 @@ ul {
 			<!-- join_form E  -->
 			<div class="btn_wrap">
 				<button type="submit" class="btn btn-primary small">로그인</button>
-		
 			</form>
 		</div>
 		<!-- form_txtInput E -->

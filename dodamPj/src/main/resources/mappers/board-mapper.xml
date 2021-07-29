@@ -17,8 +17,8 @@
 	
 	<!-- 글쓰기 -->
 	<insert id="insertArticle">
-		insert into tbl_board (b_no, b_title, b_content, user_id, re_group)
-		values (seq_board_bno.nextval, #{b_title}, #{b_content}, #{user_id}, seq_board_bno.nextval)
+		insert into tbl_board (b_no, b_title, b_content, user_id, re_group, b_picture)
+		values (seq_board_bno.nextval, #{b_title}, #{b_content}, #{user_id}, seq_board_bno.nextval, #{b_picture, jdbcType=VARCHAR})
 	</insert>
 	
 	<!-- 조회 -->
@@ -87,11 +87,32 @@
 	
 	<!-- 동물게시판 댓글수 변경 -->
 	<update id="animalUpdateCommentCnt">
-		update tbl_board set
+		update tbl_animalboard set
 			comment_cnt = comment_cnt + #{count}
 		where ab_no = #{ab_no}
 	</update>
 	
-
+	<!-- 첨부파일 추가 -->
+	<insert id="insertAttach">
+		insert into tbl_file(file_name, b_no)
+		values (#{file_name}, #{b_no})
+	</insert>
+	
+<!-- 	<select id="getNextVal" resultType="int"> -->
+<!-- 		select seq_board_bno.nextval -->
+<!-- 		from dual -->
+<!-- 	</select> -->
+	
+	<select id="selectFile" resultType="String">
+		select * from tbl_file
+		where b_no = #{b_no}
+	</select>
+	
+	<!-- 첨부파일 수정 -->
+	<insert id="updateAttach">
+		update tbl_board set
+			b_picture = #{b_picture, jdbcType=VARCHAR}
+		where b_no = #{b_no}
+	</insert>
+	
 </mapper>
-

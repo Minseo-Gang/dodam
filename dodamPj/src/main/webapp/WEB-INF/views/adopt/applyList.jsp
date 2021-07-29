@@ -104,6 +104,7 @@ $(document).ready(function() {
 				</div>
 			</div>
 			<!-- 검색기능 end -->
+			
 		<div class="row">
 				<div class="col-md-12">
 					<table class="table">
@@ -163,7 +164,7 @@ $(document).ready(function() {
 			</nav>
 		</div>
 	<!-- 페이징 end -->
-
+	
 	</div>
 </div>
 <%@ include file="../include/footer.jsp" %>

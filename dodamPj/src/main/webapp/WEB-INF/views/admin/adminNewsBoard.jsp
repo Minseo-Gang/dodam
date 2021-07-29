@@ -65,7 +65,7 @@ $(document).ready(function() {
 			<img style="margin-top:10px; text-align:center;" src="/resources/img/communityBanner.jpg">
 		</div>
 	</div>
-
+	
 	<!-- 검색 -->
 	<div class="row">
 			<div class="col-md-8"></div>
@@ -118,7 +118,7 @@ $(document).ready(function() {
 		            </div>
 				</div>
 				<!-- 카테고리 끝 -->
-
+			
 			<!-- 게시판 -->	
 			<div class="col-md-10">
 				<h1>동물 정보/뉴스</h1>
@@ -143,7 +143,7 @@ $(document).ready(function() {
 				</div>
 			</div>
 		</div>
-
+		
 <!-- 페이징 -->
 		<div class="row">
 			<div class="col-md-12">
@@ -175,4 +175,4 @@ $(document).ready(function() {
 				</nav>
 			</div>
 		</div>
-<%@ include file="../include/footer.jsp" %> 
+<%@ include file="../include/footer.jsp" %>

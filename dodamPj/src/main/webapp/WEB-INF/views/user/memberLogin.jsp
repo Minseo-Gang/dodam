@@ -610,18 +610,12 @@ $(document).ready(function(){
 		alert("패스워드 변경완료 / 다시 로그인 해주세요");
 		return;
 	}
-	$("#btnAuto").click(function(){
-		$("#user_id").val("admin01");
-		$("#user_pw").val("1234");
-	});
-	
 });
 </script>
 
 <div class="wrap wd668">
 	<div class="container">
 		<div class="form_txtInput">
-		<form id="frm" role="form" action="/memberLoginRun" method="post">
 			<h2 class="sub_tit_txt">로그인</h2>
 			<div class="join_form">
 				<table>
@@ -629,7 +623,6 @@ $(document).ready(function(){
 						<col width="30%" />
 						<col width="auto" />
 					</colgroup>
-
 					<form id="frm" role="form" action="/memberLoginRun" method="post">
 					<tbody>
 						<tr>
@@ -648,19 +641,13 @@ $(document).ready(function(){
 			<!-- join_form E  -->
 			<div class="btn_wrap">
 			<span id="result"></span>
-
-				<button type="submit" >로그인</button>
-
-			</div>
-				<a href="/user/findId">아이디 찾기</a> / 
-				<a href="/user/findPw">패스워드 찾기</a><br/>
-				<a href="/user/joinForm" style="margin-bottom:300px">회원가입 </a>
-				<button type="button" id="btnAuto">관리자 로그인 바로하기</button>
 				<button type="submit" class="btn btn-primary" >로그인</button>
 			</div>
-				<a href="/user/findId">아이디 찾기&nbsp;/</a>  
-				<a href="/user/findPw">&nbsp;패스워드 찾기</a><br/>
 			</form>
+				<p>
+					<a href="/user/findId">아이디 찾기&nbsp;/</a>  
+					<a href="/user/findPw">&nbsp;패스워드 찾기</a>
+				</p><br>
 		</div>
 		<!-- form_txtInput E -->
 	</div>

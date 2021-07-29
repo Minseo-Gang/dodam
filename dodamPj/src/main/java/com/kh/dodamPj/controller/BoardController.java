@@ -1,20 +1,21 @@
 
 package com.kh.dodamPj.controller;
 
+import java.io.FileInputStream;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.dodamPj.service.BoardService;
+import com.kh.dodamPj.util.AnimalFileUploadUtil;
 import com.kh.dodamPj.vo.BoardVo;
 import com.kh.dodamPj.vo.PagingDto;
 
@@ -29,18 +30,10 @@ public class BoardController {
 	public String freeBoard(Model model, PagingDto pagingDto) throws Exception { // 자유게시판
 		int count = boardSerivce.getCount(pagingDto);
 		pagingDto.setCount(count);
-		int key = pagingDto.getStartPage();
-		System.out.println("key: "+ key);
-		pagingDto.setCount(count);
 		List<BoardVo> list = boardSerivce.freeBoard(pagingDto); 
 		model.addAttribute("list", list);
 		model.addAttribute("pagingDto", pagingDto);
 		return "board/freeBoard";
-	}
-	
-	@RequestMapping(value="/newsBoard", method=RequestMethod.GET)
-	public String newsBoard() throws Exception { // 글쓰기폼
-		return "board/newsBoard"; 
 	}
 	
 	@RequestMapping(value="/writeForm", method=RequestMethod.GET)
@@ -49,14 +42,17 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/writeRun", method=RequestMethod.POST)
-	public String writeRun(BoardVo boardVo) throws Exception { // 글쓰기폼->자유게시판
+	public String writeRun(BoardVo boardVo, MultipartFile file) throws Exception { // 글쓰기폼->자유게시판
+		String orgFileName = file.getOriginalFilename();
+		String filePath = AnimalFileUploadUtil.uploadFile("G:/upload", orgFileName, file.getBytes());
+		boardVo.setB_picture(filePath);
 		boardSerivce.writeRun(boardVo);
 		String name = boardVo.getUser_id();
 		System.out.println("boardVo "+boardVo);
 		System.out.println("name "+name);
 		return "redirect:/board/freeBoard";
 	}
-
+	
 	@RequestMapping(value="/content", method=RequestMethod.GET)
 	public String content(int b_no, Model model) throws Exception {
 		BoardVo boardVo = boardSerivce.content(b_no);
@@ -65,15 +61,19 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/modifyForm", method=RequestMethod.GET)
-	public String modifyForm(int b_no, Model model) throws Exception { // 수정폼
+	public String modifyForm(int b_no, Model model, MultipartFile file) throws Exception { // 수정폼
 		BoardVo boardVo = boardSerivce.content(b_no);
 		model.addAttribute("boardVo", boardVo);
 		return "board/modifyForm"; 
 	}
 	
 	@RequestMapping(value="/modifyRun", method=RequestMethod.POST)
-	public String modifuRun(BoardVo boardVo) throws Exception { // 수정폼->자유게시판
+	public String modifuRun(BoardVo boardVo, MultipartFile file) throws Exception { // 수정폼->자유게시판
+		String orgFileName = file.getOriginalFilename();
+		String filePath = AnimalFileUploadUtil.uploadFile("G:/upload", orgFileName, file.getBytes());
+		boardVo.setB_picture(filePath);
 		boardSerivce.modifyRun(boardVo);
+		System.out.println("boardVo" + boardVo);
 		return "redirect:/board/freeBoard";
 	}
 	
@@ -84,13 +84,23 @@ public class BoardController {
 		return "redirect:/board/freeBoard";
 	}
 	
+	@RequestMapping(value="/uploadAjax", method=RequestMethod.POST, produces="application/text;charset=utf-8")
+	@ResponseBody
+	public String uploadAjax(MultipartFile file) throws Exception {
+		System.out.println("file :" + file);
+		String originalFilename = file.getOriginalFilename();
+		System.out.println("originalFilename :" + originalFilename);
+		String filePath = AnimalFileUploadUtil.uploadFile("G:/upload", originalFilename, file.getBytes());
+		return filePath;
+	}
 	
-	// ckeditor 이미지 업로드
-//	@ResponseBody
-//	@RequestMapping(value="/imgUpload", method=RequestMethod.POST)
-//	public Map<String, Object> imgUpload(@RequestParam("upload") MultipartFile img) {
-//		return "";
-//	}
-
-	
+	@RequestMapping(value="/displayImage", method=RequestMethod.GET)
+	@ResponseBody
+	public byte[] displayImage(String fileName) throws Exception {
+		System.out.println("file :" + fileName);
+		FileInputStream fis = new FileInputStream(fileName);
+		byte[] bytes = IOUtils.toByteArray(fis);
+		fis.close();
+		return bytes;
+	}
 }

@@ -80,15 +80,14 @@ h2 {
 				<div class="col-md-2">
 					<div class="border-end bg-white" id="sidebar-wrapper">
 						<div class="list-group list-group-flush">
-							<a class="list-group-item" style="background-color: #CCF2F4;">
-								<strong><i class="fas fa-paw"></i> 봉사활동</strong>
-							</a> <a
-								class="list-group-item list-group-item-action list-group-item-light p-3"
-								href="/notice/noticeList">- 공지사항</a> <a
-								class="list-group-item list-group-item-action list-group-item-light p-3"
-								href="/notice/procedure">- 보호절차</a> <a
-								class="list-group-item list-group-item-action list-group-item-light p-3"
-								href="/notice/map">- 오시는길</a>
+							<a class="list-group-item" style="background-color:#CCF2F4;">
+                				<strong><i class="fas fa-paw"></i> 도담센터</strong></a>
+                   			 <a class="list-group-item list-group-item-action list-group-item-light p-3" 
+                    				href="/notice/noticeList">- 공지 사항</a>
+                    		<a class="list-group-item list-group-item-action list-group-item-light p-3" 
+                    				href="/notice/procedure">- 보호절차</a>
+                    		<a class="list-group-item list-group-item-action list-group-item-light p-3" 
+                    				href="/notice/map">- 오시는 길</a>
 						</div>
 					</div>
 				</div>

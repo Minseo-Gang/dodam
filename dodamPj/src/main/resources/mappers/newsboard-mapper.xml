@@ -17,8 +17,8 @@
 	
 	<!-- 글쓰기 --> 
 	<insert id="insertArticle">
-		insert into tbl_animalboard (ab_no, ab_title, ab_content, are_group)
-		values (seq_animalboard_bno.nextval, #{ab_title}, #{ab_content}, seq_animalboard_bno.nextval)
+		insert into tbl_animalboard (ab_no, ab_title, ab_content, are_group, ab_picture)
+		values (seq_animalboard_bno.nextval, #{ab_title}, #{ab_content}, seq_animalboard_bno.nextval, #{ab_picture, jdbcType=VARCHAR})
 	</insert>
 	
  	<!-- 조회 --> 
@@ -78,5 +78,27 @@
 			ab_count = ab_count + 1
 		where ab_no = #{ab_no}
 	</update>
+	
+	<!-- 게시글 삭제 시 댓글도 같이 삭제 -->
+	<delete id="anumalCommentDeleteArticle">
+		delete from tbl_comment
+		where ab_no = #{ab_no}
+	</delete>
+	
+	<!-- 첨부파일 추가 -->
+	<insert id="insertAttach">
+		insert into tbl_newsfile(file_name, ab_no)
+		values (#{file_name}, #{ab_no})
+	</insert>
+	
+	<select id="getNextVal" resultType="int">
+		select seq_animalboard_bno.nextval
+		from dual
+	</select>
+	
+	<select id="selectFile" resultType="String">
+		select * from newstbl_file
+		where ab_no = #{ab_no}
+	</select>
 	
 </mapper>

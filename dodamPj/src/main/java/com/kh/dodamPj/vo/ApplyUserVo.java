@@ -11,7 +11,7 @@ public class ApplyUserVo {
 	private String form_content;
 	private String form_pw;
 	private String user_id;
-
+	
 	public ApplyUserVo() {
 		super();
 	}
@@ -117,6 +117,5 @@ public class ApplyUserVo {
 				+ user_tel + ", adopt_date=" + adopt_date + ", adopt_time=" + adopt_time + ", form_title=" + form_title
 				+ ", form_content=" + form_content + ", form_pw=" + form_pw + ", user_id=" + user_id + "]";
 	}
-
 
 }

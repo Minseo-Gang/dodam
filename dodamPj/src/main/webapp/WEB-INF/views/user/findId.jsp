@@ -35,11 +35,12 @@
 
 							});
 
-							$("#btnLogin").click(function() {
-								location.href = "/user/memberLogin";
-							});
 						});
-
+				
+				$("#btnBack").click(function() {
+					location.href = "/user/memberLogin";
+				});
+				
 			});
 </script>
 <style>
@@ -673,9 +674,10 @@ ul {
 			<!-- join_form E  -->
 
 			<div class="btn_wrap">
-				<button type="button" id="btnFind">아이디 찾기</button>
-				<button onclick="history.back(-100)" id="btnBack">뒤로가기</button>
-
+				<br>
+				<button type="button" class="btn btn-warning" id="btnFind">아이디 찾기</button>
+				<button type="button" class="btn btn-primary" id="btnBack">뒤로가기</button>
+				<br>
 			</div>
 			</form>
 		</div>

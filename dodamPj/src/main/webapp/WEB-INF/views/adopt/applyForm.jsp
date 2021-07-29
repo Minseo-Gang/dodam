@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp" %>
-
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -105,12 +104,6 @@ $(document).ready(function() {
 	<div class="col-md-10">
 		<h2>입양 예약</h2>
 		<hr/>
-			<div class="row">
-				<div class="col-md-12">
-					<form role="form" action="/adopt/insertApplyRun" method="post">	
-					<input type="hidden" name="ad_no" value="${adoptVo.ad_no}">
-						<div class="form-group">
-						<label for="ad_adoptstate">입양상태</label>
 		<ul style="list-style:none;">
 			<li style="color:red;"><strong>※ 입양절차 안내</strong></li>
 			<li><strong>① 공고 확인</strong> : 홈페이지에서 보호중인 아이들을 확인 후 상담 예약서를 작성합니다.</li>
@@ -144,33 +137,6 @@ $(document).ready(function() {
 							<input type="text" class="form-control" id="ad_age" name="ad_age"
 								value="${adoptVo.ad_gender}/${adoptVo.ad_age}" readonly/>
 						</div>
-						<div class="form-group">
-						<label for="user_name">입양자 성명</label>
-							<input type="text" class="form-control" id="user_name" name="user_name"/>
-						</div>
-						<div class="form-group">
-						<label for="user_tel">연락처</label>
-							<input type="text" class="form-control" id="user_tel" name="user_tel"/>
-						</div>
-						<div class="form-group">
-						<label for="adopt_date">상담 예정 날짜</label>
-							<input type="text" class="form-control" id="adopt_date" name="adopt_date"/>
-						</div>
-						<div class="form-group">
-						<label for="adopt_time">상담 예정 시간</label>
-							<input type="text" class="form-control" id="adopt_time" name="adopt_time"/>
-						</div>
-						<div class="form-group">
-						<label for="form_title">제목</label>
-							<input type="text" class="form-control" id="form_title" name="form_title"/>
-						</div>
-						<div class="form-group">
-						<label for="form_content">내용</label>
-							<textarea class="form-control" id="form_content" name="form_content"></textarea>
-						</div>
-						<div class="form-group">
-						<label for="form_pw">비밀번호</label>
-							<input type="password" class="form-control" id="form_pw" name="form_pw"/>
 						<c:choose>
 							<c:when test="${empty sessionScope.loginVo}">
 							</c:when>

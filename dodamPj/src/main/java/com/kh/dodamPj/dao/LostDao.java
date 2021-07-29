@@ -25,6 +25,6 @@ public interface LostDao {
 	public int getCount(PagingDto pagingDto);
 	// nextval 얻기
 	public int getNextVal();
-	// 첨부파일
+	// 첨부파일관련
 	public String selectFile(int b_no);
 }

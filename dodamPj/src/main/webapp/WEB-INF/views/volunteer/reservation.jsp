@@ -13,7 +13,7 @@ $(document).ready(function() {
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<img style="margin-top:10px; text-align:center;" src="/resources/img/banner2.jpg">
+			<img style="margin-top:10px; text-align:center;" src="/resources/img/volunteerBanner.jpg">
 		</div>
 	</div>
 	<div class="row" style="margin-top:10px;">

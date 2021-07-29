@@ -5,13 +5,6 @@
 <script src="/resources/js/my-script.js"></script>
 <script>
 $(document).ready(function() {
-// 	$("#btnModify").click(function() {
-// 		$("#btnModifyFinish").show(1000);
-// 		$("[name^=b]").prop("readonly", false);
-// 	});
-	var user ="";
-	var loginVoId = "${sessionScope.loginVo.user_id}";
-	
 	$("#btnDelete").click(function() {
 		if (confirm("삭제하시겠습니까?")) {
 			location.href = "/board/deleteRun?b_no=${boardVo.b_no}";
@@ -36,12 +29,6 @@ $(document).ready(function() {
 				td.eq(3).text(changeDateString(this.c_regdate));
 				td.eq(4).find("button").attr("data-cno", this.c_no);
 				td.eq(5).find("button").attr("data-cno", this.c_no);
-				user = td.eq(2).text();
-				console.log(loginVoId);
-				if(user==loginVoId){
-					$("#commentM").show();
-					$("#commentD").show();
-				}
 				
 				var user = td.eq(2).text();
 // 				console.log(loginVoId);
@@ -101,7 +88,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	// 댓글 수정 버튼
+	// 댓글 수정
 	$("#commentTable").on("click", ".commentModify", function() {
 		$("#updateCommentText").show(1000);
 		// 모달창 보이기
@@ -190,11 +177,7 @@ $(document).ready(function() {
                 	<a class="list-group-item" style="background-color:#CCF2F4;">
 		                		<strong><i class="fas fa-paw"></i> 커뮤니티</strong></a>
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/board/freeBoard">- 자유게시판</a>
-
-		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/newsboard/newsBoard">- 동물 정보/뉴스</a>
-
 		                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/newsboard/newsBoard">- 동물 정보/뉴스</a>
-
 		                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/customerboard/customerBoard">- 고객센터</a>
                 </div>
             </div>
@@ -218,14 +201,10 @@ $(document).ready(function() {
 								<td><input type="text" class="form-control" id="b_title" name="b_title" value="${boardVo.b_title }" readonly/></td>
 							</tr>
 							<tr>
-							
 								<td align="center">내용</td>
 								<td align="center"></td>
 								<td>
-									<div id="content"></div>
-
 								<div id="content"></div>
-
 									<script language="javascript">
 										var tmpStr = "${boardVo.b_content }";
 										tmpStr = tmpStr.replaceAll("&lt;", "<");
@@ -236,8 +215,15 @@ $(document).ready(function() {
 										tmpStr = tmpStr.replaceAll("&amp;amp;", "&");
 										document.getElementById('content').innerHTML=tmpStr;
 									</script>
+									<c:choose>
+										<c:when test="${empty boardVo.b_picture }">
+											<label> </label>
+										</c:when>
+										<c:otherwise>
+											<p><img style="height: 100px;" src="http://localhost/board/displayImage?fileName=${boardVo.b_picture}" /></p>
+										</c:otherwise>
+									</c:choose>
 								</td>
-								
 							</tr>
 							
 						</tbody>
@@ -282,9 +268,6 @@ $(document).ready(function() {
 									<td></td>
 									<td></td>
 									<td></td>
-										<td><button style="display:none;" type="button" id="commentM"class="btn btn-warning btn-sm commentModify">수정</button></td>
-										<td><button style="display:none;" type="button" id="commentD"class="btn btn-danger btn-sm commentDelete">삭제</button></td>
-
 									<td><button style="display:none;" type="button" id="commentM"class="btn btn-warning btn-sm commentModify">수정</button></td>
 									<td><button style="display:none;" type="button" id="commentD"class="btn btn-danger btn-sm commentDelete">삭제</button></td>
 								</tr>

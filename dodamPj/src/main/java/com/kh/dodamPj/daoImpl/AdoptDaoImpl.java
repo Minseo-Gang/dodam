@@ -63,7 +63,6 @@ public class AdoptDaoImpl implements AdoptDao {
 		return auList;
 	}
 	
-	
 	// 입양 신청 상세
 	@Override
 	public ApplyUserVo selectApply(int au_no) {

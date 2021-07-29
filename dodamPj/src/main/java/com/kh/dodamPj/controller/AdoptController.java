@@ -8,15 +8,12 @@ import javax.inject.Inject;
 import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.dodamPj.service.AdoptService;
-import com.kh.dodamPj.util.AnimalFileUploadUtil;
 import com.kh.dodamPj.vo.A_PagingDto;
 import com.kh.dodamPj.vo.AdoptVo;
 import com.kh.dodamPj.vo.ApplyUserVo;

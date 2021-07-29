@@ -39,6 +39,10 @@
 							});
 
 						});
+				
+				$("#btnBack").click(function() {
+					location.href="/user/memberLogin";
+				});
 
 			});
 </script>
@@ -681,9 +685,10 @@ ul {
 			<!-- join_form E  -->
 
 			<div class="btn_wrap">
-				<button type="button" id="btnFind">임시 비밀번호 발송</button>
-				<button onclick="history.back(-100)" id="btnBack">뒤로가기</button>
-
+				<br>
+				<button type="button" class="btn btn-warning" id="btnFind">임시 비밀번호 발송</button>
+				<button type="button" class="btn btn-primary" id="btnBack">뒤로가기</button>
+				<br>
 			</div>
 			</form>
 		</div>

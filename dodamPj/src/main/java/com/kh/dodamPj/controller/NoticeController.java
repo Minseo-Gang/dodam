@@ -44,13 +44,10 @@ public class NoticeController {
 //		int stp = pagingDto.getStartPage(); // startPage 확인용
 //		System.out.println("pDto: "+stp); // startPage 확인용
 		System.out.println("pDto: "+pagingDto);
-		
-		
 		List<NoticeVo> list = noticeService.listAll(pagingDto);
 		model.addAttribute("noticeList", list);
 		model.addAttribute("pagingDto1", pagingDto);
 		return "/notice/noticeList";
-		
 	}
 	
 	// 오시는길 페이지 이동
@@ -73,14 +70,7 @@ public class NoticeController {
 		return "/notice/noticeWriteForm";
 		
 	}
-	//공지사항 수정 리스트
-	@RequestMapping(value="/noticeModify",method=RequestMethod.GET)
-	public String noticeModify(NoticeVo noticeVo,Model model,PagingDto pagingDto) throws Exception{
-		List<NoticeVo> list = noticeService.listAll(pagingDto);
-		model.addAttribute("list2", list);
-		return "/notice/noticeModify";
-		
-	}
+	
 	//공지사항 작성 처리
 		@RequestMapping(value="/noticeModifyForm",method=RequestMethod.GET)
 		public String noticeModifyForm(int n_no, Model model) throws Exception{
@@ -134,19 +124,6 @@ public class NoticeController {
 		rttr.addFlashAttribute("msgDelete", "success");
 		return RE+"/notice/noticeModify";
 	}
-	
-
-//	//첨부파일 업로드 비동기 2012.07.13
-//	@RequestMapping(value="/uploadAjax", method=RequestMethod.POST,
-//			produces="application/text;charset=utf-8")
-//	@ResponseBody
-//	public String uploadAjax(MultipartFile file) throws Exception {
-////		System.out.println("file:" + file);
-//		String originalFilename = file.getOriginalFilename();
-////		System.out.println("orinalFilename:" + originalFilename);
-//		String filePath = MyFileUploadUtil.uploadFile("D:/upload", originalFilename, file.getBytes());
-//		return filePath;
-//	}
 
 	//첨부파일 업로드 비동기 2012.07.13
 	@RequestMapping(value="/uploadAjax", method=RequestMethod.POST,

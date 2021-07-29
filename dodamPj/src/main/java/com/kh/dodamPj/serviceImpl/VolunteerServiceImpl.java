@@ -1,5 +1,4 @@
 package com.kh.dodamPj.serviceImpl;
-
 import java.util.List;
 
 import javax.inject.Inject;
@@ -63,6 +62,10 @@ public class VolunteerServiceImpl implements VolunteerService {
 		volunteerDao.modifyReserv(volunteerVo);
 		
 	}
-	
+
+//	@Override
+//	public boolean checkDateAndTime(String v_date, String v_time) {
+//		return volunteerDao.checkDateAndTime(v_date, v_time, String v_place);
+//	}
 
 }

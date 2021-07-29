@@ -12,9 +12,9 @@
 	<!-- 글쓰기 -->
 	<insert id="insertArticle">
 		insert into notice 
-			(n_no, n_title, n_content, n_group,n_pic)
+			(n_no, n_title, n_content, n_group, n_pic)
 		values 
-			(#{n_no}, #{n_title}, #{n_content}, #{n_no},#{n_pic, jdbcType=VARCHAR})
+			(#{n_no}, #{n_title}, #{n_content}, #{n_group}, #{n_pic, jdbcType=VARCHAR})
 
 	</insert>
 	

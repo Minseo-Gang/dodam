@@ -2,24 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/adminHeader.jsp"%>
 <!-- 공지사항 등록 화면  -->
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<img style="margin-top: 10px; text-align: center;"
-				src="/resources/img/centerBanner.jpg">
-			<div class="row" style="margin-top: 10px;">
-				<div class="col-md-2">
-					<div class="border-end bg-white" id="sidebar-wrapper">
-						<div class="list-group list-group-flush">
-							<a class="list-group-item" style="background-color: #CCF2F4;">
-								<strong><i class="fas fa-paw"></i> 봉사활동</strong>
-							</a> <a
-								class="list-group-item list-group-item-action list-group-item-light p-3"
-								href="/notice/noticeList">- 공지사항</a> <a
-								class="list-group-item list-group-item-action list-group-item-light p-3"
-								href="/notice/procedure">- 보호절차</a> <a
-								class="list-group-item list-group-item-action list-group-item-light p-3"
-								href="/notice/map">- 오시는길</a>
+
 <script src="/resources/js/my-script.js"></script>
 <script>
 $(document).ready(function() {
@@ -104,23 +87,31 @@ $(document).ready(function() {
 	float : left;
 }
 </style>
-		<div id="layoutSidenav_content">
-			<main>
-			<div class="container-fluid px-2">
-				<div class="form-group">
-					<form  id="frmWrite"  action="/notice/noticeWriteRun" method="post"/> 
-						<div class="form-group">
-							<label for="n_title">제목</label> <input
-								type="text" class="form-control" id="n_title"
-								name="n_title" placeholder="제목을 작성해주세요.">
-						</div>
-					</div>
-				</div>
 
-				<div id="layoutSidenav_content">
-					<main>
-					<div class="container-fluid px-2">
-						<div class="form-group">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12" style="margin-top:5px; text-align:center;" >
+			<img src="/resources/img/centerBanner.jpg">
+		</div>
+	</div>
+	<div class="row" style="margin-top:10px;">
+		<div class="col-md-2">
+ 			<div class="border-end bg-white" id="sidebar-wrapper">
+   				<div class="list-group list-group-flush">
+                	<a class="list-group-item" style="background-color:#CCF2F4;">
+                		<strong><i class="fas fa-paw"></i> 도담센터(Admin)</strong></a>
+                	<a class="list-group-item list-group-item-action list-group-item-light p-3" 
+                    	href="/admin/noticeList">- 공지 사항 목록</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" 
+                    	href="/notice/noticeWriteForm">- 공지 사항 등록</a>
+                    
+                </div>
+            </div>
+		</div>
+	<div class="col-md-10">
+		<h2>공지사항 작성</h2>
+				<div class="container-fluid px-2">
+					<div class="form-group">
 							<form action="/notice/noticeWriteRun" method="post" />
 							<div class="form-group">
 								<label for="n_title">제목</label> <input type="text"
@@ -132,9 +123,6 @@ $(document).ready(function() {
 								<textarea class="form-control" id="n_content" name="n_content"
 									rows="10"></textarea>
 							</div>
-							<button type="submit" class="btn btn-info">등록하기</button>
-							<a href="/admin/adminPage" class="btn btn-secondary">메인으로</a>
-							</form>
 						</div>
 <!-- 					2012.07.13	여기서 부터 첨부파일 부분 -->
 						<label for="n_content">첨부파일</label>
@@ -152,30 +140,12 @@ $(document).ready(function() {
 						</div>
 						
 						<div id="uploadedList">
-						
 						</div>
-<!-- 					2012.07.13	첨부 파일 끝 -->
 						<button type="submit" class="btn btn-info">등록하기</button>
-						<a href="/admin/adminPage" class="btn btn-secondary">메인으로</a>
+							<a href="/admin/adminPage" class="btn btn-secondary">메인으로</a>
 					</form>
-				</div>
-
 					</div>
-					</main>
-
-
-					<footer class="py-4 bg-light mt-auto">
-						<div class="container-fluid px-4">
-							<div
-								class="d-flex align-items-center justify-content-between small">
-								<div class="text-muted">Copyright &copy; Your Website 2021</div>
-								<div>
-									<a href="#">Privacy Policy</a> &middot; <a href="#">Terms
-										&amp; Conditions</a>
-								</div>
-							</div>
-						</div>
-					</footer>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -194,5 +164,5 @@ $(document).ready(function() {
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
 	crossorigin="anonymous"></script>
 <script src="/resources2/js/datatables-simple-demo.js"></script>
-</body>
-</html>
+
+<%@ include file="../include/footer.jsp"%>

@@ -63,13 +63,10 @@ public class HomeController {
 		return "/user/funny";
 	}
 
-
 	@RequestMapping(value = "/maps/map", method = RequestMethod.GET)
 	public String map() {
 		return "/user/map";
 	}
-
-
 
 	// 로그인 처리 (관리자 로그인 포함)
 	@RequestMapping(value = "/memberLoginRun", method = RequestMethod.POST)

@@ -696,8 +696,8 @@ ul {
 								<th><span>아이디</span></th>
 								<td><input type="text" id="user_id" name="user_id"
 									placeholder="ID 를 입력하세요."></td>
-								<td><input type="button" id="btnIdCheck" value="중복확인"><span
-									id="idCheck"></span>
+								<td><input type="button" class="btn btn-warning" id="btnIdCheck" value="중복확인">
+								<span id="idCheck"></span>
 							</tr>
 							<tr>
 								<th><span>이름</span></th>
@@ -718,13 +718,13 @@ ul {
 								<th><span>이메일</span></th>
 								<td><input type="text" id="user_email" name="user_email"
 									class="user_email"></td>
-								<td><input type="button" id="btnRequest"value="인증요청"></td>
+								<td><input type="button" class="btn btn-warning" id="btnRequest" value="인증요청"></td>
 
 							</tr>
 							<tr id="tr" style="display:none">
 								<th><span>인증 번호</span></th>
 								<td><input type="number" id="code" name="code"></td>
-								<td><input type="button" id="btnCodeCheck"value="인증확인"><span
+								<td><input type="button" class="btn btn-warning" id="btnCodeCheck" value="인증확인"><span
 									id="codeCheck"></span></td>
 							</tr>
 							<tr>
@@ -759,7 +759,7 @@ ul {
 				</div>
 			</div>
 			<div class="btn_wrap">
-				<button type="submit">가입 완료</button>
+				<button type="submit" class="btn btn-success">가입 완료</button>
 
 			</div>
 			</form>

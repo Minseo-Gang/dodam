@@ -5,7 +5,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12" style="margin-top:10px; text-align:center;" >
-			<img src="/resources/img/banner.jpg">
+			<img src="/resources/img/lostBanner.jpg">
 		</div>
 	</div>
 	<div class="row" style="margin-top:10px;">
@@ -15,7 +15,7 @@
                 	<a class="list-group-item" style="background-color:#CCF2F4;">
                 		<strong><i class="fas fa-paw"></i> 유실/유기동물</strong></a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
-                    	href="/lostAnimal/protectAnimal">- 보호중인 동물</a>
+                    	href="/protect/protectAnimal">- 보호중인 동물</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
                     	href="/lostAnimal/reportList">- 분실 신고</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" 
