@@ -32,7 +32,7 @@ public interface BoardDao {
 	
 	// 첨부파일
 	public void insertAttach(BoardVo boardVo);
-	 nextval 얻기
+	// nextval 얻기
 	public int getNextVal();
 	// 첨부파일관련
 	public String selectFile(int b_no);
