@@ -34,7 +34,7 @@ import com.kh.dodamPj.vo.PagingDto;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-
+	
 	@Inject
 	private BoardService boardService;
 	@Inject
@@ -43,19 +43,21 @@ public class HomeController {
 	private AdminService adminService;
 	@Inject
 	private MemberService memberService;
-	@Autowired // 패스워드 security용
+	
+//	@Autowired // 패스워드 security용
 //	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
 
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, PagingDto pagingDto) {
 		List<BoardVo> list = boardService.freeBoard(pagingDto);
 		List<NoticeVo> noticeList = noticeService.listAll(pagingDto);
 		model.addAttribute("list", list); // 자유 게시판 리스트
 		model.addAttribute("noticeList", noticeList); // 공지사항 리스트
-		return "/main/main";
+		return "redirect:/main/main";
 	}
 
 	@RequestMapping(value = "/funny", method = RequestMethod.GET)
