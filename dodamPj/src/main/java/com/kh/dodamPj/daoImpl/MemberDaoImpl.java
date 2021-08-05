@@ -22,8 +22,8 @@ public class MemberDaoImpl implements MemberDao {
 	@Inject
 	private SqlSession sqlSession;
 	
-//	@Autowired //패스워드 security용
-//	private BCryptPasswordEncoder passwordEncoder;
+	@Autowired //패스워드 security용
+	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
 	
 	//회원가입
 	@Override

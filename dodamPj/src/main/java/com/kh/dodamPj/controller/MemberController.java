@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +33,7 @@ public class MemberController {
 	@Inject
 	private JavaMailSenderImpl mailSender;
 //	@Autowired // 패스워드 security용 --21.07.16
-//	private BCryptPasswordEncoder passwordEncoder;
+//	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
 
 	@RequestMapping(value = "/email", method = RequestMethod.GET)
 	public String email() throws Exception {
@@ -42,6 +42,13 @@ public class MemberController {
 
 	}
 
+	@RequestMapping(value = "/chatting", method = RequestMethod.GET)
+	public String chatting(String user_id,Model model) throws Exception {
+		model.addAttribute("user_id", user_id);
+		return "/user/chatting";
+
+	}
+	
 	@RequestMapping(value = "/changePasswordForm", method = RequestMethod.GET)
 	public String changePasswordForm() throws Exception {
 

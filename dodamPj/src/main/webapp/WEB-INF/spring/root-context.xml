@@ -27,7 +27,7 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 	
-	<!-- @Transactional 가능(~able) -->
+<!-- 	@Transactional 가능(~able) -->
 	<tx:annotation-driven/>
 	
 	<!-- setAutoCommit, commit, rollback -->
@@ -54,6 +54,6 @@
 				<prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
 			</props>
 		</property>
-	</bean>												
+	</bean>
 		 
 </beans>

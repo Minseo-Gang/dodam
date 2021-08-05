@@ -126,7 +126,9 @@ $(document).ready(function() {
 						<c:forEach var="adoptVo" items="${adList}">
 							<div class="col mb-5">
 								<div class="card h-100">
-									<a href="/adopt/animalCont?ad_no=${adoptVo.ad_no}"><img class="card-img-top" style="height:180px; width:236.5px;" src="http://localhost/adopt/displayImage?fileName=${adoptVo.ad_picture}" alt="..." /></a>
+									<a href="/adopt/animalCont?ad_no=${adoptVo.ad_no}"><img class="card-img-top" 
+									style="height:180px; width:236.5px;" 
+									src="http://localhost/adopt/displayImage?fileName=${adoptVo.ad_picture}" alt="..." /></a>
 									<div class="card-body" style="padding:0px; margin-top:5px; margin-right:5px;">
 										<ul style="padding-left:30px;">
 											<li><span>일련번호 : </span>${adoptVo.ad_no}</li>

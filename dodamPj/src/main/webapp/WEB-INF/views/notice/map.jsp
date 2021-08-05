@@ -43,14 +43,14 @@
 					
 	<script>
 		var mapOptions = {
-			center : new naver.maps.LatLng(37.3595704, 127.105399),
-			zoom : 10
+			center : new naver.maps.LatLng(35.535078472924496, 129.31086858555648),
+			zoom : 150
 		};
 
 		var map = new naver.maps.Map('map', mapOptions);
 
 		var markerOptions = {
-			position : new naver.maps.LatLng(37.3595704, 127.105399),
+			position : new naver.maps.LatLng(35.535078472924496, 129.31086858555648),
 			map : map
 		}
 

@@ -49,9 +49,7 @@
 	<delete id="deleteArticle">
 		delete from notice
 		where n_no = #{n_no}
-	</delete>
-	<!-- 글삭제 -->
-	
+	</delete>	
 	
 	<!-- 글목록 -->
 	<select id="listAll" resultType="NoticeVo">
@@ -61,7 +59,6 @@
 				 <include refid="search"></include>
 				 order by n_group desc, n_seq asc) a)
 		where rnum between #{startRow} and #{endRow}
-			
 	</select>
 	
 	<!-- 글갯수 -->

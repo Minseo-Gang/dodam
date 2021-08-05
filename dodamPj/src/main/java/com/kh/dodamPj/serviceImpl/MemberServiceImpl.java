@@ -18,8 +18,8 @@ public class MemberServiceImpl implements MemberService {
 	@Inject
 	private MemberDao memberDao;
 
-//	@Autowired //패스워드 security용
-//	private BCryptPasswordEncoder passwordEncoder;
+	@Autowired //패스워드 security용
+	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
 
 	@Override
 	public void joinRun(MemberVo memberVo) {

@@ -43,8 +43,8 @@ public class HomeController {
 	private AdminService adminService;
 	@Inject
 	private MemberService memberService;
-//	@Autowired // 패스워드 security용
-//	private BCryptPasswordEncoder passwordEncoder;
+	@Autowired // 패스워드 security용
+//	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -75,14 +75,14 @@ public class HomeController {
 		MemberVo memberVo = memberService.login(user_id, user_pw);
 //			암호화 된 패스워드 == 입력한 패스워드 일치 하는지 함수 사용으로 확인
 //		boolean chkPw = passwordEncoder.matches(user_pw, memberVo.getUser_pw());// 암호화--21.07.16
-//			System.out.println("vo 비번: "+chkPw);
 		rttr.addFlashAttribute("msgLogin", "success");
+//			System.out.println("vo 비번: "+ chkPw);
 //			System.out.println("id "+user_id);
 //			System.out.println("pw "+user_pw);
 		String msg = null;
 		String page = null;
 		// Vo에 정보 확인후 널값이 아니면 메인 화면으로 이동
-		if (memberVo != null) { // && chkPw == true
+		if (memberVo != null) { //&& chkPw == true
 			msg = "success";
 
 			int level = memberVo.getAuth_level(); // memberVo에 관리자 레벨 0 , 1 확인용

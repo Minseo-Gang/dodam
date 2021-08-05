@@ -32,6 +32,13 @@
 	
 	<beans:bean class="com.kh.dodamPj.interceptor.Interceptor" id="authInterceptor"></beans:bean>
 	
+	<websocket:handlers>
+		<websocket:mapping handler="echoHandler" path="/echo" />
+		<websocket:sockjs />
+	</websocket:handlers>
+    
+	<beans:bean id="echoHandler" class="com.kh.dodamPj.controller.EchoHandler"></beans:bean>
+	
 	<!--  인터셉트 부분 path 겹치는 주소만 입터셉트  -->
 	<interceptors>
 		<interceptor>

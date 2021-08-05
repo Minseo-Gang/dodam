@@ -6,6 +6,14 @@
 <html lang="kor">
 
 <head>
+<script type="text/javascript">
+ $(document).ready(function(){
+	 $("#btnChatting").click(function(){
+		 console.log("클릭");
+		 $("#chattingId").submit();
+	 });
+ });
+</script>
 <style>
 .inline {
 	border-bottom: 1px solid black;
@@ -101,6 +109,8 @@
 						<c:when test="${loginVo.auth_level == 0}">
 							<a href="/user/myPage?user_id=${memberVo.user_id}" 
 								class="myPage">마이페이지</a>
+							<a href="/volunteer/myReservation?user_id=${memberVo.user_id}" 
+								class="myReservation">나의 예약 정보</a>
 						</c:when>
 						<c:otherwise>
 							<a href="/admin/adminPage" class="adminPage">관리자 페이지로 이동</a>
@@ -155,6 +165,7 @@
             <ul>
               <li><a href="/board/freeBoard">- 자유게시판</a></li>
               <li><a href="/newsboard/newsBoard">- 동물정보/뉴스</a></li>
+              <li><a href="#"  onclick='javascript:window.open("http://192.168.0.234/user/chatting?user_id=${sessionScope.loginVo.user_id}","name99", "width=500px,height=650px,left=100px,top=100px");'>- 실시간 상담</a></li>
               <li><a href="/customerboard/customerBoard">- 고객센터</a></li>
             </ul>
           </li>

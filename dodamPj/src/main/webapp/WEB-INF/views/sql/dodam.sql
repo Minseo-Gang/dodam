@@ -247,4 +247,3 @@ create table tbl_newsfile(
     file_name varchar2(200) primary key,
     ab_no number references tbl_animalboard(ab_no)
 );
-
