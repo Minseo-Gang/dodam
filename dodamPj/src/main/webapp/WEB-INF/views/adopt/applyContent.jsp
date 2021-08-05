@@ -46,7 +46,7 @@ $(document).ready(function() {
 				<div class="col-md-12">
 					<form role="form" id="frmApply" action="/adopt/modifyApplyRun" method="post">	
 					<input type="hidden" name="au_no" value="${applyUserVo.au_no}">
-					<input type="text" name="user_id" value="${applyUserVo.user_id}">
+					<input type="hidden" name="user_id" value="${applyUserVo.user_id}">
 						<div class="form-group">
 						<label for="user_name">입양자 성명</label>
 							<input type="text" class="form-control" id="user_name" name="user_name"
