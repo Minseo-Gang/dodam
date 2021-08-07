@@ -44,7 +44,7 @@
 
 
 ### 🎵 ERD
-
+![ERD](https://user-images.githubusercontent.com/79182956/128583934-4234c683-afb5-486e-877f-4821d6c97c3c.JPG)
 
 
 ### 🎵 주요 기능
