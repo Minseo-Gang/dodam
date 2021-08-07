@@ -40,7 +40,7 @@
     
 
 ### 🎵 기술스택
-
+![stack](https://user-images.githubusercontent.com/79182956/128583977-4d095735-12d5-4537-8733-a856b03187ee.JPG)
 
 
 ### 🎵 ERD
